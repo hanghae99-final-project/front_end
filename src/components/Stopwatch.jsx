@@ -43,7 +43,9 @@ const Stopwatch = () => {
 
     return (
         <div>
-            <span>{`${hour} : ${minute} : ${second}`}</span>
+            <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
+            <span>{minute < 10 ? `0${minute}` : `${minute}`}:</span>
+            <span>{second < 10 ? `0${second}` : `${second}`}</span>
             {
                 mode === 'normal' ? 
                 <button onClick={() => {
