@@ -4,12 +4,13 @@ import SetTimeModal from './SetTimeModal';
 
 const Stopwatch = () => {
 
-    const [target, setTarget] = useState({});
+    const [target, setTarget] = useState('');
     const [hour, setHour] = useState(0);
     const [minute, setMinute] = useState(0);
     const [second, setSecond] = useState(0);
     const [mode, setMode] = useState('normal');
     const [running, setRunning] = useState(false);
+    const [modal, setModal] = useState(false)
     
     useEffect(() => {
         let interval;
@@ -34,11 +35,13 @@ const Stopwatch = () => {
     },[hour, minute, second]);
 
     useEffect(() => {
-        if(target !== {} && target.hour === hour && target.minute === minute && target.second === second){
-            alert('끝');
+        if(target !== '' && target.hour === hour && target.minute === minute && target.second === second){
+            // .then(() => alert('끝'))
             setRunning(false);
+            setModal(true);
+            //여기 고쳐
         }
-    }, [target, hour, minute, second, setRunning]);
+    }, [target, hour, minute, second]);
 
 
     return (
@@ -63,6 +66,7 @@ const Stopwatch = () => {
                 setRunning(false);
             }}>스톱워치 멈춰</button>
             {mode === 'set' && <SetTimeModal setMode={setMode} setTarget={setTarget}/>}
+            {modal && <div style={{backgroundColor : "black"}}>hi</div>}
         </div>
     );
 };
