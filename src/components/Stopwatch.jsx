@@ -1,72 +1,84 @@
 import React from 'react';
-import { useState , useEffect } from 'react';
-import SetTimeModal from './SetTimeModal';
+import { useState, useEffect } from 'react';
+import SetTimeModal from './setTimeModal/SetTimeModal';
+import styles from '../css/stopwatch.module.css';
 
 const Stopwatch = () => {
+    const date = new Date().getTime();
+    const startTime = localStorage.getItem('startTime');
+    const elapsedTime = Math.floor((date - startTime) / 1000);
 
-    const [target, setTarget] = useState('');
-    const [hour, setHour] = useState(0);
-    const [minute, setMinute] = useState(0);
-    const [second, setSecond] = useState(0);
+    const [target, setTarget] = useState(0);
     const [mode, setMode] = useState('normal');
     const [running, setRunning] = useState(false);
-    const [modal, setModal] = useState(false)
-    
+    const [modal, setModal] = useState(false);
+
+    const [second, setSecond] = useState(0);
+
+    if (!running && startTime) {
+        setRunning(true);
+    }
+
+    console.log(elapsedTime);
+
     useEffect(() => {
         let interval;
-        if(running){
+        if (running) {
             interval = setInterval(() => {
-                setSecond(prev => prev + 1);
+                setSecond((prev) => prev + 1);
             }, 1000);
         } else {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    },[running]);
+    }, [running]);
 
     useEffect(() => {
-        if(second === 60){
-            setSecond(0);
-            setMinute(prev => prev + 1);
-        } else if (minute === 60) {
-            setMinute(0);
-            setHour(prev => prev + 1);
-        }
-    },[hour, minute, second]);
-
-    useEffect(() => {
-        if(target !== '' && target.hour === hour && target.minute === minute && target.second === second){
-            // .then(() => alert('끝'))
+        if (target !== 0 && target === second) {
             setRunning(false);
-            setModal(true);
-            //여기 고쳐
+            setSecond(0);
+            setTarget(0);
+            localStorage.removeItem('startTime');
         }
-    }, [target, hour, minute, second]);
+    }, [second]);
 
+    useEffect(() => {
+        running && setSecond(elapsedTime);
+    }, [running]);
 
     return (
-        <div>
-            <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
-            <span>{minute < 10 ? `0${minute}` : `${minute}`}:</span>
-            <span>{second < 10 ? `0${second}` : `${second}`}</span>
-            {
-                mode === 'normal' ? 
-                <button onClick={() => {
-                    setMode('set');
-                }}>시간 설정</button>
-                :
-                <button onClick={() => {
-                    setMode('normal');
-                }}>닫기</button>
-            }
-            <button onClick={() => {
-                setRunning(true);
-            }}>스톱워치 시작</button>
-            <button onClick={() => {
-                setRunning(false);
-            }}>스톱워치 멈춰</button>
-            {mode === 'set' && <SetTimeModal setMode={setMode} setTarget={setTarget}/>}
-            {modal && <div style={{backgroundColor : "black"}}>hi</div>}
+        <div className={styles.stopwatch}>
+            <span>{parseInt(second / 3600) < 10 ? `0${parseInt(second / 3600)}` : `${parseInt(second / 3600)}`}:</span>
+            <span>{parseInt((second % 3600) / 60) < 10 ? `0${parseInt((second % 3600) / 60)}` : `${parseInt((second % 3600) / 60)}`}:</span>
+            <span>{second % 60 < 10 ? `0${second % 60}` : `${second % 60}`}</span>
+            {mode === 'normal' ? (
+                <button
+                    onClick={() => {
+                        setMode('set');
+                    }}>
+                    시간 설정
+                </button>
+            ) : (
+                <button
+                    onClick={() => {
+                        setMode('normal');
+                    }}>
+                    닫기
+                </button>
+            )}
+            {mode === 'set' && (
+                <SetTimeModal
+                    target={target}
+                    setMode={setMode}
+                    setTarget={setTarget}
+                    setRunning={setRunning}
+                    second={second}
+                    setSecond={setSecond}
+                    running={running}
+                    elapsedTime={elapsedTime}
+                />
+            )}
+            {modal && <div style={{ backgroundColor: 'black' }}>hi</div>}
         </div>
     );
 };
