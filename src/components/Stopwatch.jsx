@@ -4,22 +4,29 @@ import SetTimeModal from './setTimeModal/SetTimeModal';
 import styles from '../css/stopwatch.module.css';
 
 const Stopwatch = () => {
-    const startTime = localStorage.getItem('time');
-
     const [target, setTarget] = useState(0);
     const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
     const [mode, setMode] = useState('normal');
     const [running, setRunning] = useState(false);
-    const [modal, setModal] = useState(false);
     const [stop, setStop] = useState(false);
 
-    //시간
+    /** 시간 설정 */
     const [second, setSecond] = useState(localStorage.getItem('time') || 0);
 
-    if (!running && startTime && !stop) {
+    /** 시간 변수 선언 */
+    const hour = parseInt(second / 3600);
+    const minutes = parseInt((second % 3600) / 60);
+    const seconds = second % 60;
+
+    /** 로컬에 있는 time값 불러오기 */
+    const startTime = localStorage.getItem('time');
+
+    /** reload 시 time이 저장되어 있다면 자동 시작 */
+    if (!running && startTime && startTime !== '0' && !stop) {
         setRunning(true);
     }
 
+    /** 스톱워치 시간 증가 로직 */
     useEffect(() => {
         let interval;
         if (running) {
@@ -53,9 +60,9 @@ const Stopwatch = () => {
 
     return (
         <div className={styles.stopwatch}>
-            <span>{parseInt(second / 3600) < 10 ? `0${parseInt(second / 3600)}` : `${parseInt(second / 3600)}`}:</span>
-            <span>{parseInt((second % 3600) / 60) < 10 ? `0${parseInt((second % 3600) / 60)}` : `${parseInt((second % 3600) / 60)}`}:</span>
-            <span>{second % 60 < 10 ? `0${second % 60}` : `${second % 60}`}</span>
+            <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
+            <span>{minutes < 10 ? `0${minutes}` : `${minutes}`}:</span>
+            <span>{seconds < 10 ? `0${seconds}` : `${seconds}`}</span>
             {mode === 'normal' ? (
                 <button
                     onClick={() => {
@@ -74,10 +81,11 @@ const Stopwatch = () => {
             {mode === 'set' && (
                 <SetTimeModal
                     target={target}
-                    setMode={setMode}
                     setTarget={setTarget}
                     setRunning={setRunning}
-                    second={second}
+                    hour={hour}
+                    minutes={minutes}
+                    seconds={seconds}
                     setSecond={setSecond}
                     running={running}
                     time={time}
@@ -85,7 +93,6 @@ const Stopwatch = () => {
                     setStop={setStop}
                 />
             )}
-            {modal && <div style={{ backgroundColor: 'black' }}>hi</div>}
         </div>
     );
 };

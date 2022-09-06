@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../../css/setTimeModal.module.css';
 
 const SetTime = ({ setTime, time }) => {

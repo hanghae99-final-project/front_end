@@ -2,18 +2,14 @@ import React from 'react';
 import styles from '../../css/setTimeModal.module.css';
 import SetTime from './SetTime';
 
-const SetTimeModal = ({ target, setTarget, setRunning, second, running, setSecond, time, setTime, setStop }) => {
-    console.log(target);
-
+const SetTimeModal = ({ setTarget, setRunning, hour, minutes, seconds, running, setSecond, time, setTime, setStop }) => {
     return (
         <div className={styles.modal}>
             {running ? (
                 <div className={styles.time}>
-                    <span>{parseInt(second / 3600) < 10 ? `0${parseInt(second / 3600)}` : `${parseInt(second / 3600)}`}:</span>
-                    <span>
-                        {parseInt((second % 3600) / 60) < 10 ? `0${parseInt((second % 3600) / 60)}` : `${parseInt((second % 3600) / 60)}`}:
-                    </span>
-                    <span>{second % 60 < 10 ? `0${second % 60}` : `${second % 60}`}</span>
+                    <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
+                    <span>{minutes < 10 ? `0${minutes}` : `${minutes}`}:</span>
+                    <span>{seconds < 10 ? `0${seconds}` : `${seconds}`}</span>
                     <button
                         onClick={() => {
                             localStorage.removeItem('time');
