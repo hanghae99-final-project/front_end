@@ -75,6 +75,7 @@ const Stopwatch = () => {
                     닫기
                 </button>
             )}
+            <input type='date' />
             {mode === 'set' && (
                 <SetTimeModal
                     target={target}
