@@ -49,10 +49,7 @@ const Stopwatch = () => {
             setTime({ hour: 0, minute: 0, second: 0 });
             localStorage.removeItem('startTime');
         }
-    }, [second]);
-
-    /** 5초마다 localStorage 업데이트 */
-    useEffect(() => {
+        /** 5초마다 localStorage 업데이트 */
         if (second % 5 === 0) {
             localStorage.setItem('time', second);
         }

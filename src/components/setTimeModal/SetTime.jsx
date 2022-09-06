@@ -5,6 +5,7 @@ const SetTime = ({ setTime, time }) => {
     return (
         <div>
             <div className={styles.time}>
+                {/* Hour */}
                 <input
                     type='number'
                     onChange={(e) => {
@@ -14,6 +15,7 @@ const SetTime = ({ setTime, time }) => {
                     max='23'
                     defaultValue='0'
                 />
+                {/* Minutes */}
                 <input
                     type='number'
                     onChange={(e) => {
@@ -23,6 +25,7 @@ const SetTime = ({ setTime, time }) => {
                     max='59'
                     defaultValue='0'
                 />
+                {/* Seconds */}
                 <input
                     type='number'
                     onChange={(e) => {

@@ -27,6 +27,7 @@ const SetTimeModal = ({ setTarget, setRunning, hour, minutes, seconds, running, 
                     <button
                         className={styles.startBtn}
                         onClick={() => {
+                            /** 시간을 초로 바꿈 */
                             setTarget(Number(time.hour) * 3600 + Number(time.minute) * 60 + Number(time.second));
                             setRunning(true);
                         }}>
