@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../../css/setTimeModal.module.css';
 import SetTime from './SetTime';
 
-const SetTimeModal = ({ target, setTarget, setMode, setRunning, second, running, setSecond }) => {
-    const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
+const SetTimeModal = ({ target, setTarget, setRunning, second, running, setSecond, time, setTime, setStop }) => {
     console.log(target);
-    const date = new Date().getTime();
 
     return (
         <div className={styles.modal}>
@@ -18,10 +16,11 @@ const SetTimeModal = ({ target, setTarget, setMode, setRunning, second, running,
                     <span>{second % 60 < 10 ? `0${second % 60}` : `${second % 60}`}</span>
                     <button
                         onClick={() => {
-                            localStorage.removeItem('startTime');
+                            localStorage.removeItem('time');
                             setRunning(false);
                             setTarget(0);
                             setSecond(0);
+                            setTime({ hour: 0, minute: 0, second: 0 });
                         }}>
                         종료하기
                     </button>
@@ -32,11 +31,31 @@ const SetTimeModal = ({ target, setTarget, setMode, setRunning, second, running,
                     <button
                         className={styles.startBtn}
                         onClick={() => {
-                            localStorage.setItem('startTime', date);
                             setTarget(Number(time.hour) * 3600 + Number(time.minute) * 60 + Number(time.second));
                             setRunning(true);
                         }}>
                         시작하기
+                    </button>
+                </>
+            )}
+            {running ? (
+                <>
+                    <button
+                        onClick={() => {
+                            setRunning(false);
+                            setStop(true);
+                        }}>
+                        멈추기
+                    </button>
+                </>
+            ) : (
+                <>
+                    <button
+                        onClick={() => {
+                            setRunning(true);
+                            setStop(false);
+                        }}>
+                        계속하기
                     </button>
                 </>
             )}

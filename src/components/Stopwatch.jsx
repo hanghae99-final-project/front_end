@@ -4,28 +4,28 @@ import SetTimeModal from './setTimeModal/SetTimeModal';
 import styles from '../css/stopwatch.module.css';
 
 const Stopwatch = () => {
-    const date = new Date().getTime();
-    const startTime = localStorage.getItem('startTime');
-    const elapsedTime = Math.floor((date - startTime) / 1000);
+    const startTime = localStorage.getItem('time');
 
     const [target, setTarget] = useState(0);
+    const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
     const [mode, setMode] = useState('normal');
     const [running, setRunning] = useState(false);
     const [modal, setModal] = useState(false);
+    const [stop, setStop] = useState(false);
 
-    const [second, setSecond] = useState(0);
+    //시간
+    const [second, setSecond] = useState(localStorage.getItem('time') || 0);
 
-    if (!running && startTime) {
+    if (!running && startTime && !stop) {
         setRunning(true);
     }
-
-    console.log(elapsedTime);
 
     useEffect(() => {
         let interval;
         if (running) {
             interval = setInterval(() => {
-                setSecond((prev) => prev + 1);
+                //Number로 바꿔주지 않으면 string으로 판단해서 1, 11, 111 이렇게 증가함
+                setSecond((prev) => Number(prev) + 1);
             }, 1000);
         } else {
             clearInterval(interval);
@@ -33,18 +33,23 @@ const Stopwatch = () => {
         return () => clearInterval(interval);
     }, [running]);
 
+    /** 목표 시간 달성하면 초기화 */
     useEffect(() => {
         if (target !== 0 && target === second) {
             setRunning(false);
             setSecond(0);
             setTarget(0);
+            setTime({ hour: 0, minute: 0, second: 0 });
             localStorage.removeItem('startTime');
         }
     }, [second]);
 
+    /** 5초마다 localStorage 업데이트 */
     useEffect(() => {
-        running && setSecond(elapsedTime);
-    }, [running]);
+        if (second % 5 === 0) {
+            localStorage.setItem('time', second);
+        }
+    }, [second]);
 
     return (
         <div className={styles.stopwatch}>
@@ -75,7 +80,9 @@ const Stopwatch = () => {
                     second={second}
                     setSecond={setSecond}
                     running={running}
-                    elapsedTime={elapsedTime}
+                    time={time}
+                    setTime={setTime}
+                    setStop={setStop}
                 />
             )}
             {modal && <div style={{ backgroundColor: 'black' }}>hi</div>}
