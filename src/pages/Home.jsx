@@ -1,13 +1,7 @@
-import React from 'react';
-import Stopwatch from '../components/Stopwatch';
-import SetTimeModal from '../components/SetTimeModal';
+import React from "react";
 
 const Home = () => {
-    return (
-        <div>
-            <Stopwatch/>
-        </div>
-    );
+  return <div></div>;
 };
 
 export default Home;
