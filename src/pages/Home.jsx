@@ -1,12 +1,16 @@
 import React from 'react';
 import Stopwatch from '../components/Stopwatch';
-import SetTimeModal from '../components/SetTimeModal';
+import Layout from '../components/common/Layout';
+import Quote from '../components/Quote';
+import Studing from '../components/Studing';
 
 const Home = () => {
     return (
-        <div>
-            <Stopwatch/>
-        </div>
+        <Layout>
+            <Stopwatch />
+            <Quote />
+            <Studing />
+        </Layout>
     );
 };
 

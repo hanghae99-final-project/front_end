@@ -5,7 +5,7 @@ const initialState = {};
 
 export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL);
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/users/kakao/finish?code=${payload}`);
         console.log(data);
         return thunkAPI.fulfillWithValue(data);
     } catch (error) {
@@ -37,11 +37,6 @@ const mainSlice = createSlice({
     reducers: {},
     extraReducers: {
         [get_login.fulfilled]: (state, { payload }) => {
-            console.log(payload);
-            // return state = payload
-            //툴킷에 리턴 안 넣어도 되는데 왜 리턴을 안 넣으면 에러가 나오지
-        },
-        [get_login.rejected]: (state, { payload }) => {
             console.log(payload);
             // return state = payload
         },

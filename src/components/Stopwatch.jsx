@@ -19,10 +19,10 @@ const Stopwatch = () => {
     const seconds = second % 60;
 
     /** 로컬에 있는 time값 불러오기 */
-    const startTime = localStorage.getItem('time');
+    const elapsedTime = localStorage.getItem('time');
 
     /** reload 시 time이 저장되어 있다면 자동 시작 */
-    if (!running && startTime && startTime !== '0' && !stop) {
+    if (!running && elapsedTime && elapsedTime !== '0' && !stop) {
         setRunning(true);
     }
 
@@ -47,7 +47,7 @@ const Stopwatch = () => {
             setSecond(0);
             setTarget(0);
             setTime({ hour: 0, minute: 0, second: 0 });
-            localStorage.removeItem('startTime');
+            localStorage.removeItem('time');
         }
         /** 5초마다 localStorage 업데이트 */
         if (second % 5 === 0) {
