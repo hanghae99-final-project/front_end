@@ -1,13 +1,14 @@
-.ToDoFalse {}
+.ToDoFalse {
+}
 
 .ToDoTrue {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 ul {
-  padding: 0;
+    padding: 0;
 }
 
 li {
-  display: flex;
+    display: flex;
 }
