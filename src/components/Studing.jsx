@@ -7,8 +7,7 @@ const Studing = () => {
     const studing = useSelector((state) => state.main.studing?.studing);
     useEffect(() => {
         dispatch(get_studing());
-    }, []);
-    console.log(studing);
+    }, [dispatch]);
     return <div>지금 공부하고있는 사람들은 총 {studing}명이에요</div>;
 };
 

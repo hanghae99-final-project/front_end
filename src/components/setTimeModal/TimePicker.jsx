@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import styles from '../../css/timePicker.module.css';
-import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Mousewheel, Pagination, FreeMode, Navigation } from 'swiper';
 import 'swiper/css';
@@ -36,14 +35,11 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                     return (
                         <>
                             {time[unit] === t ? (
-                                <SwiperSlide
-                                    style={{ backgroundColor: 'white', height: '12px', width: '50px' }}
-                                    key={unit + t}
-                                    className={styles.hour}>
+                                <SwiperSlide style={{ backgroundColor: 'white', width: '50px' }} key={unit + t} className={styles.hour}>
                                     {t}
                                 </SwiperSlide>
                             ) : (
-                                <SwiperSlide style={{ height: '12px', width: '50px' }} key={unit + t} className={styles.hour}>
+                                <SwiperSlide style={{ width: '50px' }} key={unit + t} className={styles.hour}>
                                     {t}
                                 </SwiperSlide>
                             )}
