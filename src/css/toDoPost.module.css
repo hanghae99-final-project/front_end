@@ -1,0 +1,45 @@
+input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 1px solid black;
+  appearance: none;
+  cursor: pointer;
+  transition: border 0.5s;
+}
+
+input[type="radio"]:checked {
+  border: 2px double black
+}
+
+.color1 {
+  background-color: #FF8D8D;
+}
+
+.color2 {
+  background-color: #FFBA53;
+}
+
+.color3 {
+  background-color: #FFEF61;
+}
+
+.color4 {
+  background-color: #B9FFA0;
+}
+
+.color5 {
+  background-color: #99DEE2;
+}
+
+.color6 {
+  background-color: #9FB4FF;
+}
+
+.color7 {
+  background-color: #B187E7;
+}
+
+.color8 {
+  background-color: #E8A2D4;
+}
