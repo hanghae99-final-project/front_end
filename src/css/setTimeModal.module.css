@@ -2,9 +2,22 @@
     width: 30vw;
     height: 30vw;
     background-color: rgb(222, 222, 222) ;
+    background-color: rgb(255, 162, 162);
     display: flex;
+    flex-direction: column;
+    position: absolute;
 }
 
 .modal input {
+    height: 50px;
+    width: 100%;
+}
+
+.time {
+    display: flex;
+    position: relative;
+}
+
+.startBtn {
     height: 50px;
 }

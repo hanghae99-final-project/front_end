@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../../css/setTimeModal.module.css';
 import SetTime from './SetTime';
+import SetTimePicker from './SetTimePicker';
 
 const SetTimeModal = ({ setTarget, setRunning, hour, minutes, seconds, running, setSecond, time, setTime, setStop }) => {
     return (
@@ -24,6 +25,7 @@ const SetTimeModal = ({ setTarget, setRunning, hour, minutes, seconds, running, 
             ) : (
                 <>
                     <SetTime setTime={setTime} time={time} />
+                    <SetTimePicker setTime={setTime} time={time} />
                     <button
                         className={styles.startBtn}
                         onClick={() => {
