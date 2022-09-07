@@ -4,6 +4,5 @@ import mainSlice from './slice/mainSlice';
 export const store = configureStore({
     reducer: {
         main: mainSlice.reducer,
-        // test
     },
 });
