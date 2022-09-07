@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import mainSlice from "./slice/mainSlice";
-import timeTimerSlice from "./slice/timeTimerSlice";
+import toDoSlice from "./slice/toDoSlice";
+import rankingSlice from "./slice/rankingSlice";
 
 export const store = configureStore({
   reducer: {
     main: mainSlice.reducer,
-    timer: timeTimerSlice.reducer,
+    toDo: toDoSlice.reducer,
+    ranking: rankingSlice.reducer,
   },
 });
