@@ -1,10 +1,10 @@
 {
-    "quote": {
-        "id": 1,
-        "quote": "나는 최고다"
-    },
-    "studing": {
-        "id": 1,
-        "studing": 245
-    }
+  "quote": {
+    "id": 1,
+    "quote": "나는 최고다"
+  },
+  "studing": {
+    "id": 1,
+    "studing": 245
+  }
 }
