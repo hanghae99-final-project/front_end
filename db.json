@@ -1,16 +1,10 @@
 {
-  "posts": [
-    {
-      "isDone": true,
-      "id": 1
-    },
-    {
-      "isDone": true,
-      "id": 2
-    },
-    {
-      "isDone": true,
-      "id": 3
-    }
-  ]
+  "quote": {
+    "id": 1,
+    "quote": "나는 최고다"
+  },
+  "studing": {
+    "id": 1,
+    "studing": 245
+  }
 }
