@@ -8,7 +8,6 @@ const KakaoFinish = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const authCode = location.search.split('=')[1];
-    console.log(authCode);
     useEffect(() => {
         dispatch(get_login(authCode));
     }, []);
