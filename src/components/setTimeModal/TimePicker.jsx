@@ -33,7 +33,7 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                 }}>
                 {mode.map((t) => {
                     return (
-                        <>
+                        <div key={unit + t}>
                             {time[unit] === t ? (
                                 <SwiperSlide style={{ backgroundColor: 'white', width: '50px' }} key={unit + t} className={styles.hour}>
                                     {t}
@@ -43,7 +43,7 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                                     {t}
                                 </SwiperSlide>
                             )}
-                        </>
+                        </div>
                     );
                 })}
             </Swiper>
