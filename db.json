@@ -1,0 +1,16 @@
+{
+  "posts": [
+    {
+      "isDone": true,
+      "id": 1
+    },
+    {
+      "isDone": true,
+      "id": 2
+    },
+    {
+      "isDone": true,
+      "id": 3
+    }
+  ]
+}
