@@ -1,0 +1,47 @@
+.space {
+    width: 10rem;
+    height: 17rem;
+    background-color: bisque;
+    overflow: scroll;
+    -ms-overflow-style: none;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.space::-webkit-scrollbar {
+    display: none;
+}
+
+.hourBtn {
+    width: 3rem;
+    /* padding: 1rem 0; */
+    margin: 0.2rem;
+    height: 100px;
+    background-color: transparent;
+}
+
+.picker {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.hourBox {
+    position: relative;
+    margin: 0 auto;
+    width: 10rem;
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+}
+
+.hour {
+    background-color: blue;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12px;
+    width: 50px;
+}
