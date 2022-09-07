@@ -1,7 +1,6 @@
 .modal {
     width: 30vw;
     height: 30vw;
-    background-color: rgb(222, 222, 222) ;
     background-color: rgb(255, 162, 162);
     display: flex;
     flex-direction: column;
