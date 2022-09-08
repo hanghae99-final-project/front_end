@@ -1,0 +1,9 @@
+.graph {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 50%;
+    position: relative;
+    align-items: center;
+    background-color: white;
+}
