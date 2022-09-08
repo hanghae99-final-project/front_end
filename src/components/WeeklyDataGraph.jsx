@@ -9,11 +9,13 @@ ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 const WeeklyDataGraph = () => {
     const dispatch = useDispatch();
+
     const weeklyData = useSelector((state) => state.my);
     const labels = weeklyData.map((element) => element.day);
     const data = weeklyData.map((element) => element.time);
     //16진수로 표현하여 opacity 조절
     const dataColor = weeklyData.map((element) => Math.ceil((element.time / 24) * 256).toString(16));
+
     const options = {
         responsive: true,
         plugins: {

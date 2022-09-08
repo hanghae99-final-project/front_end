@@ -1,10 +1,11 @@
 import React from 'react';
 import WeeklyDataGraph from '../components/WeeklyDataGraph';
+import Layout from '../components/common/Layout';
 const MyPage = () => {
     return (
-        <div>
+        <Layout>
             <WeeklyDataGraph />
-        </div>
+        </Layout>
     );
 };
 
