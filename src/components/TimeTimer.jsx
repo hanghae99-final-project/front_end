@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { get_studytime } from "../app/slice/timeTimerSlice";
-import SetTimeModal from "./SetTimeModal";
+import SetTimeModal from "./setTimeModal/SetTimeModal";
 import styles from "../css/timeTimer.module.css";
 
 const TimeTimer = () => {
   const dispatch = useDispatch();
-  const [targetToSec, setTargetToSec] = useState();
-  const get_time = useSelector((state) => state.timer);
-  const [status, setStatus] = useState(0);
-  const [run, setRun] = useState(false);
-  const [rest, setRest] = useState(false);
-  const [target, setTarget] = useState("");
+  const [targetToSec, setTargetToSec] = useState(); // 설정시간을 초로 나타냄
+  const get_time = useSelector((state) => state.timer); // 무시 받아오는거
+  const [status, setStatus] = useState(0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
+  const [run, setRun] = useState(false); // 타임타이머 동작 여부
+  const [rest, setRest] = useState(false); // 휴식 관리
+  const [target, setTarget] = useState(""); //
   const [mode, setMode] = useState("normal");
-  const [second, setSecond] = useState(0);
-  const sec = second * (283 / targetToSec);
-  const remainSec = targetToSec - parseInt(second);
+  const [second, setSecond] = useState(0); // just '초'
+  const sec = second * (283 / targetToSec); // 타임타이머 동작을 위한 초 설정
+  const remainSec = targetToSec - parseInt(second); // setStatus 작동을 위한 두번째 시간과 분
 
   const hour = parseInt(second / 3600);
   const minutes = parseInt((second % 3600) / 60);
@@ -156,7 +156,14 @@ const TimeTimer = () => {
       )}
       <button>종료하기</button>
       {mode === "set" && (
-        <SetTimeModal setMode={setMode} setTarget={setTarget} setRun={setRun} />
+        <SetTimeModal
+          hour={hour}
+          seconds={seconds}
+          minutes={minutes}
+          setMode={setMode}
+          setTarget={setTarget}
+          setRun={setRun}
+        />
       )}
     </div>
   );
