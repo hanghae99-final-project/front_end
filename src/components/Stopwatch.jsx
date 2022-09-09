@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import SetTimeModal from './setTimeModal/SetTimeModal';
+import SetWatchModal from './setTimeModal/SetWatchModal';
 import styles from '../css/stopwatch.module.css';
 
 const Stopwatch = () => {
@@ -29,16 +29,16 @@ const Stopwatch = () => {
     /** 스톱워치 시간 증가 로직 */
     useEffect(() => {
         let interval;
-        if (running) {
+        if (running && !stop) {
             interval = setInterval(() => {
                 //Number로 바꿔주지 않으면 string으로 판단해서 1, 11, 111 이렇게 증가함
                 setSecond((prev) => Number(prev) + 1);
             }, 1000);
-        } else {
+        } else if (!running && stop) {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [running]);
+    }, [running, stop]);
 
     /** 목표 시간 달성하면 초기화 */
     useEffect(() => {
@@ -76,8 +76,7 @@ const Stopwatch = () => {
                 </button>
             )}
             {mode === 'set' && (
-                <SetTimeModal
-                    target={target}
+                <SetWatchModal
                     setTarget={setTarget}
                     setRunning={setRunning}
                     hour={hour}
@@ -88,6 +87,8 @@ const Stopwatch = () => {
                     time={time}
                     setTime={setTime}
                     setStop={setStop}
+                    stop={stop}
+                    setMode={setMode}
                 />
             )}
         </div>

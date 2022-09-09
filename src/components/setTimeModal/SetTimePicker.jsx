@@ -9,14 +9,10 @@ const SetTimePicker = ({ setTime, time }) => {
     const minute = new Array(60).fill().map((_, i) => {
         return i;
     });
-    const second = new Array(60).fill().map((_, i) => {
-        return i;
-    });
     return (
         <div className={styles.timePickerBox}>
             <TimePicker mode={hour} time={time} setTime={setTime} unit='hour' />
             <TimePicker mode={minute} time={time} setTime={setTime} unit='minute' />
-            <TimePicker mode={second} time={time} setTime={setTime} unit='second' />
         </div>
     );
 };

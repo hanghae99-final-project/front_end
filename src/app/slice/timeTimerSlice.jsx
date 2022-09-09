@@ -3,7 +3,12 @@ import axios from 'axios';
 
 export const get_studytime = createAsyncThunk('get_studytime', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `time`);
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL / +'time', {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('jwtToken')}`,
+            },
+        });
+        console.log(data);
         return thunkAPI.fulfillWithValue(data);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
