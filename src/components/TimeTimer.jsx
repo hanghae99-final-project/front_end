@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { get_studytime } from '../app/slice/timeTimerSlice';
+import { get_studytime, __postStudyStart, __postStudyEnd } from '../app/slice/timeTimerSlice';
 import SetTimeModal from './setTimeModal/SetTimeModal';
 import styles from '../css/timeTimer.module.css';
 
 const TimeTimer = () => {
+    const date = new Date().getTime();
+    const [refresh, setRefresh] = useState(false);
     const dispatch = useDispatch();
+    const userr = useSelector((state) => state.timer);
+    const studyStartPoint = useSelector((state) => state.timer?.studyStartPoint);
+    const savedStudyTime = useSelector((state) => state.timer?.savedStudyTime);
+    const restStartPoint = useSelector((state) => state.timer?.restStartPoint);
+    const savedRestTime = useSelector((state) => state.timer?.savedRestTime);
+    const targetTime = useSelector((state) => state.timer?.targetTime);
+    const yesterdayStudyTime = useSelector((state) => state.timer?.yesterdayStudyTime);
+
+    const myStudyTime = Math.floor((savedStudyTime + date - studyStartPoint) / 1000);
     const [targetToSec, setTargetToSec] = useState(); // 설정시간을 초로 나타냄
-    const get_time = useSelector((state) => state.timer); // 무시 받아오는거
-    const [status, setStatus] = useState(0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
+    const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
     const [run, setRun] = useState(false); // 타임타이머 동작 여부
     const [rest, setRest] = useState(false); // 휴식 관리
     const [target, setTarget] = useState({ hour: 0, minute: 0 }); //
@@ -17,7 +27,15 @@ const TimeTimer = () => {
     const sec = second * (283 / targetToSec); // 타임타이머 동작을 위한 초 설정
     const remainSec = targetToSec - parseInt(second); // setStatus 작동을 위한 두번째 시간과 분
 
-    console.log(targetToSec, second, target);
+    // 저장된 시간(0 또는 공부한 시간) + ( 현재 시간 - (다시) 시작한 시간 )
+    // useEffect(() => {
+    //     if (myStudyTime >= 0) {
+    //         setSecond(myStudyTime);
+    //     } else {
+    //         setSecond(0);
+    //     }
+    // }, [myStudyTime]);
+
     const hour = parseInt(second / 3600);
     const minutes = parseInt((second % 3600) / 60);
     const seconds = second % 60;
@@ -28,6 +46,12 @@ const TimeTimer = () => {
     useEffect(() => {
         dispatch(get_studytime());
     }, []);
+
+    useEffect(() => {
+        console.log(userr);
+    }, [userr]);
+
+    // console.log(get_time.savedStudyTime);
 
     /**1초에 한 번씩 더하는 것 */
     useEffect(() => {
@@ -60,6 +84,12 @@ const TimeTimer = () => {
             setStatus('목표량을 다 채웠어요!');
         }
     }, [target, second]);
+
+    useEffect(() => {
+        if (refresh) {
+            dispatch(__postStudyStart({ studyStartPoint: date }));
+        }
+    }, [refresh]);
 
     return (
         <div className={styles.layout}>
@@ -123,6 +153,8 @@ const TimeTimer = () => {
             {!run ? (
                 <button
                     onClick={() => {
+                        setRefresh(true);
+                        console.log(date);
                         setRun(true);
                     }}>
                     시작하기
@@ -147,32 +179,13 @@ const TimeTimer = () => {
                     <button
                         onClick={() => {
                             setRun(false);
+                            console.log(date - studyStartPoint);
+                            dispatch(__postStudyEnd({ studyEndPoint: date }));
                         }}>
                         종료하기
                     </button>
                 </>
             )}
-            {/* {run ? (
-                <button
-                    onClick={() => {
-                        setRun(false);
-                        setRest(true);
-                    }}>
-                    휴식
-                </button>
-            ) : rest === true ? (
-                <button
-                    onClick={() => {
-                        setRun(true);
-                        setRest(false);
-                    }}>
-                    공부
-                </button>
-            ) : (
-                <button disabled>공부</button>
-            )}
-            <button>종료하기</button> */}
-
             {mode === 'set' && (
                 <SetTimeModal
                     //초로 변환

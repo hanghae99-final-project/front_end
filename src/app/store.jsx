@@ -3,6 +3,7 @@ import mainSlice from './slice/mainSlice';
 import toDoSlice from './slice/toDoSlice';
 import rankingSlice from './slice/rankingSlice';
 import mySlice from './slice/mySlice';
+import timeTimerSlice from './slice/timeTimerSlice';
 
 export const store = configureStore({
     reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
         toDo: toDoSlice.reducer,
         ranking: rankingSlice.reducer,
         my: mySlice.reducer,
+        timer: timeTimerSlice.reducer,
     },
 });
