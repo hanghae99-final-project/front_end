@@ -8,7 +8,6 @@ const TimeTimer = () => {
     const date = new Date().getTime();
     const [refresh, setRefresh] = useState(false);
     const dispatch = useDispatch();
-    const userr = useSelector((state) => state.timer);
     const studyStartPoint = useSelector((state) => state.timer?.studyStartPoint);
     const savedStudyTime = useSelector((state) => state.timer?.savedStudyTime);
     const restStartPoint = useSelector((state) => state.timer?.restStartPoint);
@@ -16,18 +15,20 @@ const TimeTimer = () => {
     const targetTime = useSelector((state) => state.timer?.targetTime);
     const yesterdayStudyTime = useSelector((state) => state.timer?.yesterdayStudyTime);
 
-    const myStudyTime = Math.floor((savedStudyTime + date - studyStartPoint) / 1000);
+    // console.log(targetTime.time);
+
+    // const myStudyTime = Math.floor((savedStudyTime + date - studyStartPoint) / 1000);
+
     const [targetToSec, setTargetToSec] = useState(); // 설정시간을 초로 나타냄
     const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
     const [run, setRun] = useState(false); // 타임타이머 동작 여부
     const [rest, setRest] = useState(false); // 휴식 관리
-    const [target, setTarget] = useState({ hour: 0, minute: 0 }); //
+    const [target, setTarget] = useState({ hour: 3, minute: 0 }); //
     const [mode, setMode] = useState('normal');
     const [second, setSecond] = useState(0); // just '초'
     const sec = second * (283 / targetToSec); // 타임타이머 동작을 위한 초 설정
     const remainSec = targetToSec - parseInt(second); // setStatus 작동을 위한 두번째 시간과 분
 
-    // 저장된 시간(0 또는 공부한 시간) + ( 현재 시간 - (다시) 시작한 시간 )
     // useEffect(() => {
     //     if (myStudyTime >= 0) {
     //         setSecond(myStudyTime);
@@ -43,15 +44,13 @@ const TimeTimer = () => {
     const hour2 = parseInt(remainSec / 3600);
     const minutes2 = parseInt((remainSec % 3600) / 60);
 
+    // if (!run && studyStartPoint !== 0 && studyStartPoint !== undefined) {
+    //     setRun(true);
+    // }
+
     useEffect(() => {
         dispatch(get_studytime());
     }, []);
-
-    useEffect(() => {
-        console.log(userr);
-    }, [userr]);
-
-    // console.log(get_time.savedStudyTime);
 
     /**1초에 한 번씩 더하는 것 */
     useEffect(() => {
@@ -89,7 +88,16 @@ const TimeTimer = () => {
         if (refresh) {
             dispatch(__postStudyStart({ studyStartPoint: date }));
         }
-    }, [refresh]);
+        // 저장된 시간(0 또는 공부한 시간) + ( 현재 시간 - (다시) 시작한 시간 )
+
+        if (studyStartPoint === 0) {
+            setSecond(Math.floor(savedStudyTime / 1000));
+        } else {
+            setSecond(Math.floor((savedStudyTime + date - studyStartPoint) / 1000));
+            setRun(true);
+        }
+        setTargetToSec(targetTime.time / 1000);
+    }, [refresh, savedStudyTime]);
 
     return (
         <div className={styles.layout}>
@@ -154,7 +162,6 @@ const TimeTimer = () => {
                 <button
                     onClick={() => {
                         setRefresh(true);
-                        console.log(date);
                         setRun(true);
                     }}>
                     시작하기
@@ -178,6 +185,7 @@ const TimeTimer = () => {
                     )}
                     <button
                         onClick={() => {
+                            setRefresh(false);
                             setRun(false);
                             console.log(date - studyStartPoint);
                             dispatch(__postStudyEnd({ studyEndPoint: date }));

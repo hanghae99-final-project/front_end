@@ -15,7 +15,8 @@ const KakaoFinish = () => {
         dispatch(get_login(authCode));
     }, []);
 
-    if (use?.user?.nickname !== undefined) {
+    console.log(use);
+    if (use?.user?.nickname !== '') {
         localStorage.setItem('token', use.token);
         navigate('/');
     } else {

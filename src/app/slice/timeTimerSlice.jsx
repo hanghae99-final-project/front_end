@@ -56,7 +56,8 @@ const timeTimerSlice = createSlice({
         [__postStudyEnd.fulfilled]: (state, { payload }) => {
             return (state = {
                 ...state,
-                ...payload,
+                studyStartPoint: 0,
+                savedStudyTime: state.savedStudyTime + payload.studyEndPoint - state.studyStartPoint,
             });
         },
     },
