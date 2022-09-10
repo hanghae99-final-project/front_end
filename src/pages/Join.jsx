@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "../components/common/Layout";
-import Nickname from "../components/join/nickName";
+import Nickname from "../components/join/nickname";
 import Age from "../components/join/age";
 import Specialty from "../components/join/specialty";
 import Done from "../components/join/done";
