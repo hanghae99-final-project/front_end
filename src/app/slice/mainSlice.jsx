@@ -11,6 +11,8 @@ export const get_login = createAsyncThunk(
       const { data } = await axios.get(
         process.env.REACT_APP_SERVER_URL + `/users/kakao/finish?code=${payload}`
       );
+      console.log(data);
+      localStorage.setItem("token", data.token);
       return thunkAPI.fulfillWithValue(data.token);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -34,7 +36,10 @@ export const get_studing = createAsyncThunk(
   "/studing",
   async (payload, thunkAPI) => {
     try {
-      const { data } = await axios.get("http://localhost:3001/studing");
+      const { data } = await axios.get(
+        "http://localhost:3001/studing",
+        payload
+      );
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

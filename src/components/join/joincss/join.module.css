@@ -1,0 +1,79 @@
+@import "./guide.css";
+
+.layout {
+  width: 22.5rem;
+  height: 50rem;
+  padding: 0 1rem;
+  background-color: #2f3038;
+}
+
+img.arrowback_icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+img.infoText {
+  height: 4rem;
+  margin: 1rem 9.75rem 2rem 0;
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.inputContainer {
+  width: 20.5rem;
+  height: 4.375rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: solid 1px #ffffff;
+  background-color: #3b3b44;
+}
+
+.inputBox {
+  width: 5.438rem;
+  height: 2.875rem;
+  display: flex;
+}
+
+.label {
+  color: #a4a3b1;
+  font-size: 0.75rem;
+}
+
+.joinBtnNo {
+  width: 20.5rem;
+  height: 3.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.joinBtnYes {
+  width: 22.5rem;
+  height: 3.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 26rem 0 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #66ffa6;
+  border: none;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.slice {
+  border: 1px solid black;
+}
+
+.test {
+  width: 20.5rem;
+}

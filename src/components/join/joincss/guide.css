@@ -1,0 +1,413 @@
+@font-face {
+  font-family: Pretendard;
+  src: local(Pretendard-Light);
+  /* url(/path/to/Pretendard-Light.woff2) format("woff2"),
+    url(/path/to/Pretendard-Light.woff) format("woff"),
+    url(/path/to/Pretendard-Light.ttf) format("truetype"); */
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: Pretendard;
+  src: local(Pretendard-SemiBold);
+  /* url(/path/to/Pretendard-SemiBold.woff2) format("woff2"),
+    url(/path/to/Pretendard-SemiBold.woff) format("woff"),
+    url(/path/to/Pretendard-SemiBold.ttf) format("truetype"); */
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+}
+@font-face {
+  font-family: Pretendard;
+  src: local(Pretendard-Bold);
+  /* url(/path/to/Pretendard-Bold.woff2) format("woff2"),
+    url(/path/to/Pretendard-Bold.woff) format("woff"),
+    url(/path/to/Pretendard-Bold.ttf) format("truetype"); */
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+}
+.header_600_42 {
+  font-family: Pretendard;
+  font-size: 2.625rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.header2_600_28 {
+  font-family: Pretendard;
+  font-size: 1.75rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.29;
+  letter-spacing: normal;
+}
+.header3_600_24 {
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+}
+.subtitle3bold20 {
+  font-family: Pretendard;
+  font-size: 1.25rem;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.title_600_18 {
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+}
+.subtitle_600_18 {
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+}
+.subtitle_300_18 {
+  font-family: Pretendard;
+  font-size: 1.125rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+}
+.title2_600_16 {
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+}
+.subtitle2_600_16 {
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.body_600_16 {
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.subtitle2_300_16 {
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.body_300_16 {
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.title3_600_14 {
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+}
+.subtitle3_600_14 {
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+}
+.body2_600_14 {
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+}
+.subtitle3_300_14 {
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+}
+.body2_300_14 {
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+}
+.subtitle4_600_12 {
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.caption_600_12 {
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.subtitle4_300_12 {
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.caption_300_12 {
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+}
+.caption2_600_10 {
+  font-family: Pretendard;
+  font-size: 0.625rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+.caption2_300_10 {
+  font-family: Pretendard;
+  font-size: 0.625rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+.caption3_600_8 {
+  font-family: Pretendard;
+  font-size: 0.5rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+.caption3_300_8 {
+  font-family: Pretendard;
+  font-size: 0.5rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+}
+
+:root {
+  --neutral-100: #fff;
+  --neutral-95: #f2effa;
+  --neutral-90: #e3e1ec;
+  --neutral-80: #c7c5d0;
+  --neutral-70: #a4a3b1;
+  --neutral-60: #7e7c8c;
+  --neutral-50: #5f5d6c;
+  --neutral-40: #4b4a56;
+  --neutral-30: #3b3b44;
+  --neutral-20: #2f3038;
+  --neutral-10: #1a1b23;
+  --neutral-0: #000;
+  --primary-100: #e0ffed;
+  --primary-90: #c6ffde;
+  --primary-80: #afffd1;
+  --primary-70: #97ffc3;
+  --primary-60: #83ffb7;
+  --primary-50: #66ffa6;
+  --primary-40: #5eee9a;
+  --primary-30: #50d287;
+  --primary-20: #41b270;
+  --primary-10: #319159;
+  --primary-0: #217143;
+  --secondary-100: #fff2ed;
+  --secondary-90: #ffdbd0;
+  --secondary-70: #ffa68a;
+  --secondary-80: #ffc3b0;
+  --secondary-60: #ff906d;
+  --secondary-50: #ff8058;
+  --secondary-40: #f0744f;
+  --secondary-30: #d65e40;
+  --secondary-20: #b9462e;
+  --secondary-10: #9b2d1c;
+  --secondary-0: #7d150b;
+  --alerts-red: #ff5757;
+  --alerts-blue: #75c5ff;
+  --alerts-orange: #ff9950;
+  --opacity-w-90: rgba(255, 255, 255, 0.9);
+  --opacity-w-80: rgba(255, 255, 255, 0.8);
+  --opacity-w-50: rgba(255, 255, 255, 0.5);
+  --opacity-w-60: rgba(255, 255, 255, 0.6);
+  --opacity-w-40: rgba(255, 255, 255, 0.4);
+  --opacity-w-30: rgba(255, 255, 255, 0.3);
+  --opacity-w-10: rgba(255, 255, 255, 0.1);
+  --opacity-w-20: rgba(255, 255, 255, 0.2);
+  --alerts-green: #92cd6e;
+  --opacity-w-70: rgba(255, 255, 255, 0.7);
+  --opacity-b-70: rgba(26, 27, 35, 0.7);
+  --opacity-b-90: rgba(26, 27, 35, 0.9);
+  --opacity-b-80: rgba(26, 27, 35, 0.8);
+  --opacity-b-60: rgba(26, 27, 35, 0.6);
+  --opacity-b-40: rgba(26, 27, 35, 0.4);
+  --opacity-b-30: rgba(26, 27, 35, 0.3);
+  --opacity-b-10: rgba(26, 27, 35, 0.1);
+  --opacity-b-20: rgba(26, 27, 35, 0.2);
+  --opacity-b-50: rgba(26, 27, 35, 0.5);
+  --opacity-0: rgba(0, 0, 0, 0);
+}
+
+/*  */
+/*  */
+.layout {
+  width: 22.5rem;
+  height: 50rem;
+  flex-grow: 0;
+  padding: 0 1rem;
+  background-color: #2f3038;
+}
+
+img.arrowback_icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}
+img.infoText {
+  width: 10.75rem;
+  height: 4rem;
+  margin: 1rem 9.75rem 2rem 0;
+  font-family: Pretendard;
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.33;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+}
+
+.inputContainer {
+  width: 20.5rem;
+  height: 4.375rem;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 10px;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: solid 1px #ffffff;
+  background-color: #3b3b44;
+}
+
+.inputBox {
+  width: 5.438rem;
+  height: 2.875rem;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 0;
+}
+
+.label {
+  color: #a4a3b1;
+  font-size: 0.75rem;
+}
+
+.joinBtnNo {
+  width: 20.5rem;
+  height: 3.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 26rem 0 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #3b3b44;
+  border: none;
+}
+
+.joinBtnYes {
+  width: 20.5rem;
+  height: 3.75rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 26rem 0 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: #66ffa6;
+  border: none;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.slice {
+  border: 1px solid black;
+}
