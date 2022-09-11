@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { get_login } from '../app/slice/mainSlice';
-import jwtDecode from 'jwt-decode';
 
 const KakaoFinish = () => {
     const location = useLocation();
@@ -10,25 +9,24 @@ const KakaoFinish = () => {
     const dispatch = useDispatch();
     const use = useSelector((state) => state.main);
     const authCode = location.search.split('=')[1];
-    console.log(use);
     useEffect(() => {
         dispatch(get_login(authCode));
     }, []);
 
-    console.log(use);
-    if (use?.user?.nickname !== '') {
-        localStorage.setItem('token', use.token);
-        navigate('/');
-    } else {
-        navigate('/todo');
-    }
+    useEffect(() => {
+        if (use?.user?.nickname !== '') {
+            if (use.token !== undefined) {
+                console.log(use.token);
+                localStorage.setItem('token', use.token);
+                if (localStorage.token !== undefined) {
+                    navigate('/', { state: localStorage.token });
+                }
+            }
+        } else {
+            navigate('/todo');
+        }
+    }, [use]);
 
-    //   localStorage.setItem("token", use);
-    //   //   const token = jwtDecode(localStorage.token);
-    //   if (localStorage.token !== "") {
-    //   }
-
-    //   console.log(jwtDecode(use));
     return <div>gd</div>;
 };
 

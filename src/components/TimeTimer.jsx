@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { get_studytime, __postStudyStart, __postStudyEnd } from '../app/slice/timeTimerSlice';
+import { get_studytime, __postStudyStart, __postStudyEnd, __postRestStart } from '../app/slice/timeTimerSlice';
 import SetTimeModal from './setTimeModal/SetTimeModal';
 import styles from '../css/timeTimer.module.css';
+import { useLocation } from 'react-router-dom';
 
 const TimeTimer = () => {
+    const location = useLocation();
     const date = new Date().getTime();
     const [refresh, setRefresh] = useState(false);
     const dispatch = useDispatch();
+    const uu = useSelector((state) => state.timer);
     const studyStartPoint = useSelector((state) => state.timer?.studyStartPoint);
     const savedStudyTime = useSelector((state) => state.timer?.savedStudyTime);
     const restStartPoint = useSelector((state) => state.timer?.restStartPoint);
@@ -15,10 +18,7 @@ const TimeTimer = () => {
     const targetTime = useSelector((state) => state.timer?.targetTime);
     const yesterdayStudyTime = useSelector((state) => state.timer?.yesterdayStudyTime);
 
-    // console.log(targetTime.time);
-
-    // const myStudyTime = Math.floor((savedStudyTime + date - studyStartPoint) / 1000);
-
+    const [token, setToken] = useState('');
     const [targetToSec, setTargetToSec] = useState(); // 설정시간을 초로 나타냄
     const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
     const [run, setRun] = useState(false); // 타임타이머 동작 여부
@@ -26,16 +26,9 @@ const TimeTimer = () => {
     const [target, setTarget] = useState({ hour: 3, minute: 0 }); //
     const [mode, setMode] = useState('normal');
     const [second, setSecond] = useState(0); // just '초'
+    const [restSecond, setRestSecond] = useState(0);
     const sec = second * (283 / targetToSec); // 타임타이머 동작을 위한 초 설정
     const remainSec = targetToSec - parseInt(second); // setStatus 작동을 위한 두번째 시간과 분
-
-    // useEffect(() => {
-    //     if (myStudyTime >= 0) {
-    //         setSecond(myStudyTime);
-    //     } else {
-    //         setSecond(0);
-    //     }
-    // }, [myStudyTime]);
 
     const hour = parseInt(second / 3600);
     const minutes = parseInt((second % 3600) / 60);
@@ -43,16 +36,10 @@ const TimeTimer = () => {
 
     const hour2 = parseInt(remainSec / 3600);
     const minutes2 = parseInt((remainSec % 3600) / 60);
-
-    // if (!run && studyStartPoint !== 0 && studyStartPoint !== undefined) {
-    //     setRun(true);
-    // }
-
     useEffect(() => {
-        dispatch(get_studytime());
+        dispatch(get_studytime(location.state));
     }, []);
 
-    /**1초에 한 번씩 더하는 것 */
     useEffect(() => {
         let interval;
         if (run && !rest) {
@@ -65,18 +52,20 @@ const TimeTimer = () => {
         return () => clearInterval(interval);
     }, [run, rest]);
 
-    /**  */
     useEffect(() => {
         if (!isNaN(targetToSec)) {
             setTargetToSec(target.hour * 3600 + target.minute * 60);
         } else {
-            // 무슨의미죠?
             setTargetToSec(1);
         }
     }, [target, run]);
 
     useEffect(() => {
-        !isNaN(hour2) && !isNaN(minutes2) ? setStatus(`${hour2}시간 ${minutes2}분 남았어요!`) : setStatus(`어제 2시간 10분 공부했어요`);
+        !isNaN(hour2) && !isNaN(minutes2)
+            ? second >= targetTime.time / 1000
+                ? setStatus('목표를 달성했어요 !')
+                : setStatus(`${hour2}시간 ${minutes2}분 남았어요!`)
+            : setStatus(`어제 2시간 10분 공부했어요`);
         if (target !== {} && targetToSec === second) {
             alert('목표시간 도달');
             setRun(false);
@@ -169,16 +158,22 @@ const TimeTimer = () => {
             ) : (
                 <>
                     {!rest ? (
-                        <button
-                            onClick={() => {
-                                setRest(true);
-                            }}>
-                            휴식하기
-                        </button>
+                        <>
+                            <button
+                                onClick={() => {
+                                    setRest(true);
+                                    setRefresh(false);
+                                    dispatch(__postRestStart({ restStartPoint: date, studyEndPoint: date }));
+                                }}>
+                                휴식하기
+                            </button>
+                            <span></span>
+                        </>
                     ) : (
                         <button
                             onClick={() => {
                                 setRest(false);
+                                // dispatch(__postRestStart({ restEndPoint: date, studyStartPoint: date }));
                             }}>
                             계속하기
                         </button>
@@ -187,8 +182,8 @@ const TimeTimer = () => {
                         onClick={() => {
                             setRefresh(false);
                             setRun(false);
-                            console.log(date - studyStartPoint);
-                            dispatch(__postStudyEnd({ studyEndPoint: date }));
+                            // console.log(date - studyStartPoint);
+                            dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
                         }}>
                         종료하기
                     </button>

@@ -18,7 +18,7 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                 slidesPerView={5}
                 scrollbar={{ draggable: true }}
                 navigation={true}
-                freeMode={true}
+                // freeMode={true}
                 centeredSlides={true}
                 mousewheel={true}
                 direction={'vertical'}
