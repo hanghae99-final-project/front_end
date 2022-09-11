@@ -1,16 +1,24 @@
 import React, { useState } from "react";
+import "animate.css";
 import styles from "./joincss/join.module.css";
 import arrowBtn from "../../svg/arrowback_icon.svg";
 import deleteBtn from "../../svg/delete_icon.svg";
 // import { ReactComponent as Remove } from "../../delete_icon.svg";
 
-const Nickname = ({ setMode, nickname, handleInput }) => {
-  const [ctColor, setCtColor] = useState("inputContainer");
-  const [checkMsg, setCheckMsg] = useState("8자리의 한글만 사용이 가능해요.");
-
+const Nickname = ({
+  setMode,
+  nickname,
+  handleInput,
+  checkMsg,
+  setCheckMsg,
+}) => {
   const check = /^[가-힣]{2,8}$/;
-  // if (!name.test(nickname) ) {
-  // }
+  const [ctColor, setCtColor] = useState("inputContainer");
+
+  const checkVaild = (e) => {
+    if (!check.test(nickname)) {
+    }
+  };
 
   return (
     <div className={styles.layout}>
@@ -22,7 +30,7 @@ const Nickname = ({ setMode, nickname, handleInput }) => {
           사용하실 닉네임을
           <br /> 입력해 주세요
         </p>
-        <div className={`${styles}.${ctColor}`}>
+        <div className={styles.inputContainer}>
           <div className={styles.InputGroup}>
             <label className={styles.label}>닉네임</label>
             <input
@@ -33,6 +41,7 @@ const Nickname = ({ setMode, nickname, handleInput }) => {
               onChange={handleInput}
               placeholder="8자 이내 한글"
               autoComplete="off"
+              autoFocus="true"
               maxLength="8"
             ></input>
           </div>
@@ -45,8 +54,7 @@ const Nickname = ({ setMode, nickname, handleInput }) => {
           </div>
         </div>
         <p className={styles.checkMsg}>{checkMsg}</p>
-        {nickname === "" ? (
-          //  && !checkMsg === green ?
+        {nickname == "" ? (
           <button className={styles.joinBtnNo} disabled>
             다음
           </button>
