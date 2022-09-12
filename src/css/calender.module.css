@@ -1,0 +1,18 @@
+.container {
+  padding: 50px;
+}
+
+.header {
+  display: flex;
+}
+
+.header h1 {
+  margin: 0 20px;
+}
+
+td {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 3.5px;
+}

@@ -1,33 +1,33 @@
 import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit';
 import axios from 'axios';
+import instance from './instance';
 
 const now = new Date();
 const year = now.getFullYear();
 const months = ('0' + (now.getMonth() + 1)).slice(-2);
 const days = ('0' + now.getDate()).slice(-2);
-console.log(`${year}-${months}-${days}`);
 
 export const getList = createAsyncThunk('GET_TODO', async () => {
-    const response = await axios.get(`http://13.124.204.3/todo/${year}-${months}-${days}`);
+    const response = await instance.get(`/todo/${year}-${months}-${days}`);
     console.log(response);
     return response.data;
 });
 
 export const addList = createAsyncThunk('ADD_TODO', async (toDo) => {
-    const response = await axios.post('http://13.124.204.3/todo', toDo);
+    const response = await instance.post('/todo', toDo);
     console.log(response);
     return response.data;
 });
 
 export const deleteList = createAsyncThunk('DELETE_TODO', async (toDoId) => {
-    const response = await axios.delete(`http://13.124.204.3/todo/${toDoId}`);
+    const response = await instance.delete(`/todo/${toDoId}`);
     console.log(response);
     return toDoId;
 });
 
 export const updateList = createAsyncThunk('UPDATE_LIST', async ({ id, work, color }) => {
     console.log(id);
-    const response = await axios.put(`http://13.124.204.3/todo/${id}`, {
+    const response = await instance.put(`/todo/${id}`, {
         work: work,
         color: color,
     });
@@ -49,6 +49,7 @@ const toDoSlice = createSlice({
     reducers: {},
     extraReducers: {
         [getList.fulfilled]: (state, { payload }) => {
+            console.log(payload.todoArr)
             return (state = payload.todoArr);
         },
 
