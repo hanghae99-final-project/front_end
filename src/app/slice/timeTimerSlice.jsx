@@ -93,11 +93,20 @@ const timeTimerSlice = createSlice({
             });
         },
         [__postStudyEnd.fulfilled]: (state, { payload }) => {
-            return (state = {
-                ...state,
-                studyStartPoint: 0,
-                savedStudyTime: state.savedStudyTime + payload.studyEndPoint - state.studyStartPoint,
-            });
+            console.log(payload.studyEndPoint);
+            if (payload.studyEndPoint !== undefined) {
+                return (state = {
+                    ...state,
+                    studyStartPoint: 0,
+                    savedStudyTime: state.savedStudyTime + payload.studyEndPoint - state.studyStartPoint,
+                });
+            } else if (payload.restEndPoint !== undefined) {
+                return (state = {
+                    ...state,
+                    restStartPoint: 0,
+                    savedRestTime: state.savedRestTime + payload.restEndPoint - state.restStartPoint,
+                });
+            }
         },
         [__postRestStart.fulfilled]: (state, { payload }) => {
             return (state = {
