@@ -18,7 +18,7 @@ export const get_studytime = createAsyncThunk('get_studytime', async (payload, t
 
 export const __postStudyStart = createAsyncThunk('/studyStart', async (payload, thunkAPI) => {
     try {
-        await axios.post('/time/studyStart', payload, {
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/time/studyStart', payload, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
@@ -31,7 +31,8 @@ export const __postStudyStart = createAsyncThunk('/studyStart', async (payload, 
 
 export const __postStudyEnd = createAsyncThunk('/studyEnd', async (payload, thunkAPI) => {
     try {
-        await axios.post('/time/studyEnd', payload, {
+        console.log(payload);
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/time/studyEnd', payload, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
@@ -44,7 +45,7 @@ export const __postStudyEnd = createAsyncThunk('/studyEnd', async (payload, thun
 
 export const __postRestStart = createAsyncThunk('/restStart', async (payload, thunkAPI) => {
     try {
-        await axios.post('/time/restStart', payload, {
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/time/restStart', payload, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
@@ -57,7 +58,7 @@ export const __postRestStart = createAsyncThunk('/restStart', async (payload, th
 
 export const __postRestEnd = createAsyncThunk('/restEnd', async (payload, thunkAPI) => {
     try {
-        await axios.post('/time/restEnd', payload, {
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/time/restEnd', payload, {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
@@ -104,6 +105,14 @@ const timeTimerSlice = createSlice({
                 savedStudyTime: state.savedStudyTime + payload.studyEndPoint - state.studyStartPoint,
                 studyStartPoint: 0,
                 restStartPoint: payload.restStartPoint,
+            });
+        },
+        [__postRestEnd.fulfilled]: (state, { payload }) => {
+            return (state = {
+                ...state,
+                savedRestTime: state.savedRestTime + payload.restEndPoint - state.restStartPoint,
+                restStartPoint: 0,
+                studyStartPoint: payload.studyStartPoint,
             });
         },
     },

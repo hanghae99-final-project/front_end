@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { get_studing } from '../app/slice/mainSlice';
+import styles from '../css/studing.module.css';
+import '../css/color.css';
 
 const Studing = () => {
     const dispatch = useDispatch();
@@ -8,7 +10,13 @@ const Studing = () => {
     useEffect(() => {
         dispatch(get_studing());
     }, [dispatch]);
-    return <div>지금 공부하고있는 사람들은 총 {studing}명이에요</div>;
+    console.log(studing);
+    return (
+        <div className={styles.studing}>
+            <div className={styles.online}></div>
+            {studing}
+        </div>
+    );
 };
 
 export default Studing;

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import SetWatchModal from './setTimeModal/SetWatchModal';
 import styles from '../css/stopwatch.module.css';
+import clock from '../image/check_icon.svg';
 
 const Stopwatch = () => {
     const [target, setTarget] = useState(0);
@@ -57,16 +58,20 @@ const Stopwatch = () => {
 
     return (
         <div className={styles.stopwatch}>
-            <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
-            <span>{minutes < 10 ? `0${minutes}` : `${minutes}`}:</span>
-            <span>{seconds < 10 ? `0${seconds}` : `${seconds}`}</span>
+            <div>
+                <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
+                <span>{minutes < 10 ? `0${minutes}` : `${minutes}`}:</span>
+                <span>{seconds < 10 ? `0${seconds}` : `${seconds}`}</span>
+            </div>
             {mode === 'normal' ? (
-                <button
+                <img
+                    className={styles.clock}
+                    src={clock}
+                    alt='스톱워치'
                     onClick={() => {
                         setMode('set');
-                    }}>
-                    시간 설정
-                </button>
+                    }}
+                />
             ) : (
                 <button
                     onClick={() => {

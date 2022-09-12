@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { get_studytime, __postStudyStart, __postStudyEnd, __postRestStart } from '../app/slice/timeTimerSlice';
+import { get_studytime, __postStudyStart, __postStudyEnd, __postRestStart, __postRestEnd } from '../app/slice/timeTimerSlice';
 import SetTimeModal from './setTimeModal/SetTimeModal';
 import styles from '../css/timeTimer.module.css';
-import { useLocation } from 'react-router-dom';
 
 const TimeTimer = () => {
-    const location = useLocation();
     const date = new Date().getTime();
     const [refresh, setRefresh] = useState(false);
     const dispatch = useDispatch();
-    const uu = useSelector((state) => state.timer);
     const studyStartPoint = useSelector((state) => state.timer?.studyStartPoint);
     const savedStudyTime = useSelector((state) => state.timer?.savedStudyTime);
     const restStartPoint = useSelector((state) => state.timer?.restStartPoint);
@@ -18,15 +15,16 @@ const TimeTimer = () => {
     const targetTime = useSelector((state) => state.timer?.targetTime);
     const yesterdayStudyTime = useSelector((state) => state.timer?.yesterdayStudyTime);
 
-    const [token, setToken] = useState('');
     const [targetToSec, setTargetToSec] = useState(); // 설정시간을 초로 나타냄
     const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
     const [run, setRun] = useState(false); // 타임타이머 동작 여부
     const [rest, setRest] = useState(false); // 휴식 관리
     const [target, setTarget] = useState({ hour: 3, minute: 0 }); //
     const [mode, setMode] = useState('normal');
+
     const [second, setSecond] = useState(0); // just '초'
     const [restSecond, setRestSecond] = useState(0);
+
     const sec = second * (283 / targetToSec); // 타임타이머 동작을 위한 초 설정
     const remainSec = targetToSec - parseInt(second); // setStatus 작동을 위한 두번째 시간과 분
 
@@ -36,9 +34,10 @@ const TimeTimer = () => {
 
     const hour2 = parseInt(remainSec / 3600);
     const minutes2 = parseInt((remainSec % 3600) / 60);
+
     useEffect(() => {
-        dispatch(get_studytime(location.state));
-    }, []);
+        dispatch(get_studytime());
+    }, [dispatch]);
 
     useEffect(() => {
         let interval;
@@ -46,7 +45,19 @@ const TimeTimer = () => {
             interval = setInterval(() => {
                 setSecond((prev) => prev + 1);
             }, 1000);
-        } else if (!run && rest) {
+        } else if (!run || rest) {
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    }, [run, rest]);
+
+    useEffect(() => {
+        let interval;
+        if (rest) {
+            interval = setInterval(() => {
+                setRestSecond((prev) => prev + 1);
+            }, 1000);
+        } else if (!rest || !run) {
             clearInterval(interval);
         }
         return () => clearInterval(interval);
@@ -60,9 +71,10 @@ const TimeTimer = () => {
         }
     }, [target, run]);
 
+    console.log(second, targetTime / 1000);
     useEffect(() => {
         !isNaN(hour2) && !isNaN(minutes2)
-            ? second >= targetTime.time / 1000
+            ? second >= targetTime / 1000
                 ? setStatus('목표를 달성했어요 !')
                 : setStatus(`${hour2}시간 ${minutes2}분 남았어요!`)
             : setStatus(`어제 2시간 10분 공부했어요`);
@@ -74,9 +86,6 @@ const TimeTimer = () => {
     }, [target, second]);
 
     useEffect(() => {
-        if (refresh) {
-            dispatch(__postStudyStart({ studyStartPoint: date }));
-        }
         // 저장된 시간(0 또는 공부한 시간) + ( 현재 시간 - (다시) 시작한 시간 )
 
         if (studyStartPoint === 0) {
@@ -85,13 +94,24 @@ const TimeTimer = () => {
             setSecond(Math.floor((savedStudyTime + date - studyStartPoint) / 1000));
             setRun(true);
         }
-        setTargetToSec(targetTime.time / 1000);
-    }, [refresh, savedStudyTime]);
+        setTargetToSec(targetTime / 1000);
+    }, [savedStudyTime, studyStartPoint]);
+
+    useEffect(() => {
+        if (restStartPoint !== 0) {
+            setRun(false);
+            setRest(true);
+        }
+    }, [restStartPoint]);
+
+    useEffect(() => {
+        if (refresh) {
+            dispatch(__postStudyStart({ studyStartPoint: date }));
+        }
+    }, [refresh]);
 
     return (
         <div className={styles.layout}>
-            <p>timer</p>
-
             <div className={styles.baseTimer}>
                 <div className={styles.a}>
                     <svg className={styles.baseSvg} viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
@@ -147,7 +167,7 @@ const TimeTimer = () => {
                 </div>
             </div>
 
-            {!run ? (
+            {!run && !rest ? (
                 <button
                     onClick={() => {
                         setRefresh(true);
@@ -167,22 +187,24 @@ const TimeTimer = () => {
                                 }}>
                                 휴식하기
                             </button>
-                            <span></span>
+                            <h5 style={{ color: 'white' }}>{Math.floor(savedRestTime / 1000) + restSecond}</h5>
                         </>
                     ) : (
-                        <button
-                            onClick={() => {
-                                setRest(false);
-                                // dispatch(__postRestStart({ restEndPoint: date, studyStartPoint: date }));
-                            }}>
-                            계속하기
-                        </button>
+                        <>
+                            <button
+                                onClick={() => {
+                                    setRest(false);
+                                    dispatch(__postRestEnd({ restEndPoint: date, studyStartPoint: date }));
+                                }}>
+                                계속하기
+                            </button>
+                            <h5 style={{ color: 'white' }}>{Math.floor(savedRestTime / 1000) + restSecond}</h5>
+                        </>
                     )}
                     <button
                         onClick={() => {
                             setRefresh(false);
                             setRun(false);
-                            // console.log(date - studyStartPoint);
                             dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
                         }}>
                         종료하기

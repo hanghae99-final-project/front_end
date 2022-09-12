@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import '../../css/color.css';
 
 const Layout = (props) => {
     return <StyledLayout>{props.children}</StyledLayout>;
@@ -10,8 +11,9 @@ const StyledLayout = styled.div`
     margin: 0 auto;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    background-color: #e0e0e0;
+    background-color: var(--neutral-20);
     @media (max-width: 1200px) {
         width: 100%;
     }
