@@ -8,7 +8,7 @@ const Quote = () => {
     const quote = useSelector((state) => state.main.quote?.quote);
 
     useEffect(() => {
-        dispatch(get_quote());
+        // dispatch(get_quote());
     }, [dispatch]);
 
     return <div className={styles.quote}>{quote}</div>;

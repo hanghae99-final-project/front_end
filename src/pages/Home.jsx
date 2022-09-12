@@ -17,18 +17,10 @@ const Home = () => {
                 <Studing />
                 <Stopwatch />
             </div>
-            <div>
-                <Dday />
-            </div>
-            <div>
-                <TimeTimer />
-            </div>
-            <div>
-                <Quote />
-            </div>
-            <div>
-                <TimerButton />
-            </div>
+            <Dday />
+            <TimeTimer />
+            <Quote />
+            <TimerButton />
         </Layout>
     );
 };

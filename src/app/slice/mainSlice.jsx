@@ -16,7 +16,11 @@ export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) =>
 
 export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get('http://localhost:3001/quote');
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + '/quote', {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+            },
+        });
         return thunkAPI.fulfillWithValue(data);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);

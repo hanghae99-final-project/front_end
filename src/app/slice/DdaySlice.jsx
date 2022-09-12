@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const initialState = {};
+const initialState = { myDday: [] };
 
 export const __getDday = createAsyncThunk('/Dday', async (payload, thunkAPI) => {
     try {
@@ -11,17 +11,19 @@ export const __getDday = createAsyncThunk('/Dday', async (payload, thunkAPI) => 
             },
         });
         console.log(data);
-        return thunkAPI.fulfillWithValue(data.token);
+        return thunkAPI.fulfillWithValue(data);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
     }
 });
 
-const mainSlice = createSlice({
-    name: 'mainSlice',
+const dDaySlice = createSlice({
+    name: 'dDaySlice',
     initialState,
     reducers: {},
-    extraReducers: {},
+    extraReducers: {
+        [__getDday.fulfilled]: (state, { payload }) => (state = payload),
+    },
 });
 
-export default mainSlice;
+export default dDaySlice;
