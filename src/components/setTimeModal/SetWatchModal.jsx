@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../css/setTimeModal.module.css';
 import SetTimePicker from './SetTimePicker';
 
-const SetWatchModal = ({ stop, setMode, setSecond, setStop, hour, minutes, seconds, running, setRunning, time, setTime, setTarget }) => {
+const SetWatchModal = ({ changeTimeForm, stop, setMode, setSecond, setStop, second, running, setRunning, time, setTime, setTarget }) => {
     return (
         <div className={styles.modal}>
             {!running ? (
@@ -11,7 +11,6 @@ const SetWatchModal = ({ stop, setMode, setSecond, setStop, hour, minutes, secon
                     <button
                         className={styles.startBtn}
                         onClick={() => {
-                            /** 시간을 초로 바꿈 */
                             setTarget(Number(time.hour) * 3600 + Number(time.minute) * 60 + Number(time.second));
                             setMode('normal');
                             setRunning(true);
@@ -21,9 +20,7 @@ const SetWatchModal = ({ stop, setMode, setSecond, setStop, hour, minutes, secon
                 </>
             ) : (
                 <>
-                    <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
-                    <span>{minutes < 10 ? `0${minutes}` : `${minutes}`}:</span>
-                    <span>{seconds < 10 ? `0${seconds}` : `${seconds}`}</span>
+                    {changeTimeForm(second)}
                     <button
                         onClick={() => {
                             localStorage.removeItem('time');
