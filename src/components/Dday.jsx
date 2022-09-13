@@ -17,7 +17,7 @@ const Dday = () => {
     }, []);
 
     console.log(dDay);
-    // console.log(dDay.map((day) => new Date(day.deadline).getTime()).sort((a, b) => a - b));
+
     return (
         <div className={styles.dayBox}>
             <span className={styles.day}>D-{remainDay}</span>

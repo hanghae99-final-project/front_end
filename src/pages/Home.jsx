@@ -7,7 +7,6 @@ import TimeTimer from '../components/TimeTimer';
 import Dday from '../components/Dday';
 import alert from '../image/alert_icon.svg';
 import styles from '../css/mainPage.module.css';
-import TimerButton from '../components/TimerButton';
 
 const Home = () => {
     return (
@@ -20,7 +19,6 @@ const Home = () => {
             <Dday />
             <TimeTimer />
             <Quote />
-            <TimerButton />
         </Layout>
     );
 };

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import SetWatchModal from './setTimeModal/SetWatchModal';
 import styles from '../css/stopwatch.module.css';
 import clock from '../image/check_icon.svg';
+import changeTimeForm from './changeTimeForm';
 
 const Stopwatch = () => {
     const [target, setTarget] = useState(0);
@@ -50,24 +51,6 @@ const Stopwatch = () => {
             localStorage.setItem('time', second);
         }
     }, [second]);
-
-    /**
-     * second를 넣으면 00:00:00 형태로 변환시켜 주는 함수
-     * @param {number} second
-     * @returns 00:00:00
-     */
-    const changeTimeForm = (second) => {
-        const hour = parseInt(second / 3600);
-        const minutes = parseInt((second % 3600) / 60);
-        const seconds = second % 60;
-        return (
-            <>
-                <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
-                <span>{minutes < 10 ? `0${minutes}` : `${minutes}`}:</span>
-                <span>{seconds < 10 ? `0${seconds}` : `${seconds}`}</span>
-            </>
-        );
-    };
 
     return (
         <div className={styles.stopwatch}>

@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
-import instance from './instance';
 
 export const get_studytime = createAsyncThunk('get_studytime', async (payload, thunkAPI) => {
     try {
@@ -71,7 +70,7 @@ export const __postRestEnd = createAsyncThunk('/restEnd', async (payload, thunkA
 
 const initialState = {
     yesterdayStudyTime: 0,
-    targetTime: {},
+    targetTime: 0,
     savedStudyTime: 0,
     savedRestTime: 0,
     studyStartPoint: 0,

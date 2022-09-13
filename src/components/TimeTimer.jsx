@@ -3,6 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { get_studytime, __postStudyStart, __postStudyEnd, __postRestStart, __postRestEnd } from '../app/slice/timeTimerSlice';
 import SetTimeModal from './setTimeModal/SetTimeModal';
 import styles from '../css/timeTimer.module.css';
+import setting from '../image/setting_icon.svg';
+import play from '../image/play_icon.svg';
+import changeTimeForm from './changeTimeForm';
 
 const TimeTimer = () => {
     const date = new Date().getTime();
@@ -125,24 +128,6 @@ const TimeTimer = () => {
         }
     }, [refresh]);
 
-    /**
-     * second를 넣으면 00:00:00 형태로 변환시켜 주는 함수
-     * @param {number} second
-     * @returns 00:00:00
-     */
-    const changeTimeForm = (second) => {
-        const hour = parseInt(second / 3600);
-        const minutes = parseInt((second % 3600) / 60);
-        const seconds = second % 60;
-        return (
-            <>
-                <span>{hour < 10 ? `0${hour}` : `${hour}`}:</span>
-                <span>{minutes < 10 ? `0${minutes}` : `${minutes}`}:</span>
-                <span>{seconds < 10 ? `0${seconds}` : `${seconds}`}</span>
-            </>
-        );
-    };
-
     return (
         <div className={styles.layout}>
             <div className={styles.baseTimer}>
@@ -188,7 +173,7 @@ const TimeTimer = () => {
                                     <br />
                                 </div>
                             )}
-                            {changeTimeForm(second)}
+                            {changeTimeForm(second, styles.mainTimerTime)}
                             <div className={styles.status}>{status}</div>
                         </span>
                     </div>
@@ -196,13 +181,26 @@ const TimeTimer = () => {
             </div>
 
             {!run && !rest ? (
-                <button
-                    onClick={() => {
-                        setRefresh(true);
-                        setRun(true);
-                    }}>
-                    시작하기
-                </button>
+                targetTime === 0 ? (
+                    <button className={styles.settingBtn}>
+                        <div className={styles.settingBox}>
+                            <img src={setting} alt='목표 설정' className={styles.setting} />
+                        </div>
+                        <div className={styles.text}>목표설정</div>
+                    </button>
+                ) : (
+                    <button
+                        className={styles.playBtn}
+                        onClick={() => {
+                            setRefresh(true);
+                            setRun(true);
+                        }}>
+                        <div className={styles.playBox}>
+                            <img src={play} alt='시작하기' className={styles.setting} />
+                        </div>
+                        <div className={styles.playText}>시작하기</div>
+                    </button>
+                )
             ) : (
                 <>
                     {!rest ? (
