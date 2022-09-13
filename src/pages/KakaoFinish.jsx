@@ -19,7 +19,7 @@ const KakaoFinish = () => {
     localStorage.setItem("token", use.token);
     navigate("/");
   } else {
-    navigate("/todo");
+    navigate("/join");
   }
 
   //   localStorage.setItem("token", use);

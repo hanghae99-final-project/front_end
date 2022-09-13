@@ -1,5 +1,8 @@
 import React from "react";
 import styles from "./joincss/join.module.css";
+import arrowBtn2 from "../../svg/arrowback_icon2.svg";
+import check2 from "../../svg/check_icon.svg";
+
 import { useDispatch } from "react-redux";
 import { __joinUser } from "../../app/slice/joinSlice";
 
@@ -30,44 +33,57 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
   };
 
   return (
-    <div>
-      <div>
-        <p>와타시의 전문분야</p>
-        <br />
+    <div className={styles.layout}>
+      <button className={styles.arrowBack} onClick={() => setMode("Age")}>
+        <img className={styles.arrowbackIcon} src={arrowBtn2} alt="arrowBtn2" />
+      </button>
+      <p className={styles.infoText}>
+        준비하고 있는 분야를 <br />
+        선택해 주세요
+      </p>
+      <div className={styles.specContainer}>
+        {major.map((pick, i) => {
+          return (
+            <div key={i} className={styles.specWrap}>
+              {userInfo.specialty === pick ? (
+                <span
+                  className={styles.specPick}
+                  onClick={() => {
+                    setUserInfo({ ...userInfo, specialty: pick });
+                  }}
+                >
+                  {/* <img
+                    className={styles.specCheckImg}
+                    src={check2}
+                    alt="check"
+                  /> */}
+                  ✔ {pick}
+                </span>
+              ) : (
+                <span
+                  className={
+                    userInfo.specialty === ""
+                      ? styles.specBase
+                      : styles.specAfter
+                  }
+                  onClick={() => {
+                    setUserInfo({ ...userInfo, specialty: pick });
+                  }}
+                >
+                  {pick}
+                </span>
+              )}
+            </div>
+          );
+        })}
       </div>
-      {major.map((pick, i) => {
-        return (
-          <div key={i}>
-            {userInfo.specialty === pick ? (
-              <span
-                className={styles.slice}
-                style={{ backgroundColor: "#2d2d2d" }}
-                onClick={() => {
-                  setUserInfo({ ...userInfo, specialty: pick });
-                }}
-              >
-                {pick}
-              </span>
-            ) : (
-              <span
-                className={styles.slice}
-                onClick={() => {
-                  setUserInfo({ ...userInfo, specialty: pick });
-                }}
-              >
-                {pick}
-              </span>
-            )}
-          </div>
-        );
-      })}
       {userInfo.age === "" ? (
-        <button disabled className={styles.joinBtn}>
-          확인
+        <button disabled className={styles.specBtnNo}>
+          가입완료
         </button>
       ) : (
-        <button className={styles.joinBtn} onClick={postJoinHandle}>
-          확인
+        <button className={styles.specBtnYes} onClick={postJoinHandle}>
+          가입완료
         </button>
       )}
     </div>
