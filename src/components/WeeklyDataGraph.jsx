@@ -36,75 +36,71 @@ const WeeklyDataGraph = () => {
     console.log(week);
 
     const weeklyData = useSelector((state) => state.my);
-    const labels = weeklyData.map((element) => element.day);
-    const data = weeklyData.map((element) => element.time);
+    // const labels = weeklyData.map((element) => element.day);
+    // const data = weeklyData.map((element) => element.time);
     // 16진수로 표현하여 opacity 조절
-    const dataColor = weeklyData.map((element) => Math.ceil((element.time / 24) * 256).toString(16));
+    // const dataColor = weeklyData.map((element) => Math.ceil((element.time / 24) * 256).toString(16));
 
-    const options = {
-        responsive: true,
-        plugins: {
-            labels: {
-                font: {
-                    size: 30,
-                },
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Bar Chart',
-            },
-        },
-        maxBarThickness: 20,
-        scales: {
-            x: {
-                grid: {
-                    borderColor: 'transparent',
-                    display: false,
-                },
-                ticks: {
-                    color: 'white', // font color
-                },
-            },
-            y: {
-                display: false,
-            },
-        },
-    };
+    // const options = {
+    //     responsive: true,
+    //     plugins: {
+    //         labels: {
+    //             font: {
+    //                 size: 30,
+    //             },
+    //         },
+    //         title: {
+    //             display: true,
+    //             text: 'Chart.js Bar Chart',
+    //         },
+    //     },
+    //     maxBarThickness: 20,
+    //     scales: {
+    //         x: {
+    //             grid: {
+    //                 borderColor: 'transparent',
+    //                 display: false,
+    //             },
+    //             ticks: {
+    //                 color: 'white', // font color
+    //             },
+    //         },
+    //         y: {
+    //             display: false,
+    //         },
+    //     },
+    // };
 
-    const chartData = {
-        labels,
-        datasets: [
-            {
-                label: 'Dataset 1',
-                backgroundColor: [
-                    `#25c137${dataColor[0]}`,
-                    `#25c137${dataColor[1]}`,
-                    `#25c137${dataColor[2]}`,
-                    `#25c137${dataColor[3]}`,
-                    `#25c137${dataColor[4]}`,
-                    `#25c137${dataColor[5]}`,
-                    `#25c137${dataColor[6]}`,
-                ],
-                data,
-                borderWidth: 0,
-                borderRadius: 50,
-                borderSkipped: false,
-            },
-        ],
-    };
-
-    useEffect(() => {
-        dispatch(__getWeeklyData());
-    }, []);
+    // const chartData = {
+    //     labels,
+    //     datasets: [
+    //         {
+    //             label: 'Dataset 1',
+    //             backgroundColor: [
+    //                 `#25c137${dataColor[0]}`,
+    //                 `#25c137${dataColor[1]}`,
+    //                 `#25c137${dataColor[2]}`,
+    //                 `#25c137${dataColor[3]}`,
+    //                 `#25c137${dataColor[4]}`,
+    //                 `#25c137${dataColor[5]}`,
+    //                 `#25c137${dataColor[6]}`,
+    //             ],
+    //             data,
+    //             borderWidth: 0,
+    //             borderRadius: 50,
+    //             borderSkipped: false,
+    //         },
+    //     ],
+    // };
 
     return (
         <div className={styles.graph}>
-            <div style={{ display: 'flex' }}>
+            {/* <div style={{ display: 'flex' }}>
                 <button>왼쪽</button>
                 <div>{`${monday} - ${sunday}`}</div>
                 <button>오른쪽</button>
             </div>
-            <Bar data={chartData} options={options} />
+            <Bar data={chartData} options={options} /> */}
         </div>
     );
 };
