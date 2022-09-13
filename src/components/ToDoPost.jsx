@@ -1,22 +1,40 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addList } from '../app/slice/toDoSlice';
 import styles from '../css/toDoPost.module.css';
 // import styled from 'styled-components';
 
 const ToDoPost = () => {
-  const dispatch = useDispatch();
-
+  const [btnOn, setBtnOn] = useState(true)
   const [toDo, setToDo] = useState({
     work: '',
     isDone: false,
     color: '',
   });
+  const dispatch = useDispatch();
 
   const onChangeToDoHandler = (e) => {
     const { name, value } = e.target;
     setToDo({ ...toDo, [name]: value });
   };
+
+
+  // 버튼 활성화 로직
+  useEffect(() => {
+    console.log(toDo)
+    if (toDo.work === "" || toDo.color === "") {
+      setBtnOn(true)
+    } else {
+      setBtnOn(false)
+    }
+
+    // if (btnOnOff === true) {
+    //   setBtnDisabled(false)
+    // } else {
+    //   setBtnDisabled(true)
+    // }
+  }, [toDo])
 
   const onSubmitToDoHandler = (e) => {
     e.preventDefault();
@@ -42,7 +60,7 @@ const ToDoPost = () => {
       <input className={styles.color7} id='color7' onChange={onChangeToDoHandler} type='radio' name='color' value='#B187E7' />
 
       <input className={styles.color8} id='color8' onChange={onChangeToDoHandler} type='radio' name='color' value='#E8A2D4' />
-      <button type='submit'>+</button>
+      <button type='submit' disabled={btnOn}>+</button>
     </form>
   );
 };
