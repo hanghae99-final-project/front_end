@@ -5,14 +5,19 @@ import ranking from '../../image/ranking_icon.svg';
 import stats from '../../image/stats_icon.svg';
 import community from '../../image/community_icon.svg';
 import '../../css/color.css';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
         <FooterBar>
-            <img src={home} alt='home' />
+            <Link to='/'>
+                <img src={home} alt='home' />
+            </Link>
             <img src={ranking} alt='ranking' />
             <img src={community} alt='community' />
-            <img src={stats} alt='stats' />
+            <Link to='/mypage'>
+                <img src={stats} alt='stats' />
+            </Link>
         </FooterBar>
     );
 };
@@ -27,7 +32,6 @@ const FooterBar = styled.div`
     position: fixed;
     bottom: 0;
     padding: 0.75rem 1rem;
-    /* margin-top: 10rem; */
     justify-content: space-around;
     img {
         width: 4rem;

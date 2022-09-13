@@ -5,8 +5,8 @@ import styles from '../css/quote.module.css';
 
 const Quote = () => {
     const dispatch = useDispatch();
-    const quote = useSelector((state) => state.main.quote?.quote);
-
+    const quote = useSelector((state) => state.main.quote);
+    console.log(quote);
     useEffect(() => {
         dispatch(get_quote());
     }, [dispatch]);

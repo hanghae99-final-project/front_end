@@ -4,21 +4,51 @@ import { __getWeeklyData } from '../app/slice/mySlice';
 import styles from '../css/weeklyDataGraph.module.css';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import { useState } from 'react';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
 const WeeklyDataGraph = () => {
     const dispatch = useDispatch();
 
+    const date = new Date();
+    const currentDay = date.getDay();
+    const monday = date.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
+    const mondayDate = new Date(date.setDate(monday)).toISOString().substring(0, 10);
+    const sunday = monday + 6;
+    const sundayDate = new Date(date.setDate(sunday)).toISOString().substring(0, 10);
+
+    const [week, setWeek] = useState({
+        startWeek: mondayDate,
+        endWeek: sundayDate,
+    });
+
+    // return new Date(date.setDate(sunday)).toISOString().substring(0, 10);
+
+    useEffect(() => {
+        dispatch(
+            __getWeeklyData({
+                startWeek: mondayDate,
+                endWeek: sundayDate,
+            })
+        );
+    }, []);
+    console.log(week);
+
     const weeklyData = useSelector((state) => state.my);
     const labels = weeklyData.map((element) => element.day);
     const data = weeklyData.map((element) => element.time);
-    //16진수로 표현하여 opacity 조절
+    // 16진수로 표현하여 opacity 조절
     const dataColor = weeklyData.map((element) => Math.ceil((element.time / 24) * 256).toString(16));
 
     const options = {
         responsive: true,
         plugins: {
+            labels: {
+                font: {
+                    size: 30,
+                },
+            },
             title: {
                 display: true,
                 text: 'Chart.js Bar Chart',
@@ -28,8 +58,11 @@ const WeeklyDataGraph = () => {
         scales: {
             x: {
                 grid: {
-                    borderColor: 'white',
+                    borderColor: 'transparent',
                     display: false,
+                },
+                ticks: {
+                    color: 'white', // font color
                 },
             },
             y: {
@@ -66,7 +99,11 @@ const WeeklyDataGraph = () => {
 
     return (
         <div className={styles.graph}>
-            <div>주간 데이터</div>
+            <div style={{ display: 'flex' }}>
+                <button>왼쪽</button>
+                <div>{`${monday} - ${sunday}`}</div>
+                <button>오른쪽</button>
+            </div>
             <Bar data={chartData} options={options} />
         </div>
     );

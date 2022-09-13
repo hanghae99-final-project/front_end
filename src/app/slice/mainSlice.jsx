@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-const initialState = {};
+const initialState = { quote: '' };
 
 export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) => {
     try {
@@ -22,7 +22,7 @@ export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) =>
             },
         });
         console.log(data);
-        return thunkAPI.fulfillWithValue(data);
+        return thunkAPI.fulfillWithValue(data.Quotes.title);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
     }

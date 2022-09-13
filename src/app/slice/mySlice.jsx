@@ -5,7 +5,12 @@ const initialState = [];
 
 export const __getWeeklyData = createAsyncThunk('/weekly', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get('http://localhost:3001/weekly');
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/myPage/weeklyStudy/${payload.startWeek}/${payload.endWeek}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+            },
+        });
+        console.log(data);
         return thunkAPI.fulfillWithValue(data);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
