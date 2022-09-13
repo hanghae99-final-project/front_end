@@ -16,7 +16,7 @@ export const getList = createAsyncThunk('GET_TODO', async () => {
 
 export const addList = createAsyncThunk('ADD_TODO', async (toDo) => {
     console.log(toDo)
-    const response = await axios.post(process.env.REACT_APP_SERVER_URL + `/todo`, { headers: { Authorization: `Bearer ${localStorage.token}` } }, toDo);
+    const response = await axios.post(process.env.REACT_APP_SERVER_URL + `/todo`, toDo, { headers: { Authorization: `Bearer ${localStorage.token}` } });
     console.log(response);
     return response.data;
 });
@@ -29,19 +29,20 @@ export const deleteList = createAsyncThunk('DELETE_TODO', async (toDoId) => {
 
 export const updateList = createAsyncThunk('UPDATE_LIST', async ({ id, work, color }) => {
     console.log(id);
-    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${id}`, { headers: { Authorization: `Bearer ${localStorage.token}` } },
-        {
-            work: work,
-            color: color,
-        });
+    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${id}`, {
+        work: work,
+        color: color,
+    }, { headers: { Authorization: `Bearer ${localStorage.token}` } },
+    );
     console.log(response);
     return response.data;
 });
 
 export const updateToDoDone = createAsyncThunk('UPDATE_ToDoDone', async ({ id, isDone }) => {
-    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${id}`, { headers: { Authorization: `Bearer ${localStorage.token}` } }, {
+    console.log(id)
+    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${id}`, {
         isDone: isDone,
-    });
+    }, { headers: { Authorization: `Bearer ${localStorage.token}` } });
     console.log(response);
     return response.data;
 });
