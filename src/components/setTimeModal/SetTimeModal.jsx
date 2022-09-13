@@ -1,8 +1,13 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { __postTargetTime } from '../../app/slice/timeTimerSlice';
 import styles from '../../css/setTimeModal.module.css';
 import SetTimePicker from './SetTimePicker';
 
-const SetTimeModal = ({ time, setTime, setMode }) => {
+const SetTimeModal = ({ time, setTime, setMode, targetToSec }) => {
+    const dispatch = useDispatch();
+    console.log(targetToSec);
+    console.log(time);
     return (
         <div className={styles.modal}>
             <SetTimePicker setTime={setTime} time={time} />
@@ -10,6 +15,7 @@ const SetTimeModal = ({ time, setTime, setMode }) => {
                 className={styles.startBtn}
                 onClick={() => {
                     setMode('normal');
+                    dispatch(__postTargetTime({ targetTime: targetToSec * 1000 }));
                 }}>
                 설정하기
             </button>

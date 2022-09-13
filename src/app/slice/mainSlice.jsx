@@ -21,6 +21,7 @@ export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) =>
                 Authorization: `Bearer ${localStorage.token}`,
             },
         });
+        console.log(data);
         return thunkAPI.fulfillWithValue(data);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
@@ -29,7 +30,7 @@ export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) =>
 
 export const get_studing = createAsyncThunk('/studing', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + '/studing', {
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + '/studying', {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
@@ -53,7 +54,7 @@ const mainSlice = createSlice({
             return { ...state, quote: payload };
         },
         [get_studing.fulfilled]: (state, { payload }) => {
-            return { ...state, studing: payload };
+            return { ...state, studing: payload.studyingCount };
         },
     },
 });

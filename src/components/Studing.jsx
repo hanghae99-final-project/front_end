@@ -6,15 +6,15 @@ import '../css/color.css';
 
 const Studing = () => {
     const dispatch = useDispatch();
-    const studing = useSelector((state) => state.main.studing?.studing);
+    const studying = useSelector((state) => state.main?.studing);
     useEffect(() => {
         dispatch(get_studing());
     }, [dispatch]);
-    console.log(studing);
+    console.log(studying);
     return (
         <div className={styles.studing}>
             <div className={styles.online}></div>
-            {studing}
+            00{studying}
         </div>
     );
 };

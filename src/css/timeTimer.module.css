@@ -59,6 +59,12 @@
     position: absolute;
     top: 11rem;
     font-size: 0.8rem;
+    width: 10.75rem;
+    height: 1rem;
+    background-color: var(--opacity-w-10);
+    border-radius: 26px;
+    /* color: var(--neutral-100); */
+    padding: 0.3rem 0;
 }
 
 .settingBtn {
@@ -151,4 +157,75 @@
     letter-spacing: normal;
     text-align: center;
     color: var(--neutral-100);
+}
+
+.restStartBtn {
+    width: 10rem;
+    height: 3.75rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 3.438rem 0.5rem 1rem 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background-color: var(--neutral-10);
+}
+
+.restTime {
+    width: 3rem;
+    height: 1.125rem;
+    flex-grow: 0;
+    font-size: 0.75rem;
+    font-weight: 300;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--neutral-50);
+}
+
+.restText {
+    width: 3.5rem;
+    height: 1.5rem;
+    flex-grow: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--neutral-100);
+}
+
+.restTextBox {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+
+.restEndBtn {
+    width: 10rem;
+    height: 3.75rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 3.438rem 0.5rem 1rem 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background-color: var(--tertiary-50);
+}
+
+.savedRestTime {
+    width: 4.375rem;
+    height: 1.5rem;
+    flex-grow: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    color: var(--neutral-20);
+}
+
+.studingButtonBox {
+    display: flex;
 }

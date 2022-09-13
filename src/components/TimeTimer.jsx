@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { get_studytime, __postStudyStart, __postStudyEnd, __postRestStart, __postRestEnd } from '../app/slice/timeTimerSlice';
+import { get_studytime, __postStudyStart, __postRestStart, __postRestEnd } from '../app/slice/timeTimerSlice';
 import SetTimeModal from './setTimeModal/SetTimeModal';
 import styles from '../css/timeTimer.module.css';
 import setting from '../image/setting_icon.svg';
+import pause from '../image/pause_icon.svg';
 import play from '../image/play_icon.svg';
 import changeTimeForm from './changeTimeForm';
+import StopButton from './StopButton';
 
 const TimeTimer = () => {
     const date = new Date().getTime();
@@ -20,8 +22,8 @@ const TimeTimer = () => {
 
     const [mode, setMode] = useState('normal');
     const [refresh, setRefresh] = useState(false);
-    const [target, setTarget] = useState({ hour: 3, minute: 0 }); //
-    const [targetToSec, setTargetToSec] = useState(); // 설정시간을 초로 나타냄
+    const [target, setTarget] = useState({ hour: 0, minute: 0 }); //
+    const [targetToSec, setTargetToSec] = useState(targetTime); // 설정시간을 초로 나타냄
     const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
 
     const [rest, setRest] = useState(false); // 휴식 관리
@@ -66,12 +68,8 @@ const TimeTimer = () => {
     }, [run, rest]);
 
     useEffect(() => {
-        if (!isNaN(targetToSec)) {
-            setTargetToSec(target.hour * 3600 + target.minute * 60);
-        } else {
-            setTargetToSec(1);
-        }
-    }, [target, run]);
+        setTargetToSec(target.hour * 3600 + target.minute * 60);
+    }, [target]);
 
     useEffect(() => {
         !isNaN(remainHour) && !isNaN(remainMinutes)
@@ -79,12 +77,11 @@ const TimeTimer = () => {
                 ? setStatus('목표를 달성했어요 !')
                 : setStatus(`${remainHour}시간 ${remainMinutes}분 남았어요!`)
             : setStatus(`어제 2시간 10분 공부했어요`);
-        if (target !== {} && targetToSec === second) {
-            alert('목표시간 도달');
+        if (target.hour !== 0 && target.minute !== 0 && targetToSec === second) {
             setRun(false);
             setStatus('목표량을 다 채웠어요!');
         }
-    }, [target, second]);
+    }, [target, second, targetToSec]);
 
     /**
      *  공부 중일 때, 혹은 공부 중이 아닐 때 공부 시간 설정
@@ -202,42 +199,49 @@ const TimeTimer = () => {
                     </button>
                 )
             ) : (
-                <>
+                <div className={styles.studingButtonBox}>
                     {!rest ? (
                         <>
                             <button
+                                className={styles.restStartBtn}
                                 onClick={() => {
                                     setRest(true);
                                     setRefresh(false);
                                     dispatch(__postRestStart({ restStartPoint: date, studyEndPoint: date }));
                                 }}>
-                                휴식하기
+                                <img src={pause} alt='휴식하기' />
+                                <div className={styles.restTextBox}>
+                                    <div className={styles.restText}>휴식하기</div>
+                                    {changeTimeForm(restSecond, styles.restTime)}
+                                </div>
                             </button>
                         </>
                     ) : (
                         <>
                             <button
+                                className={styles.restEndBtn}
                                 onClick={() => {
                                     setRest(false);
                                     dispatch(__postRestEnd({ restEndPoint: date, studyStartPoint: date }));
                                 }}>
-                                계속하기
+                                <img src={play} alt='계속하기' />
+                                <div>{changeTimeForm(restSecond, styles.savedRestTime)}</div>
                             </button>
                         </>
                     )}
-                    {changeTimeForm(restSecond)}
-                    <button
-                        onClick={() => {
-                            setRefresh(false);
-                            setRun(false);
-                            setRest(false);
-                            dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
-                        }}>
-                        종료하기
-                    </button>
-                </>
+                    <StopButton
+                        type='blue'
+                        restStartPoint={restStartPoint}
+                        date={date}
+                        setRefresh={setRefresh}
+                        setRun={setRun}
+                        setRest={setRest}
+                    />
+                </div>
             )}
-            {mode === 'set' && <SetTimeModal setTarget={setTargetToSec} time={target} setTime={setTarget} setMode={setMode} />}
+            {mode === 'set' && (
+                <SetTimeModal targetToSec={targetToSec} setTarget={setTargetToSec} time={target} setTime={setTarget} setMode={setMode} />
+            )}
         </div>
     );
 };

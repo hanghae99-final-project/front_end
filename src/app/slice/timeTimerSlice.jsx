@@ -68,6 +68,19 @@ export const __postRestEnd = createAsyncThunk('/restEnd', async (payload, thunkA
     }
 });
 
+export const __postTargetTime = createAsyncThunk('/targetTime', async (payload, thunkAPI) => {
+    try {
+        await axios.post(process.env.REACT_APP_SERVER_URL + '/time/targetTime', payload, {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+            },
+        });
+        return thunkAPI.fulfillWithValue(payload.targetTime);
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+    }
+});
+
 const initialState = {
     yesterdayStudyTime: 0,
     targetTime: 0,
@@ -122,6 +135,9 @@ const timeTimerSlice = createSlice({
                 restStartPoint: 0,
                 studyStartPoint: payload.studyStartPoint,
             });
+        },
+        [__postTargetTime.fulfilled]: (state, { payload }) => {
+            return (state = { ...state, targetTime: payload });
         },
     },
 });

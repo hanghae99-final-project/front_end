@@ -7,18 +7,22 @@ import TimeTimer from '../components/TimeTimer';
 import Dday from '../components/Dday';
 import alert from '../image/alert_icon.svg';
 import styles from '../css/mainPage.module.css';
+import Footer from '../components/common/Footer';
 
 const Home = () => {
     return (
         <Layout>
-            <div className={styles.aboveBox}>
-                <img src={alert} alt='도움말 툴팁' className={styles.alert} />
-                <Studing />
-                <Stopwatch />
+            <div>
+                <div className={styles.aboveBox}>
+                    <img src={alert} alt='도움말 툴팁' className={styles.alert} />
+                    <Studing />
+                    <Stopwatch />
+                </div>
+                <Dday />
+                <TimeTimer />
+                <Quote />
             </div>
-            <Dday />
-            <TimeTimer />
-            <Quote />
+            <Footer />
         </Layout>
     );
 };
