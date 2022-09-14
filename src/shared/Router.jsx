@@ -5,6 +5,7 @@ import ToDo from "../pages/ToDo";
 import KakaoFinish from "../pages/KakaoFinish";
 import Join from "../pages/Join";
 import MyPage from "../pages/MyPage";
+import Ranking from "../pages/Ranking";
 
 function Router() {
   return (
@@ -15,7 +16,7 @@ function Router() {
         <Route path="/join" element={<Join />} />
         <Route path="/todo" element={<ToDo />} />
         <Route path="/mypage" element={<MyPage />} />
-
+        <Route path="/ranking" element={<Ranking />} />
         <Route path="/users/kakao/finish" element={<KakaoFinish />} />
       </Routes>
     </BrowserRouter>

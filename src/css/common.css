@@ -2,8 +2,8 @@
   font-family: Pretendard;
   src: local(Pretendard-Light);
   /* url(/path/to/Pretendard-Light.woff2) format("woff2"),
-    url(/path/to/Pretendard-Light.woff) format("woff"),
-    url(/path/to/Pretendard-Light.ttf) format("truetype"); */
+      url(/path/to/Pretendard-Light.woff) format("woff"),
+      url(/path/to/Pretendard-Light.ttf) format("truetype"); */
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -12,8 +12,8 @@
   font-family: Pretendard;
   src: local(Pretendard-SemiBold);
   /* url(/path/to/Pretendard-SemiBold.woff2) format("woff2"),
-    url(/path/to/Pretendard-SemiBold.woff) format("woff"),
-    url(/path/to/Pretendard-SemiBold.ttf) format("truetype"); */
+      url(/path/to/Pretendard-SemiBold.woff) format("woff"),
+      url(/path/to/Pretendard-SemiBold.ttf) format("truetype"); */
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -22,8 +22,8 @@
   font-family: Pretendard;
   src: local(Pretendard-Bold);
   /* url(/path/to/Pretendard-Bold.woff2) format("woff2"),
-    url(/path/to/Pretendard-Bold.woff) format("woff"),
-    url(/path/to/Pretendard-Bold.ttf) format("truetype"); */
+      url(/path/to/Pretendard-Bold.woff) format("woff"),
+      url(/path/to/Pretendard-Bold.ttf) format("truetype"); */
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
@@ -307,107 +307,10 @@
   --opacity-b-80: rgba(26, 27, 35, 0.8);
   --opacity-b-60: rgba(26, 27, 35, 0.6);
   --opacity-b-40: rgba(26, 27, 35, 0.4);
+  --opacity-b-40: rgba(26, 27, 35, 0.5);
   --opacity-b-30: rgba(26, 27, 35, 0.3);
   --opacity-b-10: rgba(26, 27, 35, 0.1);
   --opacity-b-20: rgba(26, 27, 35, 0.2);
   --opacity-b-50: rgba(26, 27, 35, 0.5);
   --opacity-0: rgba(0, 0, 0, 0);
 }
-
-/*  */
-/*  */
-/* .layout {
-  width: 22.5rem;
-  height: 50rem;
-  flex-grow: 0;
-  padding: 0 1rem;
-  background-color: #2f3038;
-}
-
-img.arrowback_icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  object-fit: contain;
-}
-img.infoText {
-  width: 10.75rem;
-  height: 4rem;
-  margin: 1rem 9.75rem 2rem 0;
-  font-family: Pretendard;
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
-}
-
-.inputContainer {
-  width: 20.5rem;
-  height: 4.375rem;
-  flex-grow: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
-  gap: 10px;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  border: solid 1px #ffffff;
-  background-color: #3b3b44;
-}
-
-.inputBox {
-  width: 5.438rem;
-  height: 2.875rem;
-  flex-grow: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 4px;
-  padding: 0;
-}
-
-.label {
-  color: #a4a3b1;
-  font-size: 0.75rem;
-}
-
-.joinBtnNo {
-  width: 20.5rem;
-  height: 3.75rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 26rem 0 0 0;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  background-color: #3b3b44;
-  border: none;
-}
-
-.joinBtnYes {
-  width: 20.5rem;
-  height: 3.75rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 26rem 0 0 0;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  background-color: #66ffa6;
-  border: none;
-  font-weight: 600;
-  line-height: 1.5;
-}
-
-.slice {
-  border: 1px solid black;
-} */

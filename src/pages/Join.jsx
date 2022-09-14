@@ -9,7 +9,7 @@ import { __checkNickname } from "../app/slice/joinSlice";
 
 const Join = () => {
   const check = /^[가-힣]{2,8}$/;
-  const [mode, setMode] = useState("Done");
+  const [mode, setMode] = useState("Nickname");
   const [checkMsg, setCheckMsg] = useState("8자리의 한글만 사용이 가능해요.");
   const initialState = { nickname: "", ageGroup: "", specialty: "" };
   const [userInfo, setUserInfo] = useState(initialState);
@@ -39,7 +39,7 @@ const Join = () => {
   console.log(userInfo);
   return (
     <Layout>
-      {mode === "nickname" && (
+      {mode === "Nickname" && (
         <Nickname
           setMode={setMode}
           handleInput={onChangeHandleInput}

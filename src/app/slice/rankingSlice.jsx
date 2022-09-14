@@ -6,7 +6,12 @@ export const __getRanking = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        process.env.REACT_APP_SERVER_URL + `ranking`
+        process.env.REACT_APP_SERVER_URL + "/rank?period=week&category=all",
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.token}`,
+          },
+        }
       );
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
