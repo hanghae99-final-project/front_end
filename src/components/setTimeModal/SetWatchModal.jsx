@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../../css/setTimeModal.module.css';
 import SetTimePicker from './SetTimePicker';
 
-const SetWatchModal = ({ changeTimeForm, stop, setMode, setSecond, setStop, second, running, setRunning, time, setTime, setTarget }) => {
+const SetWatchModal = ({ remainTime, changeTimeForm, stop, setMode, setStop, running, setRunning, time, setTime }) => {
     return (
         <div className={styles.modal}>
             {!running ? (
@@ -11,7 +11,8 @@ const SetWatchModal = ({ changeTimeForm, stop, setMode, setSecond, setStop, seco
                     <button
                         className={styles.startBtn}
                         onClick={() => {
-                            setTarget(Number(time.hour) * 3600 + Number(time.minute) * 60 + Number(time.second));
+                            //목표시간
+                            localStorage.setItem('targetTime', (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
                             setMode('normal');
                             setRunning(true);
                         }}>
@@ -20,14 +21,15 @@ const SetWatchModal = ({ changeTimeForm, stop, setMode, setSecond, setStop, seco
                 </>
             ) : (
                 <>
-                    {changeTimeForm(second)}
+                    {changeTimeForm(remainTime)}
                     <button
                         onClick={() => {
-                            localStorage.removeItem('time');
                             setRunning(false);
-                            setTarget(0);
-                            setSecond(0);
                             setTime({ hour: 0, minute: 0, second: 0 });
+                            localStorage.removeItem('startTime');
+                            localStorage.removeItem('targetTime');
+                            localStorage.removeItem('restTime');
+                            localStorage.removeItem('time');
                             setMode('normal');
                         }}>
                         끝내기
@@ -36,12 +38,14 @@ const SetWatchModal = ({ changeTimeForm, stop, setMode, setSecond, setStop, seco
                         <button
                             onClick={() => {
                                 setStop(true);
+                                localStorage.setItem('restStart', true);
                             }}>
                             멈추기
                         </button>
                     ) : (
                         <button
                             onClick={() => {
+                                localStorage.removeItem('restStart');
                                 setStop(false);
                             }}>
                             계속하기
