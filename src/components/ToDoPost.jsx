@@ -22,18 +22,11 @@ const ToDoPost = () => {
 
   // 버튼 활성화 로직
   useEffect(() => {
-    console.log(toDo)
     if (toDo.work === "" || toDo.color === "") {
       setBtnOn(true)
     } else {
       setBtnOn(false)
     }
-
-    // if (btnOnOff === true) {
-    //   setBtnDisabled(false)
-    // } else {
-    //   setBtnDisabled(true)
-    // }
   }, [toDo])
 
   const onSubmitToDoHandler = (e) => {
@@ -43,24 +36,27 @@ const ToDoPost = () => {
 
   return (
     <form className={styles.toDoContainer} onSubmit={onSubmitToDoHandler}>
-      <input onChange={onChangeToDoHandler} type='text' name='work' />
-
-      <input className={styles.color1} id='color1' onChange={onChangeToDoHandler} type='radio' name='color' value='#FF8D8D' />
-
-      <input className={styles.color2} id='color2' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFBA53' />
-
-      <input className={styles.color3} id='color3' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFEF61' />
-
-      <input className={styles.color4} id='color4' onChange={onChangeToDoHandler} type='radio' name='color' value='#B9FFA0' />
-
-      <input className={styles.color5} id='color5' onChange={onChangeToDoHandler} type='radio' name='color' value='#99DEE2' />
-
-      <input className={styles.color6} id='color6' onChange={onChangeToDoHandler} type='radio' name='color' value='#9FB4FF' />
-
-      <input className={styles.color7} id='color7' onChange={onChangeToDoHandler} type='radio' name='color' value='#B187E7' />
-
-      <input className={styles.color8} id='color8' onChange={onChangeToDoHandler} type='radio' name='color' value='#E8A2D4' />
       <button type='submit' disabled={btnOn}>+</button>
+      <div>
+        <input className={styles.valueInput} onChange={onChangeToDoHandler} type='text' name='work' />
+        <div className={styles.colorInput}>
+          <input className={styles.color1} id='color1' onChange={onChangeToDoHandler} type='radio' name='color' value='#FF8D8D' />
+
+          <input className={styles.color2} id='color2' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFBA53' />
+
+          <input className={styles.color3} id='color3' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFEF61' />
+
+          <input className={styles.color4} id='color4' onChange={onChangeToDoHandler} type='radio' name='color' value='#B9FFA0' />
+
+          <input className={styles.color5} id='color5' onChange={onChangeToDoHandler} type='radio' name='color' value='#99DEE2' />
+
+          <input className={styles.color6} id='color6' onChange={onChangeToDoHandler} type='radio' name='color' value='#9FB4FF' />
+
+          <input className={styles.color7} id='color7' onChange={onChangeToDoHandler} type='radio' name='color' value='#B187E7' />
+
+          <input className={styles.color8} id='color8' onChange={onChangeToDoHandler} type='radio' name='color' value='#E8A2D4' />
+        </div>
+      </div>
     </form>
   );
 };

@@ -6,13 +6,24 @@ import styles from '../css/toDoList.module.css';
 const ToDoList = () => {
   const [upDateValue, setUpDateValue] = useState('');
   const [upDateColor, setUpDateColor] = useState('#FFFFFF');
+  const [btnOn, setBtnOn] = useState(true)
 
   const dispatch = useDispatch();
   const toDos = useSelector((state) => state.toDo);
   console.log(toDos);
+
   useEffect(() => {
     dispatch(getList());
   }, []);
+
+  // 수정 input 미작성 시 버튼 비활성화
+  useEffect(() => {
+    if (upDateValue === "") {
+      setBtnOn(true)
+    } else {
+      setBtnOn(false)
+    }
+  }, [upDateValue])
 
   const onDeleteToDoHandler = (toDoId) => {
     dispatch(deleteList(toDoId));
@@ -48,7 +59,7 @@ const ToDoList = () => {
                   -
                 </button>
                 <input type='text' onChange={onChnageTodoValueUpDateHandler} />
-                <button onClick={() => onUpdateToDoHandler(toDo._id)}>수정</button>
+                <button disabled={btnOn} onClick={() => onUpdateToDoHandler(toDo._id)}>수정</button>
               </li>
             );
           })

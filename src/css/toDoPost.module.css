@@ -1,11 +1,55 @@
-input[type='radio'] {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: 1px solid black;
-    appearance: none;
-    cursor: pointer;
-    transition: border 0.5s;
+@import url(common.css);
+
+.toDoContainer {
+    width: 20.5rem;
+    height: 4.688rem;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: solid 1px var(--neutral-100);
+    background-color: var(--neutral-30);
+}
+
+.inputContainer {
+    width: 18.5rem;
+    height: 3.188rem;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 0;
+
+}
+
+.valueInput {
+    width: 18.5rem;
+    height: 1.5rem;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 180px;
+    padding: 0;
+}
+
+.colorInput {
+    width: 12.125rem;
+    height: 1.188rem;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 0;
 }
 
 input[type='radio']:checked {
