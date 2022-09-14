@@ -5,7 +5,7 @@ import SetTimeModal from '../components/SetTimeModal';
 const Home = () => {
     return (
         <div>
-            <Stopwatch/>
+            <Stopwatch />
         </div>
     );
 };
