@@ -5,6 +5,7 @@ import Quote from "../components/Quote";
 import Studing from "../components/Studing";
 
 const Home = () => {
+
   return (
     <Layout>
       <Stopwatch />
@@ -12,6 +13,7 @@ const Home = () => {
       <Studing />
     </Layout>
   );
+
 };
 
 export default Home;
