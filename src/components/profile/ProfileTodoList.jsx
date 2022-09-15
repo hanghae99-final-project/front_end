@@ -65,9 +65,9 @@ const ProfileTodoList = () => {
       <div className={styles.innerWrap}>
 
         <div className={styles.dateBtnWarp}>
-          <button onClick={prevDate}>◀︎</button>
-          <h2 className={styles2.caption_600_12}>{selectedMonth}, {selectedDate}</h2>
-          <button onClick={nextDate}>►</button>
+          <button className={styles.leftBtn} onClick={prevDate}></button>
+          <h2 className={styles2.caption_600_12}>{selectedMonth}월 {selectedDate}일</h2>
+          <button className={styles.rightBtn} onClick={nextDate}></button>
         </div>
 
         <ul className={styles.todoListWarp}>

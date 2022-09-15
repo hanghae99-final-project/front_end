@@ -21,8 +21,19 @@
 }
 
 .dateBtnWarp button {
+  border: none;
   width: 1.5rem;
   height: 1.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.leftBtn {
+  background: url(../../../svg/left_arrow.svg);
+}
+
+.rightBtn {
+  background: url(../../../svg/right_arrow.svg);
 }
 
 .dateBtnWarp h2 {
