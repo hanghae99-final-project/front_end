@@ -18,7 +18,6 @@ const Home = () => {
                     <Studing />
                     <Stopwatch />
                 </div>
-                <Dday />
                 <TimeTimer />
                 <Quote />
             </div>
