@@ -14,12 +14,18 @@
   font-size: 1.5rem;
   color: var(--neutral-100);
   font-weight: 500;
+  justify-content: center;
   text-align: center;
   margin-top: 3rem;
 }
 
 .dropdownBtn {
   width: 1.5rem;
+  height: 1.5rem;
+  padding-top: 0.15rem;
+  cursor: pointer;
+  background-color: var(--neutral-20);
+  border: none;
 }
 
 .downArrow {
@@ -48,6 +54,7 @@
 }
 
 .rankingContainer {
+  height: 100%;
   overflow: scroll;
 }
 
@@ -92,6 +99,28 @@
   align-items: center;
 }
 
+.userRank {
+  font-size: 0.75rem;
+  margin-right: 1rem;
+}
+
+.userBox {
+  width: 7rem;
+}
+.userNickname {
+  font-size: 0.75rem;
+  height: 1.125rem;
+}
+
+.userSpec {
+  font-size: 0.625rem;
+  color: var(--neutral-50);
+}
+
+.userTime {
+  font-size: 0.75rem;
+}
+
 .allStatus {
   color: var(--primary-100);
   display: flex;
@@ -105,59 +134,40 @@
   padding-left: 1rem;
 }
 
+.timeBox {
+  width: 6rem;
+  margin-left: 6rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .greendot {
-  border: 1px solid red;
-  width: 0.55rem;
-  height: 0.55rem;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 0.3rem;
   background-color: var(--primary-50);
+}
+.emptyDot {
+  width: 0.275rem;
+  height: 0.3rem;
+  border-radius: 0.3rem;
+  background-color: var(--neutral-50);
 }
 
 .myStatus {
   color: var(--primary-100);
-  position: fixed;
+  position: relative;
+  bottom: 18rem;
   display: flex;
-  bottom: 9rem;
-  width: 22rem;
-  height: 4rem;
+  width: 21.5rem;
+  height: 3.375rem;
   background-color: var(--opacity-b-50);
   border: solid 1px var(--primary-50);
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   flex-direction: row;
   align-items: center;
-}
-
-.myRank {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-left: 1.7rem;
-}
-
-.myInfo {
-  display: flex;
-  flex-direction: column;
-  margin-left: 2.5rem;
-}
-
-.myInfo > span:nth-child(1) {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-bottom: 0.1rem;
-}
-
-.myInfo > span:nth-child(2) {
-  color: #cdcdcd;
-}
-
-.myTime {
-}
-
-.myTime > span:nth-child(1) {
-  font-size: 1.1rem;
-  font-weight: bold;
-  margin-left: 1.7rem;
-  margin-left: 10rem;
-}
-
-.myTime > span:nth-child(2) {
-  margin-left: 1rem;
+  padding-left: 1rem;
 }

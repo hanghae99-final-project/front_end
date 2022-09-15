@@ -5,38 +5,40 @@ import styles from "../css/ranking.module.css";
 import dropdownBtn from "../svg/dropdown_icon.svg";
 
 const Ranking = () => {
-  useEffect(() => {
-    dispatch(__getRanking());
-  }, []);
-
   const dispatch = useDispatch();
   const getMyRanking = useSelector((state) => state.ranking.myRanking);
   const getAllRanking = useSelector((state) => state.ranking.ranking);
-  const datePick = ["일간", "주간", "월간"];
+  const userTimeSet = Math.floor(getMyRanking.savedStudyTime / 1000);
+  const myHour = parseInt(userTimeSet / 3600);
+  const myMinutes = parseInt((userTimeSet % 3600) / 60);
+  const [showSheet, setShowSheet] = useState(false);
+  const datePick = [
+    { ko: "일간", en: "day" },
+    { ko: "주간", en: "week" },
+    { ko: "월간", en: "month" },
+  ];
   const [mode, setMode] = useState("일간");
 
-  // const hour = parseInt(second / 3600);
-  // const minutes = parseInt((second % 3600) / 60);
-  // const seconds = second % 60;
-  // const msecond =
+  const [type, setType] = useState({ period: "day", category: "all" });
+  console.log(type);
 
-  console.log(getAllRanking);
+  useEffect(() => {
+    dispatch(__getRanking(type));
+  }, [type]);
 
   return (
     <div className={styles.layout}>
       <div className={styles.rankingType}>
         전체 랭킹
-        <img
-          className={styles.dropdownBtn}
-          src={dropdownBtn}
-          alt="dropdownBtn"
-        />
+        <button className={styles.dropdownBtn}>
+          <img src={dropdownBtn} alt="dropdownBtn" />
+        </button>
       </div>
       <div className={styles.dateRanking}>
         {datePick.map((day, i) => {
           return (
             <div key={i}>
-              {mode === day ? (
+              {mode === day.ko ? (
                 <button
                   className={styles.button}
                   style={{
@@ -44,10 +46,11 @@ const Ranking = () => {
                     color: "var(--neutral-100)",
                   }}
                   onClick={() => {
-                    setMode(day);
+                    setMode(day.ko);
+                    setType({ ...type, period: day.en });
                   }}
                 >
-                  {day}
+                  {day.ko}
                 </button>
               ) : (
                 <button
@@ -57,10 +60,11 @@ const Ranking = () => {
                     color: "var(--neutral-70)",
                   }}
                   onClick={() => {
-                    setMode(day);
+                    setType({ ...type, period: day.en });
+                    setMode(day.ko);
                   }}
                 >
-                  {day}
+                  {day.ko}
                 </button>
               )}
             </div>
@@ -69,23 +73,33 @@ const Ranking = () => {
       </div>
       <div className={styles.rankingContainer}>
         {getAllRanking.map((rankbox, i) => {
+          const userTimeSet = Math.floor(rankbox.savedStudyTime / 1000);
+          const hour = parseInt(userTimeSet / 3600);
+          const minutes = parseInt((userTimeSet % 3600) / 60);
           return (
             <div key={i}>
               <div className={styles.allStatus}>
-                <span>순위</span>
-                <div>
-                  <p>{rankbox.nickname}</p>
-                  <p>{rankbox.specialty}</p>
+                <span className={styles.userRank}>{i + 1}</span>
+                <div className={styles.userBox}>
+                  <p className={styles.userNickname}>{rankbox.nickname}</p>
+                  <p className={styles.userSpec}> {rankbox.specialty}</p>
                 </div>
-                <div>
-                  <span>{rankbox.savedStudyTime}</span>
-                  <div>
-                    {rankbox.studying ? (
-                      <div className={styles.greenDot}></div>
-                    ) : (
-                      <div className={styles.emptyDot}></div>
-                    )}
-                  </div>
+                <div className={styles.timeBox}>
+                  <span className={styles.userTime}>
+                    {/* <span>
+                    {target.hour < 10 ? "0" + target.hour : target.hour}:
+                  </span>
+                  <span>
+                    {target.minute < 10 ? "0" + target.minute : target.minute}:
+                  </span> */}
+                    {hour < 10 ? "0" + hour : hour}시간{" "}
+                    {minutes < 10 ? "0" + minutes : minutes}분
+                  </span>
+                  {rankbox.studying ? (
+                    <div className={styles.greendot}></div>
+                  ) : (
+                    <div className={styles.emptyDot}></div>
+                  )}
                 </div>
               </div>
             </div>
@@ -93,21 +107,21 @@ const Ranking = () => {
         })}
       </div>
       <div className={styles.myStatus}>
-        <span className={styles.myRank}>
-          임시
-          {/* {getMyRanking.rank < 100 && getMyRanking.rank > 9
-            ? "0" + getMyRanking.rank
-            : getMyRanking.rank < 10
-            ? "00" + getMyRanking.rank
-            : getMyRanking.rank} */}
-        </span>
-        <div className={styles.myInfo}>
-          <span>한효승</span>
-          <span>102시간 63분</span>
+        <span className={styles.userRank}>{getMyRanking.rank}</span>
+        <div className={styles.userBox}>
+          <p className={styles.userNickname}>{getMyRanking.nickname}</p>
+          <p className={styles.userSpec}>{getMyRanking.specialty}</p>
         </div>
-        <div className={styles.myTime}>
-          <span>20시간 12분</span>
-          <span>*</span>
+        <div className={styles.timeBox}>
+          <span className={styles.userTime}>
+            {myHour < 10 ? "0" + myHour : myHour}시간{" "}
+            {myMinutes < 10 ? "0" + myMinutes : myMinutes}분
+          </span>
+          {getMyRanking.studying ? (
+            <div className={styles.greendot}></div>
+          ) : (
+            <div className={styles.emptyDot}></div>
+          )}
         </div>
       </div>
     </div>
