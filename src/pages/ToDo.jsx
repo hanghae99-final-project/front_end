@@ -6,12 +6,15 @@ import styles from '../css/toDoPage.module.css'
 
 const ToDo = () => {
     return (
-        <Layout>
-            <div className={styles.container}>
-                <ToDoPost></ToDoPost>
-                <ToDoList></ToDoList>
+        // <Layout>
+        <div className={styles.container}>
+            <div className={styles.toDoTitle}>
+                <h1>오늘 할 일</h1>
             </div>
-        </Layout>
+            <ToDoPost></ToDoPost>
+            <ToDoList></ToDoList>
+        </div>
+        // </Layout>
     );
 };
 

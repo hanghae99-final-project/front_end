@@ -47,25 +47,29 @@ const ToDoList = () => {
   };
 
   return (
-    <div>
-      <ul>
-        {toDos
-          ?.map((toDo) => {
-            return (
-              <li key={toDo._id}>
-                <button onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}>{toDo.isDone ? '취소' : '완료'}</button>
-                <p className={toDo.isDone ? styles.ToDoTrue : styles.ToDoFalse}>{toDo.work}</p>
-                <button onClick={() => onDeleteToDoHandler(toDo._id)} type='button'>
-                  -
-                </button>
-                <input type='text' onChange={onChnageTodoValueUpDateHandler} />
-                <button disabled={btnOn} onClick={() => onUpdateToDoHandler(toDo._id)}>수정</button>
-              </li>
-            );
-          })
-          .reverse()}
-      </ul>
-    </div>
+    <ul>
+      {toDos
+        ?.map((toDo) => {
+          return (
+            <li key={toDo._id} className={styles.toDoContainer}>
+              <div className={styles.toDoWarp}>
+                <div className={styles.toDoValueWarp}>
+                  <div className={styles.pickColor}></div>
+                  <p className={toDo.isDone ? styles.ToDoTrue : styles.ToDoFalse}>{toDo.work}</p>
+                </div>
+                <button className={toDo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn} onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}>{/* {toDo.isDone ? '취소' : '완료'} */}</button>
+
+                {/* <button onClick={() => onDeleteToDoHandler(toDo._id)} type='button'>
+                -
+              </button>
+              <input type='text' onChange={onChnageTodoValueUpDateHandler} />
+              <button disabled={btnOn} onClick={() => onUpdateToDoHandler(toDo._id)}>수정</button> */}
+              </div>
+            </li>
+          );
+        })
+        .reverse()}
+    </ul>
   );
 };
 

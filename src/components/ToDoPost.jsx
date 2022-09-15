@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addList } from '../app/slice/toDoSlice';
 import styles from '../css/toDoPost.module.css';
+import addIcon from '../svg/add.svg'
 // import styled from 'styled-components';
 
 const ToDoPost = () => {
@@ -36,28 +37,28 @@ const ToDoPost = () => {
 
   return (
     <form className={styles.toDoContainer} onSubmit={onSubmitToDoHandler}>
-      <button type='submit' disabled={btnOn}>+</button>
-      <div>
-        <input className={styles.valueInput} onChange={onChangeToDoHandler} type='text' name='work' />
-        <div className={styles.colorInput}>
-          <input className={styles.color1} id='color1' onChange={onChangeToDoHandler} type='radio' name='color' value='#FF8D8D' />
+      <div className={styles.postWarp}>
+        <div className={styles.inputContainer}>
+          <input className={styles.valueInput} onChange={onChangeToDoHandler} type='text' name='work' placeholder="오늘 할일" spellCheck="false" />
+          <div className={styles.colorInput}>
+            <input className={styles.color1} id='color1' onChange={onChangeToDoHandler} type='radio' name='color' value='#FF8D8D' />
 
-          <input className={styles.color2} id='color2' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFBA53' />
+            <input className={styles.color2} id='color2' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFBA53' />
 
-          <input className={styles.color3} id='color3' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFEF61' />
+            <input className={styles.color3} id='color3' onChange={onChangeToDoHandler} type='radio' name='color' value='#FFEF61' />
 
-          <input className={styles.color4} id='color4' onChange={onChangeToDoHandler} type='radio' name='color' value='#B9FFA0' />
+            <input className={styles.color4} id='color4' onChange={onChangeToDoHandler} type='radio' name='color' value='#B9FFA0' />
 
-          <input className={styles.color5} id='color5' onChange={onChangeToDoHandler} type='radio' name='color' value='#99DEE2' />
+            <input className={styles.color5} id='color5' onChange={onChangeToDoHandler} type='radio' name='color' value='#99DEE2' />
 
-          <input className={styles.color6} id='color6' onChange={onChangeToDoHandler} type='radio' name='color' value='#9FB4FF' />
-
-          <input className={styles.color7} id='color7' onChange={onChangeToDoHandler} type='radio' name='color' value='#B187E7' />
-
-          <input className={styles.color8} id='color8' onChange={onChangeToDoHandler} type='radio' name='color' value='#E8A2D4' />
+            <input className={styles.color6} id='color6' onChange={onChangeToDoHandler} type='radio' name='color' value='#9FB4FF' />
+          </div>
         </div>
       </div>
-    </form>
+      <button className={`${styles.postBtn} ${btnOn === false ? styles.btnOn : ""}`} type='submit' disabled={btnOn}>
+        <img src={addIcon} alt="addIcon" />
+      </button>
+    </form >
   );
 };
 

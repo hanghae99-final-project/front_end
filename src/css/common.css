@@ -339,4 +339,15 @@
   --opacity-b-20: rgba(26, 27, 35, 0.2);
   --opacity-b-50: rgba(26, 27, 35, 0.5);
   --opacity-0: rgba(0, 0, 0, 0);
+  --tertiary-70: #a6daff;
+  --tertiary-80: #b9e1ff;
+  --tertiary-90: #c8e8ff;
+  --tertiary-20: #0a84dc;
+  --tertiary-100: #d6edff;
+  --tertiary-40: #55b8ff;
+  --tertiary-30: #2ea2f2;
+  --tertiary-50: #75c5ff;
+  --tertiary-0: #00538f;
+  --tertiary-10: #0069b6;
+  --tertiary-60: #8ed0ff;
 }

@@ -1,14 +1,14 @@
 @import url(common.css);
 
 .toDoContainer {
-    width: 20.5rem;
-    height: 4.688rem;
-    flex-grow: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
+    height: 4.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.postWarp {
+    width: 16.938rem;
     padding: 0.75rem 1rem;
     border-radius: 8px;
     border: solid 1px var(--neutral-100);
@@ -16,74 +16,172 @@
 }
 
 .inputContainer {
-    width: 18.5rem;
-    height: 3.188rem;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 8px;
-    padding: 0;
-
+    width: 100%;
 }
 
 .valueInput {
-    width: 18.5rem;
     height: 1.5rem;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-end;
-    gap: 180px;
-    padding: 0;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    background-color: var(--neutral-30);
+    border: none;
+
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    text-decoration: none;
+    color: #fff;
+}
+
+.valueInput::placeholder {
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--neutral-50);
+}
+
+.valueInput:focus {
+    outline: none;
 }
 
 .colorInput {
-    width: 12.125rem;
     height: 1.188rem;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    gap: 16px;
-    padding: 0;
 }
 
-input[type='radio']:checked {
-    border: 2px double black;
+.colorInput input {
+    margin-right: 1rem;
 }
+
+.postBtn {
+    width: 3.125rem;
+    height: 4.75rem;
+    padding: 1.625rem 0.813rem;
+    border-radius: 8px;
+    background-color: var(--neutral-40);
+    border: none;
+
+    font-size: 0.844rem;
+}
+
+.postBtn img {
+    fill: var(--neutral-50);
+    ;
+}
+
+.btnOn {
+    background-color: var(--primary-50);
+    cursor: pointer;
+}
+
+.btnOn:active {
+    background-color: var(--primary-20);
+}
+
+input[type='radio'] {
+    appearance: none;
+    width: 1.188rem;
+    height: 1.188rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 
 .color1 {
-    background-color: #ff8d8d;
+    background-color: var(--alerts-red);
+}
+
+.color1:active {
+    background: #CF3434;
+}
+
+.color1:checked {
+    background: url(../svg/check_small.svg), var(--alerts-red);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 0.5s ease-in-out;
 }
 
 .color2 {
-    background-color: #ffba53;
+    background-color: var(--secondary-50);
+}
+
+.color2:active {
+    background: #D65E40;
+}
+
+.color2:checked {
+    background: url(../svg/check_small.svg), var(--secondary-50);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 0.5s ease-in-out;
 }
 
 .color3 {
-    background-color: #ffef61;
+    background-color: var(--alerts-green);
+}
+
+.color3:active {
+    background: #558637;
+}
+
+.color3:checked {
+    background: url(../svg/check_small.svg), var(--alerts-green);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 0.5s ease-in-out;
 }
 
 .color4 {
-    background-color: #b9ffa0;
+    background-color: var(--primary-50);
+}
+
+.color4:active {
+    background: #319159;
+}
+
+.color4:checked {
+    background: url(../svg/check_small.svg), var(--primary-50);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 0.5s ease-in-out;
 }
 
 .color5 {
-    background-color: #99dee2;
+    background-color: var(--tertiary-50);
+}
+
+.color5:active {
+    background: #0A84DC;
+}
+
+.color5:checked {
+    background: url(../svg/check_small.svg), var(--tertiary-50);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 0.5s ease-in-out;
 }
 
 .color6 {
-    background-color: #9fb4ff;
+    background-color: var(--neutral-100);
 }
 
-.color7 {
-    background-color: #b187e7;
+.color6:active {
+    background: #A4A3B1;
 }
 
-.color8 {
-    background-color: #e8a2d4;
+.color6:checked {
+    background: url(../svg/check_small.svg), var(--neutral-100);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 0.5s ease-in-out;
 }

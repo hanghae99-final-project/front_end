@@ -1,14 +1,85 @@
-.ToDoFalse {
+@import url(common.css);
+
+.toDoContainer {
+    margin-bottom: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    background-color: var(--neutral-40);
+    list-style: none;
 }
 
-.ToDoTrue {
-    text-decoration: line-through;
-}
-
-ul {
+.toDoWarp {
+    align-self: stretch;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     padding: 0;
 }
 
-li {
+.toDoValueWarp {
     display: flex;
+    align-items: center;
+}
+
+.pickColor {
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 50%;
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    background-color: var(--alerts-green);
+}
+
+.ToDoTrue {
+    width: 16rem;
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--neutral-100);
+    text-decoration: line-through;
+
+    transition: border 0.5s ease-in-out;
+}
+
+.ToDoFalse {
+    width: 16rem;
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--neutral-100);
+
+    transition: border 0.5s ease-in-out;
+}
+
+.isDoneFalseBtn {
+    width: 1.188rem;
+    height: 1.188rem;
+    border: solid 1px #fff;
+    border-radius: 50%;
+    background-color: var(--neutral-40);
+
+    transition: border 0.5s ease-in-out;
+}
+
+.isDoneTureBtn {
+    width: 1.188rem;
+    height: 1.188rem;
+    border: solid 1px var(--neutral-60);
+    border-radius: 50%;
+
+    background: url(../svg/check_small.svg), var(--neutral-60);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: border 0.5s ease-in-out;
 }
