@@ -18,11 +18,11 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                 slidesPerView={5}
                 scrollbar={{ draggable: true }}
                 navigation={true}
-                // freeMode={true}
                 centeredSlides={true}
                 mousewheel={true}
                 direction={'vertical'}
                 pagination={{ clickable: true }}
+                // freeMode={true}
                 modules={[FreeMode, Pagination]}
                 breakpoints={{
                     768: {
