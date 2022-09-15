@@ -54,7 +54,7 @@ const ToDoList = () => {
               <li >
                 <div className={modifyOn === toDo._id ? `${styles.toDoContainer} ${styles.modifyOn}` : styles.toDoContainer} >
                   <div className={styles.toDoWarp}>
-                    <div onDrag={() => {
+                    <div onClick={() => {
                       modifyOn === toDo._id ? setModifyOn('') : setModifyOn(toDo._id); setModifyModal("")
                     }} className={styles.toDoValueWarp}>
                       <PickColor bgColor={toDo.color}></PickColor>
