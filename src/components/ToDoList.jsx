@@ -14,6 +14,7 @@ const ToDoList = () => {
 
   const dispatch = useDispatch();
   const toDos = useSelector((state) => state.toDo);
+  console.log(toDos)
 
   useEffect(() => {
     dispatch(getList());
@@ -50,7 +51,7 @@ const ToDoList = () => {
         ?.map((toDo) => {
           return (
             <div key={toDo._id}>
-              <li >
+              <li className={styles.innerWarp}>
                 <div className={modifyOn === toDo._id ? `${styles.toDoContainer} ${styles.modifyOn}` : styles.toDoContainer} >
                   <div className={styles.toDoWarp}>
                     <div onClick={() => {
