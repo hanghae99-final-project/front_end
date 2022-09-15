@@ -1,0 +1,5 @@
+@import './color.css';
+
+.quote {
+    color: var(--neutral-100);
+}

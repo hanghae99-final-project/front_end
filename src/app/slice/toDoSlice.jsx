@@ -1,44 +1,49 @@
 import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit';
 import axios from 'axios';
+import instance from './instance';
 
 const now = new Date();
 const year = now.getFullYear();
 const months = ('0' + (now.getMonth() + 1)).slice(-2);
 const days = ('0' + now.getDate()).slice(-2);
-console.log(`${year}-${months}-${days}`);
 
 export const getList = createAsyncThunk('GET_TODO', async () => {
-    const response = await axios.get(`http://13.124.204.3/todo/${year}-${months}-${days}`);
+    const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/todo/${year}-${months}-${days}`, { headers: { Authorization: `Bearer ${localStorage.token}` } }
+    );
     console.log(response);
     return response.data;
 });
 
 export const addList = createAsyncThunk('ADD_TODO', async (toDo) => {
-    const response = await axios.post('http://13.124.204.3/todo', toDo);
+    console.log(toDo)
+    const response = await axios.post(process.env.REACT_APP_SERVER_URL + `/todo`, toDo, { headers: { Authorization: `Bearer ${localStorage.token}` } });
     console.log(response);
     return response.data;
 });
 
 export const deleteList = createAsyncThunk('DELETE_TODO', async (toDoId) => {
-    const response = await axios.delete(`http://13.124.204.3/todo/${toDoId}`);
+    const response = await axios.delete(process.env.REACT_APP_SERVER_URL + `/todo/${toDoId}`, { headers: { Authorization: `Bearer ${localStorage.token}` } });
     console.log(response);
     return toDoId;
 });
 
-export const updateList = createAsyncThunk('UPDATE_LIST', async ({ id, work, color }) => {
-    console.log(id);
-    const response = await axios.put(`http://13.124.204.3/todo/${id}`, {
-        work: work,
-        color: color,
-    });
+export const updateList = createAsyncThunk('UPDATE_LIST', async (payload) => {
+    console.log(payload)
+    console.log(payload.upDateToDo)
+    console.log(payload.toDoId)
+    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${payload.toDoId}`,
+        payload.upDateToDo,
+        { headers: { Authorization: `Bearer ${localStorage.token}` } },
+    );
     console.log(response);
     return response.data;
 });
 
 export const updateToDoDone = createAsyncThunk('UPDATE_ToDoDone', async ({ id, isDone }) => {
-    const response = await axios.put(`http://13.124.204.3/todo/${id}`, {
+    console.log(id)
+    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${id}`, {
         isDone: isDone,
-    });
+    }, { headers: { Authorization: `Bearer ${localStorage.token}` } });
     console.log(response);
     return response.data;
 });
@@ -49,6 +54,7 @@ const toDoSlice = createSlice({
     reducers: {},
     extraReducers: {
         [getList.fulfilled]: (state, { payload }) => {
+            console.log(payload.todoArr)
             return (state = payload.todoArr);
         },
 

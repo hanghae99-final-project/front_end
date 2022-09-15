@@ -29,9 +29,9 @@
 }
 
 .downArrow {
-  width: 1.4rem;
-  height: 1.4rem;
-  margin-left: 0.3rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-left: 0.3rem;
 }
 
 .dateRanking {
@@ -61,16 +61,16 @@
 .dateDay,
 .dateWeek,
 .dateMonth {
-  width: 9.2rem;
-  height: 1.5rem;
-  display: flex;
-  border: none;
-  border-radius: 1rem;
-  margin: auto 0.1rem;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
+    width: 9.2rem;
+    height: 1.5rem;
+    display: flex;
+    border: none;
+    border-radius: 1rem;
+    margin: auto 0.1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
 }
 .fStatus {
   color: var(--primary-100);
