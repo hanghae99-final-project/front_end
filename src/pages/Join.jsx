@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import Layout from "../components/common/Layout";
 import Nickname from "../components/join/nickname";

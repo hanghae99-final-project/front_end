@@ -32,7 +32,7 @@ const Nickname = ({
 
   return (
     <div className={styles.layout}>
-      <div>
+      <div className={styles.container}>
         <div className={styles.btnWrap}>
           <img className={styles.arrowbackIcon} src={arrowBtn} alt="arrow" />
         </div>
@@ -76,16 +76,16 @@ const Nickname = ({
           </div>
         </div>
         <p className={styles.checkMsg}>{checkMsg}</p>
-        {check.test(userInfo.nickname) && !nicknameUsable ? (
-          <button className={styles.joinBtnNo} disabled>
-            다음
-          </button>
-        ) : (
-          <button className={styles.joinBtnYes} onClick={() => setMode("Age")}>
-            다음
-          </button>
-        )}
       </div>
+      {check.test(userInfo.nickname) && !nicknameUsable ? (
+        <button className={styles.joinBtnNo} disabled>
+          다음
+        </button>
+      ) : (
+        <button className={styles.joinBtnYes} onClick={() => setMode("Age")}>
+          다음
+        </button>
+      )}
     </div>
   );
 };

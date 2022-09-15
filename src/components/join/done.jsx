@@ -7,14 +7,15 @@ const Done = () => {
 
   return (
     <div className={styles.layout}>
-      <div className={styles.doneMsg}>회원가입 완료</div>
+      <div className={styles.msgContainer}></div>
+      <div className={styles.doneMsg}></div>
       <button
         className={styles.doneBtn}
         onClick={() => {
           navigate("/");
         }}
       >
-        홈으로가자
+        시작하기
       </button>
     </div>
   );

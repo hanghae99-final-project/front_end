@@ -78,25 +78,34 @@ const Ranking = () => {
           const minutes = parseInt((userTimeSet % 3600) / 60);
           return (
             <div key={i}>
-              <div className={styles.allStatus}>
-                <span className={styles.userRank}>{i + 1}</span>
+              <div
+                className={
+                  i === 0
+                    ? styles.topRanker
+                    : i === 1 || i === 2
+                    ? styles.otherRanker
+                    : styles.allStatus
+                }
+              >
+                <span className={styles.userRank}>
+                  {/* {i === 0 && "👑"}
+                  {i === 1 && "🥈"}
+                  {i === 2 && "🥉"} */}
+                  {i + 1}
+                </span>
                 <div className={styles.userBox}>
                   <p className={styles.userNickname}>{rankbox.nickname}</p>
                   <p className={styles.userSpec}> {rankbox.specialty}</p>
                 </div>
                 <div className={styles.timeBox}>
                   <span className={styles.userTime}>
-                    {/* <span>
-                    {target.hour < 10 ? "0" + target.hour : target.hour}:
-                  </span>
-                  <span>
-                    {target.minute < 10 ? "0" + target.minute : target.minute}:
-                  </span> */}
                     {hour < 10 ? "0" + hour : hour}시간{" "}
                     {minutes < 10 ? "0" + minutes : minutes}분
                   </span>
                   {rankbox.studying ? (
-                    <div className={styles.greendot}></div>
+                    <div
+                      className={i === 0 ? styles.rankerDot : styles.greendot}
+                    ></div>
                   ) : (
                     <div className={styles.emptyDot}></div>
                   )}

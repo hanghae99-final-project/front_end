@@ -34,48 +34,54 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
 
   return (
     <div className={styles.layout}>
-      <button className={styles.arrowBack} onClick={() => setMode("Age")}>
-        <img className={styles.arrowbackIcon} src={arrowBtn2} alt="arrowBtn2" />
-      </button>
-      <p className={styles.infoText}>
-        준비하고 있는 분야를 <br />
-        선택해 주세요
-      </p>
-      <div className={styles.specContainer}>
-        {major.map((pick, i) => {
-          return (
-            <div key={i} className={styles.specWrap}>
-              {userInfo.specialty === pick ? (
-                <span
-                  className={styles.specPick}
-                  onClick={() => {
-                    setUserInfo({ ...userInfo, specialty: pick });
-                  }}
-                >
-                  {/* <img
+      <div className={styles.container}>
+        <button className={styles.arrowBack} onClick={() => setMode("Age")}>
+          <img
+            className={styles.arrowbackIcon}
+            src={arrowBtn2}
+            alt="arrowBtn2"
+          />
+        </button>
+        <p className={styles.infoText}>
+          준비하고 있는 분야를 <br />
+          선택해 주세요
+        </p>
+        <div>
+          {major.map((pick, i) => {
+            return (
+              <div key={i} className={styles.specWrap}>
+                {userInfo.specialty === pick ? (
+                  <button
+                    className={styles.specPick}
+                    onClick={() => {
+                      setUserInfo({ ...userInfo, specialty: pick });
+                    }}
+                  >
+                    {/* <img
                     className={styles.specCheckImg}
                     src={check2}
                     alt="check"
                   /> */}
-                  ✔ {pick}
-                </span>
-              ) : (
-                <span
-                  className={
-                    userInfo.specialty === ""
-                      ? styles.specBase
-                      : styles.specAfter
-                  }
-                  onClick={() => {
-                    setUserInfo({ ...userInfo, specialty: pick });
-                  }}
-                >
-                  {pick}
-                </span>
-              )}
-            </div>
-          );
-        })}
+                    ✔ {pick}
+                  </button>
+                ) : (
+                  <button
+                    className={
+                      userInfo.specialty === ""
+                        ? styles.specBase
+                        : styles.specAfter
+                    }
+                    onClick={() => {
+                      setUserInfo({ ...userInfo, specialty: pick });
+                    }}
+                  >
+                    {pick}
+                  </button>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
       {userInfo.age === "" ? (
         <button disabled className={styles.specBtnNo}>
