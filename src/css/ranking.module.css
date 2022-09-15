@@ -104,8 +104,14 @@
   margin-right: 1rem;
 }
 
+.padding {
+  font-size: 0.75rem;
+  margin-right: 1rem;
+  padding-left: 1rem;
+}
+
 .userBox {
-  width: 7rem;
+  width: 6rem;
 }
 .userNickname {
   font-size: 0.75rem;
@@ -126,7 +132,7 @@
   display: flex;
   width: 21.5rem;
   height: 3.375rem;
-  background-color: var(--opacity-b-50);
+  background-color: var(--neutral-30);
   margin-top: 0.5rem;
   border-radius: 0.5rem;
   flex-direction: row;
@@ -149,11 +155,11 @@
 }
 
 .otherRanker {
-  color: var(--neutral-20);
+  color: var(--neutral-100);
   display: flex;
   width: 21.5rem;
   height: 3.375rem;
-  background-color: var(--opacity-b-50);
+  background-color: var(--neutral-10);
   margin-top: 0.5rem;
   border-radius: 0.5rem;
   flex-direction: row;

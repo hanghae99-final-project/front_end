@@ -12,6 +12,12 @@ const Ranking = () => {
   const myHour = parseInt(userTimeSet / 3600);
   const myMinutes = parseInt((userTimeSet % 3600) / 60);
   const [showSheet, setShowSheet] = useState(false);
+
+  const agePick = [
+    { ko: "20대", en: "twenty" },
+    { ko: "30대", en: "thirty" },
+    { ko: "기타", en: "all" },
+  ];
   const datePick = [
     { ko: "일간", en: "day" },
     { ko: "주간", en: "week" },
@@ -87,10 +93,10 @@ const Ranking = () => {
                     : styles.allStatus
                 }
               >
-                <span className={styles.userRank}>
-                  {/* {i === 0 && "👑"}
+                <span className={i > 2 ? styles.padding : styles.userRank}>
+                  {i === 0 && "👑"}
                   {i === 1 && "🥈"}
-                  {i === 2 && "🥉"} */}
+                  {i === 2 && "🥉"}
                   {i + 1}
                 </span>
                 <div className={styles.userBox}>

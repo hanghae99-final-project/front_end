@@ -216,22 +216,25 @@ img.specCheckImg {
   font-weight: 600;
 }
 
+.imgBox {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+}
+
 .specPick {
   border: 1px solid var(--primary-50);
   background-color: var(--neutral-20);
   color: var(--primary-50);
-  display: flex;
   font-weight: 300;
   font-size: 1.2rem;
   height: 2rem;
   padding: 0.25rem 0.75rem;
   border-radius: 16px;
-  justify-content: center;
-  align-items: center;
 }
 
 .specBase {
-  display: flex;
   font-weight: 300;
   font-size: 1.2rem;
   height: 2rem;
@@ -240,12 +243,9 @@ img.specCheckImg {
   border-radius: 16px;
   background-color: var(--neutral-30);
   color: var(--neutral-100);
-  justify-content: center;
-  align-items: center;
 }
 
 .specAfter {
-  display: flex;
   font-weight: 300;
   height: 2rem;
   padding: 0.25rem 0.75rem;
@@ -254,8 +254,6 @@ img.specCheckImg {
   border-radius: 16px;
   background-color: var(--neutral-30);
   color: var(--neutral-100);
-  justify-content: center;
-  align-items: center;
 }
 
 /* color border  */
@@ -307,12 +305,33 @@ img.specCheckImg {
 /* done */
 
 .doneMsg {
+  color: #ffffff;
 }
 
 .container {
   border: 1px solid white;
   width: 22rem;
   height: 43.875rem;
+}
+
+.doneNickname {
+  color: var(--primary-50);
+}
+
+.msgContainer {
+  border: 1px solid white;
+  width: 22rem;
+  height: 43.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.joinDone {
+  font-size: 1rem;
+  color: var(--neutral-60);
 }
 
 .doneBtn {

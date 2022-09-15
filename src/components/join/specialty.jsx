@@ -57,12 +57,14 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
                       setUserInfo({ ...userInfo, specialty: pick });
                     }}
                   >
-                    {/* <img
-                    className={styles.specCheckImg}
-                    src={check2}
-                    alt="check"
-                  /> */}
-                    ✔ {pick}
+                    <div className={styles.imgBox}>
+                      <img
+                        className={styles.specCheckImg}
+                        src={check2}
+                        alt="check"
+                      />
+                    </div>
+                    {pick}
                   </button>
                 ) : (
                   <button
