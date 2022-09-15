@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-const initialState = {};
+const initialState = { quote: '' };
 
 export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) => {
     try {
@@ -16,8 +16,13 @@ export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) =>
 
 export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get('http://localhost:3001/quote');
-        return thunkAPI.fulfillWithValue(data);
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + '/quote', {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+            },
+        });
+        console.log(data);
+        return thunkAPI.fulfillWithValue(data.Quotes.title);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
     }
@@ -25,7 +30,12 @@ export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) =>
 
 export const get_studing = createAsyncThunk('/studing', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get('http://localhost:3001/studing');
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + '/studying', {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+            },
+        });
+        console.log(data);
         return thunkAPI.fulfillWithValue(data);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
@@ -44,7 +54,7 @@ const mainSlice = createSlice({
             return { ...state, quote: payload };
         },
         [get_studing.fulfilled]: (state, { payload }) => {
-            return { ...state, studing: payload };
+            return { ...state, studing: payload.studyingCount };
         },
     },
 });

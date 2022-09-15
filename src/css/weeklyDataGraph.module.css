@@ -1,0 +1,11 @@
+.graph {
+    display: flex;
+    flex-direction: column;
+    width: 22.5rem;
+    height: 10rem;
+    position: relative;
+    align-items: center;
+    background-color: transparent;
+    position: absolute;
+    bottom: 10rem;
+}

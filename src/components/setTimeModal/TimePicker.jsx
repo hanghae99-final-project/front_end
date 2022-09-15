@@ -7,7 +7,6 @@ import 'swiper/css';
 SwiperCore.use([Mousewheel, Pagination, Navigation]);
 
 const TimePicker = ({ time, setTime, mode, unit }) => {
-    console.log(time);
     return (
         <div className={styles.hourBox}>
             <Swiper
@@ -19,12 +18,11 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                 slidesPerView={5}
                 scrollbar={{ draggable: true }}
                 navigation={true}
-                hashNavigation={{ watchState: true }}
                 centeredSlides={true}
-                freeMode={true}
                 mousewheel={true}
                 direction={'vertical'}
                 pagination={{ clickable: true }}
+                // freeMode={true}
                 modules={[FreeMode, Pagination]}
                 breakpoints={{
                     768: {
@@ -33,7 +31,7 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                 }}>
                 {mode.map((t) => {
                     return (
-                        <div key={unit + t}>
+                        <div key={unit + t} ref={`${unit}${t}`}>
                             {time[unit] === t ? (
                                 <SwiperSlide style={{ backgroundColor: 'white', width: '50px' }} key={unit + t} className={styles.hour}>
                                     {t}
