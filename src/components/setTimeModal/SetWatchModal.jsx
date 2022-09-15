@@ -11,7 +11,6 @@ const SetWatchModal = ({ remainTime, changeTimeForm, stop, setMode, setStop, run
                     <button
                         className={styles.startBtn}
                         onClick={() => {
-                            //목표시간
                             localStorage.setItem('targetTime', (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
                             setMode('normal');
                             setRunning(true);

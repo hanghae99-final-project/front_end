@@ -6,8 +6,6 @@ import SetTimePicker from './SetTimePicker';
 
 const SetTimeModal = ({ time, setTime, setMode, targetToSec }) => {
     const dispatch = useDispatch();
-    console.log(targetToSec);
-    console.log(time);
     return (
         <div className={styles.modal}>
             <SetTimePicker setTime={setTime} time={time} />
