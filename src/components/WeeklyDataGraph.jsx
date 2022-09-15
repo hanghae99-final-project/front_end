@@ -53,7 +53,19 @@ const WeeklyDataGraph = () => {
     const data = weeklyStudyData.map((element) => Math.floor(element?.studyTime / 3600000));
     console.log(data);
     // 16진수로 표현하여 opacity 조절
-    const dataColor = data.map((element) => Math.ceil((element / 24) * 256).toString(16));
+    const dataColor = data.map((element) => {
+        if (element >= 1 && element < 3) {
+            return (element = '#3a4941');
+        } else if (element >= 3 && element < 6) {
+            return (element = '#447157');
+        } else if (element >= 6 && element < 9) {
+            return (element = '#4d9a6d');
+        } else if (element >= 9 && element < 12) {
+            return (element = '#66FFA6');
+        } else if (element >= 12) {
+            return (element = '#ff8058');
+        }
+    });
     console.log(dataColor);
 
     const options = {
@@ -92,13 +104,13 @@ const WeeklyDataGraph = () => {
             {
                 label: 'Dataset 1',
                 backgroundColor: [
-                    `#25c137${dataColor[0]}`,
-                    `#25c137${dataColor[1]}`,
-                    `#25c137${dataColor[2]}`,
-                    `#25c137${dataColor[3]}`,
-                    `#25c137${dataColor[4]}`,
-                    `#25c137${dataColor[5]}`,
-                    `#25c137${dataColor[6]}`,
+                    `${dataColor[0]}`,
+                    `${dataColor[1]}`,
+                    `${dataColor[2]}`,
+                    `${dataColor[3]}`,
+                    `${dataColor[4]}`,
+                    `${dataColor[5]}`,
+                    `${dataColor[6]}`,
                 ],
                 data,
                 borderWidth: 0,
@@ -123,8 +135,19 @@ const WeeklyDataGraph = () => {
                     }}>
                     왼쪽
                 </button>
-                <div>{`${mondayDate} - ${sundayDate}`}</div>
-                <button>오른쪽</button>
+                <div>{`${week.startWeek} - ${week.endWeek}`}</div>
+                <button
+                    onClick={() => {
+                        setWeek(
+                            (prev) =>
+                                (prev = {
+                                    startWeek: changeDate(new Date(prev.startWeek).getDate() + 7),
+                                    endWeek: changeDate(new Date(prev.endWeek).getDate() + 7),
+                                })
+                        );
+                    }}>
+                    오른쪽
+                </button>
             </div>
             <Bar data={chartData} options={options} />
         </div>
