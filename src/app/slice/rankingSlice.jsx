@@ -6,7 +6,13 @@ export const __getRanking = createAsyncThunk(
   async (payload, thunkAPI) => {
     try {
       const { data } = await axios.get(
-        process.env.REACT_APP_SERVER_URL + `ranking`
+        process.env.REACT_APP_SERVER_URL +
+          `/rank?period=${payload.period}&category=${payload.category}`,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.token}`,
+          },
+        }
       );
       return thunkAPI.fulfillWithValue(data);
     } catch (error) {
@@ -15,7 +21,7 @@ export const __getRanking = createAsyncThunk(
   }
 );
 
-const initialState = "";
+const initialState = { myRanking: {}, ranking: [] };
 
 const rankingSlice = createSlice({
   name: "rankingSlice",

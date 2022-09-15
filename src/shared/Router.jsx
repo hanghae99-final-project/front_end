@@ -1,3 +1,4 @@
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
 import Detail from '../pages/Detail';
@@ -6,7 +7,8 @@ import KakaoFinish from '../pages/KakaoFinish';
 import MyPage from '../pages/MyPage';
 import Profile from '../pages/Profile';
 import Calender from "../components/Calender";
-
+import Ranking from "../pages/Ranking";
+import Join from "../pages/Join";
 
 function Router() {
     return (
@@ -19,6 +21,9 @@ function Router() {
                 <Route path='/Calender' element={<Calender />} />
                 <Route path='/mypage' element={<MyPage />} />
                 <Route path='/profile' element={<Profile />} />
+                <Route path="/join" element={<Join />} />
+                <Route path="/ranking" element={<Ranking />} />
+  
             </Routes>
         </BrowserRouter >
     );

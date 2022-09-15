@@ -1,3 +1,4 @@
+
 import axios from 'axios';
 
 // const accessToken = localStorage.getItem('token');
@@ -10,3 +11,4 @@ const instance = axios.create({
 });
 
 export default instance;
+

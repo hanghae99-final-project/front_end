@@ -6,6 +6,8 @@ import mySlice from './slice/mySlice';
 import timeTimerSlice from './slice/timeTimerSlice';
 import dDaySlice from './slice/DdaySlice';
 import calenderSlice from "./slice/calenderSlice";
+import joinSlice from "./slice/joinSlice";
+import profileSlice from "./slice/profileSlice";
 
 export const store = configureStore({
     reducer: {
@@ -16,5 +18,7 @@ export const store = configureStore({
         timer: timeTimerSlice.reducer,
         calender: calenderSlice.reducer,
         dDay: dDaySlice.reducer,
+        join: joinSlice.reducer,
+        profile: profileSlice.reducer,
     },
 });
