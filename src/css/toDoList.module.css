@@ -1,14 +1,33 @@
 @import url(common.css);
 
+ul {
+    overflow: hidden;
+}
+
+li {
+    width: 30rem;
+    list-style: none;
+    display: flex;
+}
+
+.modifyOn {
+    margin-left: -7.25rem;
+    transition: All 0.5s ease-in-out;
+}
+
 .toDoContainer {
+    display: flex;
+    width: 20.5rem;
     margin-bottom: 0.5rem;
     padding: 0.75rem 1rem;
+    height: 1.625rem;
     border-radius: 8px;
     background-color: var(--neutral-40);
-    list-style: none;
+    transition: All 0.5s ease-in-out;
 }
 
 .toDoWarp {
+    width: 100%;
     align-self: stretch;
     flex-grow: 0;
     display: flex;
@@ -21,14 +40,6 @@
 .toDoValueWarp {
     display: flex;
     align-items: center;
-}
-
-.pickColor {
-    width: 0.25rem;
-    height: 0.25rem;
-    border-radius: 50%;
-    margin: 0.5rem 0.5rem 0.5rem 0;
-    background-color: var(--alerts-green);
 }
 
 .ToDoTrue {
@@ -44,7 +55,7 @@
     color: var(--neutral-100);
     text-decoration: line-through;
 
-    transition: border 0.5s ease-in-out;
+    transition: All 0.3s ease-in-out;
 }
 
 .ToDoFalse {
@@ -59,7 +70,7 @@
     text-align: left;
     color: var(--neutral-100);
 
-    transition: border 0.5s ease-in-out;
+    transition: All 0.3s ease-in-out;
 }
 
 .isDoneFalseBtn {
@@ -69,7 +80,7 @@
     border-radius: 50%;
     background-color: var(--neutral-40);
 
-    transition: border 0.5s ease-in-out;
+    transition: All 0.3s ease-in-out;
 }
 
 .isDoneTureBtn {
@@ -81,5 +92,27 @@
     background: url(../svg/check_small.svg), var(--neutral-60);
     background-repeat: no-repeat;
     background-position: center;
-    transition: border 0.5s ease-in-out;
+    transition: All 0.3s ease-in-out;
+}
+
+.btnWarp {
+    margin-left: 0.5rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.modifyBtn,
+.delBtn {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 8px;
+    border: none;
+}
+
+.modifyBtn {
+    background-color: var(--alerts-orange);
+}
+
+.delBtn {
+    background-color: var(--alerts-red);
 }

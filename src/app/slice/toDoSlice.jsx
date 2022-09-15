@@ -27,12 +27,13 @@ export const deleteList = createAsyncThunk('DELETE_TODO', async (toDoId) => {
     return toDoId;
 });
 
-export const updateList = createAsyncThunk('UPDATE_LIST', async ({ id, work, color }) => {
-    console.log(id);
-    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${id}`, {
-        work: work,
-        color: color,
-    }, { headers: { Authorization: `Bearer ${localStorage.token}` } },
+export const updateList = createAsyncThunk('UPDATE_LIST', async (payload) => {
+    console.log(payload)
+    console.log(payload.upDateToDo)
+    console.log(payload.toDoId)
+    const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${payload.toDoId}`,
+        payload.upDateToDo,
+        { headers: { Authorization: `Bearer ${localStorage.token}` } },
     );
     console.log(response);
     return response.data;
