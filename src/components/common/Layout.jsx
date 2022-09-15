@@ -7,11 +7,9 @@ const Layout = (props) => {
 };
 
 const StyledLayout = styled.div`
-    position: relative;
     margin: 0 auto;
     height: 100vh;
-    display: flex;
-    flex-direction: column;
+    
     justify-content: center;
     align-items: center;
     background-color: var(--neutral-20);

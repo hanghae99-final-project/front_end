@@ -1,61 +1,91 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styled from 'styled-components';
 import { deleteList, getList, updateList, updateToDoDone } from '../app/slice/toDoSlice';
 import styles from '../css/toDoList.module.css';
+import ToDoModify from './ToDoModify';
 
 const ToDoList = () => {
-    const [upDateValue, setUpDateValue] = useState('');
-    const [upDateColor, setUpDateColor] = useState('#FFFFFF');
+  const [upDateValue, setUpDateValue] = useState('');
+  const [upDateColor, setUpDateColor] = useState('#FFFFFF');
+  const [btnOn, setBtnOn] = useState(true)
+  const [modifyOn, setModifyOn] = useState("")
+  const [modifyModal, setModifyModal] = useState("")
 
-    const dispatch = useDispatch();
-    const toDos = useSelector((state) => state.toDo);
-    console.log(toDos);
-    useEffect(() => {
-        dispatch(getList());
-    }, []);
+  const dispatch = useDispatch();
+  const toDos = useSelector((state) => state.toDo);
+  console.log(toDos);
 
-    const onDeleteToDoHandler = (toDoId) => {
-        dispatch(deleteList(toDoId));
-    };
+  useEffect(() => {
+    dispatch(getList());
+  }, []);
 
-    const onChnageTodoValueUpDateHandler = (e) => {
-        setUpDateValue(e.target.value);
-    };
+  const onDeleteToDoHandler = (toDoId) => {
+    dispatch(deleteList(toDoId));
+  };
 
-    const onUpdateToDoHandler = (toDoId) => {
-        if (upDateValue !== '') {
-            dispatch(updateList({ id: toDoId, work: upDateValue, color: upDateColor }));
-        } else {
-            alert('수정할 내용을 입력해 주세요.');
-        }
-        setUpDateValue('');
-    };
+  const onClickModifyOnOff = (e) => {
+    console.dir(e.target)
+  }
 
-    const onClickToDoDone = (isDone, toDoId) => {
-        dispatch(updateToDoDone({ isDone: !isDone, id: toDoId }));
-    };
+  const onChnageTodoValueUpDateHandler = (e) => {
+    setUpDateValue(e.target.value);
+  };
 
-    return (
-        <div>
-            <ul>
-                {toDos
-                    ?.map((toDo) => {
-                        return (
-                            <li key={toDo._id}>
-                                <button onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}>{toDo.isDone ? '취소' : '완료'}</button>
-                                <p className={toDo.isDone ? styles.ToDoTrue : styles.ToDoFalse}>{toDo.work}</p>
-                                <button onClick={() => onDeleteToDoHandler(toDo._id)} type='button'>
-                                    -
-                                </button>
-                                <input type='text' onChange={onChnageTodoValueUpDateHandler} />
-                                <button onClick={() => onUpdateToDoHandler(toDo._id)}>수정</button>
-                            </li>
-                        );
-                    })
-                    .reverse()}
-            </ul>
-        </div>
-    );
+  // const onUpdateToDoHandler = (toDoId) => {
+  //   if (upDateValue !== '') {
+  //     dispatch(updateList({ id: toDoId, work: upDateValue, color: upDateColor }));
+  //   } else {
+  //     alert('수정할 내용을 입력해 주세요.');
+  //   }
+  //   setUpDateValue('');
+  // };
+
+  const onClickToDoDone = (isDone, toDoId) => {
+    dispatch(updateToDoDone({ isDone: !isDone, id: toDoId }));
+  };
+
+  return (
+    <ul>
+      {toDos
+        ?.map((toDo) => {
+          return (
+            <div key={toDo._id}>
+              <li >
+                <div className={modifyOn === toDo._id ? `${styles.toDoContainer} ${styles.modifyOn}` : styles.toDoContainer} >
+                  <div className={styles.toDoWarp}>
+                    <div onClick={() => {
+                      modifyOn === toDo._id ? setModifyOn('') : setModifyOn(toDo._id); setModifyModal("")
+                    }} className={styles.toDoValueWarp}>
+                      <PickColor bgColor={toDo.color}></PickColor>
+                      <p className={toDo.isDone ? styles.ToDoTrue : styles.ToDoFalse}>{toDo.work}</p>
+                    </div>
+                    <button className={toDo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn} onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}></button>
+                  </div>
+                </div>
+
+                <div className={styles.btnWarp}>
+                  <button className={styles.modifyBtn} /* disabled={btnOn} */ onClick={() => { modifyModal === toDo._id ? setModifyModal("") : setModifyModal(toDo._id) }}>수정</button>
+                  <button className={styles.delBtn} onClick={() => onDeleteToDoHandler(toDo._id)} type='button'>
+                    -
+                  </button>
+                </div>
+              </li>
+              {modifyModal === toDo._id ? <ToDoModify toDoId={toDo._id} setModifyModal={setModifyModal} setModifyOn={setModifyOn} /> : ""}
+            </div >
+          );
+        })
+        .reverse()}
+    </ul >
+  );
 };
+
+const PickColor = styled.div` 
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  background-color: ${(props) => props.bgColor};
+`;
 
 export default ToDoList;
