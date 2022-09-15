@@ -5,9 +5,10 @@ import rankingSlice from './slice/rankingSlice';
 import mySlice from './slice/mySlice';
 import timeTimerSlice from './slice/timeTimerSlice';
 import dDaySlice from './slice/DdaySlice';
-import calenderSlice from "./slice/calenderSlice";
-import joinSlice from "./slice/joinSlice";
-import profileSlice from "./slice/profileSlice";
+import calenderSlice from './slice/calenderSlice';
+import joinSlice from './slice/joinSlice';
+import profileSlice from './slice/profileSlice';
+import colorSlice from './slice/layoutColorSlice';
 
 export const store = configureStore({
     reducer: {
@@ -20,5 +21,6 @@ export const store = configureStore({
         dDay: dDaySlice.reducer,
         join: joinSlice.reducer,
         profile: profileSlice.reducer,
+        color: colorSlice.reducer,
     },
 });

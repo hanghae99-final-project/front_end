@@ -87,7 +87,7 @@ const Stopwatch = () => {
 
     return (
         <div className={styles.stopwatch}>
-            <div>{changeTimeForm(remainTime)}</div>
+            {running && <div className={styles.remainTime}>{changeTimeForm(remainTime)}</div>}
             {mode === 'normal' ? (
                 <img
                     className={styles.clock}

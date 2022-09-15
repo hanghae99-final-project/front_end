@@ -8,6 +8,8 @@ import pause from '../image/pause_icon.svg';
 import play from '../image/play_icon.svg';
 import changeTimeForm from './changeTimeForm';
 import StopButton from './StopButton';
+import { changeColor } from '../app/slice/layoutColorSlice';
+import Quote from './Quote';
 
 const TimeTimer = () => {
     const date = new Date().getTime();
@@ -26,6 +28,8 @@ const TimeTimer = () => {
     const [targetToSec, setTargetToSec] = useState(targetTime); // 설정시간을 초로 나타냄
     const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
 
+    const [color, setColor] = useState('');
+
     const [rest, setRest] = useState(false); // 휴식 관리
     const [run, setRun] = useState(false); // 타임타이머 동작 여부
     const [second, setSecond] = useState(0); // just '초'
@@ -40,6 +44,19 @@ const TimeTimer = () => {
     useEffect(() => {
         dispatch(get_studytime());
     }, [dispatch]);
+
+    console.log(color);
+    useEffect(() => {
+        if (studyStartPoint !== 0) {
+            setColor(second >= targetTime / 1000 ? 'red' : 'green');
+        } else if (restStartPoint !== 0) {
+            setColor('blue');
+        }
+    }, [studyStartPoint, restStartPoint]);
+
+    useEffect(() => {
+        dispatch(changeColor(color));
+    }, [color]);
 
     /** 공부 시작 버튼 클릭 시 1초에 한 번씩 second를 업데이트 하도록 설정 */
     useEffect(() => {
@@ -134,7 +151,15 @@ const TimeTimer = () => {
                             <circle className={styles.basePath} cx='50' cy='50' r='45' />
                             <path
                                 strokeDasharray={`${sec} 283`}
-                                className={styles.pathRemaining}
+                                className={
+                                    second >= targetTime
+                                        ? styles.pathRed
+                                        : color === 'green'
+                                        ? styles.pathGreen
+                                        : color === 'blue'
+                                        ? styles.pathBlue
+                                        : styles.pathRemaining
+                                }
                                 d='
           M 50, 50
           m -45, 0
@@ -147,19 +172,13 @@ const TimeTimer = () => {
                         <span className={styles.timerLabel}>
                             {!run ? (
                                 <div className={styles.targetTime}>
-                                    {mode === 'normal' ? (
+                                    {mode === 'normal' && restStartPoint === 0 && (
                                         <button
+                                            className={styles.setTime}
                                             onClick={() => {
                                                 setMode('set');
                                             }}>
-                                            시간 설정
-                                        </button>
-                                    ) : (
-                                        <button
-                                            onClick={() => {
-                                                setMode('normal');
-                                            }}>
-                                            닫기
+                                            <img src={setting} alt='시간설정' />
                                         </button>
                                     )}
                                     <br />
@@ -176,7 +195,7 @@ const TimeTimer = () => {
                     </div>
                 </div>
             </div>
-
+            <Quote />
             {!run && !rest ? (
                 targetTime === 0 ? (
                     <button className={styles.settingBtn}>
@@ -191,6 +210,7 @@ const TimeTimer = () => {
                         onClick={() => {
                             setRefresh(true);
                             setRun(true);
+                            setColor(second >= targetTime / 1000 ? 'red' : 'green');
                         }}>
                         <div className={styles.playBox}>
                             <img src={play} alt='시작하기' className={styles.setting} />
@@ -207,6 +227,7 @@ const TimeTimer = () => {
                                 onClick={() => {
                                     setRest(true);
                                     setRefresh(false);
+                                    setColor('blue');
                                     dispatch(__postRestStart({ restStartPoint: date, studyEndPoint: date }));
                                 }}>
                                 <img src={pause} alt='휴식하기' />
@@ -230,12 +251,15 @@ const TimeTimer = () => {
                         </>
                     )}
                     <StopButton
-                        type='blue'
                         restStartPoint={restStartPoint}
                         date={date}
                         setRefresh={setRefresh}
                         setRun={setRun}
                         setRest={setRest}
+                        setColor={setColor}
+                        second={second}
+                        targetTime={targetTime}
+                        color={color}
                     />
                 </div>
             )}

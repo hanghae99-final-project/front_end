@@ -1,9 +1,11 @@
 @import './color.css';
 
 .dayBox {
-    display: flex;
     font-size: 0.875rem;
     font-weight: 300;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1rem;
 }
 
 .day {

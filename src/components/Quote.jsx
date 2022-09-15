@@ -6,12 +6,17 @@ import styles from '../css/quote.module.css';
 const Quote = () => {
     const dispatch = useDispatch();
     const quote = useSelector((state) => state.main.quote);
-    console.log(quote);
     useEffect(() => {
         dispatch(get_quote());
     }, [dispatch]);
 
-    return <div className={styles.quote}>{quote}</div>;
+    return (
+        <div className={styles.quoteBox}>
+            <span className={styles.quotes}>"</span>
+            <div className={styles.quote}>{quote}</div>
+            <span className={styles.quotes}>"</span>
+        </div>
+    );
 };
 
 export default Quote;
