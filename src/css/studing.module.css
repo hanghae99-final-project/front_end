@@ -1,0 +1,24 @@
+@import './color.css';
+
+.studing {
+    width: 3.063rem;
+    height: 1.75rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 7.188rem 2rem 7.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 26px;
+    background-color: var(--neutral-10);
+    color: var(--neutral-100);
+}
+
+.studing .online {
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.25rem;
+    background-color: var(--alerts-green);
+    z-index: 5;
+}

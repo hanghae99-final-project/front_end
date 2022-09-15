@@ -15,11 +15,10 @@ const ToDoPost = () => {
   });
   const dispatch = useDispatch();
 
-  const onChangeToDoHandler = (e) => {
-    const { name, value } = e.target;
-    setToDo({ ...toDo, [name]: value });
-  };
-
+    const onChangeToDoHandler = (e) => {
+        const { name, value } = e.target;
+        setToDo({ ...toDo, [name]: value });
+    };
 
   // 버튼 활성화 로직
   useEffect(() => {
