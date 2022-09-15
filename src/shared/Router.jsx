@@ -5,6 +5,8 @@ import ToDo from '../pages/ToDo';
 import KakaoFinish from '../pages/KakaoFinish';
 import MyPage from '../pages/MyPage';
 import Profile from '../pages/Profile';
+import Calender from "../components/Calender";
+
 
 function Router() {
     return (
@@ -14,10 +16,11 @@ function Router() {
                 <Route path='/detail/:id' element={<Detail />} />
                 <Route path='/todo' element={<ToDo />} />
                 <Route path='/users/kakao/finish' element={<KakaoFinish />} />
+                <Route path='/Calender' element={<Calender />} />
                 <Route path='/mypage' element={<MyPage />} />
                 <Route path='/profile' element={<Profile />} />
             </Routes>
-        </BrowserRouter>
+        </BrowserRouter >
     );
 }
 

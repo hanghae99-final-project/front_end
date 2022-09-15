@@ -5,6 +5,7 @@ import rankingSlice from './slice/rankingSlice';
 import mySlice from './slice/mySlice';
 import timeTimerSlice from './slice/timeTimerSlice';
 import dDaySlice from './slice/DdaySlice';
+import calenderSlice from "./slice/calenderSlice";
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
         ranking: rankingSlice.reducer,
         my: mySlice.reducer,
         timer: timeTimerSlice.reducer,
+        calender: calenderSlice.reducer,
         dDay: dDaySlice.reducer,
     },
 });
