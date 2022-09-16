@@ -1,9 +1,9 @@
 @font-face {
   font-family: Pretendard;
-  src: local(Pretendard-Light);
-  /* url(/path/to/Pretendard-Light.woff2) format("woff2"),
-    url(/path/to/Pretendard-Light.woff) format("woff"),
-    url(/path/to/Pretendard-Light.ttf) format("truetype"); */
+  src:
+    url(../font/Pretendard-Light.woff2) format("woff2"),
+    url(../font/Pretendard-Light.woff) format("woff"),
+    url(../font/Pretendard-Light.ttf) format("truetype");
   font-weight: 300;
   font-style: normal;
   font-stretch: normal;
@@ -11,10 +11,10 @@
 
 @font-face {
   font-family: Pretendard;
-  src: local(Pretendard-SemiBold);
-  /* url(/path/to/Pretendard-SemiBold.woff2) format("woff2"),
-    url(/path/to/Pretendard-SemiBold.woff) format("woff"),
-    url(/path/to/Pretendard-SemiBold.ttf) format("truetype"); */
+  src:
+    url(../font/Pretendard-SemiBold.woff2) format("woff2"),
+    url(../font/Pretendard-SemiBold.woff) format("woff"),
+    url(../font/Pretendard-SemiBold.ttf) format("truetype");
   font-weight: 600;
   font-style: normal;
   font-stretch: normal;
@@ -22,10 +22,10 @@
 
 @font-face {
   font-family: Pretendard;
-  src: local(Pretendard-Bold);
-  /* url(/path/to/Pretendard-Bold.woff2) format("woff2"),
-    url(/path/to/Pretendard-Bold.woff) format("woff"),
-    url(/path/to/Pretendard-Bold.ttf) format("truetype"); */
+  src:
+    url(../font/Pretendard-Bold.woff2) format("woff2"),
+    url(../font/Pretendard-Bold.woff) format("woff"),
+    url(../font/Pretendard-Bold.ttf) format("truetype");
   font-weight: bold;
   font-style: normal;
   font-stretch: normal;
