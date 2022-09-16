@@ -22,17 +22,30 @@ const Nickname = ({
   const [borderColor, setBorderColor] = useState("");
   const nicknameUsable = useSelector((data) => data.join.ok);
   const dispatch = useDispatch();
+
+  const combineHandler = () => {
+    // dispatch(__checkNickname(nickname));
+  };
+
   console.log(nicknameUsable);
   console.log(borderColor);
 
-  const combineHandler = () => {
+  // const checkNicknameHandler = () => {
+  //   nicknameUsable  ? "" : ""
+  // };
+
+  useEffect(() => {
     dispatch(__checkNickname(nickname));
-    !nicknameUsable ? setBorderColor("red") : setBorderColor("");
-  };
+    !nicknameUsable
+      ? setBorderColor("red")
+      : !check.test(userInfo.nickname)
+      ? setBorderColor("orange")
+      : setBorderColor("green");
+  }, [nickname]);
 
   return (
     <div className={styles.layout}>
-      <div>
+      <div className={styles.container}>
         <div className={styles.btnWrap}>
           <img className={styles.arrowbackIcon} src={arrowBtn} alt="arrow" />
         </div>
@@ -44,6 +57,10 @@ const Nickname = ({
           className={
             nickname !== "" && borderColor === "red"
               ? styles.red
+              : nickname !== "" && borderColor === "green"
+              ? styles.green
+              : nickname !== "" && borderColor === "orange"
+              ? styles.orange
               : styles.inputContainer
           }
         >
@@ -53,8 +70,8 @@ const Nickname = ({
               type="text"
               name="nickname"
               className={styles.inputNickname}
-              onBlur={combineHandler}
-              // onKeyPress={combineHandler}
+              // onBlur={combineHandler}
+              onKeyPress={combineHandler}
               value={nickname}
               onChange={handleInput}
               placeholder="8자 이내 한글"
@@ -76,16 +93,16 @@ const Nickname = ({
           </div>
         </div>
         <p className={styles.checkMsg}>{checkMsg}</p>
-        {check.test(userInfo.nickname) && !nicknameUsable ? (
-          <button className={styles.joinBtnNo} disabled>
-            다음
-          </button>
-        ) : (
-          <button className={styles.joinBtnYes} onClick={() => setMode("Age")}>
-            다음
-          </button>
-        )}
       </div>
+      {nickname === "" ? (
+        <button className={styles.joinBtnNo} disabled>
+          다음
+        </button>
+      ) : (
+        <button className={styles.joinBtnYes} onClick={() => setMode("Age")}>
+          다음
+        </button>
+      )}
     </div>
   );
 };
