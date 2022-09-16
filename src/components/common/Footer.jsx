@@ -40,4 +40,5 @@ const FooterBar = styled.div`
     @media (min-width: 1200px) {
         width: 1200px;
     }
+    z-index: 10;
 `;
