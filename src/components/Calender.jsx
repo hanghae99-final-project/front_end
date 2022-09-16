@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMondthList } from '../app/slice/calenderSlice';
 import styles from "../css/calender.module.css"
+import styles2 from '../css/common.module.css'
 
 
 const Calender = () => {
@@ -62,59 +63,68 @@ const Calender = () => {
   console.log(selectMonthData)
 
   // 선택한 월에 맞는 요일 및 날짜 바인딩
-  function calenderData() {
+
+
+
+
+  function calenderDate() {
     const data = [];
     let calenderPos = 0;
     let calenderDay = 0;
-
     for (let i = 0; i < weekCount; i++) {
-      data.push(<tr></tr>)
       for (let i2 = 0; i2 < 7; i2++) {
         let dayValue = new Date(selectedYear, selectedMonth - 1, calenderDay + 2).toISOString().split("T")[0];
         let ifValue = studyData.map(data => data.studyDate).includes(dayValue) && studyData.filter(data => data.studyDate === dayValue)[0].studyTime
         let hours = 3600000
 
-        if (studyData.map(data => data.studyDate).includes(dayValue) === false) {
+        if (today.date === calenderDay) {
           data.push(
-            <td style={{ backgroundColor: "white" }}>
+            <div className={styles.dateWarp} style={{ backgroundColor: "red" }}>
               {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount ?
                 (calenderDay++, <span value={dayValue}>{calenderDay}</span>) : ""}
-            </td>
+            </div>
+          )
+        } else if (studyData.map(data => data.studyDate).includes(dayValue) === false) {
+          data.push(
+            <div className={styles.dateWarp} style={{ backgroundColor: "#4b4a56" }}>
+              {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount ?
+                (calenderDay++, <span value={dayValue}>{calenderDay}</span>) : ""}
+            </div>
           )
         } else if (ifValue < hours * 3) {
           data.push(
-            <td style={{ backgroundColor: "blue" }}>
+            <div className={styles.dateWarp} style={{ backgroundColor: "#3a4940" }}>
               {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount ?
                 (calenderDay++, <span value={dayValue}>{calenderDay}</span>) : ""}
-            </td>
+            </div>
           )
         } else if (ifValue >= hours * 3 && ifValue < hours * 6) {
           data.push(
-            <td style={{ backgroundColor: "green" }}>
+            <div className={styles.dateWarp} style={{ backgroundColor: "#447257" }}>
               {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount ?
                 (calenderDay++, <span value={dayValue}>{calenderDay}</span>) : ""}
-            </td>
+            </div>
           )
         } else if (ifValue >= hours * 6 && ifValue < hours * 9) {
           data.push(
-            <td style={{ backgroundColor: "black" }}>
+            <div className={styles.dateWarp} style={{ backgroundColor: "#4e9a6e" }}>
               {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount ?
                 (calenderDay++, <span value={dayValue}>{calenderDay}</span>) : ""}
-            </td>
+            </div>
           )
         } else if (ifValue >= hours * 9 && ifValue < hours * 12) {
           data.push(
-            <td style={{ backgroundColor: "red" }} >{
+            <div className={styles.dateWarp} style={{ backgroundColor: "#66ffa6" }} >{
               calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount ?
                 (calenderDay++, <span value={dayValue}>{calenderDay}</span>) : ""}
-            </td>
+            </div>
           )
         } else {
           data.push(
-            <td style={{ backgroundColor: "gray" }}>{
+            <div className={styles.dateWarp} style={{ backgroundColor: "#ff8058" }}>{
               calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount ?
                 (calenderDay++, <span value={dayValue}>{calenderDay}</span>) : ""}
-            </td>
+            </div>
           )
         }
         calenderPos++;
@@ -123,28 +133,38 @@ const Calender = () => {
     return data
   }
 
+
+
+  function calenderData() {
+    const data = [];
+    data.push(<div className={styles.dateContainer}> {calenderDate()} </div>)
+
+    return data
+  }
+
   return (
     <div className={styles.container}>
-      <div className={styles.header}>
-        <button onClick={prevMonth}>◀︎</button>
-        <h1>{selectedYear}, {selectedMonth}</h1>
-        <button onClick={nextMonth}>►</button>
-      </div>
-      <table className={styles.weekWrap}>
-        <tbody>
-          <tr>
+      <div className={styles.innerWarp}>
+        <div className={styles.dateBtnWarp}>
+          <button className={styles.leftBtn} onClick={prevMonth}></button>
+          <h2 className={styles2.caption_600_12}>{selectedYear}년 {selectedMonth}월</h2>
+          <button className={styles.rightBtn} onClick={nextMonth}></button>
+        </div>
+
+        <div className={styles.weekWrap}>
+          <div className={styles.dayWarp}>
             {week.map((data, idx) => {
               return (
-                <td key={idx}>
+                <div className={`${styles.day} ${styles2.caption3_600_8}`} key={idx}>
                   <span>
                     {data}
                   </span>
-                </td>)
+                </div>)
             })}
-          </tr>
+          </div>
           {calenderData()}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };
