@@ -49,7 +49,7 @@ const joinSlice = createSlice({
   reducers: {},
   extraReducers: {
     [__joinUser.fulfilled]: (state, action) => {
-      alert("회원가입 완료");
+      console.log("회원가입 완료");
     },
     [__checkNickname.fulfilled]: (state, data) => {
       state.ok = data.payload;

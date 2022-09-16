@@ -93,9 +93,8 @@ p.infoText {
 }
 
 .joinBtnNo {
-  width: 22.5rem;
+  width: 22rem;
   height: 3.75rem;
-  margin: 26rem 0 0 0;
   border-radius: 8px;
   border: none;
   background-color: var(--neutral-30);
@@ -103,9 +102,8 @@ p.infoText {
 }
 
 .joinBtnYes {
-  width: 22.5rem;
+  width: 22rem;
   height: 3.75rem;
-  margin: 26rem 0 0 0;
   border-radius: 8px;
   background-color: var(--primary-50);
   border: none;
@@ -115,7 +113,7 @@ p.infoText {
 /* age */
 .agePickBtn {
   display: flex;
-  width: 22.5rem;
+  width: 22rem;
   height: 4.5rem;
   margin-bottom: 0.75rem;
   border-radius: 8px;
@@ -128,7 +126,7 @@ p.infoText {
 }
 
 .ageBase {
-  width: 22.5rem;
+  width: 22rem;
   height: 4.5rem;
   border-radius: 8px;
   margin-bottom: 0.75rem;
@@ -141,7 +139,7 @@ p.infoText {
 }
 
 .ageAfter {
-  width: 22.5rem;
+  width: 22rem;
   height: 4.5rem;
   border-radius: 8px;
   margin-bottom: 0.75rem;
@@ -154,9 +152,8 @@ p.infoText {
 }
 
 .ageBtnNo {
-  width: 22.5rem;
+  width: 22rem;
   height: 3.75rem;
-  margin: 16.15rem 0 0 0;
   border-radius: 8px;
   border: none;
   background-color: var(--neutral-30);
@@ -164,9 +161,8 @@ p.infoText {
 }
 
 .ageBtnYes {
-  width: 22.5rem;
+  width: 22rem;
   height: 3.75rem;
-  margin: 16.15rem 0 0 0;
   border-radius: 8px;
   background-color: var(--primary-50);
   border: none;
@@ -205,7 +201,6 @@ img.specCheckImg {
 .specBtnNo {
   width: 22.5rem;
   height: 3.75rem;
-  margin: 16.15rem 0 0 0;
   border-radius: 8px;
   border: none;
   background-color: var(--neutral-30);
@@ -213,52 +208,52 @@ img.specCheckImg {
 }
 
 .specBtnYes {
-  width: 22.5rem;
+  width: 22rem;
   height: 3.75rem;
-  margin: 3.65rem 0 0 0;
   border-radius: 8px;
   background-color: var(--primary-50);
   border: none;
   font-weight: 600;
 }
 
+.imgBox {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: inline-flex;
+  align-items: center;
+}
+
 .specPick {
-  border: solid 1px var(--primary-50);
+  border: 1px solid var(--primary-50);
   background-color: var(--neutral-20);
   color: var(--primary-50);
-  display: flex;
   font-weight: 300;
+  font-size: 1.2rem;
   height: 2rem;
   padding: 0.25rem 0.75rem;
   border-radius: 16px;
-  justify-content: center;
-  align-items: center;
 }
 
 .specBase {
-  display: flex;
   font-weight: 300;
+  font-size: 1.2rem;
   height: 2rem;
   padding: 0.25rem 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0);
+  border: 1px solid #ffffff;
   border-radius: 16px;
   background-color: var(--neutral-30);
   color: var(--neutral-100);
-  justify-content: center;
-  align-items: center;
 }
 
 .specAfter {
-  display: flex;
   font-weight: 300;
   height: 2rem;
   padding: 0.25rem 0.75rem;
-  border: 1px solid rgba(0, 0, 0, 0);
+  font-size: 1.2rem;
+  border: 1px solid #ffffff;
   border-radius: 16px;
   background-color: var(--neutral-30);
   color: var(--neutral-100);
-  justify-content: center;
-  align-items: center;
 }
 
 /* color border  */
@@ -310,15 +305,40 @@ img.specCheckImg {
 /* done */
 
 .doneMsg {
-  height: 4rem;
-  margin: 20rem 0;
-  font-family: Pretendard;
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: normal;
-  text-align: left;
   color: #ffffff;
+}
+
+.container {
+  border: 1px solid white;
+  width: 22rem;
+  height: 43.875rem;
+}
+
+.doneNickname {
+  color: var(--primary-50);
+}
+
+.msgContainer {
+  border: 1px solid white;
+  width: 22rem;
+  height: 43.875rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.joinDone {
+  font-size: 1rem;
+  color: var(--neutral-60);
+}
+
+.doneBtn {
+  width: 22.5rem;
+  height: 3.75rem;
+  border-radius: 8px;
+  background-color: var(--primary-50);
+  border: none;
+  font-weight: 600;
 }

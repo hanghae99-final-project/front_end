@@ -12,6 +12,7 @@ const StyledLayout = styled.div`
     justify-content: center;
     align-items: center;
     background-color: var(--neutral-20);
+    overflow: hidden;
     @media (max-width: 1200px) {
         width: 100%;
     }
