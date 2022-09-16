@@ -5,6 +5,8 @@ import styles from '../css/weeklyDataGraph.module.css';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { useState } from 'react';
+import { ReactComponent as LeftArrow } from '../svg/left_arrow.svg';
+import { ReactComponent as RightArrow } from '../svg/right_arrow.svg';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -25,7 +27,6 @@ const WeeklyDataGraph = () => {
         })
         .flat();
     console.log(weeklyStudyData);
-    const nowMonth = new Date().getMonth();
 
     const changeDate = (day) => {
         return new Date(date.setDate(day)).toISOString().substring(0, 10);
@@ -53,8 +54,19 @@ const WeeklyDataGraph = () => {
     const data = weeklyStudyData.map((element) => Math.floor(element?.studyTime / 3600000));
     console.log(data);
     // 16진수로 표현하여 opacity 조절
-    const dataColor = data.map((element) => Math.ceil((element / 24) * 256).toString(16));
-    console.log(dataColor);
+    const dataColor = data.map((element) => {
+        if (element >= 1 && element < 3) {
+            return (element = '#3a4941');
+        } else if (element >= 3 && element < 6) {
+            return (element = '#447157');
+        } else if (element >= 6 && element < 9) {
+            return (element = '#4d9a6d');
+        } else if (element >= 9 && element < 12) {
+            return (element = '#66FFA6');
+        } else if (element >= 12) {
+            return (element = '#ff8058');
+        }
+    });
 
     const options = {
         responsive: true,
@@ -69,7 +81,7 @@ const WeeklyDataGraph = () => {
                 text: 'Chart.js Bar Chart',
             },
         },
-        maxBarThickness: 20,
+        maxBarThickness: 15,
         scales: {
             x: {
                 grid: {
@@ -92,13 +104,13 @@ const WeeklyDataGraph = () => {
             {
                 label: 'Dataset 1',
                 backgroundColor: [
-                    `#25c137${dataColor[0]}`,
-                    `#25c137${dataColor[1]}`,
-                    `#25c137${dataColor[2]}`,
-                    `#25c137${dataColor[3]}`,
-                    `#25c137${dataColor[4]}`,
-                    `#25c137${dataColor[5]}`,
-                    `#25c137${dataColor[6]}`,
+                    `${dataColor[0]}`,
+                    `${dataColor[1]}`,
+                    `${dataColor[2]}`,
+                    `${dataColor[3]}`,
+                    `${dataColor[4]}`,
+                    `${dataColor[5]}`,
+                    `${dataColor[6]}`,
                 ],
                 data,
                 borderWidth: 0,
@@ -110,8 +122,8 @@ const WeeklyDataGraph = () => {
 
     return (
         <div className={styles.graph}>
-            <div style={{ display: 'flex' }}>
-                <button
+            <div className={styles.aboveBox}>
+                <LeftArrow
                     onClick={() => {
                         setWeek(
                             (prev) =>
@@ -120,13 +132,22 @@ const WeeklyDataGraph = () => {
                                     endWeek: changeDate(new Date(prev.endWeek).getDate() - 7),
                                 })
                         );
-                    }}>
-                    왼쪽
-                </button>
-                <div>{`${mondayDate} - ${sundayDate}`}</div>
-                <button>오른쪽</button>
+                    }}
+                />
+                <div className={styles.date}>{`${week.startWeek} - ${week.endWeek}`}</div>
+                <RightArrow
+                    onClick={() => {
+                        setWeek(
+                            (prev) =>
+                                (prev = {
+                                    startWeek: changeDate(new Date(prev.startWeek).getDate() + 7),
+                                    endWeek: changeDate(new Date(prev.endWeek).getDate() + 7),
+                                })
+                        );
+                    }}
+                />
             </div>
-            <Bar data={chartData} options={options} />
+            <Bar data={chartData} options={options} className={styles.graphData} />
         </div>
     );
 };

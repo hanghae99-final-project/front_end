@@ -33,11 +33,11 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                     return (
                         <div key={unit + t} ref={`${unit}${t}`}>
                             {time[unit] === t ? (
-                                <SwiperSlide style={{ backgroundColor: 'white', width: '50px' }} key={unit + t} className={styles.hour}>
+                                <SwiperSlide key={unit + t} className={`${styles.hour} ${styles.selected}`}>
                                     {t}
                                 </SwiperSlide>
                             ) : (
-                                <SwiperSlide style={{ width: '50px' }} key={unit + t} className={styles.hour}>
+                                <SwiperSlide key={unit + t} className={styles.hour}>
                                     {t}
                                 </SwiperSlide>
                             )}

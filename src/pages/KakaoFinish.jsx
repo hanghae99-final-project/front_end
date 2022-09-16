@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
@@ -20,12 +19,13 @@ const KakaoFinish = () => {
                 console.log(use.token);
                 localStorage.setItem('token', use.token);
                 if (localStorage.token !== undefined) {
-                    navigate('/', { state: localStorage.token });
+                    navigate('/home', { state: localStorage.token });
                 }
             }
-        } else {
-            navigate('/todo');
         }
+        //  else {
+        //     navigate('/todo');
+        // }
     }, [use]);
 
     return <div>gd</div>;

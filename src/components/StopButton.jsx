@@ -2,21 +2,23 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { __postStudyEnd } from '../app/slice/timeTimerSlice';
-import stop from '../image/stop_icon.svg';
 import '../css/color.css';
+import { ReactComponent as Stop } from '../image/stop_icon.svg';
 
-const StopButton = ({ restStartPoint, date, type, setRefresh, setRun, setRest }) => {
+const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest, setColor, second, targetTime, color }) => {
     const dispatch = useDispatch();
     return (
         <>
             <StopBtn
+                color={color}
                 onClick={() => {
                     setRefresh(false);
                     setRun(false);
                     setRest(false);
+                    setColor(second >= targetTime / 1000 ? 'red' : '');
                     dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
                 }}>
-                <img src={stop} alt='그만하기' />
+                <Stop fill={color === 'green' ? 'var(--neutral-10)' : 'var(--neutral-100)'} />
                 <div>그만하기</div>
             </StopBtn>
         </>
@@ -26,17 +28,27 @@ const StopButton = ({ restStartPoint, date, type, setRefresh, setRun, setRest })
 export default StopButton;
 
 const StopBtn = styled.button`
-    width: 10rem;
+    width: 45%;
     height: 3.75rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 3.438rem 1rem 1rem 0.5rem;
     padding: 0.75rem 1rem 0.75rem 0.5rem;
+    border: none;
     border-radius: 8px;
-    background-color: var(--neutral-10);
+    background-color: ${(props) => {
+        switch (props.color) {
+            case 'green':
+                return 'var(--primary-50)';
+            case 'blue':
+                return 'var(--neutral-10)';
+            default:
+                return;
+        }
+    }};
+
     div {
         width: 3.5rem;
         height: 1.5rem;
@@ -45,6 +57,15 @@ const StopBtn = styled.button`
         font-weight: 600;
         line-height: 1.5;
         text-align: center;
-        color: var(--neutral-100);
+        color: ${(props) => {
+            switch (props.color) {
+                case 'green':
+                    return 'var(--neutral-10)';
+                case 'blue':
+                    return 'var(--neutral-100)';
+                default:
+                    return 'var(--neutral - 100)';
+            }
+        }};
     }
 `;

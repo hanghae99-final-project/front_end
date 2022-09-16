@@ -5,6 +5,10 @@ import SetTimePicker from './SetTimePicker';
 const SetWatchModal = ({ remainTime, changeTimeForm, stop, setMode, setStop, running, setRunning, time, setTime }) => {
     return (
         <div className={styles.modal}>
+            <div className={styles.title}>
+                <div>목표 공부시간 설정</div>
+                {/* <button>닫기</button> */}
+            </div>
             {!running ? (
                 <>
                     <SetTimePicker setTime={setTime} time={time} />

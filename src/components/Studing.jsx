@@ -14,7 +14,7 @@ const Studing = () => {
     return (
         <div className={styles.studing}>
             <div className={styles.online}></div>
-            00{studying}
+            {studying}
         </div>
     );
 };

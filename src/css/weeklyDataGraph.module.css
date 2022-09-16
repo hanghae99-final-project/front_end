@@ -1,11 +1,26 @@
+@import './color.css';
+
 .graph {
     display: flex;
     flex-direction: column;
-    width: 22.5rem;
-    height: 10rem;
+    width: 20rem;
+    height: 14rem;
     position: relative;
     align-items: center;
     background-color: transparent;
     position: absolute;
-    bottom: 10rem;
+    bottom: 5rem;
+    background-color: var(--neutral-30);
+    border-radius: 16px;
+}
+
+.aboveBox {
+    display: flex;
+    padding: 1rem 0 0.2rem 0;
+    align-items: center;
+}
+
+.date {
+    color: var(--neutral-100);
+    padding: 0 2rem;
 }
