@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { __postStudyEnd } from '../app/slice/timeTimerSlice';
-import stop from '../image/stop_icon.svg';
 import '../css/color.css';
 import { ReactComponent as Stop } from '../image/stop_icon.svg';
 

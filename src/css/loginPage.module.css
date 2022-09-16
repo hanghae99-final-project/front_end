@@ -1,0 +1,16 @@
+.kakaoButton {
+    position: absolute;
+    bottom: 3rem;
+    left: calc(50% - 164px);
+}
+
+.logo {
+    position: absolute;
+    top: calc(50% - 80px);
+    left: calc(50% - 44.5px);
+}
+
+.background {
+    filter: blur(6px);
+    background: rgba(26, 27, 35, 0.3);
+}
