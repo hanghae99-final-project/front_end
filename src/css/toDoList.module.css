@@ -4,7 +4,7 @@ ul {
     overflow: hidden;
 }
 
-li {
+.innerWarp {
     width: 30rem;
     list-style: none;
     display: flex;

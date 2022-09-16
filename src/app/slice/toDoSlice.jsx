@@ -6,12 +6,21 @@ const now = new Date();
 const year = now.getFullYear();
 const months = ('0' + (now.getMonth() + 1)).slice(-2);
 const days = ('0' + now.getDate()).slice(-2);
+console.log(year, months, days)
 
 export const getList = createAsyncThunk('GET_TODO', async () => {
     const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/todo/${year}-${months}-${days}`, { headers: { Authorization: `Bearer ${localStorage.token}` } }
     );
     console.log(response);
     return response.data;
+});
+
+export const dailyTodo = createAsyncThunk('dailyTodo', async ({ year, month, date }) => {
+    console.log(year, month, date)
+    const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/mypage/dailyTodo/${year}-${month}-${date}`, { headers: { Authorization: `Bearer ${localStorage.token}` } }
+    );
+    console.log(response);
+    return response.data.todoData;
 });
 
 export const addList = createAsyncThunk('ADD_TODO', async (toDo) => {
@@ -79,6 +88,10 @@ const toDoSlice = createSlice({
                 }
             });
         },
+        [dailyTodo.fulfilled]: (state, { payload }) => {
+            console.log(payload.todoArr)
+            return state = payload.todoArr
+        }
     },
 });
 

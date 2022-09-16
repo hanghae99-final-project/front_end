@@ -9,6 +9,7 @@ import Profile from '../pages/Profile';
 import Calender from "../components/Calender";
 import Ranking from "../pages/Ranking";
 import Join from "../pages/Join";
+import ProfileTodoList from '../components/profile/ProfileTodoList';
 
 function Router() {
     return (
@@ -23,7 +24,7 @@ function Router() {
                 <Route path='/profile' element={<Profile />} />
                 <Route path="/join" element={<Join />} />
                 <Route path="/ranking" element={<Ranking />} />
-  
+                <Route path="/mytodo" element={<ProfileTodoList />} />
             </Routes>
         </BrowserRouter >
     );
