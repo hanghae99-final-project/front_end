@@ -91,13 +91,9 @@ const TimeTimer = () => {
     useEffect(() => {
         !isNaN(remainHour) && !isNaN(remainMinutes)
             ? second >= targetTime / 1000
-                ? setStatus('목표를 달성했어요 !')
-                : setStatus(`${remainHour}시간 ${remainMinutes}분 남았어요!`)
-            : setStatus(`어제 2시간 10분 공부했어요`);
-        if (target.hour !== 0 && target.minute !== 0 && targetToSec === second) {
-            setRun(false);
-            setStatus('목표량을 다 채웠어요!');
-        }
+                ? setStatus('🎉 목표를 달성했어요 !')
+                : setStatus(`⏰ ${remainHour}시간 ${remainMinutes}분 남았어요!`)
+            : setStatus(`✏️ 어제 2시간 10분 공부했어요`);
     }, [target, second, targetToSec]);
 
     /**
