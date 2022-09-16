@@ -122,7 +122,7 @@ const Ranking = () => {
         })}
       </div>
       <div className={styles.myStatus}>
-        <span className={styles.userRank}>{getMyRanking.rank}</span>
+        <span className={styles.padding}>{getMyRanking.rank}</span>
         <div className={styles.userBox}>
           <p className={styles.userNickname}>{getMyRanking.nickname}</p>
           <p className={styles.userSpec}>{getMyRanking.specialty}</p>

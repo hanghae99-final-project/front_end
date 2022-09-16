@@ -21,7 +21,7 @@ const Done = ({ nickname }) => {
       <button
         className={styles.doneBtn}
         onClick={() => {
-          navigate("/");
+          navigate("/home");
         }}
       >
         시작하기
