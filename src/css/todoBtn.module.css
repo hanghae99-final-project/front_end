@@ -1,0 +1,30 @@
+@import url(common.css);
+
+.container {
+  height: 1.5rem;
+  display: flex;
+  padding: 1.25rem 2rem;
+  background-color: var(--neutral-30);
+  align-items: center;
+  border-radius: 18px 18px 0 0;
+}
+
+.textContainer {
+
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.title {
+  color: var(--neutral-100);
+}
+
+.textWarp {
+  display: flex;
+  color: var(--neutral-100);
+}
+
+.totalTodo {
+  color: var(--neutral-60);
+}
