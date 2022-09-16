@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Stopwatch from '../components/Stopwatch';
 import Layout from '../components/common/Layout';
@@ -10,14 +11,18 @@ import styled from 'styled-components';
 import Footer from '../components/common/Footer';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
+import ToDo from "./ToDo";
+import TodoBtn from "../components/TodoBtn";
 
 const Home = () => {
     const color = useSelector((state) => state.color);
     const [mode, setMode] = useState('normal');
+    const [btsOn, setBtsOn] = useState(false);
     const [timeMode, setTimeMode] = useState('normal');
     return (
         <Layout>
             <Gradient color={color}>
+                <div onClick={() => { setBtsOn(false) }} className={btsOn ? styles.blurIn : styles.blurOut}>
                 <div className={styles.aboveBox}>
                     <img src={alert} alt='도움말 툴팁' className={styles.alert} />
                     <Studing />
@@ -25,6 +30,15 @@ const Home = () => {
                 </div>
                 <Dday />
                 <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
+                </div>
+                <div onClick={() => {
+          setBtsOn(!btsOn);
+        }}>
+          <TodoBtn />
+        </div>
+        <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff} >
+          <ToDo />
+        </div>
             </Gradient>
             <Footer />
             {mode === 'set' && (
@@ -45,7 +59,6 @@ const Home = () => {
             )}
         </Layout>
     );
-
 };
 
 export default Home;
