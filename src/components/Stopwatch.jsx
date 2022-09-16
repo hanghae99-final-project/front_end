@@ -86,25 +86,27 @@ const Stopwatch = () => {
     }, [restSecond]);
 
     return (
-        <div className={styles.stopwatch}>
-            {running && <div className={styles.remainTime}>{changeTimeForm(remainTime)}</div>}
-            {mode === 'normal' ? (
-                <img
-                    className={styles.clock}
-                    src={clock}
-                    alt='스톱워치'
-                    onClick={() => {
-                        setMode('set');
-                    }}
-                />
-            ) : (
-                <button
-                    onClick={() => {
-                        setMode('normal');
-                    }}>
-                    닫기
-                </button>
-            )}
+        <>
+            <div className={styles.stopwatch}>
+                {running && <div className={styles.remainTime}>{changeTimeForm(remainTime)}</div>}
+                {mode === 'normal' ? (
+                    <img
+                        className={styles.clock}
+                        src={clock}
+                        alt='스톱워치'
+                        onClick={() => {
+                            setMode('set');
+                        }}
+                    />
+                ) : (
+                    <button
+                        onClick={() => {
+                            setMode('normal');
+                        }}>
+                        닫기
+                    </button>
+                )}
+            </div>
             {mode === 'set' && (
                 <SetWatchModal
                     setRunning={setRunning}
@@ -118,7 +120,7 @@ const Stopwatch = () => {
                     remainTime={remainTime}
                 />
             )}
-        </div>
+        </>
     );
 };
 
