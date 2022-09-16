@@ -45,7 +45,7 @@
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  height: 9rem;
+  height: 8.5rem;
 }
 
 .todoListWarp::-webkit-scrollbar {
