@@ -5,6 +5,7 @@ import Footer from "../components/common/Footer";
 import Layout from "../components/common/Layout";
 import styles from "../css/ranking.module.css";
 import dropdownBtn from "../svg/dropdown_icon.svg";
+import check from "../svg/check_icon.svg";
 
 const Ranking = () => {
   const dispatch = useDispatch();
@@ -16,9 +17,9 @@ const Ranking = () => {
   const [showSheet, setShowSheet] = useState(false);
   const [btsOn, setBtsOn] = useState(false);
   const agePick = [
-    { ko: "20대", en: "twenty" },
-    { ko: "30대", en: "thirty" },
-    { ko: "기타", en: "all" },
+    { ko: "전체 랭킹", en: "all" },
+    { ko: "20대 랭킹", en: "twenty" },
+    { ko: "30대 랭킹", en: "thirty" },
   ];
   const datePick = [
     { ko: "일간", en: "day" },
@@ -170,9 +171,28 @@ const Ranking = () => {
           return (
             <div key={i} className={styles.btsWrap}>
               {ageMode === age.ko ? (
-                <button>{age.ko}</button>
+                <button
+                  className={styles.ageChoice}
+                  style={{ color: "#ffffff" }}
+                  onClick={() => {
+                    setAgeMode(age.ko);
+                    setType({ ...type, category: age.en });
+                  }}
+                >
+                  {age.ko}
+                  <img src={check} alt="check" />
+                </button>
               ) : (
-                <button>{age.ko}</button>
+                <button
+                  className={styles.ageChoice}
+                  style={{ color: "#7E7C8C" }}
+                  onClick={() => {
+                    setType({ ...type, category: age.en });
+                    setAgeMode(age.ko);
+                  }}
+                >
+                  {age.ko}
+                </button>
               )}
             </div>
           );
