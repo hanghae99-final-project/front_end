@@ -33,7 +33,6 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
   const [target, setTarget] = useState({ hour: 0, minute: 0 }); //
   const [targetToSec, setTargetToSec] = useState(targetTime); // 설정시간을 초로 나타냄
   const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
-
   const [color, setColor] = useState("");
 
   const [rest, setRest] = useState(false); // 휴식 관리
