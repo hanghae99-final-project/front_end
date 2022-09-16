@@ -8,15 +8,17 @@ import alert from "../image/alert_icon.svg";
 import styles from "../css/mainPage.module.css";
 import styled from "styled-components";
 import Footer from "../components/common/Footer";
+import ToDo from "./ToDo";
+import TodoBtn from "../components/TodoBtn";
 import { useSelector } from "react-redux";
 
 const Home = () => {
   const color = useSelector((state) => state.color);
   const [btsOn, setBtsOn] = useState(false);
   return (
-    <Layout>
+    <Layout >
       <Gradient color={color}>
-        <div className={btsOn ? styles.blurIn : styles.blurOut}>
+        <div onClick={() => { setBtsOn(false) }} className={btsOn ? styles.blurIn : styles.blurOut}>
           <div className={styles.aboveBox}>
             <img src={alert} alt="도움말 툴팁" className={styles.alert} />
             <Studing />
@@ -25,17 +27,17 @@ const Home = () => {
           <Dday />
           <TimeTimer />
         </div>
-        <div
-          className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}
-          onClick={() => {
-            setBtsOn(!btsOn);
-          }}
-        >
-          오늘 할 일
+        <div onClick={() => {
+          setBtsOn(!btsOn);
+        }}>
+          <TodoBtn />
+        </div>
+        <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff} >
+          <ToDo />
         </div>
       </Gradient>
       <Footer />
-    </Layout>
+    </Layout >
   );
 };
 
