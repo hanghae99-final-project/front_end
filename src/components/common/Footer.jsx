@@ -5,7 +5,7 @@ import { ReactComponent as Rank } from '../../image/ranking_icon.svg';
 import { ReactComponent as Stats } from '../../image/stats_icon.svg';
 import '../../css/color.css';
 import { Link, useLocation } from 'react-router-dom';
-// #fff
+
 const Footer = () => {
     const location = useLocation();
     console.log(location);
