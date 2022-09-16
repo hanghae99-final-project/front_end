@@ -12,7 +12,7 @@ const Footer = () => {
             <Link to='/ranking'>
                 <img src={ranking} alt='ranking' />
             </Link>
-            <Link to='/'>
+            <Link to='/home'>
                 <img src={home} alt='home' />
             </Link>
             <Link to='/mypage'>

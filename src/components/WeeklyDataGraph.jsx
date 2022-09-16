@@ -5,6 +5,8 @@ import styles from '../css/weeklyDataGraph.module.css';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { useState } from 'react';
+import { ReactComponent as LeftArrow } from '../svg/left_arrow.svg';
+import { ReactComponent as RightArrow } from '../svg/right_arrow.svg';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -25,7 +27,6 @@ const WeeklyDataGraph = () => {
         })
         .flat();
     console.log(weeklyStudyData);
-    const nowMonth = new Date().getMonth();
 
     const changeDate = (day) => {
         return new Date(date.setDate(day)).toISOString().substring(0, 10);
@@ -66,7 +67,6 @@ const WeeklyDataGraph = () => {
             return (element = '#ff8058');
         }
     });
-    console.log(dataColor);
 
     const options = {
         responsive: true,
@@ -81,7 +81,7 @@ const WeeklyDataGraph = () => {
                 text: 'Chart.js Bar Chart',
             },
         },
-        maxBarThickness: 20,
+        maxBarThickness: 15,
         scales: {
             x: {
                 grid: {
@@ -122,8 +122,8 @@ const WeeklyDataGraph = () => {
 
     return (
         <div className={styles.graph}>
-            <div style={{ display: 'flex' }}>
-                <button
+            <div className={styles.aboveBox}>
+                <LeftArrow
                     onClick={() => {
                         setWeek(
                             (prev) =>
@@ -132,11 +132,10 @@ const WeeklyDataGraph = () => {
                                     endWeek: changeDate(new Date(prev.endWeek).getDate() - 7),
                                 })
                         );
-                    }}>
-                    왼쪽
-                </button>
-                <div>{`${week.startWeek} - ${week.endWeek}`}</div>
-                <button
+                    }}
+                />
+                <div className={styles.date}>{`${week.startWeek} - ${week.endWeek}`}</div>
+                <RightArrow
                     onClick={() => {
                         setWeek(
                             (prev) =>
@@ -145,11 +144,10 @@ const WeeklyDataGraph = () => {
                                     endWeek: changeDate(new Date(prev.endWeek).getDate() + 7),
                                 })
                         );
-                    }}>
-                    오른쪽
-                </button>
+                    }}
+                />
             </div>
-            <Bar data={chartData} options={options} />
+            <Bar data={chartData} options={options} className={styles.graphData} />
         </div>
     );
 };
