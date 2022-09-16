@@ -1,3 +1,31 @@
+@import './color.css';
+
 .timePickerBox {
     display: flex;
+    position: relative;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.selectedBox {
+    background-color: var(--neutral-40);
+    width: 17rem;
+    border-radius: 4px;
+    height: 32px;
+    top: 6rem;
+    position: absolute;
+    display: flex;
+    color: var(--neutral-100);
+}
+
+.hour {
+    position: absolute;
+    left: 6rem;
+    top: 0.38rem;
+}
+
+.minute {
+    position: absolute;
+    left: 13.3rem;
+    top: 0.38rem;
 }
