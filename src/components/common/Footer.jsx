@@ -33,6 +33,7 @@ const FooterBar = styled.div`
   background-color: var(--neutral-20);
   position: fixed;
   bottom: 0;
+  z-index: 6;
   justify-content: space-around;
   @media (max-width: 1200px) {
     width: 100%;
