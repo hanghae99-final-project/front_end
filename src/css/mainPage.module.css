@@ -1,3 +1,4 @@
+@import './color.css';
 .alert {
     width: 1.5rem;
     height: 1.5rem;
@@ -7,7 +8,6 @@
 .aboveBox {
     display: flex;
     align-items: center;
-    position: relative;
     /* height: 5rem; */
     margin: 0 16px;
     padding: 3rem 0;
@@ -17,4 +17,14 @@
     @media (min-width: 1200px) {
         width: 1200px;
     }
+}
+
+.blur {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    /* background-color: black; */
+    backdrop-filter: blur(2px);
+    /* opacity: 0.4; */
 }

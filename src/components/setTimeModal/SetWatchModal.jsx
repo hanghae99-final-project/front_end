@@ -1,13 +1,19 @@
 import React from 'react';
 import styles from '../../css/setTimeModal.module.css';
 import SetTimePicker from './SetTimePicker';
+import { ReactComponent as Close } from '../../svg/close.svg';
 
 const SetWatchModal = ({ remainTime, changeTimeForm, stop, setMode, setStop, running, setRunning, time, setTime }) => {
     return (
-        <div className={styles.modal}>
+        <div className={localStorage.targetTime > 0 ? styles.setModal : styles.modal}>
             <div className={styles.title}>
                 <div>목표 공부시간 설정</div>
-                {/* <button>닫기</button> */}
+                <Close
+                    className={styles.close}
+                    onClick={() => {
+                        setMode('normal');
+                    }}
+                />
             </div>
             {!running ? (
                 <>
@@ -24,36 +30,41 @@ const SetWatchModal = ({ remainTime, changeTimeForm, stop, setMode, setStop, run
                 </>
             ) : (
                 <>
-                    {changeTimeForm(remainTime)}
-                    <button
-                        onClick={() => {
-                            setRunning(false);
-                            setTime({ hour: 0, minute: 0, second: 0 });
-                            localStorage.removeItem('startTime');
-                            localStorage.removeItem('targetTime');
-                            localStorage.removeItem('restTime');
-                            localStorage.removeItem('time');
-                            setMode('normal');
-                        }}>
-                        끝내기
-                    </button>
-                    {!stop ? (
+                    {changeTimeForm(remainTime, styles.remainTime)}
+                    <div className={styles.buttonBox}>
+                        {!stop ? (
+                            <button
+                                className={styles.stopButton}
+                                onClick={() => {
+                                    setStop(true);
+                                    localStorage.setItem('restStart', true);
+                                }}>
+                                멈추기
+                            </button>
+                        ) : (
+                            <button
+                                className={styles.stopButton}
+                                onClick={() => {
+                                    localStorage.removeItem('restStart');
+                                    setStop(false);
+                                }}>
+                                계속하기
+                            </button>
+                        )}
                         <button
+                            className={styles.endButton}
                             onClick={() => {
-                                setStop(true);
-                                localStorage.setItem('restStart', true);
+                                setRunning(false);
+                                setTime({ hour: 0, minute: 0, second: 0 });
+                                localStorage.removeItem('startTime');
+                                localStorage.removeItem('targetTime');
+                                localStorage.removeItem('restTime');
+                                localStorage.removeItem('time');
+                                setMode('normal');
                             }}>
-                            멈추기
+                            종료하기
                         </button>
-                    ) : (
-                        <button
-                            onClick={() => {
-                                localStorage.removeItem('restStart');
-                                setStop(false);
-                            }}>
-                            계속하기
-                        </button>
-                    )}
+                    </div>
                 </>
             )}
         </div>

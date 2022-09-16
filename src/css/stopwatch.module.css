@@ -6,7 +6,7 @@
     align-items: center;
     background-color: var();
     height: 1.5rem;
-    right: 0;
+    right: 16px;
 }
 
 .clock {

@@ -9,21 +9,40 @@ import styles from '../css/mainPage.module.css';
 import styled from 'styled-components';
 import Footer from '../components/common/Footer';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const Home = () => {
     const color = useSelector((state) => state.color);
+    const [mode, setMode] = useState('normal');
+    const [timeMode, setTimeMode] = useState('normal');
     return (
         <Layout>
             <Gradient color={color}>
                 <div className={styles.aboveBox}>
                     <img src={alert} alt='도움말 툴팁' className={styles.alert} />
                     <Studing />
-                    <Stopwatch />
+                    <Stopwatch mode={mode} setMode={setMode} />
                 </div>
                 <Dday />
-                <TimeTimer />
+                <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
             </Gradient>
             <Footer />
+            {mode === 'set' && (
+                <div
+                    className={styles.blur}
+                    onClick={() => {
+                        setMode('normal');
+                    }}
+                />
+            )}
+            {timeMode === 'set' && (
+                <div
+                    className={styles.blur}
+                    onClick={() => {
+                        setTimeMode('normal');
+                    }}
+                />
+            )}
         </Layout>
     );
 };
@@ -42,7 +61,7 @@ const Gradient = styled.div`
             case 'red':
                 return 'linear-gradient(to bottom, var(--neutral-20), #4f3f40 43%, #996153 73%, var(--secondary-60))';
             default:
-                return 'none';
+                return 'transparent';
         }
     }};
 `;

@@ -7,6 +7,7 @@ import { ReactComponent as Person } from '../svg/person.svg';
 import { ReactComponent as Event } from '../svg/event_available.svg';
 import styles from '../css/mypage.module.css';
 import ProfileTodoList from '../components/profile/ProfileTodoList';
+import Calender from '../components/Calender';
 import { Link } from 'react-router-dom';
 
 const MyPage = () => {
@@ -27,7 +28,7 @@ const MyPage = () => {
                     </button>
                 </div>
                 <div style={{ display: 'flex', padding: '0.7rem', gap: '10px' }}>
-                    <ProfileTodoList />
+                    <Calender />
                     <ProfileTodoList />
                 </div>
                 <WeeklyDataGraph />

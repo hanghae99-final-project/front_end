@@ -11,7 +11,7 @@ import StopButton from './StopButton';
 import { changeColor } from '../app/slice/layoutColorSlice';
 import Quote from './Quote';
 
-const TimeTimer = () => {
+const TimeTimer = ({ timeMode, setTimeMode }) => {
     const date = new Date().getTime();
     const dispatch = useDispatch();
 
@@ -22,7 +22,6 @@ const TimeTimer = () => {
     const targetTime = useSelector((state) => state.timer?.targetTime);
     const yesterdayStudyTime = useSelector((state) => state.timer?.yesterdayStudyTime);
 
-    const [mode, setMode] = useState('normal');
     const [refresh, setRefresh] = useState(false);
     const [target, setTarget] = useState({ hour: 0, minute: 0 }); //
     const [targetToSec, setTargetToSec] = useState(targetTime); // 설정시간을 초로 나타냄
@@ -148,13 +147,7 @@ const TimeTimer = () => {
                             <path
                                 strokeDasharray={`${sec} 283`}
                                 className={
-                                    second >= targetTime
-                                        ? styles.pathRed
-                                        : color === 'green'
-                                        ? styles.pathGreen
-                                        : color === 'blue'
-                                        ? styles.pathBlue
-                                        : styles.pathRemaining
+                                    color === 'blue' ? styles.pathBlue : second >= targetTime / 1000 ? styles.pathRed : styles.pathGreen
                                 }
                                 d='
           M 50, 50
@@ -168,11 +161,11 @@ const TimeTimer = () => {
                         <span className={styles.timerLabel}>
                             {!run ? (
                                 <div className={styles.targetTime}>
-                                    {mode === 'normal' && restStartPoint === 0 && (
+                                    {timeMode === 'normal' && restStartPoint === 0 && (
                                         <button
                                             className={styles.setTime}
                                             onClick={() => {
-                                                setMode('set');
+                                                setTimeMode('set');
                                             }}>
                                             <img src={setting} alt='시간설정' />
                                         </button>
@@ -181,7 +174,7 @@ const TimeTimer = () => {
                                 </div>
                             ) : (
                                 <div className={styles.targetTime}>
-                                    {changeTimeForm(targetToSec)}
+                                    {changeTimeForm(targetToSec, styles.target)}
                                     <br />
                                 </div>
                             )}
@@ -259,8 +252,14 @@ const TimeTimer = () => {
                     />
                 </div>
             )}
-            {mode === 'set' && (
-                <SetTimeModal targetToSec={targetToSec} setTarget={setTargetToSec} time={target} setTime={setTarget} setMode={setMode} />
+            {timeMode === 'set' && (
+                <SetTimeModal
+                    targetToSec={targetToSec}
+                    setTarget={setTargetToSec}
+                    time={target}
+                    setTime={setTarget}
+                    setMode={setTimeMode}
+                />
             )}
         </div>
     );

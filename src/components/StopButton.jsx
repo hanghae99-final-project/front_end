@@ -44,6 +44,8 @@ const StopBtn = styled.button`
                 return 'var(--primary-50)';
             case 'blue':
                 return 'var(--neutral-10)';
+            case 'red':
+                return 'var(--secondary-50)';
             default:
                 return;
         }
@@ -62,6 +64,8 @@ const StopBtn = styled.button`
                 case 'green':
                     return 'var(--neutral-10)';
                 case 'blue':
+                    return 'var(--neutral-100)';
+                case 'red':
                     return 'var(--neutral-100)';
                 default:
                     return 'var(--neutral - 100)';
