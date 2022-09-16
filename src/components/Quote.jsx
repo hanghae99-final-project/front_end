@@ -11,10 +11,12 @@ const Quote = () => {
     }, [dispatch]);
 
     return (
-        <div className={styles.quoteBox}>
-            <span className={styles.quotes}>"</span>
-            <div className={styles.quote}>{quote}</div>
-            <span className={styles.quotes}>"</span>
+        <div className={styles.heightBox}>
+            <div className={styles.quoteBox}>
+                <span className={styles.quotes}>"</span>
+                <div className={styles.quote}>{quote}</div>
+                <span className={styles.quotes}>"</span>
+            </div>
         </div>
     );
 };
