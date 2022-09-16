@@ -11,12 +11,9 @@ const Dday = () => {
     const targetDay = new Date(dDay?.deadline);
     const remainDay = Math.floor((targetDay - today) / 1000 / 3600 / 24);
 
-    console.log(remainDay);
     useEffect(() => {
         dispatch(__getDday());
     }, []);
-
-    console.log(dDay);
 
     return (
         <div className={styles.dayBox}>

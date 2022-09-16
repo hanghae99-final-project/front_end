@@ -1,5 +1,9 @@
 @import './color.css';
 
+.layout {
+    margin-top: 2rem;
+}
+
 .baseSvg {
     width: 17rem;
     transform: scaleX(-1);
@@ -19,7 +23,7 @@
 }
 
 .basePath {
-    stroke-width: 0.5rem;
+    stroke-width: 0.65rem;
     stroke: #525252;
 }
 
@@ -39,14 +43,40 @@
 }
 
 .pathRemaining {
-    stroke-width: 0.5rem;
+    stroke-width: 0.65rem;
     stroke-linecap: round;
     transform: rotate(90deg);
     transform-origin: center;
-    transition: 1s linear all;
-    stroke: currentColor;
+    transition: 0.3s linear all;
+    stroke: var(--neutral-10);
 }
 
+.pathRed {
+    stroke-width: 0.65rem;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 0.3s linear all;
+    stroke: var(--secondary-50);
+}
+
+.pathBlue {
+    stroke-width: 0.65rem;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 0.3s linear all;
+    stroke: var(--tertiary-50);
+}
+
+.pathGreen {
+    stroke-width: 0.65rem;
+    stroke-linecap: round;
+    transform: rotate(90deg);
+    transform-origin: center;
+    transition: 0.3s linear all;
+    stroke: var(--primary-50);
+}
 .targetTime {
     position: absolute;
 
@@ -63,7 +93,7 @@
     height: 1rem;
     background-color: var(--opacity-w-10);
     border-radius: 26px;
-    /* color: var(--neutral-100); */
+    color: var(--neutral-100);
     padding: 0.3rem 0;
 }
 
@@ -109,14 +139,13 @@
 }
 
 .playBtn {
-    width: 20.5rem;
+    width: 90%;
     height: 3.75rem;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 3.438rem 1rem 1rem;
+    margin: 3.438rem auto;
     padding: 0.75rem 1rem;
     border-radius: 8px;
     border: none;
@@ -160,17 +189,17 @@
 }
 
 .restStartBtn {
-    width: 10rem;
+    width: 45%;
     height: 3.75rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 3.438rem 0.5rem 1rem 1rem;
     padding: 0.75rem 1rem;
     border-radius: 8px;
     background-color: var(--neutral-10);
+    border: none;
 }
 
 .restTime {
@@ -202,16 +231,16 @@
 }
 
 .restEndBtn {
-    width: 10rem;
+    width: 45%;
     height: 3.75rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 3.438rem 0.5rem 1rem 1rem;
     padding: 0.75rem 1rem;
     border-radius: 8px;
+    border: none;
     background-color: var(--tertiary-50);
 }
 
@@ -228,4 +257,14 @@
 
 .studingButtonBox {
     display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: 3.75rem;
+    margin: 3.438rem auto;
+}
+
+.setTime {
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
 }

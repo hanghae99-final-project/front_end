@@ -1,7 +1,6 @@
 import React from 'react';
 import Stopwatch from '../components/Stopwatch';
 import Layout from '../components/common/Layout';
-import Quote from '../components/Quote';
 import Studing from '../components/Studing';
 import TimeTimer from '../components/TimeTimer';
 import Dday from '../components/Dday';
@@ -19,7 +18,6 @@ const Home = () => {
                     <Stopwatch />
                 </div>
                 <TimeTimer />
-                <Quote />
             </div>
             <Footer />
         </Layout>
