@@ -5,7 +5,7 @@ import { ReactComponent as Logo } from '../svg/logo.svg';
 import Layout from '../components/common/Layout';
 import styles from '../css/loginPage.module.css';
 
-const Detail = () => {
+const LoginPage = () => {
     const authURI = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
 
     return (
@@ -22,4 +22,4 @@ const Detail = () => {
     );
 };
 
-export default Detail;
+export default LoginPage;
