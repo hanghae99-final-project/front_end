@@ -23,8 +23,8 @@
 }
 
 .basePath {
-  stroke-width: 0.65rem;
-  stroke: #525252;
+    stroke-width: 0.65rem;
+    stroke: var(--opacity-w-10);
 }
 
 .timerLabel {
@@ -123,6 +123,10 @@
   line-height: 1.5;
   letter-spacing: normal;
   text-align: center;
+}
+
+.target {
+    color: var(--opacity-w-10);
 }
 
 .setting {

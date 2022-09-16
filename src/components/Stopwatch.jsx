@@ -5,7 +5,7 @@ import styles from '../css/stopwatch.module.css';
 import clock from '../image/check_icon.svg';
 import changeTimeForm from './changeTimeForm';
 
-const Stopwatch = () => {
+const Stopwatch = ({ mode, setMode }) => {
     /** 현재시간 및 시작 시간 */
     const currentDate = new Date().getTime();
 
@@ -15,7 +15,6 @@ const Stopwatch = () => {
     const restTime = Number(localStorage.getItem('restTime')); // 존재하지 않으면 0
 
     const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
-    const [mode, setMode] = useState('normal');
     const [running, setRunning] = useState(false);
     const [stop, setStop] = useState(false);
     /** 시간 설정 */
@@ -89,23 +88,15 @@ const Stopwatch = () => {
         <>
             <div className={styles.stopwatch}>
                 {running && <div className={styles.remainTime}>{changeTimeForm(remainTime)}</div>}
-                {mode === 'normal' ? (
-                    <img
-                        className={styles.clock}
-                        src={clock}
-                        alt='스톱워치'
-                        onClick={() => {
-                            setMode('set');
-                        }}
-                    />
-                ) : (
-                    <button
-                        onClick={() => {
-                            setMode('normal');
-                        }}>
-                        닫기
-                    </button>
-                )}
+
+                <img
+                    className={styles.clock}
+                    src={clock}
+                    alt='스톱워치'
+                    onClick={() => {
+                        setMode('set');
+                    }}
+                />
             </div>
             {mode === 'set' && (
                 <SetWatchModal
@@ -123,5 +114,4 @@ const Stopwatch = () => {
         </>
     );
 };
-
 export default Stopwatch;

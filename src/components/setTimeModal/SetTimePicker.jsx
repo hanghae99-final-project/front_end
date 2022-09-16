@@ -11,9 +11,11 @@ const SetTimePicker = ({ setTime, time }) => {
     return (
         <div className={styles.timePickerBox}>
             <TimePicker mode={hour} time={time} setTime={setTime} unit='hour' />
-            <div>시간</div>
             <TimePicker mode={minute} time={time} setTime={setTime} unit='minute' />
-            <div>분</div>
+            <div className={styles.selectedBox}>
+                <div className={styles.hour}>시간</div>
+                <div className={styles.minute}>분</div>
+            </div>
         </div>
     );
 };
