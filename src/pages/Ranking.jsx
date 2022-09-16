@@ -27,7 +27,7 @@ const Ranking = () => {
     { ko: "월간", en: "month" },
   ];
   const [mode, setMode] = useState("일간");
-  const [ageMode, setAgeMode] = useState("20대");
+  const [ageMode, setAgeMode] = useState("전체 랭킹");
 
   const [type, setType] = useState({ period: "day", category: "all" });
   console.log(type);
@@ -47,7 +47,7 @@ const Ranking = () => {
         onClick={modalOffHandler}
       >
         <div className={styles.rankingType}>
-          전체 랭킹
+          {ageMode}
           <button
             className={styles.dropdownBtn}
             onClick={(e) => {
