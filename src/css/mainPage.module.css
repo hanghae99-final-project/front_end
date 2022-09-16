@@ -1,7 +1,7 @@
 .alert {
     width: 1.5rem;
     height: 1.5rem;
-    margin: 0 0 0.25rem 0.5rem;
+    margin: 0 0 0.25rem 0;
 }
 
 .aboveBox {
@@ -9,6 +9,7 @@
     align-items: center;
     position: relative;
     /* height: 5rem; */
+    margin: 0 16px;
     padding: 3rem 0;
     @media (max-width: 1200px) {
         width: 100%;

@@ -2,16 +2,24 @@
 
 .quote {
     color: var(--neutral-100);
+    width: 14rem;
+    height: 100%;
+    margin: 0 1.5rem;
+    font-weight: 300;
 }
 
 .quotes {
     color: var(--neutral-100);
-
     font-size: 1.3rem;
 }
 
 .quoteBox {
     display: flex;
-    justify-content: space-around;
-    margin: 1rem 0 3rem 0;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0 2rem 0;
+}
+
+.heightBox {
+    height: 3rem;
 }
