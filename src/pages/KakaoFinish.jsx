@@ -23,9 +23,9 @@ const KakaoFinish = () => {
                 }
             }
         }
-        //  else {
-        //     navigate('/todo');
-        // }
+          else {
+             navigate('/join');
+         }
     }, [use]);
 
     return <div>gd</div>;
