@@ -1,9 +1,15 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, current } from '@reduxjs/toolkit';
+import axios from 'axios';
 import instance from './instance';
 
 export const getMonthList = createAsyncThunk('GET_MONTH', async (selectedMonth) => {
     const month = selectedMonth < 10 ? '0' + selectedMonth : selectedMonth;
-    const response = await instance.get(`/mypage/monthlyStudy/${month}`);
+    console.log(month);
+
+    const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/mypage/monthlyStudy/${month}`, {
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+    });
+    console.log(response);
     return response.data;
 });
 
