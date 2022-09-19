@@ -1,0 +1,31 @@
+@import url(../../common/css/common.css);
+
+.dayBox {
+    font-size: 0.875rem;
+    font-weight: 300;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1rem;
+}
+
+.day {
+    width: 2.125rem;
+    height: 1.25rem;
+    flex-grow: 0;
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.43;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--secondary-50);
+}
+
+.text {
+    line-height: 1.43;
+    letter-spacing: normal;
+    font-weight: 300;
+    text-align: left;
+    color: var(--neutral-80);
+    margin-left: 0.5rem;
+}

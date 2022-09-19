@@ -1,0 +1,24 @@
+@import url(../../common/css/common.css);
+
+.graph {
+    display: flex;
+    flex-direction: column;
+    width: calc(20rem + 10px);
+    height: 13rem;
+    align-items: center;
+    background-color: transparent;
+    bottom: 6rem;
+    background-color: var(--neutral-30);
+    border-radius: 16px;
+}
+
+.aboveBox {
+    display: flex;
+    padding: 0.8rem 0 0.2rem 0;
+    align-items: center;
+}
+
+.date {
+    color: var(--neutral-100);
+    padding: 0 2rem;
+}

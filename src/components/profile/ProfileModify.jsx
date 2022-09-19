@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { __getProfile, __updateProfile } from '../../app/slice/profileSlice';
-import styles from './profilecss/profile.module.css';
+import styles from './profile.module.css';
 
 const Done = () => {
     const pickAge = ['20대', '30대', '기타'];

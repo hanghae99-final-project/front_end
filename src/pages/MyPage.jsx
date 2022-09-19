@@ -1,13 +1,13 @@
 import React from 'react';
-import WeeklyDataGraph from '../components/WeeklyDataGraph';
-import Layout from '../components/common/Layout';
-import Footer from '../components/common/Footer';
-import MyPageStudyTime from '../components/MyPageStudyTime';
-import { ReactComponent as Person } from '../svg/person.svg';
-import { ReactComponent as Event } from '../svg/event_available.svg';
-import styles from '../css/mypage.module.css';
+import WeeklyDataGraph from '../components/weeklyGraph/WeeklyDataGraph';
+import Layout from '../layout/Layout';
+import Footer from '../components/footer/Footer';
+import MyPageStudyTime from '../components/totalStudyTime/MyPageStudyTime';
+import { ReactComponent as Person } from '../common/svg/person.svg';
+import { ReactComponent as Event } from '../common/svg/event_available.svg';
+import styles from './css/mypage.module.css';
 import ProfileTodoList from '../components/profile/ProfileTodoList';
-import Calender from '../components/Calender';
+import Calender from '../components/calender/Calender';
 import { Link } from 'react-router-dom';
 
 const MyPage = () => {
