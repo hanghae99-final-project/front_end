@@ -1,0 +1,23 @@
+@import url(../../common/css/common.css);
+
+.studing {
+    width: 3rem;
+    height: 1.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 2.5rem 0 7rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 26px;
+    background-color: var(--neutral-10);
+    color: var(--neutral-100);
+}
+
+.studing .online {
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.25rem;
+    background-color: var(--alerts-green);
+    z-index: 5;
+}

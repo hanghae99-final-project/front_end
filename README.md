@@ -1,46 +1,113 @@
-# Getting Started with Create React App and Redux
+```
+ranking-planner-pwa
+├─ package.json
+├─ public
+│  ├─ index.html
+│  ├─ manifest.json
+└─ src
+   ├─ app
+   │  ├─ slice
+   │  │  ├─ calenderSlice.jsx
+   │  │  ├─ DdaySlice.jsx
+   │  │  ├─ index.js
+   │  │  ├─ instance.js
+   │  │  ├─ joinSlice.jsx
+   │  │  ├─ layoutColorSlice.jsx
+   │  │  ├─ mainSlice.jsx
+   │  │  ├─ mySlice.jsx
+   │  │  ├─ profileSlice.jsx
+   │  │  ├─ rankingSlice.jsx
+   │  │  ├─ timeTimerSlice.jsx
+   │  │  └─ toDoSlice.jsx
+   │  └─ store.jsx
+   ├─ App.css
+   ├─ App.js
+   ├─ common
+   │  ├─ css
+   │  │  ├─ color.css
+   │  │  ├─ common.css
+   │  │  └─ common.module.css
+   │  ├─ font
+   │  └─ svg
+   ├─ components
+   │  ├─ calender
+   │  │  ├─ Calender.jsx
+   │  │  └─ calender.module.css
+   │  ├─ dDay
+   │  │  ├─ Dday.jsx
+   │  │  └─ dDay.module.css
+   │  ├─ footer
+   │  │  └─ Footer.jsx
+   │  ├─ join
+   │  │  ├─ Age.jsx
+   │  │  ├─ Done.jsx
+   │  │  ├─ join.module.css
+   │  │  ├─ Nickname.jsx
+   │  │  └─ Specialty.jsx
+   │  ├─ modal
+   │  │  ├─ SetTimeModal.jsx
+   │  │  ├─ setTimeModal.module.css
+   │  │  ├─ SetTimePicker.jsx
+   │  │  ├─ SetWatchModal.jsx
+   │  │  ├─ TimePicker.jsx
+   │  │  ├─ timePicker.module.css
+   │  │  └─ timePickerBox.module.css
+   │  ├─ profile
+   │  │  ├─ profile.module.css
+   │  │  ├─ ProfileModify.jsx
+   │  │  ├─ ProfileTodoList.jsx
+   │  │  └─ profileTodoList.module.css
+   │  ├─ quote
+   │  │  ├─ Quote.jsx
+   │  │  └─ quote.module.css
+   │  ├─ stopwatch
+   │  │  ├─ Stopwatch.jsx
+   │  │  └─ stopwatch.module.css
+   │  ├─ studying
+   │  │  ├─ studing.module.css
+   │  │  └─ Studying.jsx
+   │  ├─ timeTimer
+   │  │  ├─ StopButton.jsx
+   │  │  ├─ TimeTimer.jsx
+   │  │  └─ timeTimer.module.css
+   │  ├─ todo
+   │  │  ├─ TodoBtn.jsx
+   │  │  ├─ todoBtn.module.css
+   │  │  ├─ ToDoList.jsx
+   │  │  ├─ toDoList.module.css
+   │  │  ├─ ToDoModify.jsx
+   │  │  ├─ ToDoPost.jsx
+   │  │  └─ toDoPost.module.css
+   │  ├─ totalStudyTime
+   │  │  └─ MyPageStudyTime.jsx
+   │  └─ weeklyGraph
+   │     ├─ WeeklyDataGraph.jsx
+   │     └─ weeklyDataGraph.module.css
+   ├─ index.css
+   ├─ index.js
+   ├─ layout
+   │  └─ Layout.jsx
+   ├─ pages
+   │  ├─ css
+   │  │  ├─ loginPage.module.css
+   │  │  ├─ mainPage.module.css
+   │  │  ├─ mypage.module.css
+   │  │  ├─ rankingPage.module.css
+   │  │  └─ toDoPage.module.css
+   │  ├─ Join.jsx
+   │  ├─ KakaoFinish.jsx
+   │  ├─ LoginPage.jsx
+   │  ├─ MainPage.jsx
+   │  ├─ MyPage.jsx
+   │  ├─ Ranking.jsx
+   │  └─ ToDo.jsx
+   ├─ service-worker.js
+   ├─ serviceWorkerRegistration.js
+   ├─ shared
+   │  └─ Router.jsx
+   ├─ timerButton.module.css
+   └─ utils
+      ├─ changeTimeForm.js
+      └─ changeTimeSimpleForm.js
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```

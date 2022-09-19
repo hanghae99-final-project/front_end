@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { __getRanking } from '../app/slice/rankingSlice';
-import Footer from '../components/common/Footer';
-import Layout from '../components/common/Layout';
-import styles from '../css/ranking.module.css';
-import dropdownBtn from '../svg/dropdown_icon.svg';
-import check from '../svg/check_icon.svg';
+import Footer from '../components/footer/Footer';
+import Layout from '../layout/Layout';
+import styles from './css/rankingPage.module.css';
+import dropdownBtn from '../common/svg/dropdown_icon.svg';
+import check from '../common/svg/check_icon.svg';
 
 const Ranking = () => {
     const dispatch = useDispatch();

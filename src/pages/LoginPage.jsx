@@ -1,9 +1,9 @@
 import React from 'react';
-import { ReactComponent as KakaoLoginButton } from '../svg/kakao_icon.svg';
-import { ReactComponent as LoginSplash } from '../svg/loginSplash_background.svg';
-import { ReactComponent as Logo } from '../svg/logo.svg';
-import Layout from '../components/common/Layout';
-import styles from '../css/loginPage.module.css';
+import { ReactComponent as KakaoLoginButton } from '../common/svg/kakao_icon.svg';
+import { ReactComponent as LoginSplash } from '../common/svg/loginSplash_background.svg';
+import { ReactComponent as Logo } from '../common/svg/logo.svg';
+import Layout from '../layout/Layout';
+import styles from './css/loginPage.module.css';
 
 const LoginPage = () => {
     const authURI = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_REST_API}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
