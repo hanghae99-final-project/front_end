@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffectz } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { get_login } from '../app/slice/mainSlice';
