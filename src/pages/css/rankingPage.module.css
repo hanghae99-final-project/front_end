@@ -213,20 +213,20 @@
 }
 
 .myStatus {
-  color: var(--primary-100);
-  position: relative;
-  bottom: 6rem;
-  left: calc(50% - 10rem);
-  display: flex;
-  width: 19rem;
-  height: 3.375rem;
-  background-color: var(--opacity-b-50);
-  border: solid 1px var(--primary-50);
-  border-radius: 0.5rem;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 1rem;
-  z-index: 500;
+    color: var(--primary-100);
+    position: relative;
+    bottom: 6rem;
+    left: calc(50% - 10rem);
+    display: flex;
+    width: 19rem;
+    height: 3.375rem;
+    background-color: var(--opacity-b-50);
+    border: solid 1px var(--primary-50);
+    border-radius: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+    z-index: 500;
 }
 
 /*  */

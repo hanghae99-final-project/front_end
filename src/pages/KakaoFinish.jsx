@@ -14,10 +14,10 @@ const KakaoFinish = () => {
     }, []);
 
     useEffect(() => {
+        localStorage.setItem('token', use.token);
         if (use?.user?.nickname !== '') {
             if (use.token !== undefined) {
                 console.log(use.token);
-                localStorage.setItem('token', use.token);
                 if (localStorage.token !== undefined) {
                     navigate('/home', { state: localStorage.token });
                 }
