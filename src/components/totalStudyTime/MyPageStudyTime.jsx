@@ -6,10 +6,8 @@ import changeTimeForm from '../../utils/changeTimeForm';
 import styles from '../../pages/css/mypage.module.css';
 import axios from 'axios';
 import { get_studytime } from '../../app/slice/timeTimerSlice';
-import styled from 'styled-components';
 
 const MyPageStudyTime = () => {
-    const color = useSelector((state) => state.color);
     const date = new Date().getTime();
     const dispatch = useDispatch();
     const [totalStudyTime, setTotalStudyTime] = useState(0);
@@ -17,13 +15,16 @@ const MyPageStudyTime = () => {
     const [second, setSecond] = useState(0); // just '초'
     const studyStartPoint = useSelector((state) => state.timer?.studyStartPoint);
     const savedStudyTime = useSelector((state) => state.timer?.savedStudyTime);
+    const targetTime = useSelector((state) => state.timer?.targetTime);
 
     useEffect(() => {
         __getTotalStudyTime();
     }, []);
 
     useEffect(() => {
-        dispatch(get_studytime());
+        if (targetTime === 0) {
+            dispatch(get_studytime());
+        }
     }, [dispatch]);
 
     const __getTotalStudyTime = async () => {
@@ -32,7 +33,6 @@ const MyPageStudyTime = () => {
                 Authorization: `Bearer ${localStorage.token}`,
             },
         });
-        console.log(data);
         setTotalStudyTime(Math.floor(data.totalStudyTime / 1000));
     };
 
@@ -59,30 +59,13 @@ const MyPageStudyTime = () => {
 
     return (
         <div className={styles.container}>
-            <Gradient color={color} className={styles.aboveArea}>
+            <div className={styles.aboveArea}>
                 <div className={styles.title}>오늘 공부시간</div>
                 {changeTimeForm(second, styles.todayStudyTime)}
                 <div className={styles.text}>누적 공부시간은 {changeTimeSimpleForm(totalStudyTime, styles.totalTime)}이에요</div>
-            </Gradient>
+            </div>
         </div>
     );
 };
 
 export default MyPageStudyTime;
-
-const Gradient = styled.div`
-    width: 100%;
-    height: 14rem;
-    background-image: ${(props) => {
-        switch (props.color) {
-            case 'green':
-                return 'linear-gradient(to bottom, var(--neutral-20), #3b4f4b 34%, #558d71 74%, var(--primary-60))';
-            case 'blue':
-                return 'linear-gradient(to bottom, var(--neutral-20), #445364 48%, #5f809b 75%, var(--tertiary-60))';
-            case 'red':
-                return 'linear-gradient(to bottom, var(--neutral-20), #4f3f40 43%, #996153 73%, var(--secondary-60))';
-            default:
-                return 'none';
-        }
-    }};
-`;

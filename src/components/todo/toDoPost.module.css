@@ -8,7 +8,7 @@
 }
 
 .postWarp {
-    width: 16.938rem;
+    width: 100%;
     padding: 0.75rem 1rem;
     border-radius: 8px;
     border: solid 1px var(--neutral-100);
@@ -67,10 +67,13 @@
     height: 4.75rem;
     padding: 1.625rem 0.813rem;
     border-radius: 8px;
-    background-color: var(--neutral-40);
     border: none;
-
     font-size: 0.844rem;
+
+    background: url(../../common/svg/add_todo_default.svg) var(--neutral-40);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: All 0.3s ease-in-out;
 }
 
 .postBtn img {
@@ -78,15 +81,19 @@
 }
 
 .btnOn {
-    background-color: var(--primary-50);
     cursor: pointer;
+
+    background: url(../../common/svg/add_todo_active.svg) var(--primary-50);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: All 0.3s ease-in-out;
 }
 
 .btnOn:active {
     background-color: var(--primary-20);
 }
 
-input[type='radio'] {
+input[type="radio"] {
     appearance: none;
     width: 1.188rem;
     height: 1.188rem;

@@ -37,14 +37,9 @@
 .aboveBox {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     margin: 0 16px;
-    padding: 3rem 0;
-    @media (max-width: 1200px) {
-        width: 100%;
-    }
-    @media (min-width: 1200px) {
-        width: 1200px;
-    }
+    padding: 6vh 0;
 }
 
 .blur {

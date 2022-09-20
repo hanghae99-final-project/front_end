@@ -1,0 +1,50 @@
+.container {
+  padding: 0 1rem;
+}
+
+.topBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--neutral-100);
+  margin-top: 3rem;
+}
+
+.emailBox {
+  margin-top: 2rem;
+}
+
+.emailBox > p {
+  color: #ffffff;
+}
+
+.emailBox > input {
+  color: var(--neutral-50);
+
+  width: 18.5rem;
+  font-size: 1rem;
+  border: none;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: var(--neutral-30);
+}
+
+.nicknameBox {
+  margin-top: 1rem;
+}
+
+.nicknameBox > p {
+  color: #ffffff;
+}
+
+.nicknameBox > input {
+  color: var(--neutral-100);
+  width: 18.5rem;
+  font-size: 1rem;
+  border: none;
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: var(--neutral-30);
+}

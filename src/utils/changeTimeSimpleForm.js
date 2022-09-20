@@ -1,5 +1,5 @@
 /**
- * second를 넣으면 00:00:00 형태로 변환시켜 주는 함수
+ * second를 넣으면 00:00 형태로 변환시켜 주는 함수
  * @param {number} second
  * @param {string} className styles.className으로 전달
  * @returns <span className={styles.thisClassName}>00:00</span>

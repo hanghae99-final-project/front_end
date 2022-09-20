@@ -1,6 +1,5 @@
 import React from 'react';
 import { ReactComponent as KakaoLoginButton } from '../common/svg/kakao_icon.svg';
-import { ReactComponent as LoginSplash } from '../common/svg/loginSplash_background.svg';
 import { ReactComponent as Logo } from '../common/svg/logo.svg';
 import Layout from '../layout/Layout';
 import styles from './css/loginPage.module.css';
@@ -10,14 +9,15 @@ const LoginPage = () => {
 
     return (
         <Layout>
-            <LoginSplash className={styles.background} />
-            <Logo className={styles.logo} />
-            <KakaoLoginButton
-                className={styles.kakaoButton}
-                onClick={() => {
-                    window.location.href = authURI;
-                }}
-            />
+            <div className={styles.background}>
+                <Logo className={styles.logo} />
+                <KakaoLoginButton
+                    className={styles.kakaoButton}
+                    onClick={() => {
+                        window.location.href = authURI;
+                    }}
+                />
+            </div>
         </Layout>
     );
 };
