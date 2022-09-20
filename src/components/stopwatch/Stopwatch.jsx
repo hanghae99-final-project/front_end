@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import SetWatchModal from '../modal/SetWatchModal';
 import styles from './stopwatch.module.css';
-import clock from '../../common/svg/check_icon.svg';
+import { ReactComponent as Timer } from '../../common/svg/timer.svg';
 import changeTimeForm from '../../utils/changeTimeForm';
 
 const Stopwatch = ({ mode, setMode }) => {
@@ -71,14 +71,11 @@ const Stopwatch = ({ mode, setMode }) => {
     }, [stop]);
 
     return (
-        <>
+        <div className={styles.stopwatchBox}>
             <div className={styles.stopwatch}>
                 {running && <div className={styles.remainTime}>{changeTimeForm(remainTime)}</div>}
-
-                <img
+                <Timer
                     className={styles.clock}
-                    src={clock}
-                    alt='스톱워치'
                     onClick={() => {
                         setMode('set');
                     }}
@@ -100,7 +97,7 @@ const Stopwatch = ({ mode, setMode }) => {
                     savedStudyTime={savedStudyTime}
                 />
             )}
-        </>
+        </div>
     );
 };
 export default Stopwatch;

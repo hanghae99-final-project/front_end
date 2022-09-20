@@ -13,12 +13,7 @@ const StyledLayout = styled.div`
     align-items: center;
     background-color: var(--neutral-20);
     overflow: hidden;
-    @media (max-width: 1200px) {
-        width: 100%;
-    }
-    @media (min-width: 1200px) {
-        width: 1200px;
-    }
+    width: 360px;
 `;
 
 export default Layout;

@@ -8,7 +8,6 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Footer = () => {
     const location = useLocation();
-    console.log(location);
     return (
         <FooterBar>
             <Link to='/ranking'>
@@ -26,19 +25,18 @@ const Footer = () => {
 
 export default Footer;
 
-const FooterBar = styled.div`
-    height: 4rem;
+const FooterBar = styled.nav`
+    height: 8vh;
     display: flex;
     align-items: center;
     background-color: var(--neutral-20);
-    position: fixed;
-    bottom: 0;
     justify-content: space-around;
-    @media (max-width: 1200px) {
+    width: 100%;
+    /* @media (max-width: 1200px) {
         width: 100%;
     }
     @media (min-width: 1200px) {
         width: 1200px;
-    }
-    z-index: 10;
+    } */
+    z-index: 999;
 `;

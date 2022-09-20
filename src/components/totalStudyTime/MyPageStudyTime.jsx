@@ -8,7 +8,6 @@ import axios from 'axios';
 import { get_studytime } from '../../app/slice/timeTimerSlice';
 
 const MyPageStudyTime = () => {
-    // const color = useSelector((state) => state.color);
     const date = new Date().getTime();
     const dispatch = useDispatch();
     const [totalStudyTime, setTotalStudyTime] = useState(0);
