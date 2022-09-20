@@ -11,6 +11,8 @@
 }
 
 .background {
-    filter: blur(6px);
-    background: rgba(26, 27, 35, 0.3);
+    background-image: url('../../common/svg/login_background.png');
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    height: 100%;
 }
