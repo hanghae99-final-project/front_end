@@ -1,8 +1,5 @@
 @import url(../../common/css/common.css);
 
-.stopwatchBox {
-}
-
 .stopwatch {
     display: flex;
     align-items: center;

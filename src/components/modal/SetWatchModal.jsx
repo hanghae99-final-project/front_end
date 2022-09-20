@@ -16,6 +16,7 @@ const SetWatchModal = ({
     setRunning,
     time,
     setTime,
+    setColor,
 }) => {
     return (
         <div className={localStorage.targetTime > 0 ? styles.setModal : styles.modal}>
@@ -25,6 +26,7 @@ const SetWatchModal = ({
                     className={styles.close}
                     onClick={() => {
                         setMode('normal');
+                        setColor('#7E7C8C');
                     }}
                 />
             </div>
@@ -79,6 +81,7 @@ const SetWatchModal = ({
                                 localStorage.removeItem('savedStudyTime');
                                 localStorage.removeItem('restStart');
                                 setMode('normal');
+                                setColor('#7E7C8C');
                             }}>
                             종료하기
                         </button>

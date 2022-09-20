@@ -4,8 +4,9 @@ import SetWatchModal from '../modal/SetWatchModal';
 import styles from './stopwatch.module.css';
 import { ReactComponent as Timer } from '../../common/svg/timer.svg';
 import changeTimeForm from '../../utils/changeTimeForm';
+import useInterval from '../../hooks/useInterval';
 
-const Stopwatch = ({ mode, setMode }) => {
+const Stopwatch = ({ mode, setMode, color, setColor }) => {
     /** 현재시간 및 시작 시간 */
     const currentDate = new Date().getTime();
 
@@ -44,17 +45,7 @@ const Stopwatch = ({ mode, setMode }) => {
     }
 
     /** 스톱워치 시간 증가 로직 */
-    useEffect(() => {
-        let interval;
-        if (running && !stop) {
-            interval = setInterval(() => {
-                setSecond((prev) => prev + 1);
-            }, 1000);
-        } else if (!running || stop) {
-            clearInterval(interval);
-        }
-        return () => clearInterval(interval);
-    }, [running, stop]);
+    useInterval(running, stop, setSecond);
 
     /** running이 바뀌었을 때, startTime을 local에 저장 */
     useEffect(() => {
@@ -75,10 +66,17 @@ const Stopwatch = ({ mode, setMode }) => {
             <div className={styles.stopwatch}>
                 {running && <div className={styles.remainTime}>{changeTimeForm(remainTime)}</div>}
                 <Timer
+                    onTouchStart={() => {
+                        setColor('#C7C5D0');
+                    }}
+                    onTouchEnd={() => {
+                        setColor('#66FFA6');
+                    }}
                     className={styles.clock}
                     onClick={() => {
                         setMode('set');
                     }}
+                    fill={targetTime > 0 ? '#66FFA6' : color}
                 />
             </div>
             {mode === 'set' && (
@@ -95,6 +93,7 @@ const Stopwatch = ({ mode, setMode }) => {
                     currentDate={currentDate}
                     startTime={startTime}
                     savedStudyTime={savedStudyTime}
+                    setColor={setColor}
                 />
             )}
         </div>

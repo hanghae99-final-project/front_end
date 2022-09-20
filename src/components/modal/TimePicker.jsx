@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from './timePicker.module.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Mousewheel, Pagination, FreeMode, Navigation } from 'swiper';
+import SwiperCore, { Mousewheel, Navigation } from 'swiper';
 import 'swiper/css';
 
-SwiperCore.use([Mousewheel, Pagination, Navigation]);
+SwiperCore.use([Mousewheel, Navigation]);
 
 const TimePicker = ({ time, setTime, mode, unit }) => {
     return (
@@ -23,7 +23,6 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                 direction={'vertical'}
                 pagination={{ clickable: true }}
                 // freeMode={true}
-                modules={[FreeMode, Pagination]}
                 breakpoints={{
                     768: {
                         slidesPerView: 5,
@@ -33,7 +32,7 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                     return (
                         <div key={unit + t} ref={`${unit}${t}`}>
                             {time[unit] === t ? (
-                                <SwiperSlide key={unit + t} className={`${styles.hour} ${styles.selected}`}>
+                                <SwiperSlide key={unit + t} className={`${styles.hour} ${styles.selected}`} style={{ width: '70px' }}>
                                     {t}
                                 </SwiperSlide>
                             ) : (
