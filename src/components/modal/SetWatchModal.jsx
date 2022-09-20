@@ -53,7 +53,6 @@ const SetWatchModal = ({
                                     // 멈추기 하면 현재 시간 - 시작 시간 저장
                                     // 그러니까 stop 이 false 일 때에는 시간을 현재 시간 - 시작시간으로 하고
                                     // stop이 true일 때는 savedStudyTime으로 하면 됨.
-                                    console.log(currentDate, startTime);
                                     localStorage.setItem('savedStudyTime', savedStudyTime + currentDate - startTime);
                                     localStorage.setItem('restStart', true);
                                 }}>

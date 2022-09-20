@@ -13,7 +13,6 @@ const Stopwatch = ({ mode, setMode }) => {
     const targetTime = Number(localStorage.getItem('targetTime'));
     const startTime = Number(localStorage.getItem('startTime'));
     const savedStudyTime = Number(localStorage.getItem('savedStudyTime'));
-    console.log(savedStudyTime);
 
     const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
     const [running, setRunning] = useState(false);
@@ -22,7 +21,7 @@ const Stopwatch = ({ mode, setMode }) => {
     /**
      * 단순히 1초마다 렌더링 시키기 위한 state
      * 다른 것으로 바꿀 수 있을까?
-     *  */
+     */
     const [second, setSecond] = useState(0);
 
     /** 남은 시간 */
@@ -44,7 +43,6 @@ const Stopwatch = ({ mode, setMode }) => {
         setStop(true);
     }
 
-    console.log(running, stop);
     /** 스톱워치 시간 증가 로직 */
     useEffect(() => {
         let interval;
