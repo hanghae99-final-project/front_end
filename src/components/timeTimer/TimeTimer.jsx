@@ -69,6 +69,12 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
         return () => clearInterval(interval);
     }, [run, rest]);
 
+    const changeSecondToTime = (second) => {
+        const hour = parseInt(second / 3600);
+        const minutes = parseInt((second % 3600) / 60);
+        return `${hour}시간 ${minutes}}분`;
+    };
+
     /** 휴식 시작 버튼 클릭 시 1초에 한 번씩 restSecond를 업데이트 하도록 설정 */
     useEffect(() => {
         let interval;
@@ -87,11 +93,11 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
     }, [target]);
 
     useEffect(() => {
-        !isNaN(remainHour) && !isNaN(remainMinutes)
+        remainHour !== 0 && remainMinutes !== 0
             ? second >= targetTime / 1000
                 ? setStatus('🎉 목표를 달성했어요 !')
                 : setStatus(`⏰ ${remainHour}시간 ${remainMinutes}분 남았어요!`)
-            : setStatus(`✏️ 어제 2시간 10분 공부했어요`);
+            : setStatus(`✏️ 어제 ${changeSecondToTime(Math.floor(yesterdayStudyTime / 1000))}공부했어요`);
     }, [target, second, targetToSec]);
 
     /**
@@ -146,7 +152,11 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                             <path
                                 strokeDasharray={`${sec} 283`}
                                 className={
-                                    color === 'blue' ? styles.pathBlue : second >= targetTime / 1000 ? styles.pathRed : styles.pathGreen
+                                    color === 'blue'
+                                        ? styles.pathBlue
+                                        : second >= targetTime / 1000 && second !== 0
+                                        ? styles.pathRed
+                                        : styles.pathGreen
                                 }
                                 d='
           M 50, 50
@@ -190,7 +200,13 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                         <div className={styles.settingBox}>
                             <img src={setting} alt='목표 설정' className={styles.setting} />
                         </div>
-                        <div className={styles.text}>목표설정</div>
+                        <div
+                            className={styles.text}
+                            onClick={() => {
+                                setTimeMode('set');
+                            }}>
+                            목표설정
+                        </div>
                     </button>
                 ) : (
                     <button

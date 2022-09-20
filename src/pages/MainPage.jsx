@@ -40,11 +40,11 @@ const MainPage = () => {
                     }}>
                     <TodoBtn />
                 </div>
+                <Footer />
                 <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
                     <ToDo />
                 </div>
             </Gradient>
-            <Footer />
             {mode === 'set' && (
                 <div
                     className={styles.blur}

@@ -2,12 +2,13 @@
 
 .studing {
     width: 3rem;
+    min-width: 3rem;
     height: 1.75rem;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin: 0 2.5rem 0 7rem;
+    margin: 0 1rem 0 5rem;
     padding: 0.25rem 0.5rem;
     border-radius: 26px;
     background-color: var(--neutral-10);
