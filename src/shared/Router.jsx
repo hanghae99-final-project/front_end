@@ -8,6 +8,7 @@ import Calender from '../components/calender/Calender';
 import Ranking from '../pages/Ranking';
 import Join from '../pages/Join';
 import ProfileTodoList from '../components/profile/ProfileTodoList';
+import ModifyProfile from '../pages/ModifyProfile';
 
 function Router() {
     return (
@@ -16,12 +17,13 @@ function Router() {
                 <Route path='/home' element={<MainPage />} />
                 <Route path='/' element={<LoginPage />} />
                 <Route path='/todo' element={<ToDo />} />
-                <Route path='/users/kakao/finish' element={<KakaoFinish />} />
+                <Route path='/users/kakao/callback' element={<KakaoFinish />} />
                 <Route path='/Calender' element={<Calender />} />
                 <Route path='/mypage' element={<MyPage />} />
                 <Route path='/join' element={<Join />} />
                 <Route path='/ranking' element={<Ranking />} />
                 <Route path='/mytodo' element={<ProfileTodoList />} />
+                <Route path='/modify' element={<ModifyProfile />} />
             </Routes>
         </BrowserRouter>
     );

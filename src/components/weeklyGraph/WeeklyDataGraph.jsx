@@ -35,25 +35,31 @@ const WeeklyDataGraph = () => {
     /**
      * date를 적합한 형태로 바꿔주는 함수
      * @param {string} day
+     * @param {int} move default : 0, 한 주 앞으로 이동할 때 - 1, 한 주 뒤로 이동할 때 + 1
      * @returns 2022-09-18
      */
-    const changeDate = (day) => {
-        return new Date(date.setDate(day)).toISOString().substring(0, 10);
+    const changeDate = (day, move) => {
+        const weekToTime = 604800000;
+        return new Date(new Date(date.setDate(day)).getTime() + weekToTime * move).toISOString().substring(0, 10);
     };
 
     const date = new Date();
     const currentDay = date.getDay();
     const monday = date.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
-    const mondayDate = changeDate(monday);
     const sunday = monday + 6;
-    const sundayDate = changeDate(sunday);
-    console.log(monday, mondayDate, sunday, sundayDate);
 
+    const [move, setMove] = useState(0);
     const [week, setWeek] = useState({
-        startWeek: mondayDate, // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
-        endWeek: sundayDate, // 이번 주 일요일
+        startWeek: changeDate(monday, move), // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
+        endWeek: changeDate(sunday, move), // 이번 주 일요일
     });
-    console.log(week);
+
+    useEffect(() => {
+        setWeek({
+            startWeek: changeDate(monday, move),
+            endWeek: changeDate(sunday, move),
+        });
+    }, [move]);
 
     useEffect(() => {
         dispatch(__getWeeklyData(week));
@@ -61,8 +67,7 @@ const WeeklyDataGraph = () => {
 
     const labels = ['월', '화', '수', '목', '금', '토', '일'];
     //ms -> hour 변환
-    const data = weeklyStudyData.map((element) => Math.floor(element?.studyTime / 3600000));
-    console.log(data);
+    const data = weeklyStudyData.map((element) => Math.ceil(element?.studyTime / 3600000));
     // 16진수로 표현하여 opacity 조절
     const dataColor = data.map((element) => {
         if (element >= 1 && element < 3) {
@@ -75,6 +80,9 @@ const WeeklyDataGraph = () => {
             return (element = '#66FFA6');
         } else if (element >= 12) {
             return (element = '#ff8058');
+        } else {
+            //변경될 때의 색상
+            return (element = '#3a4941');
         }
     });
 
@@ -135,25 +143,13 @@ const WeeklyDataGraph = () => {
             <div className={styles.aboveBox}>
                 <LeftArrow
                     onClick={() => {
-                        setWeek(
-                            (prev) =>
-                                (prev = {
-                                    startWeek: changeDate(new Date(prev.startWeek).getDate() - 7),
-                                    endWeek: changeDate(new Date(prev.endWeek).getDate() - 7),
-                                })
-                        );
+                        setMove((prev) => prev - 1);
                     }}
                 />
                 <div className={styles.date}>{`${week.startWeek} - ${week.endWeek}`}</div>
                 <RightArrow
                     onClick={() => {
-                        setWeek(
-                            (prev) =>
-                                (prev = {
-                                    startWeek: changeDate(new Date(prev.startWeek).getDate() + 7),
-                                    endWeek: changeDate(new Date(prev.endWeek).getDate() + 7),
-                                })
-                        );
+                        setMove((prev) => prev + 1);
                     }}
                 />
             </div>
