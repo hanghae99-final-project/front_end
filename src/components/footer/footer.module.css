@@ -1,0 +1,12 @@
+.selected {
+    height: 3rem;
+    width: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected:active {
+    background-color: #ffffff10;
+    border-radius: 50%;
+}
