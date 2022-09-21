@@ -14,13 +14,14 @@ import ToDo from './ToDo';
 import TodoBtn from '../components/todo/TodoBtn';
 
 const MainPage = () => {
-    const color = useSelector((state) => state.color);
+    const backgroundColor = useSelector((state) => state.color);
     const [mode, setMode] = useState('normal');
     const [btsOn, setBtsOn] = useState(false);
     const [timeMode, setTimeMode] = useState('normal');
+    const [color, setColor] = useState('#7E7C8C');
     return (
         <Layout>
-            <Gradient color={color}>
+            <Gradient backgroundColor={backgroundColor}>
                 <div
                     onClick={() => {
                         setBtsOn(false);
@@ -29,7 +30,7 @@ const MainPage = () => {
                     <div className={styles.aboveBox}>
                         <img src={alert} alt='도움말 툴팁' className={styles.alert} />
                         <Studing />
-                        <Stopwatch mode={mode} setMode={setMode} />
+                        <Stopwatch mode={mode} setMode={setMode} color={color} setColor={setColor} />
                     </div>
                     <Dday />
                     <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
@@ -40,15 +41,16 @@ const MainPage = () => {
                     }}>
                     <TodoBtn />
                 </div>
+                <Footer />
                 <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
                     <ToDo />
                 </div>
             </Gradient>
-            <Footer />
             {mode === 'set' && (
                 <div
                     className={styles.blur}
                     onClick={() => {
+                        setColor('#7E7C8C');
                         setMode('normal');
                     }}
                 />
@@ -71,7 +73,7 @@ const Gradient = styled.div`
     width: 100%;
     height: 100%;
     background-image: ${(props) => {
-        switch (props.color) {
+        switch (props.backgroundColor) {
             case 'green':
                 return 'linear-gradient(to bottom, var(--neutral-20), #3b4f4b 34%, #558d71 74%, var(--primary-60))';
             case 'blue':

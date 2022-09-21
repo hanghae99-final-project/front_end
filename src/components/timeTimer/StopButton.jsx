@@ -15,7 +15,7 @@ const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest, setColo
                     setRefresh(false);
                     setRun(false);
                     setRest(false);
-                    setColor(second >= targetTime / 1000 ? 'red' : '');
+                    setColor('');
                     dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
                 }}>
                 <Stop fill={color === 'green' ? 'var(--neutral-10)' : 'var(--neutral-100)'} />

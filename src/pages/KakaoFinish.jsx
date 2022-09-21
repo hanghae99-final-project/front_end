@@ -4,22 +4,26 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { get_login } from "../app/slice/mainSlice";
 
 const KakaoFinish = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const use = useSelector((state) => state.main);
-  const authCode = location.search.split("=")[1];
-  useEffect(() => {
-    dispatch(get_login(authCode));
-  }, []);
-  console.log(use);
-  useEffect(() => {
-    localStorage.setItem("token", use.token);
-    if (use?.user?.nickname !== "") {
-      if (use.token !== undefined) {
-        console.log(use.token);
-        if (localStorage.token !== undefined) {
-          navigate("/home", { state: localStorage.token });
+    const location = useLocation();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const use = useSelector((state) => state.main);
+    const authCode = location.search.split('=')[1];
+    useEffect(() => {
+        dispatch(get_login(authCode));
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem('token', use.token);
+        if (use?.user?.nickname !== '') {
+            if (use.token !== undefined) {
+                console.log(use.token);
+                if (localStorage.token !== undefined) {
+                    navigate('/home', { state: localStorage.token });
+                }
+            }
+        } else {
+            navigate('/join');
         }
       }
     } else {

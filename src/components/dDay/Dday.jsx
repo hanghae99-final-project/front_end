@@ -17,8 +17,14 @@ const Dday = () => {
 
     return (
         <div className={styles.dayBox}>
-            <span className={styles.day}>D-{remainDay}</span>
-            <span className={styles.text}>{dDay?.content}</span>
+            {dDay === undefined ? (
+                <span className={styles.text}>디데이를 추가해 보세요</span>
+            ) : (
+                <>
+                    <span className={styles.day}>D-{remainDay}</span>
+                    <span className={styles.text}>{dDay?.content}</span>
+                </>
+            )}
         </div>
     );
 };

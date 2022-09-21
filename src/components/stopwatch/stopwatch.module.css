@@ -1,19 +1,18 @@
 @import url(../../common/css/common.css);
 
 .stopwatch {
-    position: absolute;
     display: flex;
     align-items: center;
+    justify-content: right;
     background-color: var();
     height: 1.5rem;
-    right: 16px;
+    width: 7rem;
 }
 
 .clock {
     margin-top: 0;
     width: 1.5rem;
     height: 1.5rem;
-    object-fit: contain;
 }
 
 .remainTime {

@@ -11,37 +11,31 @@ import Calender from "../components/calender/Calender";
 import { Link } from "react-router-dom";
 
 const MyPage = () => {
-  return (
-    <Layout>
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          flexDirection: "column",
-        }}
-      >
-        <MyPageStudyTime />
-        <div style={{ display: "flex", gap: "10px" }}>
-          <Link to="/modify">
-            <button className={styles.profileButton}>
-              <Person />
-              <span>프로필 설정</span>
-            </button>
-          </Link>
-          <button className={styles.profileButton}>
-            <Event />
-            <span>디데이 설정</span>
-          </button>
-        </div>
-        <div style={{ display: "flex", padding: "0.7rem", gap: "10px" }}>
-          <Calender />
-          <ProfileTodoList />
-        </div>
-        <WeeklyDataGraph />
-        <Footer />
-      </div>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <div className={styles.box}>
+                <MyPageStudyTime />
+                <div className={styles.buttonBox}>
+                    <Link to='/modify'>
+                        <button className={styles.profileButton}>
+                            <Person />
+                            <span>프로필 설정</span>
+                        </button>
+                    </Link>
+                    <button className={styles.profileButton}>
+                        <Event />
+                        <span>디데이 설정</span>
+                    </button>
+                </div>
+                <div className={styles.contentBox}>
+                    <Calender />
+                    <ProfileTodoList />
+                </div>
+                <WeeklyDataGraph />
+                <Footer />
+            </div>
+        </Layout>
+    );
 };
 
 export default MyPage;
