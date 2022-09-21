@@ -22,11 +22,7 @@ const KakaoFinish = () => {
                     navigate('/home', { state: localStorage.token });
                 }
             }
-        } else {
-            navigate('/join');
-        }
-      }
-    } else {
+     } else {
       navigate("/join");
     }
   }, [use]);
