@@ -13,13 +13,9 @@ const Age = ({ setMode, setUserInfo, userInfo }) => {
         <button
           className={styles.arrowBack}
           onClick={() => setMode("Nickname")}
-        >
-          <img
-            className={styles.arrowbackIcon}
-            src={arrowBtn2}
-            alt="arrowBtn2"
-          />
-        </button>
+          src={arrowBtn2}
+          alt="arrowBtn2"
+        />
         <p className={styles.infoText}>
           현재 연령대를
           <br />

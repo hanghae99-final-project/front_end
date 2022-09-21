@@ -11,10 +11,12 @@
 .blurIn {
   filter: blur(3px);
   transition: all 0.4s ease-in-out;
+  height: 43rem;
 }
 
 .blurOut {
   transition: all 0.4s ease-in-out;
+  height: 43rem;
 }
 
 .rankingType {
@@ -66,7 +68,7 @@
 .rankingContainer {
   margin: 0 auto;
   width: 20rem;
-  height: 26.5rem;
+  height: 25.5rem;
   overflow-y: scroll;
 }
 .rankingContainer::-webkit-scrollbar {
