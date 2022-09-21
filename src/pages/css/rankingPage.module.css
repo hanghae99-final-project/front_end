@@ -67,7 +67,8 @@
 
 .rankingContainer {
     margin: 0 auto;
-    width: 20rem;
+    width: 100%;
+    padding: 0 16px;
     height: 25.5rem;
     overflow-y: scroll;
 }
@@ -147,7 +148,8 @@
 .allStatus {
     color: var(--primary-100);
     display: flex;
-    width: 19rem;
+    width: calc(100% - 48px);
+    justify-content: space-between;
     height: 3.375rem;
     background-color: var(--neutral-30);
     margin-top: 0.5rem;
@@ -160,8 +162,9 @@
 .topRanker {
     color: var(--neutral-20);
     display: flex;
-    width: 19rem;
+    width: calc(100% - 48px);
     height: 3.375rem;
+    justify-content: space-between;
     font-weight: 600;
     background-color: var(--primary-50);
     margin-top: 0.5rem;
@@ -174,8 +177,9 @@
 .otherRanker {
     color: var(--neutral-100);
     display: flex;
-    width: 19rem;
+    width: calc(100% - 48px);
     height: 3.375rem;
+    justify-content: space-between;
     background-color: var(--neutral-10);
     margin-top: 0.5rem;
     border-radius: 0.5rem;
@@ -186,7 +190,7 @@
 
 .timeBox {
     width: 6rem;
-    margin-left: 3.7rem;
+    margin: 1.5rem;
 
     display: flex;
     flex-direction: row;
@@ -218,9 +222,9 @@
     color: var(--primary-100);
     position: absolute;
     bottom: 5rem;
-    left: calc(50% - 10rem);
     display: flex;
-    width: 19rem;
+    margin: 0 16px;
+    width: calc(100% - 48px);
     height: 3.375rem;
     background-color: var(--opacity-b-50);
     border: solid 1px var(--primary-50);
@@ -229,8 +233,13 @@
     align-items: center;
     padding-left: 1rem;
     z-index: 500;
+    justify-content: space-between;
 }
 
+.nameBox {
+    display: flex;
+    align-items: center;
+}
 /*  */
 .btsOff {
     display: flex;
