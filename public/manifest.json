@@ -1,6 +1,6 @@
 {
-    "short_name": "App",
-    "name": "Create App Sample",
+    "short_name": "랭플",
+    "name": "취준생을 위한 랭킹플래너",
     "icons": [
         {
             "src": "favicon.ico",
@@ -17,6 +17,11 @@
             "src": "./icons/mstile-310x310.png",
             "type": "image/png",
             "sizes": "310x310"
+        },
+        {
+            "src": "./icons/mstile-512x512.png",
+            "type": "image/png",
+            "sizes": "512x512"
         },
         {
             "src": "./icons/apple-touch-icon-57x57.png",
