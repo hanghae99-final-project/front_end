@@ -9,6 +9,7 @@ import styles from "./css/mypage.module.css";
 import ProfileTodoList from "../components/profile/ProfileTodoList";
 import Calender from "../components/calender/Calender";
 import { Link } from "react-router-dom";
+import font from "../common/css/font.module.css";
 
 const MyPage = () => {
     return (

@@ -32,6 +32,21 @@ export const __postDday = createAsyncThunk("DdaySlice/postDday", async (payload,
     }
 });
 
+export const __delDday = createAsyncThunk("DdaySlice/postDday", async (payload, thunkAPI) => {
+    console.log(thunkAPI);
+    try {
+        const { data } = await axios.post(process.env.REACT_APP_SERVER_URL + `/profile/dday/${payload}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.token}`,
+            },
+        });
+        console.log(data);
+        return thunkAPI.fulfillWithValue(data);
+    } catch (error) {
+        return thunkAPI.rejectWithValue(error);
+    }
+});
+
 const dDaySlice = createSlice({
     name: "dDaySlice",
     initialState,

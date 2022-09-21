@@ -7,6 +7,7 @@ import { Bar } from 'react-chartjs-2';
 import { useState } from 'react';
 import { ReactComponent as LeftArrow } from '../../common/svg/left_arrow.svg';
 import { ReactComponent as RightArrow } from '../../common/svg/right_arrow.svg';
+import font from '../../common/css/font.module.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -147,7 +148,7 @@ const WeeklyDataGraph = () => {
                         setMove((prev) => prev - 1);
                     }}
                 />
-                <div className={styles.date}>{`${week.startWeek} - ${week.endWeek}`}</div>
+                <div className={`${styles.date} ${font.caption_600_12}`}>{`${week.startWeek} - ${week.endWeek}`}</div>
                 <RightArrow
                     className={styles.arrow}
                     onClick={() => {

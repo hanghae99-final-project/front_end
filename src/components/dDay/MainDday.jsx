@@ -2,7 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getDday } from "../../app/slice/DdaySlice";
-import styles from "./mainDday.module.css";
+import styles from "./dDay.module.css";
+import font from "../../common/css/font.module.css";
 
 const MainDday = () => {
     const dispatch = useDispatch();
@@ -18,11 +19,11 @@ const MainDday = () => {
     return (
         <div className={styles.dayBox}>
             {dDay === undefined ? (
-                <span className={styles.text}>디데이를 추가해 보세요</span>
+                <span className={`${styles.text} ${font.subtitle3_300_14}`}>디데이를 추가해 보세요</span>
             ) : (
                 <>
-                    <span className={styles.day}>D-{remainDay}</span>
-                    <span className={styles.text}>{dDay?.content}</span>
+                    <span className={`${styles.day} ${font.subtitle3_600_14}`}>D-{remainDay}</span>
+                    <span className={`${styles.text} ${font.subtitle3_300_14}`}>{dDay?.content}</span>
                 </>
             )}
         </div>

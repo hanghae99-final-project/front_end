@@ -3,6 +3,7 @@ import { __getDday } from "../../app/slice/DdaySlice";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./ddayList.module.css";
 import font from "../../common/css/font.module.css";
+import { __delDday } from "../../app/slice/DdaySlice";
 
 const DdayList = () => {
     const dispatch = useDispatch();
@@ -11,6 +12,10 @@ const DdayList = () => {
     useEffect(() => {
         dispatch(__getDday());
     }, []);
+
+    const deleteDday = (id) => {
+        dispatch(__delDday(id));
+    };
 
     return (
         <ul className={styles.container}>
@@ -37,7 +42,7 @@ const DdayList = () => {
 
                             <div className={styles.btnWarp}>
                                 <button className={styles.modifyBtn}></button>
-                                <button className={styles.delBtn}></button>
+                                <button className={styles.delBtn} onClick={() => deleteDday(data._id)}></button>
                             </div>
                         </li>
                     </div>
