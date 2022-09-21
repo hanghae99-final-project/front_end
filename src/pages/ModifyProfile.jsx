@@ -4,16 +4,17 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getProfile, __updateProfile } from "../app/slice/profileSlice";
 import { ReactComponent as ArrowBack } from "../common/svg/arrowback_icon2.svg";
-import styles from "./css/profile.module.css";
+import { ReactComponent as Check } from "../common/svg/check_icon.svg";
 import Layout from "../layout/Layout";
+import styles from "./css/profile.module.css";
 
 const ModifyProfile = () => {
   const pickAge = ["20대", "30대", "기타"];
   const major = [
     "경영사무",
     "마케팅·광고·홍보",
-    "무역·유통",
     "디자인",
+    "의료",
     "영업·고객상담",
     "IT개발·인터넷",
     "전문·특수·연구직",
@@ -23,10 +24,9 @@ const ModifyProfile = () => {
     "연구개발·설계",
     "관광레저서비스",
     "건설·건축",
-    "의료",
     "공무원",
+    "무역·유통",
   ];
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -67,7 +67,7 @@ const ModifyProfile = () => {
         <div className={styles.topBox}>
           <ArrowBack />
           <span>프로필 수정</span>
-          <span>저장</span>
+          <button onClick={onUpdate}>저장</button>
         </div>
         <div className={styles.emailBox}>
           <p>로그인 계정</p>
@@ -82,7 +82,6 @@ const ModifyProfile = () => {
           <input
             type="text"
             name="nickname"
-            // className={styles.inputNickname}
             value={modifyInfo.nickname}
             onChange={onChangeHandleInput}
             placeholder={userData.nickname}
@@ -92,78 +91,69 @@ const ModifyProfile = () => {
           ></input>
           <p className={styles.checkMsg}>특수문자는 사용 불가능해요</p>
         </div>
+        <div className={styles.ageBox}>
+          <p>연령대</p>
+          <div className={styles.ageContainer}>
+            {pickAge.map((pick, i) => {
+              return (
+                <div key={i}>
+                  {modifyInfo.ageGroup === pick ? (
+                    <button
+                      className={styles.agePick}
+                      onClick={() => {
+                        setModifyInfo({ ...modifyInfo, ageGroup: pick });
+                      }}
+                    >
+                      <Check />
+                      {pick}
+                    </button>
+                  ) : (
+                    <button
+                      className={styles.ageAnother}
+                      onClick={() => {
+                        setModifyInfo({ ...modifyInfo, ageGroup: pick });
+                      }}
+                    >
+                      {pick}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
 
-        {/* <input
-          type="text"
-          name="nickname"
-          // className={styles.inputNickname}
-          value={modifyInfo.nickname}
-          onChange={onChangeHandleInput}
-          placeholder={userData.nickname}
-          autoComplete="off"
-          autoFocus={true}
-          maxLength="8"
-        ></input> */}
-        <p>@@@@@@@@@@@@@@@@@@@@@</p>
-        <div>
-          {pickAge.map((pick, i) => {
-            return (
-              <div key={i}>
-                {modifyInfo.ageGroup === pick ? (
-                  <button
-                    style={{ backgroundColor: "red" }}
-                    onClick={() => {
-                      setModifyInfo({ ...modifyInfo, ageGroup: pick });
-                    }}
-                  >
-                    {pick}
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => {
-                      setModifyInfo({ ...modifyInfo, ageGroup: pick });
-                    }}
-                  >
-                    {pick}
-                  </button>
-                )}
-              </div>
-            );
-          })}
+        <div className={styles.specBox}>
+          <p>준비하고 있는 분야</p>
+          <div className={styles.specContainer}>
+            {major.map((pick, i) => {
+              return (
+                <div key={i}>
+                  {modifyInfo.specialty === pick ? (
+                    <button
+                      className={styles.specPick}
+                      onClick={() => {
+                        setModifyInfo({ ...modifyInfo, specialty: pick });
+                      }}
+                    >
+                      <Check />
+                      {pick}
+                    </button>
+                  ) : (
+                    <button
+                      className={styles.specAnother}
+                      onClick={() => {
+                        setModifyInfo({ ...modifyInfo, specialty: pick });
+                      }}
+                    >
+                      {pick}
+                    </button>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
-        <p>@@@@@@@@@@@@@@@@@@@@@</p>
-        <div>
-          {major.map((pick, i) => {
-            return (
-              <div key={i}>
-                {modifyInfo.specialty === pick ? (
-                  <span
-                    style={{ color: "red" }}
-                    onClick={() => {
-                      setModifyInfo({ ...modifyInfo, specialty: pick });
-                    }}
-                  >
-                    ✔ {pick}
-                  </span>
-                ) : (
-                  <span
-                    onClick={() => {
-                      setModifyInfo({ ...modifyInfo, specialty: pick });
-                    }}
-                  >
-                    {pick}
-                  </span>
-                )}
-              </div>
-            );
-          })}
-        </div>
-        <button
-          style={{ width: "20rem", height: "rem", marginTop: "4rem" }}
-          onClick={onUpdate}
-        >
-          저장
-        </button>
       </div>
     </Layout>
   );

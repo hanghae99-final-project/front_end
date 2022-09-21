@@ -10,27 +10,35 @@ const Stopwatch = ({ mode, setMode }) => {
     const currentDate = new Date().getTime();
 
     /** 로컬에 있는 time값 불러오기 */
-    const startTime = Number(localStorage.getItem('startTime'));
     const targetTime = Number(localStorage.getItem('targetTime'));
-    const restTime = Number(localStorage.getItem('restTime')); // 존재하지 않으면 0
+    const startTime = Number(localStorage.getItem('startTime'));
+    const savedStudyTime = Number(localStorage.getItem('savedStudyTime'));
 
     const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
     const [running, setRunning] = useState(false);
     const [stop, setStop] = useState(false);
-    /** 시간 설정 */
+
+    /**
+     * 단순히 1초마다 렌더링 시키기 위한 state
+     * 다른 것으로 바꿀 수 있을까?
+     */
     const [second, setSecond] = useState(0);
-    const [restSecond, setRestSecond] = useState(restTime);
 
     /** 남은 시간 */
     const remainTime =
-        targetTime === 0 ? 0 : Math.floor((targetTime - (startTime === 0 ? 1 : currentDate - startTime)) / 1000) + restSecond;
+        targetTime === 0
+            ? 0
+            : stop
+            ? Math.floor((targetTime - savedStudyTime) / 1000)
+            : Math.floor((targetTime - savedStudyTime - (startTime === 0 ? 1 : currentDate - startTime)) / 1000);
 
-    /** reload 시 time이 저장되어 있다면 자동 시작 */
-    if (!running && startTime && startTime !== 0 && !stop && !localStorage.restStart) {
+    /** reload 시 time이 저장되어 있고, 휴식 중이 아니라면 자동 시작 */
+    if (!running && startTime > 0 && !stop && !localStorage.restStart) {
         setRunning(true);
     }
 
-    if (!running && startTime && startTime !== 0 && !stop && localStorage.restStart) {
+    /** reload 공부시간이 저장되어 있고, 휴식 중이라면 일시 정지 */
+    if (!running && savedStudyTime > 0 && !stop && localStorage.restStart) {
         setRunning(true);
         setStop(true);
     }
@@ -48,41 +56,19 @@ const Stopwatch = ({ mode, setMode }) => {
         return () => clearInterval(interval);
     }, [running, stop]);
 
-    /** 휴식시간 증가 로직 */
+    /** running이 바뀌었을 때, startTime을 local에 저장 */
     useEffect(() => {
-        let interval;
-        if (stop) {
-            interval = setInterval(() => {
-                setRestSecond((prev) => prev + 1);
-            }, 1000);
-        } else if (!stop) {
-            clearInterval(interval);
-        }
-        return () => clearInterval(interval);
-    }, [stop]);
-
-    /** running이 바뀌었을 때true이고,  startTime을 local에 저장 */
-    useEffect(() => {
-        if (running && !localStorage.startTime) {
+        if (running && !stop && !localStorage.startTime) {
             localStorage.setItem('startTime', currentDate);
         }
-    }, [running]);
+    }, [running, stop]);
 
-    /** 목표시간 달성 시 멈추고 시간 초기화 */
+    /** stop했을 때,  startTime을 제거 */
     useEffect(() => {
-        if (currentDate >= startTime + targetTime - restTime) {
-            setRunning(false);
+        if (running && stop && localStorage.startTime) {
             localStorage.removeItem('startTime');
-            localStorage.removeItem('targetTime');
-            localStorage.removeItem('restTime');
-            localStorage.removeItem('time');
         }
-    }, [second]);
-
-    /** 휴식시간 1초에 한 번씩 저장 */
-    useEffect(() => {
-        localStorage.setItem('restTime', restSecond);
-    }, [restSecond]);
+    }, [stop]);
 
     return (
         <>
@@ -109,6 +95,9 @@ const Stopwatch = ({ mode, setMode }) => {
                     stop={stop}
                     setMode={setMode}
                     remainTime={remainTime}
+                    currentDate={currentDate}
+                    startTime={startTime}
+                    savedStudyTime={savedStudyTime}
                 />
             )}
         </>

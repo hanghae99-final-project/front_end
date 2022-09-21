@@ -215,7 +215,7 @@
 .myStatus {
   color: var(--primary-100);
   position: relative;
-  bottom: 6rem;
+  bottom: -3rem;
   left: calc(50% - 10rem);
   display: flex;
   width: 19rem;
