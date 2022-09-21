@@ -185,17 +185,15 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
             <Quote />
             {!run && !rest ? (
                 targetTime === 0 ? (
-                    <button className={styles.settingBtn}>
+                    <button
+                        className={styles.settingBtn}
+                        onClick={() => {
+                            setTimeMode('set');
+                        }}>
                         <div className={styles.settingBox}>
                             <img src={setting} alt='목표 설정' className={styles.setting} />
                         </div>
-                        <div
-                            className={styles.text}
-                            onClick={() => {
-                                setTimeMode('set');
-                            }}>
-                            목표설정
-                        </div>
+                        <div className={styles.text}>목표설정</div>
                     </button>
                 ) : (
                     <button
@@ -247,7 +245,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                     setRun(true);
                                     dispatch(__postRestEnd({ restEndPoint: date, studyStartPoint: date }));
                                 }}>
-                                <Play className={styles.setting} />
+                                <Play className={styles.setting} fill={'var(--neutral-10)'} />
                                 <div>{changeTimeForm(restSecond, styles.savedRestTime)}</div>
                             </button>
                         </>
