@@ -20,6 +20,7 @@ const MainPage = () => {
     const [btsOn, setBtsOn] = useState(false);
     const [timeMode, setTimeMode] = useState('normal');
     const [color, setColor] = useState('#7E7C8C');
+
     return (
         <Layout>
             <Gradient backgroundColor={backgroundColor}>

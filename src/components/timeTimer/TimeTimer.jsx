@@ -47,8 +47,10 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
             setColor(second >= targetTime / 1000 ? 'red' : 'green');
         } else if (restStartPoint !== 0) {
             setColor('blue');
+        } else if (studyStartPoint === 0 && restStartPoint === 0) {
+            setColor('');
         }
-    }, [studyStartPoint, restStartPoint]);
+    }, [studyStartPoint, restStartPoint, color]);
 
     useEffect(() => {
         dispatch(changeColor(color));
