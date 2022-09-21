@@ -10,6 +10,7 @@ import Join from "../pages/Join";
 import ProfileTodoList from "../components/profile/ProfileTodoList";
 import ModifyProfile from "../pages/ModifyProfile";
 import DdayPage from "../pages/DdayPage";
+import PostDday from "../components/dDay/PostDday";
 
 function Router() {
     return (
@@ -26,6 +27,7 @@ function Router() {
                 <Route path="/mytodo" element={<ProfileTodoList />} />
                 <Route path="/modify" element={<ModifyProfile />} />
                 <Route path="/dday" element={<DdayPage />} />
+                <Route path="/postdday" element={<PostDday />} />
             </Routes>
         </BrowserRouter>
     );
