@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import '../common/css/color.css';
+import React from "react";
+import styled from "styled-components";
+import "../common/css/color.css";
 
 const Layout = (props) => {
     return <StyledLayout>{props.children}</StyledLayout>;

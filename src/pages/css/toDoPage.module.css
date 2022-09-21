@@ -8,12 +8,14 @@
 }
 
 .toDoTitle {
+    display: flex;
     text-align: center;
     margin-bottom: 1.063rem;
     margin-top: 0.5rem;
 }
 
 .toDoTitle h1 {
+    width: 100%;
     font-family: Pretendard;
     font-size: 1rem;
     font-weight: 600;
@@ -23,4 +25,24 @@
     letter-spacing: normal;
     text-align: center;
     color: var(--neutral-100);
+}
+
+.toDoTitle button {
+    width: 1.5rem;
+    height: 1.5rem;
+
+    background: url(../../common/svg/open_post_todo_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border: none;
+}
+
+.openTodo {
+    transition: all 0.6s ease-in-out;
+}
+
+.closeTodo {
+    display: none;
+    transition: all 0.6s ease-in-out;
 }
