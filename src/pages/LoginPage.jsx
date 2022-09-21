@@ -12,9 +12,9 @@ const LoginPage = () => {
     return (
         <Layout>
             <div className={styles.background}>
-                <Logo className={`${styles.logo} animate__animated animate__bounce`} />
+                <Logo className={`${styles.logo} animate__animated animate__fadeInDown`} />
                 <div className={styles.kakaoButton}>
-                    <img src={tootip} alt='tootip' />
+                    <img src={tootip} alt='tootip' className='animate__animated animate__pulse animate__infinite animate__delay-2s' />
                     <KakaoLoginButton
                         onClick={() => {
                             window.location.href = authURI;

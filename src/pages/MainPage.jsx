@@ -22,26 +22,33 @@ const MainPage = () => {
     return (
         <Layout>
             <Gradient backgroundColor={backgroundColor}>
-                <div
-                    onClick={() => {
-                        setBtsOn(false);
-                    }}
-                    className={btsOn ? styles.blurIn : styles.blurOut}>
-                    <div className={styles.aboveBox}>
-                        <img src={alert} alt='도움말 툴팁' className={styles.alert} />
-                        <Studing />
-                        <Stopwatch mode={mode} setMode={setMode} color={color} setColor={setColor} />
+                <div className={styles.columnBox}>
+                    {/* <div
+                        onClick={() => {
+                            setBtsOn(false);
+                        }}
+                        className={btsOn ? styles.blurIn : styles.blurOut}></div> */}
+                    <div>
+                        <div className={styles.aboveBox}>
+                            <img src={alert} alt='도움말 툴팁' className={styles.alert} />
+                            <Studing />
+                            <Stopwatch mode={mode} setMode={setMode} color={color} setColor={setColor} />
+                        </div>
                     </div>
-                    <Dday />
-                    <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
+                    <div>
+                        <Dday />
+                        <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
+                    </div>
+                    <div>
+                        <div
+                            onClick={() => {
+                                setBtsOn(!btsOn);
+                            }}>
+                            <TodoBtn />
+                        </div>
+                        <Footer />
+                    </div>
                 </div>
-                <div
-                    onClick={() => {
-                        setBtsOn(!btsOn);
-                    }}>
-                    <TodoBtn />
-                </div>
-                <Footer />
                 <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
                     <ToDo />
                 </div>
