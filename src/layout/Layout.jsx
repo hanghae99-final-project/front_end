@@ -17,8 +17,8 @@ const StyledLayout = styled.div`
     @media (min-width: 360px) {
         width: 100%;
     }
-    @media (min-width: 640px) {
-        width: 640px;
+    @media (min-width: 600px) {
+        width: 600px;
     }
 `;
 

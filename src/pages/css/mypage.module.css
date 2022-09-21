@@ -4,12 +4,21 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: space-between;
     height: 100%;
 }
 
 .buttonBox {
     display: flex;
     gap: 8px;
+}
+
+.underBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .contentBox {
@@ -21,17 +30,29 @@
 .container {
     background-color: rgba(47, 48, 56, 0.5);
     width: 100%;
-    height: 14.5rem;
+    height: 100%;
 }
 .aboveArea {
     width: 100%;
-    height: 14rem;
     background-image: url(../../common/svg/mypage_background.png);
     background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 14rem;
+}
+
+@media (max-height: 1100px) {
+    .aboveArea {
+        height: 100%;
+    }
+}
+
+@media (min-height: 1100px) {
+    .aboveArea {
+        height: 526px;
+    }
 }
 
 .totalTime {

@@ -24,11 +24,6 @@ const MainPage = () => {
         <Layout>
             <Gradient backgroundColor={backgroundColor}>
                 <div className={styles.columnBox}>
-                    {/* <div
-                        onClick={() => {
-                            setBtsOn(false);
-                        }}
-                        className={btsOn ? styles.blurIn : styles.blurOut}></div> */}
                     <div>
                         <div className={styles.aboveBox}>
                             <img src={alert} alt='도움말 툴팁' className={styles.alert} />
