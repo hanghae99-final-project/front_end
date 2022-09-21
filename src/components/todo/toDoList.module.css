@@ -118,9 +118,15 @@ ul::-webkit-scrollbar {
 }
 
 .modifyBtn {
-    background-color: var(--alerts-orange);
+    background: url(../../common/svg/edit_icon.svg) var(--alerts-orange);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: All 0.3s ease-in-out;
 }
 
 .delBtn {
-    background-color: var(--alerts-red);
+    background: url(../../common/svg/todo_delete_icon.svg) var(--alerts-red);
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: All 0.3s ease-in-out;
 }

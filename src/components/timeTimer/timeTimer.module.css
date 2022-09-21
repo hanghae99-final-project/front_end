@@ -227,6 +227,10 @@
     border: none;
 }
 
+.restStartBtn:active {
+    filter: brightness(55%);
+}
+
 .restTime {
     width: 3rem;
     height: 1.125rem;
@@ -267,6 +271,10 @@
     border-radius: 8px;
     border: none;
     background-color: var(--tertiary-50);
+}
+
+.restEndBtn:active {
+    filter: brightness(55%);
 }
 
 .savedRestTime {

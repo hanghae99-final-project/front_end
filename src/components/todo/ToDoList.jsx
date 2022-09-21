@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import styled from 'styled-components';
-import { deleteList, getList, updateToDoDone } from '../../app/slice/toDoSlice';
-import styles from './toDoList.module.css';
-import ToDoModify from './ToDoModify';
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import styled from "styled-components";
+import { deleteList, getList, updateToDoDone } from "../../app/slice/toDoSlice";
+import styles from "./toDoList.module.css";
+import ToDoModify from "./ToDoModify";
 
 const ToDoList = () => {
-    const [upDateValue, setUpDateValue] = useState('');
-    const [upDateColor, setUpDateColor] = useState('#FFFFFF');
+    const [upDateValue, setUpDateValue] = useState("");
+    const [upDateColor, setUpDateColor] = useState("#FFFFFF");
     const [btnOn, setBtnOn] = useState(true);
-    const [modifyOn, setModifyOn] = useState('');
-    const [modifyModal, setModifyModal] = useState('');
+    const [modifyOn, setModifyOn] = useState("");
+    const [modifyModal, setModifyModal] = useState("");
 
     const dispatch = useDispatch();
     const toDos = useSelector((state) => state.toDo);
@@ -53,20 +53,48 @@ const ToDoList = () => {
                         <div key={toDo._id}>
                             <li className={styles.innerWarp}>
                                 <div
-                                    className={modifyOn === toDo._id ? `${styles.toDoContainer} ${styles.modifyOn}` : styles.toDoContainer}>
+                                    className={
+                                        modifyOn === toDo._id
+                                            ? `${styles.toDoContainer} ${styles.modifyOn}`
+                                            : styles.toDoContainer
+                                    }
+                                >
                                     <div className={styles.toDoWarp}>
                                         <div
                                             onClick={() => {
-                                                modifyOn === toDo._id ? setModifyOn('') : setModifyOn(toDo._id);
-                                                setModifyModal('');
+                                                modifyOn === toDo._id
+                                                    ? setModifyOn("")
+                                                    : setModifyOn(toDo._id);
+                                                setModifyModal("");
                                             }}
-                                            className={styles.toDoValueWarp}>
-                                            <PickColor bgColor={toDo.color}></PickColor>
-                                            <p className={toDo.isDone ? styles.ToDoTrue : styles.ToDoFalse}>{toDo.work}</p>
+                                            className={styles.toDoValueWarp}
+                                        >
+                                            <PickColor
+                                                bgColor={toDo.color}
+                                            ></PickColor>
+                                            <p
+                                                className={
+                                                    toDo.isDone
+                                                        ? styles.ToDoTrue
+                                                        : styles.ToDoFalse
+                                                }
+                                            >
+                                                {toDo.work}
+                                            </p>
                                         </div>
                                         <button
-                                            className={toDo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn}
-                                            onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}></button>
+                                            className={
+                                                toDo.isDone
+                                                    ? styles.isDoneTureBtn
+                                                    : styles.isDoneFalseBtn
+                                            }
+                                            onClick={() =>
+                                                onClickToDoDone(
+                                                    toDo.isDone,
+                                                    toDo._id
+                                                )
+                                            }
+                                        ></button>
                                     </div>
                                 </div>
 
@@ -74,19 +102,28 @@ const ToDoList = () => {
                                     <button
                                         className={styles.modifyBtn}
                                         /* disabled={btnOn} */ onClick={() => {
-                                            modifyModal === toDo._id ? setModifyModal('') : setModifyModal(toDo._id);
-                                        }}>
-                                        수정
-                                    </button>
-                                    <button className={styles.delBtn} onClick={() => onDeleteToDoHandler(toDo._id)} type='button'>
-                                        -
-                                    </button>
+                                            modifyModal === toDo._id
+                                                ? setModifyModal("")
+                                                : setModifyModal(toDo._id);
+                                        }}
+                                    ></button>
+                                    <button
+                                        className={styles.delBtn}
+                                        onClick={() =>
+                                            onDeleteToDoHandler(toDo._id)
+                                        }
+                                        type="button"
+                                    ></button>
                                 </div>
                             </li>
                             {modifyModal === toDo._id ? (
-                                <ToDoModify toDoId={toDo._id} setModifyModal={setModifyModal} setModifyOn={setModifyOn} />
+                                <ToDoModify
+                                    toDoId={toDo._id}
+                                    setModifyModal={setModifyModal}
+                                    setModifyOn={setModifyOn}
+                                />
                             ) : (
-                                ''
+                                ""
                             )}
                         </div>
                     );

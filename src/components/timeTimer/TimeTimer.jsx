@@ -247,7 +247,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                     setRun(true);
                                     dispatch(__postRestEnd({ restEndPoint: date, studyStartPoint: date }));
                                 }}>
-                                <Play className={styles.setting} />
+                                <Play className={styles.setting} fill={'var(--neutral-10)'} />
                                 <div>{changeTimeForm(restSecond, styles.savedRestTime)}</div>
                             </button>
                         </>

@@ -1,4 +1,11 @@
 @import url(../../common/css/common.css);
+
+.columnBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
 .alert {
     width: 1.5rem;
     height: 1.5rem;
@@ -22,6 +29,7 @@
     height: 30rem;
     z-index: 5;
     transition: all 0.6s ease-in-out;
+    display: none;
 }
 
 .todoBtsOn {
@@ -32,6 +40,7 @@
     top: -32rem;
     z-index: 5;
     transition: all 0.6s ease-in-out;
+    display: block;
 }
 
 .aboveBox {

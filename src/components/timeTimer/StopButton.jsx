@@ -38,6 +38,9 @@ const StopBtn = styled.button`
     padding: 0.75rem 1rem 0.75rem 0.5rem;
     border: none;
     border-radius: 8px;
+    &:active {
+        filter: brightness(55%);
+    }
     background-color: ${(props) => {
         switch (props.color) {
             case 'green':

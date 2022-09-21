@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 
-const initialState = { quote: '' };
+const initialState = { quote: '', studing: 0 };
 
 export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) => {
     try {
