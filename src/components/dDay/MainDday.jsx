@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getDday } from "../../app/slice/DdaySlice";
-import styles from "./dDay.module.css";
+import styles from "./mainDday.module.css";
 import font from "../../common/css/font.module.css";
 
 const MainDday = () => {
