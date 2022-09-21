@@ -99,14 +99,13 @@
 }
 
 .settingBtn {
-    width: 20.5rem;
+    width: 90%;
     height: 3.75rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin: 3.438rem 1rem 1rem;
+    margin: 1rem auto 2rem auto;
     padding: 0.75rem 1rem;
     border-radius: 8px;
     border: none;

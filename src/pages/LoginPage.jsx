@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as KakaoLoginButton } from '../common/svg/kakao_icon.svg';
 import { ReactComponent as Logo } from '../common/svg/logo.svg';
-import tootip from '../common/svg/loginPage_tootip.png';
+import { ReactComponent as Tootip } from '../common/svg/loginPage_tootip.svg';
 import Layout from '../layout/Layout';
 import styles from './css/loginPage.module.css';
 import 'animate.css';
@@ -14,7 +14,7 @@ const LoginPage = () => {
             <div className={styles.background}>
                 <Logo className={`${styles.logo} animate__animated animate__fadeInDown`} />
                 <div className={styles.kakaoButton}>
-                    <img src={tootip} alt='tootip' className='animate__animated animate__pulse animate__infinite animate__delay-2s' />
+                    <Tootip className={`${styles.tootip} animate__animated animate__pulse animate__infinite animate__delay-1s`} />
                     <KakaoLoginButton
                         onClick={() => {
                             window.location.href = authURI;
