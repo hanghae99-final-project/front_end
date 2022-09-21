@@ -21,7 +21,7 @@ const MainPage = () => {
     const [color, setColor] = useState('#7E7C8C');
     return (
         <Layout>
-            <Gradient color={backgroundColor}>
+            <Gradient backgroundColor={backgroundColor}>
                 <div
                     onClick={() => {
                         setBtsOn(false);
