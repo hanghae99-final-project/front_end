@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './setTimeModal.module.css';
 import SetTimePicker from './SetTimePicker';
 import { ReactComponent as Close } from '../../common/svg/close.svg';
+import font from '../../common/css/font.module.css';
 
 const SetWatchModal = ({
     startTime,
@@ -20,7 +21,7 @@ const SetWatchModal = ({
 }) => {
     return (
         <div className={localStorage.targetTime > 0 ? styles.setModal : styles.modal}>
-            <div className={styles.title}>
+            <div className={`${styles.title} ${font.subtitle2_600_16}`}>
                 <div>목표 공부시간 설정</div>
                 <Close
                     className={styles.close}
@@ -34,7 +35,7 @@ const SetWatchModal = ({
                 <>
                     <SetTimePicker setTime={setTime} time={time} />
                     <button
-                        className={styles.startBtn}
+                        className={`${styles.startBtn} ${font.subtitle2_600_16}`}
                         onClick={() => {
                             localStorage.setItem('targetTime', (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
                             setMode('normal');
@@ -49,12 +50,9 @@ const SetWatchModal = ({
                     <div className={styles.buttonBox}>
                         {!stop ? (
                             <button
-                                className={styles.stopButton}
+                                className={`${styles.stopButton} ${font.subtitle2_600_16}`}
                                 onClick={() => {
                                     setStop(true);
-                                    // 멈추기 하면 현재 시간 - 시작 시간 저장
-                                    // 그러니까 stop 이 false 일 때에는 시간을 현재 시간 - 시작시간으로 하고
-                                    // stop이 true일 때는 savedStudyTime으로 하면 됨.
                                     localStorage.setItem('savedStudyTime', savedStudyTime + currentDate - startTime);
                                     localStorage.setItem('restStart', true);
                                 }}>
@@ -62,7 +60,7 @@ const SetWatchModal = ({
                             </button>
                         ) : (
                             <button
-                                className={styles.stopButton}
+                                className={`${styles.stopButton} ${font.subtitle2_600_16}`}
                                 onClick={() => {
                                     setStop(false);
                                     localStorage.removeItem('restStart');
@@ -71,7 +69,7 @@ const SetWatchModal = ({
                             </button>
                         )}
                         <button
-                            className={styles.endButton}
+                            className={`${styles.endButton} ${font.subtitle2_600_16}`}
                             onClick={() => {
                                 setRunning(false);
                                 setStop(false);

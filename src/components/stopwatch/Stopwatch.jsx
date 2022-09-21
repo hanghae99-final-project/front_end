@@ -5,6 +5,7 @@ import styles from './stopwatch.module.css';
 import { ReactComponent as Timer } from '../../common/svg/timer.svg';
 import changeTimeForm from '../../utils/changeTimeForm';
 import useInterval from '../../hooks/useInterval';
+import font from '../../common/css/font.module.css';
 
 const Stopwatch = ({ mode, setMode, color, setColor }) => {
     /** 현재시간 및 시작 시간 */
@@ -64,7 +65,7 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
     return (
         <div className={styles.stopwatchBox}>
             <div className={styles.stopwatch}>
-                {running && <div className={styles.remainTime}>{changeTimeForm(remainTime)}</div>}
+                {running && <div className={styles.remainTime}>{changeTimeForm(remainTime, font.caption_600_12)}</div>}
                 <Timer
                     onTouchStart={() => {
                         setColor('#C7C5D0');

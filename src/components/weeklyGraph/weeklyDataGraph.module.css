@@ -24,6 +24,9 @@
 .date {
     color: var(--neutral-100);
     padding: 0 2rem;
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-weight: 600;
 }
 
 .arrow:active {
