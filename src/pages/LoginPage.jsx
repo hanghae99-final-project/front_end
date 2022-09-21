@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ReactComponent as KakaoLoginButton } from '../common/svg/kakao_icon.svg';
 import { ReactComponent as Logo } from '../common/svg/logo.svg';
 import tootip from '../common/svg/loginPage_tootip.png';
