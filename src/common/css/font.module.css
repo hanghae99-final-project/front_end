@@ -1,0 +1,276 @@
+@font-face {
+    font-family: Pretendard;
+    src: url(../font/Pretendard-Light.woff2) format('woff2'), url(../font/Pretendard-Light.woff) format('woff'),
+        url(../font/Pretendard-Light.ttf) format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: Pretendard;
+    src: url(../font/Pretendard-SemiBold.woff2) format('woff2'), url(../font/Pretendard-SemiBold.woff) format('woff'),
+        url(../font/Pretendard-SemiBold.ttf) format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: Pretendard;
+    src: url(../font/Pretendard-Bold.woff2) format('woff2'), url(../font/Pretendard-Bold.woff) format('woff'),
+        url(../font/Pretendard-Bold.ttf) format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+.header_600_42 {
+    font-family: Pretendard;
+    font-size: 2.625rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.header2_600_28 {
+    font-family: Pretendard;
+    font-size: 1.75rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.29;
+    letter-spacing: normal;
+}
+
+.header3_600_24 {
+    font-family: Pretendard;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+}
+
+.subtitle3bold20 {
+    font-family: Pretendard;
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.title_600_18 {
+    font-family: Pretendard;
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+}
+
+.subtitle_600_18 {
+    font-family: Pretendard;
+    font-size: 1.125rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+}
+
+.subtitle_300_18 {
+    font-family: Pretendard;
+    font-size: 1.125rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+}
+
+.title2_600_16 {
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+}
+
+.subtitle2_600_16 {
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.body_600_16 {
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.subtitle2_300_16 {
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.body_300_16 {
+    font-family: Pretendard;
+    font-size: 1rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.title3_600_14 {
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+}
+
+.subtitle3_600_14 {
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+}
+
+.body2_600_14 {
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+}
+
+.subtitle3_300_14 {
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+}
+
+.body2_300_14 {
+    font-family: Pretendard;
+    font-size: 0.875rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.43;
+    letter-spacing: normal;
+}
+
+.subtitle4_600_12 {
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.caption_600_12 {
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.subtitle4_300_12 {
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.caption_300_12 {
+    font-family: Pretendard;
+    font-size: 0.75rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+}
+
+.caption2_600_10 {
+    font-family: Pretendard;
+    font-size: 0.625rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+}
+
+.caption2_300_10 {
+    font-family: Pretendard;
+    font-size: 0.625rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+}
+
+.caption3_600_8 {
+    font-family: Pretendard;
+    font-size: 0.5rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+}
+
+.caption3_300_8 {
+    font-family: Pretendard;
+    font-size: 0.5rem;
+    font-weight: 300;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.25;
+    letter-spacing: normal;
+}

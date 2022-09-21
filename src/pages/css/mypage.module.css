@@ -1,4 +1,23 @@
 @import url(../../common/css/common.css);
+
+.box {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.buttonBox {
+    display: flex;
+    gap: 8px;
+}
+
+.contentBox {
+    display: flex;
+    gap: 8px;
+    padding: 0.7rem;
+}
+
 .container {
     background-color: rgba(47, 48, 56, 0.5);
     width: 100%;

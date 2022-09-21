@@ -142,12 +142,14 @@ const WeeklyDataGraph = () => {
         <div className={styles.graph}>
             <div className={styles.aboveBox}>
                 <LeftArrow
+                    className={styles.arrow}
                     onClick={() => {
                         setMove((prev) => prev - 1);
                     }}
                 />
                 <div className={styles.date}>{`${week.startWeek} - ${week.endWeek}`}</div>
                 <RightArrow
+                    className={styles.arrow}
                     onClick={() => {
                         setMove((prev) => prev + 1);
                     }}

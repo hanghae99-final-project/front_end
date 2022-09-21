@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import styles from './footer.module.css';
 import { ReactComponent as Home } from '../../common/svg/home_icon.svg';
 import { ReactComponent as Rank } from '../../common/svg/ranking_icon.svg';
 import { ReactComponent as Stats } from '../../common/svg/stats_icon.svg';
@@ -11,13 +12,19 @@ const Footer = () => {
     return (
         <FooterBar>
             <Link to='/ranking'>
-                <Rank fillOpacity={location.pathname === '/ranking' ? 1 : 0.3} />
+                <div className={styles.selected}>
+                    <Rank fillOpacity={location.pathname === '/ranking' ? 1 : 0.3} />
+                </div>
             </Link>
             <Link to='/home'>
-                <Home fillOpacity={location.pathname === '/home' ? 1 : 0.3} />
+                <div className={styles.selected}>
+                    <Home fillOpacity={location.pathname === '/home' ? 1 : 0.3} />
+                </div>
             </Link>
             <Link to='/mypage'>
-                <Stats fillOpacity={location.pathname === '/mypage' ? 1 : 0.3} />
+                <div className={styles.selected}>
+                    <Stats fillOpacity={location.pathname === '/mypage' ? 1 : 0.3} />
+                </div>
             </Link>
         </FooterBar>
     );
@@ -26,17 +33,11 @@ const Footer = () => {
 export default Footer;
 
 const FooterBar = styled.nav`
-    height: 8vh;
+    height: 4rem;
     display: flex;
     align-items: center;
     background-color: var(--neutral-20);
     justify-content: space-around;
     width: 100%;
-    /* @media (max-width: 1200px) {
-        width: 100%;
-    }
-    @media (min-width: 1200px) {
-        width: 1200px;
-    } */
     z-index: 999;
 `;
