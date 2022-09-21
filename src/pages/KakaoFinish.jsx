@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { get_login } from '../app/slice/mainSlice';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
+import { get_login } from "../app/slice/mainSlice";
 
 const KakaoFinish = () => {
     const location = useLocation();
@@ -25,9 +25,13 @@ const KakaoFinish = () => {
         } else {
             navigate('/join');
         }
-    }, [use]);
+      }
+    } else {
+      navigate("/join");
+    }
+  }, [use]);
 
-    return <div>gd</div>;
+  return <div>gd</div>;
 };
 
 export default KakaoFinish;
