@@ -33,13 +33,10 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
   return (
     <div className={styles.layout}>
       <div className={styles.container}>
-        <button className={styles.arrowBack} onClick={() => setMode("Age")}>
-          <img
-            className={styles.arrowbackIcon}
-            src={arrowBtn2}
-            alt="arrowBtn2"
-          />
-        </button>
+        <button
+          className={styles.arrowBack}
+          onClick={() => setMode("Age")}
+        ></button>
         <p className={styles.infoText}>
           준비하고 있는 분야를 <br />
           선택해 주세요

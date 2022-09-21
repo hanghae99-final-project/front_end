@@ -68,7 +68,7 @@
 .rankingContainer {
   margin: 0 auto;
   width: 20rem;
-  height: 26.5rem;
+  height: 25.5rem;
   overflow-y: scroll;
 }
 .rankingContainer::-webkit-scrollbar {
