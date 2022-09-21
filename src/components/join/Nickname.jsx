@@ -8,20 +8,12 @@ import { ReactComponent as Red } from "../../common/svg/red.svg";
 import { ReactComponent as Green } from "../../common/svg/green.svg";
 import axios from "axios";
 
-const Nickname = ({
-  setMode,
-  nickname,
-  checkMsg,
-  setCheckMsg,
-  initialState,
-  userInfo,
-  setUserInfo,
-}) => {
+const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, userInfo, setUserInfo }) => {
   const [borderColor, setBorderColor] = useState("");
   const check = /^[가-힣]{2,8}$/;
 
   const checkNickname = () => {
-    if (!check.test(userInfo.nickname)) {
+    if (!check.test(userInfo.nickname) && userInfo.nickname) {
       setBorderColor("orange");
       setCheckMsg("숫자,이모티콘,공백은 사용 불가능해요");
     } else {
@@ -40,9 +32,7 @@ const Nickname = ({
   };
 
   const allCheck = () => {
-    borderColor === "green" && check.test(userInfo.nickname)
-      ? setMode("Age")
-      : void 0;
+    borderColor === "green" && check.test(userInfo.nickname) ? setMode("Age") : void 0;
   };
   const onChangeHandleInput = (e) => {
     const { name, value } = e.target;
@@ -63,11 +53,11 @@ const Nickname = ({
         <div
           className={
             nickname !== "" && borderColor === "red"
-              ? styles.red
+              ? `${styles.red} animate__animated animate__headShake`
               : nickname !== "" && borderColor === "green"
               ? styles.green
               : nickname !== "" && borderColor === "orange"
-              ? styles.orange
+              ? `${styles.orange} animate__animated animate__headShake`
               : styles.inputContainer
           }
         >
@@ -78,7 +68,7 @@ const Nickname = ({
               name="nickname"
               className={styles.inputNickname}
               onBlur={checkNickname}
-              onKeyPress={checkNickname}
+              // onKeyPress={checkNickname}
               value={nickname}
               onChange={onChangeHandleInput}
               placeholder="8자 이내 한글"
@@ -108,13 +98,9 @@ const Nickname = ({
               : styles.checkMsg
           }
         >
-          {borderColor === "orange" && (
-            <Orange style={{ marginRight: "0.25rem" }} />
-          )}
+          {borderColor === "orange" && <Orange style={{ marginRight: "0.25rem" }} />}
           {borderColor === "red" && <Red style={{ marginRight: "0.25rem" }} />}
-          {borderColor === "green" && (
-            <Green style={{ marginRight: "0.25rem" }} />
-          )}
+          {borderColor === "green" && <Green style={{ marginRight: "0.25rem" }} />}
           {checkMsg}
         </p>
       </div>
