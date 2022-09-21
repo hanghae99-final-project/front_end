@@ -138,9 +138,9 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
         <div className={styles.layout}>
             <div className={styles.baseTimer}>
                 <div className={styles.a}>
-                    <svg className={styles.baseSvg} viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'>
+                    <svg className={styles.baseSvg} viewBox='0 0 102 103' xmlns='http://www.w3.org/2000/svg'>
                         <g className={styles.baseTimerCircle}>
-                            <circle className={styles.basePath} cx='50' cy='50' r='45' />
+                            <circle className={styles.basePath} cx='51' cy='51' r='45' />
                             <path
                                 strokeDasharray={`${sec} 283`}
                                 className={
@@ -151,7 +151,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                         : styles.pathGreen
                                 }
                                 d='
-          M 50, 50
+          M 51, 52
           m -45, 0
           a 45,45 0 1,0 90,0
           a 45,45 0 1,0 -90,0
@@ -171,16 +171,15 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                             <img src={setting} alt='시간설정' />
                                         </button>
                                     )}
-                                    <br />
                                 </div>
                             ) : (
                                 <div className={styles.targetTime}>
-                                    {changeTimeForm(targetToSec, `${styles.target} ${font.header3_600_24}`)}
+                                    {changeTimeForm(targetToSec, styles.target)}
                                     <br />
                                 </div>
                             )}
-                            {changeTimeForm(second, `${styles.mainTimerTime} ${font.header_600_42}`)}
-                            <div className={`${styles.status} ${font.caption_300_12}`}>{status}</div>
+                            {changeTimeForm(second, styles.mainTimerTime)}
+                            <div className={styles.status}>{status}</div>
                         </span>
                     </div>
                 </div>
@@ -212,9 +211,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                 fill={second >= targetTime / 1000 ? 'var(--neutral-100)' : 'var(--neutral-10)'}
                             />
                         </div>
-                        <div className={`${second >= targetTime / 1000 ? styles.redText : styles.playText} ${font.subtitle2_600_16}`}>
-                            시작하기
-                        </div>
+                        <div className={second >= targetTime / 1000 ? styles.redText : styles.playText}>시작하기</div>
                     </button>
                 )
             ) : (
@@ -236,8 +233,8 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                 }}>
                                 <img src={pause} alt='휴식하기' />
                                 <div className={styles.restTextBox}>
-                                    <div className={`${styles.restText} ${font.subtitle2_600_16}`}>휴식하기</div>
-                                    {changeTimeForm(restSecond, `${styles.restTime} ${font.caption_300_12}`)}
+                                    <div className={styles.restText}>휴식하기</div>
+                                    {changeTimeForm(restSecond, styles.restTime)}
                                 </div>
                             </button>
                         </>
@@ -251,7 +248,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                     dispatch(__postRestEnd({ restEndPoint: date, studyStartPoint: date }));
                                 }}>
                                 <Play className={styles.setting} fill={'var(--neutral-10)'} />
-                                <div>{changeTimeForm(restSecond, `${styles.savedRestTime} ${font.subtitle2_600_16}`)}</div>
+                                <div>{changeTimeForm(restSecond, styles.savedRestTime)}</div>
                             </button>
                         </>
                     )}

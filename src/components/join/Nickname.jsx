@@ -6,23 +6,17 @@ import deleteBtn from "../../common/svg/delete_icon.svg";
 import { ReactComponent as Orange } from "../../common/svg/orange.svg";
 import { ReactComponent as Red } from "../../common/svg/red.svg";
 import { ReactComponent as Green } from "../../common/svg/green.svg";
-import { __checkNickname } from "../../app/slice/joinSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import axios from "axios";
 
 const Nickname = ({
   setMode,
   nickname,
-  handleInput,
   checkMsg,
   setCheckMsg,
   initialState,
   userInfo,
   setUserInfo,
 }) => {
-  const dispatch = useDispatch();
-  const nicknameUsable = useSelector((data) => data.join.ok);
   const [borderColor, setBorderColor] = useState("");
   const check = /^[가-힣]{2,8}$/;
 
@@ -32,7 +26,7 @@ const Nickname = ({
       setCheckMsg("숫자,이모티콘,공백은 사용 불가능해요");
     } else {
       axios
-        .get(process.env.REACT_APP_SERVER_URL + `/check/nick/${nickname}`, {
+        .get(process.env.REACT_APP_SERVER_URL + `/profile/nick/${nickname}`, {
           headers: {
             Authorization: `Bearer ${localStorage.token}`,
           },
@@ -49,6 +43,11 @@ const Nickname = ({
     borderColor === "green" && check.test(userInfo.nickname)
       ? setMode("Age")
       : void 0;
+  };
+  const onChangeHandleInput = (e) => {
+    const { name, value } = e.target;
+    setBorderColor("");
+    setUserInfo({ ...userInfo, [name]: value });
   };
 
   return (
@@ -81,18 +80,16 @@ const Nickname = ({
               onBlur={checkNickname}
               onKeyPress={checkNickname}
               value={nickname}
-              onChange={handleInput}
+              onChange={onChangeHandleInput}
               placeholder="8자 이내 한글"
               autoComplete="off"
               autoFocus={true}
               maxLength="8"
             ></input>
           </div>
-          <div>
-            <img
+          <div className={styles.buttonBox}>
+            <button
               className={styles.deleteIcon}
-              src={deleteBtn}
-              alt="deleteBtn"
               onClick={() => {
                 setUserInfo(initialState);
                 setBorderColor("");
