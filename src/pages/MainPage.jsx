@@ -16,6 +16,7 @@ import TodoBtn from '../components/todo/TodoBtn';
 const MainPage = () => {
     const backgroundColor = useSelector((state) => state.color);
     const [mode, setMode] = useState('normal');
+    const [todoMode, setTodoMode] = useState('normal');
     const [btsOn, setBtsOn] = useState(false);
     const [timeMode, setTimeMode] = useState('normal');
     const [color, setColor] = useState('#7E7C8C');
@@ -43,6 +44,7 @@ const MainPage = () => {
                         <div
                             onClick={() => {
                                 setBtsOn(!btsOn);
+                                setTodoMode('set');
                             }}>
                             <TodoBtn />
                         </div>
@@ -67,6 +69,15 @@ const MainPage = () => {
                     className={styles.blur}
                     onClick={() => {
                         setTimeMode('normal');
+                    }}
+                />
+            )}
+            {todoMode === 'set' && (
+                <div
+                    className={styles.blur}
+                    onClick={() => {
+                        setTodoMode('normal');
+                        setBtsOn(false);
                     }}
                 />
             )}

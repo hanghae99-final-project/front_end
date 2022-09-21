@@ -6,7 +6,7 @@ const initialState = { quote: '', studing: 0 };
 
 export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/users/kakao/callback?code=${payload}`);
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/users/kakao/finish?code=${payload}`);
         console.log(data);
         return thunkAPI.fulfillWithValue(data.token);
     } catch (error) {

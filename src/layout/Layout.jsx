@@ -8,7 +8,7 @@ const Layout = (props) => {
 
 const StyledLayout = styled.div`
   margin: 0 auto;
-  height: 800px;
+  height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: var(--neutral-20);
