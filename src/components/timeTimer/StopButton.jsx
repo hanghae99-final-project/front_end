@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { __postStudyEnd } from '../../app/slice/timeTimerSlice';
 import '../../common/css/color.css';
 import { ReactComponent as Stop } from '../../common/svg/stop_icon.svg';
+import font from '../../common/css/font.module.css';
 
 const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest, setColor, second, targetTime, color }) => {
     const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest, setColo
                     dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
                 }}>
                 <Stop fill={color === 'green' ? 'var(--neutral-10)' : 'var(--neutral-100)'} />
-                <div>그만하기</div>
+                <div className={font.subtitle2_600_16}>그만하기</div>
             </StopBtn>
         </>
     );

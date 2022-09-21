@@ -57,10 +57,12 @@
 
 .totalTime {
     font-weight: 600;
+    font-family: Pretendard;
 }
 
 .text {
     color: var(--neutral-100);
+    font-family: Pretendard;
     font-weight: 300;
     background-color: var(--opacity-w-10);
     height: 1.5rem;
@@ -76,13 +78,16 @@
     color: var(--neutral-100);
     font-weight: 600;
     padding-bottom: 0.5rem;
+    line-height: 1.5;
+    text-align: center;
 }
 
 .title {
-    font-size: 0.875rem;
     color: var(--neutral-100);
-    font-weight: 300;
     padding-bottom: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: Pretendard;
 }
 
 .profileButton {

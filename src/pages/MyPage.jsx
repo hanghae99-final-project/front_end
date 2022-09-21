@@ -9,6 +9,7 @@ import styles from './css/mypage.module.css';
 import ProfileTodoList from '../components/profile/ProfileTodoList';
 import Calender from '../components/calender/Calender';
 import { Link } from 'react-router-dom';
+import font from '../common/css/font.module.css';
 
 const MyPage = () => {
     return (
@@ -20,12 +21,12 @@ const MyPage = () => {
                         <Link to='/modify'>
                             <button className={styles.profileButton}>
                                 <Person />
-                                <span>프로필 설정</span>
+                                <span className={font.subtitle4_600_12}>프로필 설정</span>
                             </button>
                         </Link>
                         <button className={styles.profileButton}>
                             <Event />
-                            <span>디데이 설정</span>
+                            <span className={font.subtitle4_600_12}>디데이 설정</span>
                         </button>
                     </div>
                     <div className={styles.contentBox}>
