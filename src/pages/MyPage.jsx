@@ -13,9 +13,9 @@ import { Link } from 'react-router-dom';
 const MyPage = () => {
     return (
         <Layout>
-            <div style={{ display: 'flex', alignItems: 'center', flexDirection: 'column' }}>
+            <div className={styles.box}>
                 <MyPageStudyTime />
-                <div style={{ display: 'flex', gap: '10px' }}>
+                <div className={styles.buttonBox}>
                     <Link to='/modify'>
                         <button className={styles.profileButton}>
                             <Person />
@@ -27,7 +27,7 @@ const MyPage = () => {
                         <span>디데이 설정</span>
                     </button>
                 </div>
-                <div style={{ display: 'flex', padding: '0.7rem', gap: '10px' }}>
+                <div className={styles.contentBox}>
                     <Calender />
                     <ProfileTodoList />
                 </div>
