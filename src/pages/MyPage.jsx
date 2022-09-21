@@ -16,16 +16,18 @@ const MyPage = () => {
             <div className={styles.box}>
                 <MyPageStudyTime />
                 <div className={styles.buttonBox}>
-                    <Link to='/modify'>
+                    <Link to="/modify">
                         <button className={styles.profileButton}>
                             <Person />
                             <span>프로필 설정</span>
                         </button>
                     </Link>
-                    <button className={styles.profileButton}>
-                        <Event />
-                        <span>디데이 설정</span>
-                    </button>
+                    <Link to="/dday">
+                        <button className={styles.profileButton}>
+                            <Event />
+                            <span>디데이 설정</span>
+                        </button>
+                    </Link>
                 </div>
                 <div className={styles.contentBox}>
                     <Calender />
