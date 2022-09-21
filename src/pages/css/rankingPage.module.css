@@ -11,10 +11,12 @@
 .blurIn {
   filter: blur(3px);
   transition: all 0.4s ease-in-out;
+  height: 43rem;
 }
 
 .blurOut {
   transition: all 0.4s ease-in-out;
+  height: 43rem;
 }
 
 .rankingType {
