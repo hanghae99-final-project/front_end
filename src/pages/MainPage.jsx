@@ -3,7 +3,7 @@ import Stopwatch from "../components/stopwatch/Stopwatch";
 import Layout from "../layout/Layout";
 import Studing from "../components/studying/Studying";
 import TimeTimer from "../components/timeTimer/TimeTimer";
-import Dday from "../components/dDay/Dday";
+import MainDday from "../components/dDay/MainDday";
 import alert from "../common/svg/alert_icon.svg";
 import styles from "./css/mainPage.module.css";
 import styled from "styled-components";
@@ -33,7 +33,7 @@ const MainPage = () => {
                         </div>
                     </div>
                     <div>
-                        <Dday />
+                        <MainDday />
                         <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
                     </div>
                     <div>
@@ -65,6 +65,15 @@ const MainPage = () => {
                     className={styles.blur}
                     onClick={() => {
                         setTimeMode("normal");
+                    }}
+                />
+            )}
+            {todoMode === "set" && (
+                <div
+                    className={styles.blur}
+                    onClick={() => {
+                        setTodoMode("normal");
+                        setBtsOn(false);
                     }}
                 />
             )}
