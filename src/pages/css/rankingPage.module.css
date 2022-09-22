@@ -1,68 +1,68 @@
 @import url(../../common/css/common.css);
 
 .layout {
-  background-color: var(--neutral-20);
-  width: 22.5rem;
-  height: 50rem;
-  margin: 0 auto;
-  padding: 1rem 1rem;
+    background-color: var(--neutral-20);
+    width: 22.5rem;
+    height: 50rem;
+    margin: 0 auto;
+    padding: 1rem 1rem;
 }
 
 .blurIn {
-  filter: blur(3px);
-  transition: all 0.4s ease-in-out;
-  height: 43rem;
+    filter: blur(3px);
+    transition: all 0.4s ease-in-out;
+    height: 43rem;
 }
 
 .blurOut {
-  transition: all 0.4s ease-in-out;
-  height: 43rem;
+    transition: all 0.4s ease-in-out;
+    height: 43rem;
 }
 
 .rankingType {
-  display: flex;
-  justify-content: center;
-  font-size: 1rem;
-  color: var(--neutral-100);
-  font-weight: 500;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding-top: 3.75rem;
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--neutral-100);
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 3.75rem;
 }
 
 .dropdownBtn {
-  width: 1.5rem;
-  height: 1.5rem;
-  padding-top: 0.15rem;
-  cursor: pointer;
-  background-color: var(--neutral-20);
-  border: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    padding-top: 0.15rem;
+    cursor: pointer;
+    background-color: var(--neutral-20);
+    border: none;
 }
 
 .downArrow {
-  width: 1.4rem;
-  height: 1.4rem;
-  margin-left: 0.3rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-left: 0.3rem;
 }
 
 .dateRanking {
-  display: flex;
-  width: 20rem;
-  height: 2.2rem;
-  background-color: var(--neutral-30);
-  border-radius: 1rem;
-  justify-content: center;
-  margin: 1.2rem auto;
+    display: flex;
+    width: 20rem;
+    height: 2.2rem;
+    background-color: var(--neutral-30);
+    border-radius: 1rem;
+    justify-content: center;
+    margin: 1.2rem auto;
 }
 
 .button {
-  width: 6rem;
-  height: 1.5rem;
-  border: none;
-  border-radius: 1rem;
-  margin: 0.33rem 0.1rem;
-  font-weight: 500;
+    width: 6rem;
+    height: 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    margin: 0.33rem 0.1rem;
+    font-weight: 500;
 }
 
 .rankingContainer {
@@ -73,80 +73,80 @@
     overflow-y: scroll;
 }
 .rankingContainer::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 .dateDay,
 .dateWeek,
 .dateMonth {
-  width: 9.2rem;
-  height: 1.5rem;
-  display: flex;
-  border: none;
-  border-radius: 1rem;
-  margin: auto 0.1rem;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
+    width: 9.2rem;
+    height: 1.5rem;
+    display: flex;
+    border: none;
+    border-radius: 1rem;
+    margin: auto 0.1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
 }
 .fStatus {
-  color: var(--primary-100);
-  position: fixed;
-  display: flex;
-  bottom: 9rem;
-  width: 22rem;
-  height: 4rem;
-  background-color: var(--primary-50);
-  border-radius: 1rem;
-  flex-direction: row;
-  align-items: center;
+    color: var(--primary-100);
+    position: fixed;
+    display: flex;
+    bottom: 9rem;
+    width: 22rem;
+    height: 4rem;
+    background-color: var(--primary-50);
+    border-radius: 1rem;
+    flex-direction: row;
+    align-items: center;
 }
 
 .sStatus {
-  color: var(--primary-100);
-  position: fixed;
-  display: flex;
-  bottom: 9rem;
-  width: 22rem;
-  height: 4rem;
-  background-color: var(--neutral-10);
-  border: solid 1px var(--primary-50);
-  border-radius: 1rem;
-  flex-direction: row;
-  align-items: center;
+    color: var(--primary-100);
+    position: fixed;
+    display: flex;
+    bottom: 9rem;
+    width: 22rem;
+    height: 4rem;
+    background-color: var(--neutral-10);
+    border: solid 1px var(--primary-50);
+    border-radius: 1rem;
+    flex-direction: row;
+    align-items: center;
 }
 
 .userRank {
-  font-size: 0.75rem;
-  margin-right: 1rem;
+    font-size: 0.75rem;
+    margin-right: 1rem;
 }
 
 .padding {
-  font-size: 0.75rem;
-  margin-right: 1rem;
-  padding-left: 1rem;
+    font-size: 0.75rem;
+    margin-right: 1rem;
+    padding-left: 1rem;
 }
 .myPadding {
-  font-size: 0.75rem;
-  margin-right: 1rem;
+    font-size: 0.75rem;
+    margin-right: 1rem;
 }
 
 .userBox {
-  width: 6rem;
+    width: 6rem;
 }
 .userNickname {
-  font-size: 0.75rem;
-  height: 1.125rem;
+    font-size: 0.75rem;
+    height: 1.125rem;
 }
 
 .userSpec {
-  font-size: 0.625rem;
-  color: var(--neutral-50);
+    font-size: 0.625rem;
+    color: var(--neutral-50);
 }
 
 .userTime {
-  font-size: 0.75rem;
+    font-size: 0.75rem;
 }
 
 .allStatus {
@@ -195,31 +195,30 @@
 .timeBox {
     width: 6rem;
     margin: 1.5rem;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .rankerDot {
-  width: 0.25rem;
-  height: 0.25rem;
-  border-radius: 0.3rem;
-  background: #92cd6e;
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.3rem;
+    background: #92cd6e;
 }
 
 .greendot {
-  width: 0.25rem;
-  height: 0.25rem;
-  border-radius: 0.3rem;
-  background-color: var(--primary-50);
+    width: 0.25rem;
+    height: 0.25rem;
+    border-radius: 0.3rem;
+    background-color: var(--primary-50);
 }
 .emptyDot {
-  width: 0.275rem;
-  height: 0.3rem;
-  border-radius: 0.3rem;
-  background-color: var(--neutral-50);
+    width: 0.275rem;
+    height: 0.3rem;
+    border-radius: 0.3rem;
+    background-color: var(--neutral-50);
 }
 
 .myStatus {
@@ -244,44 +243,44 @@
     display: flex;
     align-items: center;
 }
-/*  */
+
 .btsOff {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 30rem;
-  top: 26rem;
-  background-color: #3b3b44;
-  transition: all 0.6s ease-in-out;
-  z-index: 999;
-  border-radius: 1rem 1rem 0 0;
-  padding: 1rem 1.5rem 0 1.5rem;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 30rem;
+    top: 26rem;
+    background-color: #3b3b44;
+    transition: all 0.6s ease-in-out;
+    z-index: 999;
+    border-radius: 1rem 1rem 0 0;
+    padding: 1rem 1.5rem 0 1.5rem;
+    overflow: hidden;
 }
 
 .btsOn {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  height: 30rem;
-  top: -15rem;
-  background-color: #3b3b44;
-  transition: all 0.6s ease-in-out;
-  z-index: 999;
-  border-radius: 1rem 1rem 0 0;
-  padding: 0 1.5rem;
-  padding: 1rem 1.5rem 0 1.5rem;
-  overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 30rem;
+    top: -15rem;
+    background-color: #3b3b44;
+    transition: all 0.6s ease-in-out;
+    z-index: 999;
+    border-radius: 1rem 1rem 0 0;
+    padding: 0 1.5rem;
+    padding: 1rem 1.5rem 0 1.5rem;
+    overflow: hidden;
 }
 
 .ageChoice {
-  border: none;
-  font-size: 1rem;
-  background-color: #3b3b44;
-  width: 100%;
-  height: 3.5rem;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    border: none;
+    font-size: 1rem;
+    background-color: #3b3b44;
+    width: 100%;
+    height: 3.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

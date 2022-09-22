@@ -27,7 +27,7 @@ const MainPage = () => {
                 <div className={styles.columnBox}>
                     <div>
                         <div className={styles.aboveBox}>
-                            <img src={alert} alt="도움말 툴팁" className={styles.alert} />
+                            <img src={alert} alt='도움말 툴팁' className={styles.alert} />
                             <Studing />
                             <Stopwatch mode={mode} setMode={setMode} color={color} setColor={setColor} />
                         </div>
@@ -41,8 +41,7 @@ const MainPage = () => {
                             onClick={() => {
                                 setBtsOn(!btsOn);
                                 setTodoMode("set");
-                            }}
-                        >
+                            }}>
                             <TodoBtn />
                         </div>
                         <Footer />
