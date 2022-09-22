@@ -1,25 +1,25 @@
-import React from 'react';
-import Stopwatch from '../components/stopwatch/Stopwatch';
-import Layout from '../layout/Layout';
-import Studing from '../components/studying/Studying';
-import TimeTimer from '../components/timeTimer/TimeTimer';
-import Dday from '../components/dDay/Dday';
-import alert from '../common/svg/alert_icon.svg';
-import styles from './css/mainPage.module.css';
-import styled from 'styled-components';
-import Footer from '../components/footer/Footer';
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-import ToDo from './ToDo';
-import TodoBtn from '../components/todo/TodoBtn';
+import React from "react";
+import Stopwatch from "../components/stopwatch/Stopwatch";
+import Layout from "../layout/Layout";
+import Studing from "../components/studying/Studying";
+import TimeTimer from "../components/timeTimer/TimeTimer";
+import Dday from "../components/dDay/Dday";
+import alert from "../common/svg/alert_icon.svg";
+import styles from "./css/mainPage.module.css";
+import styled from "styled-components";
+import Footer from "../components/footer/Footer";
+import { useSelector } from "react-redux";
+import { useState } from "react";
+import ToDo from "./ToDo";
+import TodoBtn from "../components/todo/TodoBtn";
 
 const MainPage = () => {
     const backgroundColor = useSelector((state) => state.color);
-    const [mode, setMode] = useState('normal');
-    const [todoMode, setTodoMode] = useState('normal');
+    const [mode, setMode] = useState("normal");
+    const [todoMode, setTodoMode] = useState("normal");
     const [btsOn, setBtsOn] = useState(false);
-    const [timeMode, setTimeMode] = useState('normal');
-    const [color, setColor] = useState('#7E7C8C');
+    const [timeMode, setTimeMode] = useState("normal");
+    const [color, setColor] = useState("#7E7C8C");
 
     return (
         <Layout>
@@ -40,7 +40,7 @@ const MainPage = () => {
                         <div
                             onClick={() => {
                                 setBtsOn(!btsOn);
-                                setTodoMode('set');
+                                setTodoMode("set");
                             }}>
                             <TodoBtn />
                         </div>
@@ -51,28 +51,28 @@ const MainPage = () => {
                     <ToDo />
                 </div>
             </Gradient>
-            {mode === 'set' && (
+            {mode === "set" && (
                 <div
                     className={styles.blur}
                     onClick={() => {
-                        setColor('#7E7C8C');
-                        setMode('normal');
+                        setColor("#7E7C8C");
+                        setMode("normal");
                     }}
                 />
             )}
-            {timeMode === 'set' && (
+            {timeMode === "set" && (
                 <div
                     className={styles.blur}
                     onClick={() => {
-                        setTimeMode('normal');
+                        setTimeMode("normal");
                     }}
                 />
             )}
-            {todoMode === 'set' && (
+            {todoMode === "set" && (
                 <div
                     className={styles.blur}
                     onClick={() => {
-                        setTodoMode('normal');
+                        setTodoMode("normal");
                         setBtsOn(false);
                     }}
                 />
@@ -88,14 +88,14 @@ const Gradient = styled.div`
     height: 100%;
     background-image: ${(props) => {
         switch (props.backgroundColor) {
-            case 'green':
-                return 'linear-gradient(to bottom, var(--neutral-20), #3b4f4b 34%, #558d71 74%, var(--primary-60))';
-            case 'blue':
-                return 'linear-gradient(to bottom, var(--neutral-20), #445364 48%, #5f809b 75%, var(--tertiary-60))';
-            case 'red':
-                return 'linear-gradient(to bottom, var(--neutral-20), #4f3f40 43%, #996153 73%, var(--secondary-60))';
+            case "green":
+                return "linear-gradient(to bottom, var(--neutral-20), #3b4f4b 34%, #558d71 74%, var(--primary-60))";
+            case "blue":
+                return "linear-gradient(to bottom, var(--neutral-20), #445364 48%, #5f809b 75%, var(--tertiary-60))";
+            case "red":
+                return "linear-gradient(to bottom, var(--neutral-20), #4f3f40 43%, #996153 73%, var(--secondary-60))";
             default:
-                return 'transparent';
+                return "transparent";
         }
     }};
 `;
