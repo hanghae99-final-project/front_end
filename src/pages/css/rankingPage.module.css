@@ -66,10 +66,11 @@
 }
 
 .rankingContainer {
-  margin: 0 auto;
-  width: 20rem;
-  height: 25.5rem;
-  overflow-y: scroll;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 16px;
+    height: 25.5rem;
+    overflow-y: scroll;
 }
 .rankingContainer::-webkit-scrollbar {
   display: none;
@@ -149,48 +150,51 @@
 }
 
 .allStatus {
-  color: var(--primary-100);
-  display: flex;
-  width: 19rem;
-  height: 3.375rem;
-  background-color: var(--neutral-30);
-  margin-top: 0.5rem;
-  border-radius: 0.5rem;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 1rem;
+    color: var(--primary-100);
+    display: flex;
+    width: calc(100% - 48px);
+    justify-content: space-between;
+    height: 3.375rem;
+    background-color: var(--neutral-30);
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
 }
 
 .topRanker {
-  color: var(--neutral-20);
-  display: flex;
-  width: 19rem;
-  height: 3.375rem;
-  font-weight: 600;
-  background-color: var(--primary-50);
-  margin-top: 0.5rem;
-  border-radius: 0.5rem;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 1rem;
+    color: var(--neutral-20);
+    display: flex;
+    width: calc(100% - 48px);
+    height: 3.375rem;
+    justify-content: space-between;
+    font-weight: 600;
+    background-color: var(--primary-50);
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
 }
 
 .otherRanker {
-  color: var(--neutral-100);
-  display: flex;
-  width: 19rem;
-  height: 3.375rem;
-  background-color: var(--neutral-10);
-  margin-top: 0.5rem;
-  border-radius: 0.5rem;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 1rem;
+    color: var(--neutral-100);
+    display: flex;
+    width: calc(100% - 48px);
+    height: 3.375rem;
+    justify-content: space-between;
+    background-color: var(--neutral-10);
+    margin-top: 0.5rem;
+    border-radius: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
 }
 
 .timeBox {
-  width: 6rem;
-  margin-left: 3.7rem;
+    width: 6rem;
+    margin: 1.5rem;
 
   display: flex;
   flex-direction: row;
@@ -219,22 +223,27 @@
 }
 
 .myStatus {
-  color: var(--primary-100);
-  position: absolute;
-  bottom: 5rem;
-  left: calc(50% - 10rem);
-  display: flex;
-  width: 19rem;
-  height: 3.375rem;
-  background-color: var(--opacity-b-50);
-  border: solid 1px var(--primary-50);
-  border-radius: 0.5rem;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 1rem;
-  z-index: 500;
+    color: var(--primary-100);
+    position: absolute;
+    bottom: 5rem;
+    display: flex;
+    margin: 0 16px;
+    width: calc(100% - 48px);
+    height: 3.375rem;
+    background-color: var(--opacity-b-50);
+    border: solid 1px var(--primary-50);
+    border-radius: 0.5rem;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 1rem;
+    z-index: 500;
+    justify-content: space-between;
 }
 
+.nameBox {
+    display: flex;
+    align-items: center;
+}
 /*  */
 .btsOff {
   display: flex;
