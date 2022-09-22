@@ -12,7 +12,9 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
   const [borderColor, setBorderColor] = useState("");
   const check = /^[가-힣]{2,8}$/;
 
-  const checkNickname = () => {
+  const checkNickname = (e, test) => {
+    console.log(test);
+    test || e.preventDefault();
     if (!check.test(userInfo.nickname) && userInfo.nickname) {
       setBorderColor("orange");
       setCheckMsg("숫자,이모티콘,공백은 사용 불가능해요");
@@ -61,14 +63,13 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
               : styles.inputContainer
           }
         >
-          <div className={styles.InputGroup}>
+          <form className={styles.InputGroup} onSubmit={checkNickname}>
             <label className={styles.label}>닉네임</label>
             <input
               type="text"
               name="nickname"
               className={styles.inputNickname}
               onBlur={checkNickname}
-              // onKeyPress={checkNickname}
               value={nickname}
               onChange={onChangeHandleInput}
               placeholder="8자 이내 한글"
@@ -76,7 +77,7 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
               autoFocus={true}
               maxLength="8"
             ></input>
-          </div>
+          </form>
           <div className={styles.buttonBox}>
             <button
               className={styles.deleteIcon}
@@ -111,8 +112,8 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
       ) : (
         <button
           className={styles.joinBtnYes}
-          onClick={() => {
-            checkNickname();
+          onClick={(e) => {
+            checkNickname(e, true);
             allCheck();
           }}
         >

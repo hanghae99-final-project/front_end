@@ -56,10 +56,13 @@ const ModifyProfile = () => {
     }
   }, [userData]);
 
-  const checkNickname = () => {
+  const checkNickname = (e) => {
+    e.preventDefault();
     if (!check.test(modifyInfo.nickname)) {
       setBorderColor("orange");
       setCheckMsg("2글자 이상의 한글만 가능해요");
+    } else if (modifyInfo.nickname === userData.nickname) {
+      setCheckMsg("현재 사용중인 닉네임과 같아요");
     } else {
       axios
         .get(process.env.REACT_APP_SERVER_URL + `/profile/nick/${modifyInfo.nickname}`, {
@@ -84,14 +87,11 @@ const ModifyProfile = () => {
   };
 
   const onUpdate = () => {
-    if (setBorderColor === "green" && check.test(modifyInfo.nickname)) {
+    if (borderColor === "green") {
       dispatch(__updateProfile(modifyInfo));
       navi("/mypage");
     }
   };
-
-  console.log(userData);
-  console.log(modifyInfo);
 
   return (
     <Layout>
@@ -118,7 +118,7 @@ const ModifyProfile = () => {
           <p>로그인 계정</p>
           <input type="text" placeholder={email.userEmail} disabled={true}></input>
         </div>
-        <div className={styles.nicknameBox}>
+        <form className={styles.nicknameBox} onSubmit={checkNickname}>
           <p>닉네임</p>
           <input
             className={
@@ -147,7 +147,7 @@ const ModifyProfile = () => {
             {borderColor === "green" && <Green style={{ marginRight: "0.25rem" }} />}
             {checkMsg}
           </p>
-        </div>
+        </form>
         <div className={styles.ageBox}>
           <p>연령대</p>
           <div className={styles.ageContainer}>
