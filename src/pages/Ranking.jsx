@@ -42,7 +42,13 @@ const Ranking = () => {
 
     return (
         <Layout>
-            <div style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", height: "100%" }}>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    height: "100%",
+                }}>
                 <div>
                     <div className={btsOn ? styles.blurIn : styles.blurOut} onClick={modalOffHandler}>
                         <div className={styles.rankingType}>
@@ -99,17 +105,15 @@ const Ranking = () => {
                                 return (
                                     <div key={i}>
                                         <div className={i === 0 ? styles.topRanker : i === 1 || i === 2 ? styles.otherRanker : styles.allStatus}>
-                                            <div className={styles.nameBox}>
-                                                <span className={i > 2 ? styles.padding : styles.userRank}>
-                                                    {i === 0 && "👑"}
-                                                    {i === 1 && "🥈"}
-                                                    {i === 2 && "🥉"}
-                                                    {i + 1}
-                                                </span>
-                                                <div className={styles.userBox}>
-                                                    <p className={styles.userNickname}>{rankbox.nickname}</p>
-                                                    <p className={styles.userSpec}> {rankbox.specialty}</p>
-                                                </div>
+                                            <span className={i > 2 ? styles.padding : styles.userRank}>
+                                                {i === 0 && "👑"}
+                                                {i === 1 && "🥈"}
+                                                {i === 2 && "🥉"}
+                                                {i + 1}
+                                            </span>
+                                            <div className={styles.userBox}>
+                                                <p className={styles.userNickname}>{rankbox.nickname}</p>
+                                                <p className={styles.userSpec}> {rankbox.specialty}</p>
                                             </div>
                                             <div className={styles.timeBox}>
                                                 <span className={styles.userTime}>
@@ -130,17 +134,15 @@ const Ranking = () => {
                 </div>
                 <div style={{ position: "relative" }}>
                     <div className={styles.myStatus}>
-                        <div className={styles.nameBox}>
-                            <span className={getMyRanking.rank > 2 ? styles.padding : styles.userRank}>
-                                {getMyRanking.rank === 0 && "👑"}
-                                {getMyRanking.rank === 1 && "🥈"}
-                                {getMyRanking.rank === 2 && "🥉"}
-                                {getMyRanking.rank}
-                            </span>
-                            <div className={styles.userBox}>
-                                <p className={styles.userNickname}>{getMyRanking.nickname}</p>
-                                <p className={styles.userSpec}>{getMyRanking.specialty}</p>
-                            </div>
+                        <span className={getMyRanking.rank < 4 ? styles.myPadding : styles.padding}>
+                            {getMyRanking.rank === 1 && "👑"}
+                            {getMyRanking.rank === 2 && "🥈"}
+                            {getMyRanking.rank === 3 && "🥉"}
+                            {getMyRanking.rank === 0 ? "--" : getMyRanking.rank}
+                        </span>
+                        <div className={styles.userBox}>
+                            <p className={styles.userNickname}>{getMyRanking.nickname}</p>
+                            <p className={styles.userSpec}>{getMyRanking.specialty}</p>
                         </div>
                         <div className={styles.timeBox}>
                             <span className={styles.userTime}>
