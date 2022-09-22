@@ -1,11 +1,11 @@
-import React from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { __getDday } from '../../app/slice/DdaySlice';
-import styles from './dDay.module.css';
-import font from '../../common/css/font.module.css';
+import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { __getDday } from "../../app/slice/DdaySlice";
+import styles from "./mainDday.module.css";
+import font from "../../common/css/font.module.css";
 
-const Dday = () => {
+const MainDday = () => {
     const dispatch = useDispatch();
     const dDay = useSelector((state) => state.dDay.myDday[0]);
     const today = new Date();
@@ -30,4 +30,4 @@ const Dday = () => {
     );
 };
 
-export default Dday;
+export default MainDday;
