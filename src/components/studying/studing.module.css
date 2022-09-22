@@ -20,5 +20,5 @@
     height: 0.25rem;
     border-radius: 0.25rem;
     background-color: var(--alerts-green);
-    z-index: 5;
+    z-index: 0;
 }

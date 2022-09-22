@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import '../common/css/color.css';
+import React from "react";
+import styled from "styled-components";
+import "../common/css/color.css";
 
 const Layout = (props) => {
     return <StyledLayout>{props.children}</StyledLayout>;
@@ -14,6 +14,7 @@ const StyledLayout = styled.div`
     background-color: var(--neutral-20);
     overflow: hidden;
     min-width: 360px;
+    position: relative;
     @media (min-width: 360px) {
         width: 100%;
     }

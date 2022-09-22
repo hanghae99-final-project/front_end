@@ -45,15 +45,15 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
         setStop(true);
     }
 
-    if (targetTime && remainTime === 0) {
+    if (targetTime > 0 && remainTime === 0) {
         localStorage.removeItem("startTime");
         localStorage.removeItem("targetTime");
         localStorage.removeItem("savedStudyTime");
         localStorage.removeItem("restStart");
-        setRunning(false);
+        // setRunning(false);
         setStop(false);
         setTime({ hour: 0, minute: 0, second: 0 });
-        setMode("normal");
+        setMode("complete");
         setColor("#7E7C8C");
     }
 
@@ -92,7 +92,7 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
                     fill={targetTime > 0 ? "#66FFA6" : color}
                 />
             </div>
-            {mode === "set" && (
+            {(mode === "complete" || mode === "set") && (
                 <SetWatchModal
                     setRunning={setRunning}
                     changeTimeForm={changeTimeForm}
@@ -102,6 +102,7 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
                     setStop={setStop}
                     stop={stop}
                     setMode={setMode}
+                    mode={mode}
                     remainTime={remainTime}
                     currentDate={currentDate}
                     startTime={startTime}

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getDday } from "../../app/slice/DdaySlice";
 import styles from "./mainDday.module.css";
 import font from "../../common/css/font.module.css";
+import { Link } from "react-router-dom";
 
 const MainDday = () => {
     const dispatch = useDispatch();
@@ -19,7 +20,9 @@ const MainDday = () => {
     return (
         <div className={styles.dayBox}>
             {dDay === undefined ? (
-                <span className={`${styles.text} ${font.subtitle3_300_14}`}>디데이를 추가해 보세요</span>
+                <Link to='/dday'>
+                    <span className={`${styles.text} ${font.subtitle3_300_14}`}>디데이를 추가해 보세요</span>
+                </Link>
             ) : (
                 <>
                     <span className={`${styles.day} ${font.subtitle3_600_14}`}>D-{remainDay}</span>
