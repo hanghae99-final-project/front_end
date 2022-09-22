@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { updateList } from '../../app/slice/toDoSlice';
-import styles from './toDoPost.module.css';
-import addIcon from '../../common/svg/add.svg';
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { updateList } from "../../app/slice/toDoSlice";
+import styles from "./toDoPost.module.css";
+import addIcon from "../../common/svg/add.svg";
 
 const ToDoModify = ({ toDoId, setModifyModal, setModifyOn }) => {
     console.log(toDoId);
     const [btnOn, setBtnOn] = useState(true);
     const [upDateToDo, setUpDateToDo] = useState({
-        work: '',
-        color: '',
+        work: "",
+        color: "",
     });
     const dispatch = useDispatch();
 
@@ -23,7 +23,7 @@ const ToDoModify = ({ toDoId, setModifyModal, setModifyOn }) => {
 
     // 버튼 활성화 로직
     useEffect(() => {
-        if (upDateToDo.work === '' || upDateToDo.color === '') {
+        if (upDateToDo.work === "" || upDateToDo.color === "") {
             setBtnOn(true);
         } else {
             setBtnOn(false);
@@ -33,8 +33,8 @@ const ToDoModify = ({ toDoId, setModifyModal, setModifyOn }) => {
     const onSubmitUpDateDoHandler = (e) => {
         e.preventDefault();
         dispatch(updateList({ upDateToDo: upDateToDo, toDoId: toDoId }));
-        setModifyModal('');
-        setModifyOn('');
+        setModifyModal("");
+        setModifyOn("");
     };
 
     return (
@@ -50,63 +50,21 @@ const ToDoModify = ({ toDoId, setModifyModal, setModifyOn }) => {
                         spellCheck='false'
                     />
                     <div className={styles.colorInput}>
-                        <input
-                            className={styles.color1}
-                            id='color1'
-                            onChange={onChangeUpDateToDoHandler}
-                            type='radio'
-                            name='color'
-                            value='#ff5757'
-                        />
+                        <input className={styles.color1} id='color1' onChange={onChangeUpDateToDoHandler} type='radio' name='color' value='#ff5757' />
 
-                        <input
-                            className={styles.color2}
-                            id='color2'
-                            onChange={onChangeUpDateToDoHandler}
-                            type='radio'
-                            name='color'
-                            value='#ff8058'
-                        />
+                        <input className={styles.color2} id='color2' onChange={onChangeUpDateToDoHandler} type='radio' name='color' value='#ff8058' />
 
-                        <input
-                            className={styles.color3}
-                            id='color3'
-                            onChange={onChangeUpDateToDoHandler}
-                            type='radio'
-                            name='color'
-                            value='#92cd6e'
-                        />
+                        <input className={styles.color3} id='color3' onChange={onChangeUpDateToDoHandler} type='radio' name='color' value='#92cd6e' />
 
-                        <input
-                            className={styles.color4}
-                            id='color4'
-                            onChange={onChangeUpDateToDoHandler}
-                            type='radio'
-                            name='color'
-                            value='#66ffa6'
-                        />
+                        <input className={styles.color4} id='color4' onChange={onChangeUpDateToDoHandler} type='radio' name='color' value='#66ffa6' />
 
-                        <input
-                            className={styles.color5}
-                            id='color5'
-                            onChange={onChangeUpDateToDoHandler}
-                            type='radio'
-                            name='color'
-                            value='#75c5ff'
-                        />
+                        <input className={styles.color5} id='color5' onChange={onChangeUpDateToDoHandler} type='radio' name='color' value='#75c5ff' />
 
-                        <input
-                            className={styles.color6}
-                            id='color6'
-                            onChange={onChangeUpDateToDoHandler}
-                            type='radio'
-                            name='color'
-                            value='#ffffff'
-                        />
+                        <input className={styles.color6} id='color6' onChange={onChangeUpDateToDoHandler} type='radio' name='color' value='#ffffff' />
                     </div>
                 </div>
             </div>
-            <button className={`${styles.postBtn} ${btnOn === false ? styles.btnOn : ''}`} type='submit' disabled={btnOn}>
+            <button className={`${styles.postBtn} ${btnOn === false ? styles.btnOn : ""}`} type='submit' disabled={btnOn}>
                 <img src={addIcon} alt='addIcon' />
             </button>
         </form>
