@@ -137,10 +137,10 @@ const Ranking = () => {
                     <div className={styles.myStatus}>
                         <div className={styles.nameBox}>
                             <span className={getMyRanking.rank > 2 ? styles.padding : styles.userRank}>
-                                {getMyRanking.rank === 0 && "👑"}
-                                {getMyRanking.rank === 1 && "🥈"}
-                                {getMyRanking.rank === 2 && "🥉"}
-                                {getMyRanking.rank}
+                                {getMyRanking.rank === 1 && "👑"}
+                                {getMyRanking.rank === 2 && "🥈"}
+                                {getMyRanking.rank === 3 && "🥉"}
+                                {getMyRanking.rank ? getMyRanking.rank : "--"}
                             </span>
                             <div className={styles.userBox}>
                                 <p className={styles.userNickname}>{getMyRanking.nickname}</p>
