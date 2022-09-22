@@ -13,7 +13,6 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
   const check = /^[가-힣]{2,8}$/;
 
   const checkNickname = (e, test) => {
-    console.log(test);
     test || e.preventDefault();
     if (!check.test(userInfo.nickname) && userInfo.nickname) {
       setBorderColor("orange");

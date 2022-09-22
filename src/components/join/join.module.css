@@ -24,7 +24,6 @@
 
 .arrowBack:active {
   background: url("../../common/svg/arrowback_icon2_active.svg");
-  /* border: none; */
   background-repeat: no-repeat;
   background-position: center;
 }
