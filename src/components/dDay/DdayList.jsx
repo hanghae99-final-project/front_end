@@ -8,6 +8,7 @@ import { __delDday } from "../../app/slice/DdaySlice";
 const DdayList = () => {
     const dispatch = useDispatch();
     const dDay = useSelector((state) => state.dDay.myDday);
+    console.log(dDay);
 
     useEffect(() => {
         dispatch(__getDday());
@@ -17,9 +18,11 @@ const DdayList = () => {
         dispatch(__delDday(id));
     };
 
+    const modifyDday = () => {};
+
     return (
         <ul className={styles.container}>
-            {dDay.map((data) => {
+            {dDay?.map((data) => {
                 console.log(data);
                 const today = new Date().getTime();
                 const deadline = new Date(data.deadline).getTime();
