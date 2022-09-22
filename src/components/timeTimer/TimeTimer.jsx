@@ -166,11 +166,11 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                 </div>
                             )}
                             <div className={styles.targetTime}>
-                                {changeTimeForm(targetToSec, styles.target)}
+                                {changeTimeForm(targetToSec, `${styles.target} ${font.header3_600_24}`)}
                                 <br />
                             </div>
-                            {changeTimeForm(second, styles.mainTimerTime)}
-                            <div className={styles.status}>{status}</div>
+                            {changeTimeForm(second, `${styles.mainTimerTime} ${font.header_600_42}`)}
+                            <div className={`${styles.status} ${font.caption_300_12}`}>{status}</div>
                         </span>
                     </div>
                 </div>
@@ -199,7 +199,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                         <div className={styles.playBox}>
                             <Play className={styles.setting} fill={second >= targetTime / 1000 ? "var(--neutral-100)" : "var(--neutral-10)"} />
                         </div>
-                        <div className={second >= targetTime / 1000 ? styles.redText : styles.playText}>시작하기</div>
+                        <div className={`${second >= targetTime / 1000 ? styles.redText : styles.playText} ${font.subtitle2_600_16}`}>시작하기</div>
                     </button>
                 )
             ) : (
@@ -221,8 +221,8 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                 }}>
                                 <img src={pause} alt='휴식하기' />
                                 <div className={styles.restTextBox}>
-                                    <div className={styles.restText}>휴식하기</div>
-                                    {changeTimeForm(restSecond, styles.restTime)}
+                                    <div className={`${styles.restText} ${font.subtitle2_600_16}`}>휴식하기</div>
+                                    {changeTimeForm(restSecond, `${styles.restTime} ${font.caption_300_12}`)}
                                 </div>
                             </button>
                         </>
@@ -236,7 +236,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                                     dispatch(__postRestEnd({ restEndPoint: date, studyStartPoint: date }));
                                 }}>
                                 <Play className={styles.setting} fill={"var(--neutral-10)"} />
-                                <div>{changeTimeForm(restSecond, styles.savedRestTime)}</div>
+                                <div>{changeTimeForm(restSecond, `${styles.savedRestTime} ${font.subtitle2_600_16}`)}</div>
                             </button>
                         </>
                     )}

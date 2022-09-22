@@ -51,7 +51,12 @@ const SetWatchModal = ({
                     {changeTimeForm(remainTime, styles.remainTime)}
                     <div className={styles.buttonBox}>
                         {mode === "complete" ? (
-                            <button className={`${styles.completeButton} ${font.subtitle2_600_16}`} onClick={() => {}}>
+                            <button
+                                className={`${styles.completeButton} ${font.subtitle2_600_16}`}
+                                onClick={() => {
+                                    setMode("normal");
+                                    setRunning(false);
+                                }}>
                                 확인
                             </button>
                         ) : !stop ? (
