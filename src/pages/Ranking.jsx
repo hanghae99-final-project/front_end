@@ -39,7 +39,6 @@ const Ranking = () => {
     const modalOffHandler = (e) => {
         setBtsOn(false);
     };
-
     return (
         <Layout>
             <div
@@ -105,15 +104,17 @@ const Ranking = () => {
                                 return (
                                     <div key={i}>
                                         <div className={i === 0 ? styles.topRanker : i === 1 || i === 2 ? styles.otherRanker : styles.allStatus}>
-                                            <span className={i > 2 ? styles.padding : styles.userRank}>
-                                                {i === 0 && "👑"}
-                                                {i === 1 && "🥈"}
-                                                {i === 2 && "🥉"}
-                                                {i + 1}
-                                            </span>
-                                            <div className={styles.userBox}>
-                                                <p className={styles.userNickname}>{rankbox.nickname}</p>
-                                                <p className={styles.userSpec}> {rankbox.specialty}</p>
+                                            <div className={styles.nameBox}>
+                                                <span className={i > 2 ? styles.padding : styles.userRank}>
+                                                    {i === 0 && "👑"}
+                                                    {i === 1 && "🥈"}
+                                                    {i === 2 && "🥉"}
+                                                    {i + 1}
+                                                </span>
+                                                <div className={styles.userBox}>
+                                                    <p className={styles.userNickname}>{rankbox.nickname}</p>
+                                                    <p className={styles.userSpec}> {rankbox.specialty}</p>
+                                                </div>
                                             </div>
                                             <div className={styles.timeBox}>
                                                 <span className={styles.userTime}>
@@ -134,15 +135,17 @@ const Ranking = () => {
                 </div>
                 <div style={{ position: "relative" }}>
                     <div className={styles.myStatus}>
-                        <span className={getMyRanking.rank < 4 ? styles.myPadding : styles.padding}>
-                            {getMyRanking.rank === 1 && "👑"}
-                            {getMyRanking.rank === 2 && "🥈"}
-                            {getMyRanking.rank === 3 && "🥉"}
-                            {getMyRanking.rank === 0 ? "--" : getMyRanking.rank}
-                        </span>
-                        <div className={styles.userBox}>
-                            <p className={styles.userNickname}>{getMyRanking.nickname}</p>
-                            <p className={styles.userSpec}>{getMyRanking.specialty}</p>
+                        <div className={styles.nameBox}>
+                            <span className={getMyRanking.rank > 2 ? styles.padding : styles.userRank}>
+                                {getMyRanking.rank === 0 && "👑"}
+                                {getMyRanking.rank === 1 && "🥈"}
+                                {getMyRanking.rank === 2 && "🥉"}
+                                {getMyRanking.rank}
+                            </span>
+                            <div className={styles.userBox}>
+                                <p className={styles.userNickname}>{getMyRanking.nickname}</p>
+                                <p className={styles.userSpec}>{getMyRanking.specialty}</p>
+                            </div>
                         </div>
                         <div className={styles.timeBox}>
                             <span className={styles.userTime}>
