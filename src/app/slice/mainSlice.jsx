@@ -1,12 +1,12 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-import jwtDecode from 'jwt-decode';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import jwtDecode from "jwt-decode";
 
-const initialState = { quote: '', studing: 0 };
+const initialState = { quote: "", studing: 0 };
 
-export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) => {
+export const get_login = createAsyncThunk("/login", async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/users/kakao/finish?code=${payload}`);
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/users/kakao/callback?code=${payload}`);
         console.log(data);
         return thunkAPI.fulfillWithValue(data.token);
     } catch (error) {
@@ -14,9 +14,9 @@ export const get_login = createAsyncThunk('/login', async (payload, thunkAPI) =>
     }
 });
 
-export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) => {
+export const get_quote = createAsyncThunk("/quote", async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + '/quote', {
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + "/quote", {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
@@ -28,9 +28,9 @@ export const get_quote = createAsyncThunk('/quote', async (payload, thunkAPI) =>
     }
 });
 
-export const get_studing = createAsyncThunk('/studing', async (payload, thunkAPI) => {
+export const get_studing = createAsyncThunk("/studing", async (payload, thunkAPI) => {
     try {
-        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + '/studying', {
+        const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + "/studying", {
             headers: {
                 Authorization: `Bearer ${localStorage.token}`,
             },
@@ -43,7 +43,7 @@ export const get_studing = createAsyncThunk('/studing', async (payload, thunkAPI
 });
 
 const mainSlice = createSlice({
-    name: 'mainSlice',
+    name: "mainSlice",
     initialState,
     reducers: {},
     extraReducers: {

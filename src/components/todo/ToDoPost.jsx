@@ -116,13 +116,7 @@ const ToDoPost = () => {
                     </div>
                 </div>
             </div>
-            <button
-                className={`${styles.postBtn} ${
-                    btnOn === false ? styles.btnOn : ""
-                }`}
-                type="submit"
-                disabled={btnOn}
-            ></button>
+            <button className={`${styles.postBtn} ${btnOn === false ? styles.btnOn : ""}`} type="submit" disabled={btnOn}></button>
         </form>
     );
 };
