@@ -24,7 +24,7 @@ const ToDoPost = () => {
         setToDo({ ...toDo, [name]: value });
     };
 
-    console.log(toDo.color);
+    console.log(toDo);
     // 버튼 활성화 로직
     useEffect(() => {
         if (toDo.work === "" || toDo.color === "") {
@@ -47,76 +47,76 @@ const ToDoPost = () => {
                     <input
                         className={styles.valueInput}
                         onChange={onChangeToDoHandler}
-                        type="text"
-                        name="work"
-                        placeholder="오늘 할일"
-                        spellCheck="false"
+                        type='text'
+                        name='work'
+                        placeholder='오늘 할일'
+                        spellCheck='false'
                         value={toDo.work}
                     />
                     <div className={styles.colorInput}>
                         <input
                             checked={check === "#ff5757"}
                             className={styles.color1}
-                            id="color1"
+                            id='color1'
                             onClick={onChangeToDoHandler}
-                            type="radio"
-                            name="color"
-                            value="#ff5757"
+                            type='radio'
+                            name='color'
+                            value='#ff5757'
                         />
 
                         <input
                             checked={check === "#ff8058"}
                             className={styles.color2}
-                            id="color2"
+                            id='color2'
                             onClick={onChangeToDoHandler}
-                            type="radio"
-                            name="color"
-                            value="#ff8058"
+                            type='radio'
+                            name='color'
+                            value='#ff8058'
                         />
 
                         <input
                             checked={check === "#92cd6e"}
                             className={styles.color3}
-                            id="color3"
+                            id='color3'
                             onClick={onChangeToDoHandler}
-                            type="radio"
-                            name="color"
-                            value="#92cd6e"
+                            type='radio'
+                            name='color'
+                            value='#92cd6e'
                         />
 
                         <input
                             checked={check === "#66ffa6"}
                             className={styles.color4}
-                            id="color4"
+                            id='color4'
                             onClick={onChangeToDoHandler}
-                            type="radio"
-                            name="color"
-                            value="#66ffa6"
+                            type='radio'
+                            name='color'
+                            value='#66ffa6'
                         />
 
                         <input
                             checked={check === "#75c5ff"}
                             className={styles.color5}
-                            id="color5"
+                            id='color5'
                             onClick={onChangeToDoHandler}
-                            type="radio"
-                            name="color"
-                            value="#75c5ff"
+                            type='radio'
+                            name='color'
+                            value='#75c5ff'
                         />
 
                         <input
                             checked={check === "#ffffff"}
                             className={styles.color6}
-                            id="color6"
+                            id='color6'
                             onClick={onChangeToDoHandler}
-                            type="radio"
-                            name="color"
-                            value="#ffffff"
+                            type='radio'
+                            name='color'
+                            value='#ffffff'
                         />
                     </div>
                 </div>
             </div>
-            <button className={`${styles.postBtn} ${btnOn === false ? styles.btnOn : ""}`} type="submit" disabled={btnOn}></button>
+            <button className={`${styles.postBtn} ${btnOn === false ? styles.btnOn : ""}`} type='submit' disabled={btnOn}></button>
         </form>
     );
 };

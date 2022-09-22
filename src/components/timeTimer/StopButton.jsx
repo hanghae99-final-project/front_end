@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import styled from 'styled-components';
-import { __postStudyEnd } from '../../app/slice/timeTimerSlice';
-import '../../common/css/color.css';
-import { ReactComponent as Stop } from '../../common/svg/stop_icon.svg';
-import font from '../../common/css/font.module.css';
+import React from "react";
+import { useDispatch } from "react-redux";
+import styled from "styled-components";
+import { __postStudyEnd } from "../../app/slice/timeTimerSlice";
+import "../../common/css/color.css";
+import { ReactComponent as Stop } from "../../common/svg/stop_icon.svg";
+import font from "../../common/css/font.module.css";
 
 const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest, setColor, second, targetTime, color }) => {
     const dispatch = useDispatch();
@@ -16,10 +16,10 @@ const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest, setColo
                     setRefresh(false);
                     setRun(false);
                     setRest(false);
-                    setColor('');
+                    setColor("");
                     dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
                 }}>
-                <Stop fill={color === 'green' ? 'var(--neutral-10)' : 'var(--neutral-100)'} />
+                <Stop fill={color === "green" ? "var(--neutral-10)" : "var(--neutral-100)"} />
                 <div className={font.subtitle2_600_16}>그만하기</div>
             </StopBtn>
         </>
@@ -44,12 +44,12 @@ const StopBtn = styled.button`
     }
     background-color: ${(props) => {
         switch (props.color) {
-            case 'green':
-                return 'var(--primary-50)';
-            case 'blue':
-                return 'var(--neutral-10)';
-            case 'red':
-                return 'var(--secondary-50)';
+            case "green":
+                return "var(--primary-50)";
+            case "blue":
+                return "var(--neutral-10)";
+            case "red":
+                return "var(--secondary-50)";
             default:
                 return;
         }
@@ -65,14 +65,14 @@ const StopBtn = styled.button`
         text-align: center;
         color: ${(props) => {
             switch (props.color) {
-                case 'green':
-                    return 'var(--neutral-10)';
-                case 'blue':
-                    return 'var(--neutral-100)';
-                case 'red':
-                    return 'var(--neutral-100)';
+                case "green":
+                    return "var(--neutral-10)";
+                case "blue":
+                    return "var(--neutral-100)";
+                case "red":
+                    return "var(--neutral-100)";
                 default:
-                    return 'var(--neutral - 100)';
+                    return "var(--neutral - 100)";
             }
         }};
     }

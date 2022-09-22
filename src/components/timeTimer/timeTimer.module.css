@@ -96,6 +96,7 @@
     border-radius: 26px;
     color: var(--neutral-100);
     padding: 0.3rem 0;
+    line-height: 1;
 }
 
 .settingBtn {
@@ -300,4 +301,6 @@
     background-color: transparent;
     border: none;
     border-radius: 50%;
+    position: relative;
+    top: -1.65rem;
 }

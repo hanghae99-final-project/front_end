@@ -51,7 +51,7 @@ const MainPage = () => {
                     <ToDo />
                 </div>
             </Gradient>
-            {mode === "set" && (
+            {(mode === "set" || mode === "complete") && (
                 <div
                     className={styles.blur}
                     onClick={() => {
