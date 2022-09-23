@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
-import { __getDday } from "../../app/slice/DdaySlice";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./ddayList.module.css";
+import { __getDday, __delDday } from "../../app/slice/DdaySlice";
+import DdayModify from "./DdayModify";
 import font from "../../common/css/font.module.css";
-import { __delDday } from "../../app/slice/DdaySlice";
+import styles from "./ddayList.module.css";
 
 const DdayList = () => {
     const dispatch = useDispatch();
     const dDay = useSelector((state) => state.dDay.myDday);
+    const [modifyModal, setModifyModal] = useState("");
+    const [modifyOn, setModifyOn] = useState("");
 
     useEffect(() => {
         dispatch(__getDday());
@@ -17,9 +19,13 @@ const DdayList = () => {
         dispatch(__delDday(id));
     };
 
+    const modifyDday = () => {
+        setModifyOn(!modifyOn);
+    };
+
     return (
         <ul className={styles.container}>
-            {dDay.map((data) => {
+            {dDay?.map((data) => {
                 console.log(data);
                 const today = new Date().getTime();
                 const deadline = new Date(data.deadline).getTime();
@@ -41,10 +47,16 @@ const DdayList = () => {
                             </div>
 
                             <div className={styles.btnWarp}>
-                                <button className={styles.modifyBtn}></button>
+                                <button
+                                    className={styles.modifyBtn}
+                                    onClick={() => {
+                                        modifyModal === data._id ? setModifyModal("") : setModifyModal(data._id);
+                                    }}
+                                ></button>
                                 <button className={styles.delBtn} onClick={() => deleteDday(data._id)}></button>
                             </div>
                         </li>
+                        {modifyModal === data._id ? <DdayModify dataId={data._id} setModifyModal={setModifyModal} setModifyOn={setModifyOn} /> : ""}
                     </div>
                 );
             })}
