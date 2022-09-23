@@ -47,8 +47,7 @@ const Ranking = () => {
                     flexDirection: "column",
                     justifyContent: "space-between",
                     height: "100%",
-                }}
-            >
+                }}>
                 <div>
                     <div className={btsOn ? styles.blurIn : styles.blurOut} onClick={modalOffHandler}>
                         <div className={styles.rankingType}>
@@ -57,10 +56,9 @@ const Ranking = () => {
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setBtsOn(!btsOn);
-                                }}
-                            >
+                                }}>
                                 <p>{ageMode}</p>
-                                <div className={styles.dropdownBtn} src={dropdownBtn} alt="arrowBtn2"></div>
+                                <div className={styles.dropdownBtn} src={dropdownBtn} alt='arrowBtn2'></div>
                             </div>
                         </div>
                         <div className={styles.dateRanking}>
@@ -77,8 +75,7 @@ const Ranking = () => {
                                                 onClick={() => {
                                                     setMode(day.ko);
                                                     setType({ ...type, period: day.en });
-                                                }}
-                                            >
+                                                }}>
                                                 {day.ko}
                                             </button>
                                         ) : (
@@ -91,8 +88,7 @@ const Ranking = () => {
                                                 onClick={() => {
                                                     setType({ ...type, period: day.en });
                                                     setMode(day.ko);
-                                                }}
-                                            >
+                                                }}>
                                                 {day.ko}
                                             </button>
                                         )}
@@ -172,10 +168,9 @@ const Ranking = () => {
                                     onClick={() => {
                                         setAgeMode(age.ko);
                                         setType({ ...type, category: age.en });
-                                    }}
-                                >
+                                    }}>
                                     {age.ko}
-                                    <img src={check} alt="check" />
+                                    <img src={check} alt='check' />
                                 </button>
                             ) : (
                                 <button
@@ -184,8 +179,7 @@ const Ranking = () => {
                                     onClick={() => {
                                         setType({ ...type, category: age.en });
                                         setAgeMode(age.ko);
-                                    }}
-                                >
+                                    }}>
                                     {age.ko}
                                 </button>
                             )}

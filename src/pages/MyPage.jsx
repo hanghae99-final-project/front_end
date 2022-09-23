@@ -9,33 +9,34 @@ import styles from "./css/mypage.module.css";
 import ProfileTodoList from "../components/profile/ProfileTodoList";
 import Calender from "../components/calender/Calender";
 import { Link } from "react-router-dom";
-import font from "../common/css/font.module.css";
 
 const MyPage = () => {
     return (
         <Layout>
             <div className={styles.box}>
                 <MyPageStudyTime />
-                <div className={styles.buttonBox}>
-                    <Link to="/modify">
-                        <button className={styles.profileButton}>
-                            <Person />
-                            <span>프로필 설정</span>
-                        </button>
-                    </Link>
-                    <Link to="/dday">
-                        <button className={styles.profileButton}>
-                            <Event />
-                            <span>디데이 설정</span>
-                        </button>
-                    </Link>
+                <div className={styles.underBox}>
+                    <div className={styles.buttonBox}>
+                        <Link to='/modify'>
+                            <button className={styles.profileButton}>
+                                <Person />
+                                <span>프로필 설정</span>
+                            </button>
+                        </Link>
+                        <Link to='/dday'>
+                            <button className={styles.profileButton}>
+                                <Event />
+                                <span>디데이 설정</span>
+                            </button>
+                        </Link>
+                    </div>
+                    <div className={styles.contentBox}>
+                        <Calender />
+                        <ProfileTodoList />
+                    </div>
+                    <WeeklyDataGraph />
+                    <Footer />
                 </div>
-                <div className={styles.contentBox}>
-                    <Calender />
-                    <ProfileTodoList />
-                </div>
-                <WeeklyDataGraph />
-                <Footer />
             </div>
         </Layout>
     );
