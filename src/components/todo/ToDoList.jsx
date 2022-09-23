@@ -59,23 +59,26 @@ const ToDoList = () => {
                                                 modifyOn === toDo._id ? setModifyOn("") : setModifyOn(toDo._id);
                                                 setModifyModal("");
                                             }}
-                                            className={styles.toDoValueWarp}>
+                                            className={styles.toDoValueWarp}
+                                        >
                                             <PickColor bgColor={toDo.color}></PickColor>
                                             <p className={toDo.isDone ? styles.ToDoTrue : styles.ToDoFalse}>{toDo.work}</p>
                                         </div>
                                         <button
                                             className={toDo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn}
-                                            onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}></button>
+                                            onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}
+                                        ></button>
                                     </div>
                                 </div>
 
                                 <div className={styles.btnWarp}>
                                     <button
                                         className={styles.modifyBtn}
-                                        /* disabled={btnOn} */ onClick={() => {
+                                        onClick={() => {
                                             modifyModal === toDo._id ? setModifyModal("") : setModifyModal(toDo._id);
-                                        }}></button>
-                                    <button className={styles.delBtn} onClick={() => onDeleteToDoHandler(toDo._id)} type='button'></button>
+                                        }}
+                                    ></button>
+                                    <button className={styles.delBtn} onClick={() => onDeleteToDoHandler(toDo._id)} type="button"></button>
                                 </div>
                             </li>
                             {modifyModal === toDo._id ? <ToDoModify toDoId={toDo._id} setModifyModal={setModifyModal} setModifyOn={setModifyOn} /> : ""}
