@@ -35,13 +35,17 @@ export const __postDday = createAsyncThunk("DdaySlice/postDday", async (payload,
 export const __modifyDday = createAsyncThunk("DdaySlice/modifyDday", async (payload, thunkAPI) => {
     console.log(payload);
     try {
-        const { data } = await axios.post(process.env.REACT_APP_SERVER_URL + `/profile/dday/${payload}`, {
-            headers: {
-                Authorization: `Bearer ${localStorage.token}`,
-            },
-        });
+        const { data } = await axios.put(
+            process.env.REACT_APP_SERVER_URL + `/profile/dday/${payload.dataId}`,
+            { deadline: payload.deadline, content: payload.content },
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.token}`,
+                },
+            }
+        );
         console.log(data);
-        return thunkAPI.fulfillWithValue(data);
+        return thunkAPI.fulfillWithValue(payload);
     } catch (error) {
         return thunkAPI.rejectWithValue(error);
     }
@@ -68,15 +72,15 @@ const dDaySlice = createSlice({
     extraReducers: {
         [__getDday.fulfilled]: (state, { payload }) => (state = payload),
         [__postDday.fulfilled]: (state, { payload }) => {
-            const newState = [...state.myDday, payload];
-            state.myDday = newState;
+            state.myDday = [...state.myDday, payload];
         },
-        // console.log(current(state.myDday));
-        // console.log(payload);
+
+        [__modifyDday.fulfilled]: (state, { payload }) => {
+            state.myDday = state.myDday.map((data) => (data._id === payload.dataId ? { ...data, ...payload } : data));
+        },
 
         [__delDday.fulfilled]: (state, { payload }) => {
-            const newState = state.myDday.filter((data) => data._id !== payload);
-            state.myDday = newState;
+            state.myDday = state.myDday.filter((data) => data._id !== payload);
         },
     },
 });
