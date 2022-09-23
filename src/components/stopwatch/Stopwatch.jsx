@@ -45,7 +45,7 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
         setStop(true);
     }
 
-    if (targetTime > 0 && remainTime === 0) {
+    if (targetTime > 0 && remainTime <= 0) {
         localStorage.removeItem("startTime");
         localStorage.removeItem("targetTime");
         localStorage.removeItem("savedStudyTime");

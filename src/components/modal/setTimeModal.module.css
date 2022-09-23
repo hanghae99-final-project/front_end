@@ -68,12 +68,12 @@
 
 .close {
     position: absolute;
-    right: 3vw;
+    right: 16px;
     top: 1.2rem;
 }
 
 .endButton {
-    width: 136px;
+    width: 50%;
     height: 60px;
     border: none;
     background-color: var(--primary-50);
@@ -81,7 +81,7 @@
     font-weight: 600;
 }
 .stopButton {
-    width: 136px;
+    width: 50%;
     height: 60px;
     border: none;
     background-color: var(--neutral-10);

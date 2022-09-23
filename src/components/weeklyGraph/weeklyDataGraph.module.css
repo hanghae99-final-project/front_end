@@ -4,13 +4,13 @@
     display: flex;
     flex-direction: column;
     width: calc(20rem + 10px);
-    height: 13.5rem;
+    height: 13.8rem;
     align-items: center;
     background-color: transparent;
     bottom: 6rem;
     background-color: var(--neutral-30);
     border-radius: 16px;
-    margin-bottom: 1.7rem;
+    margin-bottom: 0.5rem;
 }
 
 .aboveBox {
