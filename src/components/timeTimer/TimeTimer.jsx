@@ -186,7 +186,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                         <div className={styles.settingBox}>
                             <img src={setting} alt='목표 설정' className={styles.setting} />
                         </div>
-                        <div className={styles.text}>목표설정</div>
+                        <div className={`${styles.text}  ${font.subtitle2_600_16}`}>목표설정</div>
                     </button>
                 ) : (
                     <button

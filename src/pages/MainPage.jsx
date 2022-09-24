@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import ToDo from "./ToDo";
 import TodoBtn from "../components/todo/TodoBtn";
+import phone from "../common/svg/phone.svg";
 
 const MainPage = () => {
     const backgroundColor = useSelector((state) => state.color);
@@ -24,6 +25,7 @@ const MainPage = () => {
     return (
         <Layout>
             <Gradient backgroundColor={backgroundColor}>
+                {/* <img src={phone} alt='' className={styles.phone} /> */}
                 <div className={styles.columnBox}>
                     <div>
                         <div className={styles.aboveBox}>
@@ -95,6 +97,7 @@ export default MainPage;
 const Gradient = styled.div`
     width: 100%;
     height: 100%;
+    position: relative;
     background-image: ${(props) => {
         switch (props.backgroundColor) {
             case "green":
