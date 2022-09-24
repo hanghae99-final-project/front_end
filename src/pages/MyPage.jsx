@@ -17,13 +17,13 @@ const MyPage = () => {
                 <MyPageStudyTime />
                 <div className={styles.underBox}>
                     <div className={styles.buttonBox}>
-                        <Link to='/modify'>
+                        <Link to="/modify">
                             <button className={styles.profileButton}>
                                 <Person />
                                 <span>프로필 설정</span>
                             </button>
                         </Link>
-                        <Link to='/dday'>
+                        <Link to="/dday">
                             <button className={styles.profileButton}>
                                 <Event />
                                 <span>디데이 설정</span>
