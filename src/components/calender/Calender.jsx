@@ -22,7 +22,7 @@ const Calender = () => {
     const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜
 
     useEffect(() => {
-        dispatch(getMonthList(selectedMonth));
+        dispatch(getMonthList({ selectedYear, selectedMonth }));
     }, [selectedMonth]);
 
     //달력 월의 시작 요일
@@ -68,26 +68,14 @@ const Calender = () => {
         const data = [];
         let calenderPos = 0;
         let calenderDay = 0;
-        let todayValue = new Date(today.year, today.month - 1, today.date + 1)
-            .toISOString()
-            .split("T")[0];
+        let todayValue = new Date(today.year, today.month - 1, today.date + 1).toISOString().split("T")[0];
 
         for (let i = 0; i < weekCount; i++) {
             for (let i2 = 0; i2 < 7; i2++) {
-                let dayValue = new Date(
-                    selectedYear,
-                    selectedMonth - 1,
-                    calenderDay + 2
-                )
-                    .toISOString()
-                    .split("T")[0];
+                let dayValue = new Date(selectedYear, selectedMonth - 1, calenderDay + 2).toISOString().split("T")[0];
 
                 let ifValue =
-                    studyData
-                        .map((data) => data.studyDate)
-                        .includes(dayValue) &&
-                    studyData.filter((data) => data.studyDate === dayValue)[0]
-                        .studyTime;
+                    studyData.map((data) => data.studyDate).includes(dayValue) && studyData.filter((data) => data.studyDate === dayValue)[0].studyTime;
                 let hours = 3600000;
 
                 /* if (todayValue === dayValue) {
@@ -103,109 +91,69 @@ const Calender = () => {
             </div>
           );
         } else  */
-                if (
-                    studyData
-                        .map((data) => data.studyDate)
-                        .includes(dayValue) === false
-                ) {
+                if (studyData.map((data) => data.studyDate).includes(dayValue) === false) {
                     data.push(
                         <div
-                            className={
-                                todayValue === dayValue
-                                    ? `${styles.dateWarp} ${styles.selectedToday}`
-                                    : styles.dateWarp
-                            }
+                            className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
                             style={{ backgroundColor: "#4b4a56" }}
                         >
-                            {calendarStartMonthData <= calenderPos &&
-                            calenderDay < dateTotalCount
-                                ? (calenderDay++,
-                                  (<span value={dayValue}>{calenderDay}</span>))
+                            {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
+                                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
                                 : ""}
                         </div>
                     );
                 } else if (ifValue < hours * 3) {
                     data.push(
                         <div
-                            className={
-                                todayValue === dayValue
-                                    ? `${styles.dateWarp} ${styles.selectedToday}`
-                                    : styles.dateWarp
-                            }
+                            className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
                             style={{ backgroundColor: "#3a4940" }}
                         >
-                            {calendarStartMonthData <= calenderPos &&
-                            calenderDay < dateTotalCount
-                                ? (calenderDay++,
-                                  (<span value={dayValue}>{calenderDay}</span>))
+                            {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
+                                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
                                 : ""}
                         </div>
                     );
                 } else if (ifValue >= hours * 3 && ifValue < hours * 6) {
                     data.push(
                         <div
-                            className={
-                                todayValue === dayValue
-                                    ? `${styles.dateWarp} ${styles.selectedToday}`
-                                    : styles.dateWarp
-                            }
+                            className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
                             style={{ backgroundColor: "#447257" }}
                         >
-                            {calendarStartMonthData <= calenderPos &&
-                            calenderDay < dateTotalCount
-                                ? (calenderDay++,
-                                  (<span value={dayValue}>{calenderDay}</span>))
+                            {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
+                                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
                                 : ""}
                         </div>
                     );
                 } else if (ifValue >= hours * 6 && ifValue < hours * 9) {
                     data.push(
                         <div
-                            className={
-                                todayValue === dayValue
-                                    ? `${styles.dateWarp} ${styles.selectedToday}`
-                                    : styles.dateWarp
-                            }
+                            className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
                             style={{ backgroundColor: "#4e9a6e" }}
                         >
-                            {calendarStartMonthData <= calenderPos &&
-                            calenderDay < dateTotalCount
-                                ? (calenderDay++,
-                                  (<span value={dayValue}>{calenderDay}</span>))
+                            {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
+                                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
                                 : ""}
                         </div>
                     );
                 } else if (ifValue >= hours * 9 && ifValue < hours * 12) {
                     data.push(
                         <div
-                            className={
-                                todayValue === dayValue
-                                    ? `${styles.dateWarp} ${styles.selectedToday}`
-                                    : styles.dateWarp
-                            }
+                            className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
                             style={{ backgroundColor: "#66ffa6" }}
                         >
-                            {calendarStartMonthData <= calenderPos &&
-                            calenderDay < dateTotalCount
-                                ? (calenderDay++,
-                                  (<span value={dayValue}>{calenderDay}</span>))
+                            {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
+                                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
                                 : ""}
                         </div>
                     );
                 } else {
                     data.push(
                         <div
-                            className={
-                                todayValue === dayValue
-                                    ? `${styles.dateWarp} ${styles.selectedToday}`
-                                    : styles.dateWarp
-                            }
+                            className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
                             style={{ backgroundColor: "#ff8058" }}
                         >
-                            {calendarStartMonthData <= calenderPos &&
-                            calenderDay < dateTotalCount
-                                ? (calenderDay++,
-                                  (<span value={dayValue}>{calenderDay}</span>))
+                            {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
+                                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
                                 : ""}
                         </div>
                     );
@@ -218,9 +166,7 @@ const Calender = () => {
 
     function calenderData() {
         const data = [];
-        data.push(
-            <div className={styles.dateContainer}> {calenderDate()} </div>
-        );
+        data.push(<div className={styles.dateContainer}> {calenderDate()} </div>);
 
         return data;
     }
@@ -229,17 +175,11 @@ const Calender = () => {
         <div className={styles.container}>
             <div className={styles.innerWarp}>
                 <div className={styles.dateBtnWarp}>
-                    <button
-                        className={styles.leftBtn}
-                        onClick={prevMonth}
-                    ></button>
+                    <button className={styles.leftBtn} onClick={prevMonth}></button>
                     <h2 className={font.caption_600_12}>
                         {selectedYear}년 {selectedMonth}월
                     </h2>
-                    <button
-                        className={styles.rightBtn}
-                        onClick={nextMonth}
-                    ></button>
+                    <button className={styles.rightBtn} onClick={nextMonth}></button>
                 </div>
 
                 <div className={styles.weekWrap}>
@@ -247,10 +187,7 @@ const Calender = () => {
                         {week.map((data, idx) => {
                             console.log(data);
                             return (
-                                <div
-                                    className={`${styles.day} ${font.caption3_600_8}`}
-                                    key={idx}
-                                >
+                                <div className={`${styles.day} ${font.caption3_600_8}`} key={idx}>
                                     <span>{data}</span>
                                 </div>
                             );

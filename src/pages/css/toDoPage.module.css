@@ -16,21 +16,29 @@
 
 .toDoTitle h1 {
     width: 100%;
-    font-family: Pretendard;
-    font-size: 1rem;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
     text-align: center;
     color: var(--neutral-100);
 }
 
-.toDoTitle button {
+.touchBar {
+    width: 4.125rem;
+    height: 0.313rem;
+    flex-grow: 0;
+    border-radius: 100px;
+    background-color: var(--neutral-50);
+    margin: 0 auto 0.75rem;
+}
+
+.emptyBtn {
     width: 1.5rem;
     height: 1.5rem;
+    background-color: transparent;
+    border: none;
+}
 
+.addBtn {
+    width: 1.5rem;
+    height: 1.5rem;
     background: url(../../common/svg/open_post_todo_icon.svg);
     background-repeat: no-repeat;
     background-position: center;

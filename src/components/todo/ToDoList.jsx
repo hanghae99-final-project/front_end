@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { deleteList, getList, updateToDoDone } from "../../app/slice/toDoSlice";
-import styles from "./toDoList.module.css";
 import ToDoModify from "./ToDoModify";
+import styles from "./toDoList.module.css";
+import font from "../././../common/css/font.module.css";
 
 const ToDoList = () => {
     const [upDateValue, setUpDateValue] = useState("");
@@ -47,45 +48,58 @@ const ToDoList = () => {
 
     return (
         <ul className={styles.container}>
-            {toDos
-                ?.map((toDo) => {
-                    return (
-                        <div key={toDo._id}>
-                            <li className={styles.innerWarp}>
-                                <div className={modifyOn === toDo._id ? `${styles.toDoContainer} ${styles.modifyOn}` : styles.toDoContainer}>
-                                    <div className={styles.toDoWarp}>
-                                        <div
-                                            onClick={() => {
-                                                modifyOn === toDo._id ? setModifyOn("") : setModifyOn(toDo._id);
-                                                setModifyModal("");
-                                            }}
-                                            className={styles.toDoValueWarp}
-                                        >
-                                            <PickColor bgColor={toDo.color}></PickColor>
-                                            <p className={toDo.isDone ? styles.ToDoTrue : styles.ToDoFalse}>{toDo.work}</p>
+            {toDos.length === 0 ? (
+                <div className={`${styles.emptyTodo} ${font.subtitle2_600_16}`}>할 일을 추가해 보세요</div>
+            ) : (
+                <div className={styles.innerContainer}>
+                    {toDos
+                        ?.map((toDo) => {
+                            return (
+                                <div className={modifyOn === toDo._id ? `${styles.outWarp} ${styles.modifyOn}` : `${styles.outWarp}`} key={toDo._id}>
+                                    <li className={styles.innerWarp}>
+                                        <div className={styles.toDoContainer}>
+                                            <div className={styles.toDoWarp}>
+                                                <div
+                                                    onClick={() => {
+                                                        modifyOn === toDo._id ? setModifyOn("") : setModifyOn(toDo._id);
+                                                        setModifyModal("");
+                                                    }}
+                                                    className={styles.toDoValueWarp}
+                                                >
+                                                    <PickColor bgColor={toDo.color}></PickColor>
+                                                    <p
+                                                        className={
+                                                            toDo.isDone
+                                                                ? `${styles.ToDoTrue} ${font.strikethrough_30014}`
+                                                                : `${styles.ToDoFalse} ${font.body2_300_14}`
+                                                        }
+                                                    >
+                                                        {toDo.work}
+                                                    </p>
+                                                </div>
+                                                <button
+                                                    className={toDo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn}
+                                                    onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}
+                                                ></button>
+                                            </div>
                                         </div>
+                                    </li>
+                                    <div className={styles.btnWarp}>
                                         <button
-                                            className={toDo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn}
-                                            onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}
+                                            className={styles.modifyBtn}
+                                            onClick={() => {
+                                                modifyModal === toDo._id ? setModifyModal("") : setModifyModal(toDo._id);
+                                            }}
                                         ></button>
+                                        <button className={styles.delBtn} onClick={() => onDeleteToDoHandler(toDo._id)} type="button"></button>
                                     </div>
+                                    {modifyModal === toDo._id ? <ToDoModify toDoId={toDo._id} setModifyModal={setModifyModal} setModifyOn={setModifyOn} /> : ""}
                                 </div>
-
-                                <div className={styles.btnWarp}>
-                                    <button
-                                        className={styles.modifyBtn}
-                                        onClick={() => {
-                                            modifyModal === toDo._id ? setModifyModal("") : setModifyModal(toDo._id);
-                                        }}
-                                    ></button>
-                                    <button className={styles.delBtn} onClick={() => onDeleteToDoHandler(toDo._id)} type="button"></button>
-                                </div>
-                            </li>
-                            {modifyModal === toDo._id ? <ToDoModify toDoId={toDo._id} setModifyModal={setModifyModal} setModifyOn={setModifyOn} /> : ""}
-                        </div>
-                    );
-                })
-                .reverse()}
+                            );
+                        })
+                        .reverse()}
+                </div>
+            )}
         </ul>
     );
 };
