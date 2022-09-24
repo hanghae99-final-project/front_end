@@ -116,7 +116,7 @@ const ModifyProfile = () => {
                 </div>
                 <div className={styles.emailBox}>
                     <p>로그인 계정</p>
-                    <input type='text' placeholder={email.userEmail} disabled={true}></input>
+                    <input type="text" placeholder={email.userEmail} disabled={true}></input>
                 </div>
                 <form className={styles.nicknameBox} onSubmit={checkNickname}>
                     <p>닉네임</p>
@@ -130,15 +130,16 @@ const ModifyProfile = () => {
                                 ? `${styles.nicknameInputOrange} animate__animated animate__headShake`
                                 : styles.nicknameInputBase
                         }
-                        type='text'
-                        name='nickname'
+                        type="text"
+                        name="nickname"
                         value={modifyInfo.nickname}
                         onChange={onChangeHandleInput}
                         onBlur={checkNickname}
                         placeholder={userData.nickname}
-                        autoComplete='off'
+                        autoComplete="off"
                         autoFocus={true}
-                        maxLength='8'></input>
+                        maxLength="8"
+                    ></input>
                     <p className={styles.checkMsg}>
                         {" "}
                         {borderColor === "orange" && <Orange style={{ marginRight: "0.25rem" }} />}
@@ -152,13 +153,14 @@ const ModifyProfile = () => {
                     <div className={styles.ageContainer}>
                         {pickAge.map((pick, i) => {
                             return (
-                                <div key={i}>
+                                <div className={styles.ageBtnBox} key={i}>
                                     {modifyInfo.ageGroup === pick ? (
                                         <button
                                             className={styles.agePick}
                                             onClick={() => {
                                                 setModifyInfo({ ...modifyInfo, ageGroup: pick });
-                                            }}>
+                                            }}
+                                        >
                                             <Check />
                                             {pick}
                                         </button>
@@ -167,7 +169,8 @@ const ModifyProfile = () => {
                                             className={styles.ageAnother}
                                             onClick={() => {
                                                 setModifyInfo({ ...modifyInfo, ageGroup: pick });
-                                            }}>
+                                            }}
+                                        >
                                             {pick}
                                         </button>
                                     )}
@@ -182,13 +185,14 @@ const ModifyProfile = () => {
                     <div className={styles.specContainer}>
                         {major.map((pick, i) => {
                             return (
-                                <div key={i}>
+                                <div className={styles.specBtnBox} key={i}>
                                     {modifyInfo.specialty === pick ? (
                                         <button
                                             className={styles.specPick}
                                             onClick={() => {
                                                 setModifyInfo({ ...modifyInfo, specialty: pick });
-                                            }}>
+                                            }}
+                                        >
                                             <Check />
                                             {pick}
                                         </button>
@@ -197,7 +201,8 @@ const ModifyProfile = () => {
                                             className={styles.specAnother}
                                             onClick={() => {
                                                 setModifyInfo({ ...modifyInfo, specialty: pick });
-                                            }}>
+                                            }}
+                                        >
                                             {pick}
                                         </button>
                                     )}

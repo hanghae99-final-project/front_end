@@ -14,81 +14,86 @@ import ToDo from "./ToDo";
 import TodoBtn from "../components/todo/TodoBtn";
 
 const MainPage = () => {
-    const backgroundColor = useSelector((state) => state.color);
-    const [mode, setMode] = useState("normal");
-    const [todoMode, setTodoMode] = useState("normal");
-    const [btsOn, setBtsOn] = useState(false);
-    const [timeMode, setTimeMode] = useState("normal");
-    const [color, setColor] = useState("#7E7C8C");
+  const backgroundColor = useSelector((state) => state.color);
+  const [mode, setMode] = useState("normal");
+  const [todoMode, setTodoMode] = useState("normal");
+  const [btsOn, setBtsOn] = useState(false);
+  const [timeMode, setTimeMode] = useState("normal");
+  const [color, setColor] = useState("#7E7C8C");
 
-    return (
-        <Layout>
-            <Gradient backgroundColor={backgroundColor}>
-                {/* <img src={phone} alt='' className={styles.phone} /> */}
-                <div className={styles.columnBox}>
-                    <div>
-                        <div className={styles.aboveBox}>
-                            <img src={alert} alt='도움말 툴팁' className={styles.alert} />
-                            <Studing />
-                            <Stopwatch mode={mode} setMode={setMode} color={color} setColor={setColor} />
-                        </div>
-                    </div>
-                    <div>
-                        <MainDday />
-                        <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
-                    </div>
-                    <div>
-                        <div
-                            onClick={() => {
-                                setBtsOn(!btsOn);
-                                setTodoMode("set");
-                            }}>
-                            <TodoBtn />
-                        </div>
-                        <Footer />
-                    </div>
-                </div>
-                <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
-                    <ToDo />
-                </div>
-            </Gradient>
-            {(mode === "set" || mode === "complete") && (
-                <div
-                    className={styles.blur}
-                    onClick={() => {
-                        setColor("#7E7C8C");
-                        setMode("normal");
-                    }}
-                />
-            )}
-            {timeMode === "set" && (
-                <div
-                    className={styles.blur}
-                    onClick={() => {
-                        setTimeMode("normal");
-                    }}
-                />
-            )}
-            {todoMode === "set" && (
-                <div
-                    className={styles.blur}
-                    onClick={() => {
-                        setTodoMode("normal");
-                        setBtsOn(false);
-                    }}
-                />
-            )}
-            {todoMode === "set" && (
-                <div
-                    className={styles.blur}
-                    onClick={() => {
-                        setTodoMode("normal");
-                        setBtsOn(false);
-                    }}
-                />
-            )}
-        </Layout>
-    );
+  return (
+    <Layout>
+      <Gradient backgroundColor={backgroundColor}>
+        <div className={styles.columnBox}>
+          <div>
+            <div className={styles.aboveBox}>
+              <img src={alert} alt="도움말 툴팁" className={styles.alert} />
+              <Studing />
+              <Stopwatch
+                mode={mode}
+                setMode={setMode}
+                color={color}
+                setColor={setColor}
+              />
+            </div>
+          </div>
+          <div>
+            <MainDday />
+            <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
+          </div>
+          <div>
+            <div
+              onClick={() => {
+                setBtsOn(!btsOn);
+                setTodoMode("set");
+              }}
+            >
+              <TodoBtn />
+            </div>
+            <Footer />
+          </div>
+        </div>
+        <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
+          <ToDo />
+        </div>
+      </Gradient>
+      {(mode === "set" || mode === "complete") && (
+        <div
+          className={styles.blur}
+          onClick={() => {
+            setColor("#7E7C8C");
+            setMode("normal");
+          }}
+        />
+      )}
+      {timeMode === "set" && (
+        <div
+          className={styles.blur}
+          onClick={() => {
+            setTimeMode("normal");
+          }}
+        />
+      )}
+      {todoMode === "set" && (
+        <div
+          className={styles.blur}
+          onClick={() => {
+            setTodoMode("normal");
+            setBtsOn(false);
+          }}
+        />
+      )}
+      {todoMode === "set" && (
+        <div
+          className={styles.blur}
+          onClick={() => {
+            setTodoMode("normal");
+            setBtsOn(false);
+          }}
+        />
+      )}
+    </Layout>
+  );
 };
 
 export default MainPage;
