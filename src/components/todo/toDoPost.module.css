@@ -1,192 +1,214 @@
 @import url(../../common/css/common.css);
 
 .toDoContainer {
-    display: flex;
-    gap: 8px;
-    height: 4.75rem;
-    margin-bottom: 0.5rem;
+  display: flex;
+  gap: 8px;
+  height: 4.75rem;
+  margin: 0.5rem 0;
+  position: relative;
+  width: 100%;
+}
+
+.toDoUpdateContainer {
+  display: flex;
+  gap: 8px;
+  height: 4.75rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  left: 7rem;
+  position: relative;
 }
 
 .postWarp {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    border: solid 1px var(--neutral-100);
-    background-color: var(--neutral-30);
+  width: 90%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: solid 1px var(--neutral-100);
+  background-color: var(--neutral-30);
+}
+
+.updateWarp {
+  width: calc(100% - 12.6rem);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: solid 1px var(--neutral-100);
+  background-color: var(--neutral-30);
+  /* left: 5%; */
+  position: relative;
 }
 
 .inputContainer {
-    width: 100%;
+  width: 100%;
 }
 
 .valueInput {
-    height: 1.5rem;
-    width: 100%;
-    margin-bottom: 0.5rem;
-    background-color: var(--neutral-30);
-    border: none;
+  height: 1.5rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  background-color: var(--neutral-30);
+  border: none;
 
-    font-family: Pretendard;
-    font-size: 1rem;
-    font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    text-decoration: none;
-    color: #fff;
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  text-decoration: none;
+  color: #fff;
 }
 
 .valueInput::placeholder {
-    font-family: Pretendard;
-    font-size: 1rem;
-    font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: left;
-    color: var(--neutral-50);
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--neutral-50);
 }
 
 .valueInput:focus {
-    outline: none;
+  outline: none;
 }
 
 .colorInput {
-    height: 1.188rem;
+  height: 1.188rem;
 }
 
 .colorInput input {
-    margin-right: 1rem;
+  margin-right: 1rem;
 }
 
 .postBtn {
-    width: 3.125rem;
-    height: 4.75rem;
-    padding: 1.625rem 0.813rem;
-    border-radius: 8px;
-    border: none;
-    font-size: 0.844rem;
+  width: 3.125rem;
+  height: 4.75rem;
+  padding: 1.625rem 0.813rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.844rem;
 
-    background: url(../../common/svg/add_todo_default.svg) var(--neutral-40);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
+  background: url(../../common/svg/add_todo_default.svg) var(--neutral-40);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: All 0.3s ease-in-out;
 }
 
 .postBtn img {
-    fill: var(--neutral-50);
+  fill: var(--neutral-50);
 }
 
 .btnOn {
-    cursor: pointer;
+  cursor: pointer;
 
-    background: url(../../common/svg/add_todo_active.svg) var(--primary-50);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
+  background: url(../../common/svg/add_todo_active.svg) var(--primary-50);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: All 0.3s ease-in-out;
 }
 
 .btnOn:active {
-    background-color: var(--primary-20);
+  background-color: var(--primary-20);
 }
 
 input[type="radio"] {
-    appearance: none;
-    width: 1.188rem;
-    height: 1.188rem;
-    border-radius: 50%;
-    cursor: pointer;
+  appearance: none;
+  width: 1.188rem;
+  height: 1.188rem;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .color1 {
-    background-color: var(--alerts-red);
+  background-color: var(--alerts-red);
 }
 
 .color1:active {
-    background: #cf3434;
+  background: #cf3434;
 }
 
 .color1:checked {
-    background: url(../../common/svg/check_small.svg), var(--alerts-red);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: border 0.5s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--alerts-red);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.5s ease-in-out;
 }
 
 .color2 {
-    background-color: var(--secondary-50);
+  background-color: var(--secondary-50);
 }
 
 .color2:active {
-    background: #d65e40;
+  background: #d65e40;
 }
 
 .color2:checked {
-    background: url(../../common/svg/check_small.svg), var(--secondary-50);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: border 0.5s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--secondary-50);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.5s ease-in-out;
 }
 
 .color3 {
-    background-color: var(--alerts-green);
+  background-color: var(--alerts-green);
 }
 
 .color3:active {
-    background: #558637;
+  background: #558637;
 }
 
 .color3:checked {
-    background: url(../../common/svg/check_small.svg), var(--alerts-green);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: border 0.5s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--alerts-green);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.5s ease-in-out;
 }
 
 .color4 {
-    background-color: var(--primary-50);
+  background-color: var(--primary-50);
 }
 
 .color4:active {
-    background: #319159;
+  background: #319159;
 }
 
 .color4:checked {
-    background: url(../../common/svg/check_small.svg), var(--primary-50);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: border 0.5s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--primary-50);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.5s ease-in-out;
 }
 
 .color5 {
-    background-color: var(--tertiary-50);
+  background-color: var(--tertiary-50);
 }
 
 .color5:active {
-    background: #0a84dc;
+  background: #0a84dc;
 }
 
 .color5:checked {
-    background: url(../../common/svg/check_small.svg), var(--tertiary-50);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: border 0.5s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--tertiary-50);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.5s ease-in-out;
 }
 
 .color6 {
-    background-color: var(--neutral-100);
+  background-color: var(--neutral-100);
 }
 
 .color6:active {
-    background: #a4a3b1;
+  background: #a4a3b1;
 }
 
 .color6:checked {
-    background: url(../../common/svg/check_small.svg), var(--neutral-100);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: border 0.5s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--neutral-100);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.5s ease-in-out;
 }
