@@ -135,3 +135,19 @@ table {
     ‌border-collapse: collapse;
     ‌border-spacing: 0;
 }
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    body {
+        background: url(common/svg/tablet_background.png) #1a1b23;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+@media (min-width: 1025px) {
+    body {
+        background: url(common/svg/desktop_background.png) #1a1b23;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}

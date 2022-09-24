@@ -1,15 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = '';
+const initialState = "";
 
 const colorSlice = createSlice({
-    name: 'colorSlice',
+    name: "colorSlice",
     initialState,
     reducers: {
         changeColor: (state, { payload }) => {
-            console.log(payload);
             return (state = payload);
-            // console.log(payload);
         },
     },
 });

@@ -99,18 +99,19 @@ const MainPage = () => {
 export default MainPage;
 
 const Gradient = styled.div`
-  width: 100%;
-  height: 100%;
-  background-image: ${(props) => {
-    switch (props.backgroundColor) {
-      case "green":
-        return "linear-gradient(to bottom, var(--neutral-20), #3b4f4b 34%, #558d71 74%, var(--primary-60))";
-      case "blue":
-        return "linear-gradient(to bottom, var(--neutral-20), #445364 48%, #5f809b 75%, var(--tertiary-60))";
-      case "red":
-        return "linear-gradient(to bottom, var(--neutral-20), #4f3f40 43%, #996153 73%, var(--secondary-60))";
-      default:
-        return "transparent";
-    }
-  }};
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-image: ${(props) => {
+        switch (props.backgroundColor) {
+            case "green":
+                return "linear-gradient(to bottom, var(--neutral-20), #3b4f4b 34%, #558d71 74%, var(--primary-60))";
+            case "blue":
+                return "linear-gradient(to bottom, var(--neutral-20), #445364 48%, #5f809b 75%, var(--tertiary-60))";
+            case "red":
+                return "linear-gradient(to bottom, var(--neutral-20), #4f3f40 43%, #996153 73%, var(--secondary-60))";
+            default:
+                return "transparent";
+        }
+    }};
 `;
