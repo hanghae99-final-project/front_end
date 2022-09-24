@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import ToDo from "./ToDo";
 import TodoBtn from "../components/todo/TodoBtn";
-import phone from "../common/svg/phone.svg";
 
 const MainPage = () => {
     const backgroundColor = useSelector((state) => state.color);
