@@ -110,32 +110,6 @@
     text-align: center;
     font-weight: bold;
 }
-.fStatus {
-    color: var(--primary-100);
-    position: fixed;
-    display: flex;
-    bottom: 9rem;
-    width: 22rem;
-    height: 4rem;
-    background-color: var(--primary-50);
-    border-radius: 1rem;
-    flex-direction: row;
-    align-items: center;
-}
-
-.sStatus {
-    color: var(--primary-100);
-    position: fixed;
-    display: flex;
-    bottom: 9rem;
-    width: 22rem;
-    height: 4rem;
-    background-color: var(--neutral-10);
-    border: solid 1px var(--primary-50);
-    border-radius: 1rem;
-    flex-direction: row;
-    align-items: center;
-}
 
 .userRank {
     font-size: 0.75rem;
@@ -170,7 +144,7 @@
 }
 
 .allStatus {
-    color: var(--primary-100);
+    color: var(--neutral-100);
     display: flex;
     width: calc(100% - 48px);
     justify-content: space-between;
