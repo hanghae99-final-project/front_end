@@ -1,392 +1,391 @@
 @import "../../common/css/color.css";
 
 .layout {
-  border: 1px solid red;
-  width: auto;
-  height: 50rem;
-  padding: 0 1rem;
-  background-color: #2f3038;
+    width: auto;
+    height: 50rem;
+    padding: 0 1rem;
+    background-color: #2f3038;
 }
 
 .btnWrap {
-  margin: 3.25rem 0 0 0;
-  user-select: none;
+    margin: 3.25rem 0 0 0;
+    user-select: none;
 }
 
 .arrowBack {
-  margin: 3.25rem 0 0 0;
-  width: 1.5rem;
-  height: 1.5rem;
-  background: url("../../common/svg/arrowback_icon2.svg");
-  border: none;
-  background-repeat: no-repeat;
-  background-position: center;
+    margin: 3.25rem 0 0 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url("../../common/svg/arrowback_icon2.svg");
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .arrowBack:active {
-  background: url("../../common/svg/arrowback_icon2_active.svg");
-  background-repeat: no-repeat;
-  background-position: center;
+    background: url("../../common/svg/arrowback_icon2_active.svg");
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .arrowBack:hover {
-  cursor: pointer;
+    cursor: pointer;
 }
 .arrowBack:active {
 }
 
 img.arrowbackIcon {
-  object-fit: contain;
-  background-color: none;
+    object-fit: contain;
+    background-color: none;
 }
 p.infoText {
-  height: 4rem;
-  margin: 1rem 0 2rem 0;
-  font-family: Pretendard;
-  font-size: 1.5rem;
-  font-weight: 600;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: 1.33;
-  letter-spacing: normal;
-  text-align: left;
-  color: #ffffff;
+    height: 4rem;
+    margin: 1rem 0 2rem 0;
+    font-family: Pretendard;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
 }
 
 .inputContainer {
-  border: 1px solid rgba(0, 0, 0, 0);
-  background-color: var(--neutral-30);
-  border-radius: 8px;
-  width: 93.7%;
-  height: 4.375rem;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.688rem;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-color: var(--neutral-30);
+    border-radius: 8px;
+    width: 90%;
+    height: 4.375rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.688rem;
 }
 
 .inputContainer:focus-within {
-  border: solid 1px var(--neutral-100);
+    border: solid 1px var(--neutral-100);
 }
 
 .InputGroup {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .label {
-  margin: 0.75rem 0 0.25rem 0;
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: var(--neutral-70);
+    margin: 0.75rem 0 0.25rem 0;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: var(--neutral-70);
 }
 
 .buttonBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .deleteIcon {
-  width: 1.5rem;
-  height: 1.5rem;
-  background: url("../../common/svg/delete_icon.svg");
-  border: none;
-  background-repeat: no-repeat;
-  background-position: center;
-  padding-top: 1.85rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: url("../../common/svg/delete_icon.svg");
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding-top: 1.85rem;
 }
 .deleteIcon:active {
-  background: url("../../common/svg/delete_icon_active.svg");
-  border: none;
-  background-repeat: no-repeat;
-  background-position: center;
+    background: url("../../common/svg/delete_icon_active.svg");
+    border: none;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .inputNickname {
-  width: 13rem;
-  border: none;
-  background-color: var(--neutral-30);
-  height: 1.5rem;
-  outline: none;
-  color: var(--neutral-100);
+    width: 13rem;
+    border: none;
+    background-color: var(--neutral-30);
+    height: 1.5rem;
+    outline: none;
+    color: var(--neutral-100);
 }
 
 .inputNickname ::placeholder {
-  color: var(--neutral-50);
-  font-family: Pretendard;
+    color: var(--neutral-50);
+    font-family: Pretendard;
 }
 
 .checkMsg {
-  font-size: 0.625rem;
-  color: var(--neutral-70);
+    font-size: 0.625rem;
+    color: var(--neutral-70);
 }
 
 .checkMsgOrange {
-  font-size: 0.625rem;
-  color: var(--alerts-orange);
-  display: flex;
-  align-items: center;
+    font-size: 0.625rem;
+    color: var(--alerts-orange);
+    display: flex;
+    align-items: center;
 }
 
 .checkMsgGreen {
-  font-size: 0.625rem;
-  color: var(--alerts-green);
-  display: flex;
-  align-items: center;
+    font-size: 0.625rem;
+    color: var(--alerts-green);
+    display: flex;
+    align-items: center;
 }
 
 .checkMsgRed {
-  font-size: 0.625rem;
-  color: var(--alerts-red);
-  display: flex;
-  align-items: center;
+    font-size: 0.625rem;
+    color: var(--alerts-red);
+    display: flex;
+    align-items: center;
 }
 
 .checkMsg {
-  font-size: 0.625rem;
-  color: var(--neutral-70);
+    font-size: 0.625rem;
+    color: var(--neutral-70);
 }
 
 .joinBtnNo {
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--neutral-30);
-  font-weight: 600;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--neutral-30);
+    font-weight: 600;
 }
 
 .joinBtnYes {
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  background-color: var(--primary-50);
-  border: none;
-  font-weight: 600;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    background-color: var(--primary-50);
+    border: none;
+    font-weight: 600;
 }
 
 .joinBtnYes:active {
-  background-color: var(--primary-20);
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
+    background-color: var(--primary-20);
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
 }
 
 /* age */
 .agePickBtn {
-  display: flex;
-  width: 100%;
-  height: 4.5rem;
-  margin-bottom: 0.75rem;
-  border-radius: 8px;
-  padding-left: 1rem;
-  color: var(--primary-50);
-  text-align: start;
-  align-items: center;
-  border: solid 1px var(--primary-50);
-  background-color: var(--neutral-20);
+    display: flex;
+    width: 100%;
+    height: 4.5rem;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    padding-left: 1rem;
+    color: var(--primary-50);
+    text-align: start;
+    align-items: center;
+    border: solid 1px var(--primary-50);
+    background-color: var(--neutral-20);
 }
 
 .ageBase {
-  width: 100%;
-  height: 4.5rem;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  background-color: var(--neutral-30);
-  color: var(--neutral-100);
-  text-align: start;
-  align-items: center;
-  padding-left: 1rem;
-  border: none;
+    width: 100%;
+    height: 4.5rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    background-color: var(--neutral-30);
+    color: var(--neutral-100);
+    text-align: start;
+    align-items: center;
+    padding-left: 1rem;
+    border: none;
 }
 
 .ageAfter {
-  width: 100%;
-  height: 4.5rem;
-  border-radius: 8px;
-  margin-bottom: 0.75rem;
-  background-color: var(--neutral-30);
-  color: var(--neutral-70);
-  text-align: start;
-  align-items: center;
-  padding-left: 1rem;
-  border: none;
+    width: 100%;
+    height: 4.5rem;
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    background-color: var(--neutral-30);
+    color: var(--neutral-70);
+    text-align: start;
+    align-items: center;
+    padding-left: 1rem;
+    border: none;
 }
 
 .ageBtnNo {
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--neutral-30);
-  font-weight: 600;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--neutral-30);
+    font-weight: 600;
 }
 
 .ageBtnYes {
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  background-color: var(--primary-50);
-  border: none;
-  font-weight: 600;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    background-color: var(--primary-50);
+    border: none;
+    font-weight: 600;
 }
 
 .ageBtnYes:active {
-  background-color: var(--primary-20);
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
+    background-color: var(--primary-20);
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
 }
 
 /* spec */
 
 img.specCheckImg {
-  background-color: red;
+    background-color: red;
 }
 
 .specContainer {
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .specWrap {
-  display: inline-flex;
-  flex-direction: row;
-  margin: 0 0.5rem 1rem 0;
+    display: inline-flex;
+    flex-direction: row;
+    margin: 0 0.5rem 1rem 0;
 }
 
 .slice {
-  display: flex;
-  font-weight: 300;
-  height: 2rem;
-  border-radius: 16px;
-  background-color: var(--neutral-30);
-  color: var(--neutral-100);
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    font-weight: 300;
+    height: 2rem;
+    border-radius: 16px;
+    background-color: var(--neutral-30);
+    color: var(--neutral-100);
+    justify-content: center;
+    align-items: center;
 }
 
 .specBtnNo {
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  border: none;
-  background-color: var(--neutral-30);
-  font-weight: 600;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--neutral-30);
+    font-weight: 600;
 }
 
 .specBtnYes {
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  background-color: var(--primary-50);
-  border: none;
-  font-weight: 600;
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    background-color: var(--primary-50);
+    border: none;
+    font-weight: 600;
 }
 
 .specBtnYes:active {
-  background-color: var(--primary-20);
-  width: 100%;
-  height: 3.75rem;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
+    background-color: var(--primary-20);
+    width: 100%;
+    height: 3.75rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
 }
 
 .imgBox {
-  width: 1.3rem;
-  height: 1.3rem;
-  display: inline-flex;
-  align-items: center;
+    width: 1.3rem;
+    height: 1.3rem;
+    display: inline-flex;
+    align-items: center;
 }
 
 .specPick {
-  display: flex;
-  align-items: center;
-  border: 1px solid var(--primary-50);
-  background-color: var(--neutral-20);
-  color: var(--primary-50);
-  font-size: 1.2rem;
-  height: 2rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 16px;
-  margin: 0 0.5rem 0.75rem 0;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--primary-50);
+    background-color: var(--neutral-20);
+    color: var(--primary-50);
+    font-size: 1.2rem;
+    height: 2rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    margin: 0 0.5rem 0.75rem 0;
 }
 
 .specBase {
-  font-size: 1.2rem;
-  height: 2rem;
-  padding: 0.25rem 0.75rem;
-  border: 1px solid #ffffff;
-  border-radius: 16px;
-  background-color: var(--neutral-30);
-  color: var(--neutral-100);
+    font-size: 1.2rem;
+    height: 2rem;
+    padding: 0.25rem 0.75rem;
+    border: 1px solid #ffffff;
+    border-radius: 16px;
+    background-color: var(--neutral-30);
+    color: var(--neutral-100);
 }
 
 .specAnother {
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-  height: 2rem;
-  padding: 0.25rem 0.75rem;
-  font-size: 1.2rem;
-  border: 1px solid #ffffff;
-  border-radius: 16px;
-  background-color: var(--neutral-30);
-  color: var(--neutral-70);
-  margin: 0 0.5rem 0.75rem 0;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    height: 2rem;
+    padding: 0.25rem 0.75rem;
+    font-size: 1.2rem;
+    border: 1px solid #ffffff;
+    border-radius: 16px;
+    background-color: var(--neutral-30);
+    color: var(--neutral-70);
+    margin: 0 0.5rem 0.75rem 0;
 }
 
 /* color border  */
 .green {
-  border: solid 1px var(--alerts-green);
-  background-color: var(--neutral-30);
-  border-radius: 8px;
-  width: 18.3rem;
-  height: 4.375rem;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.688rem;
+    border: solid 1px var(--alerts-green);
+    background-color: var(--neutral-30);
+    border-radius: 8px;
+    width: 18.3rem;
+    height: 4.375rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.688rem;
 }
 
 .green:focus-within {
-  border: solid 1px var(--alerts-green);
+    border: solid 1px var(--alerts-green);
 }
 
 .orange {
-  border: solid 1px var(--alerts-orange);
-  background-color: var(--neutral-30);
-  border-radius: 8px;
-  width: 18.3rem;
-  height: 4.375rem;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.688rem;
+    border: solid 1px var(--alerts-orange);
+    background-color: var(--neutral-30);
+    border-radius: 8px;
+    width: 18.3rem;
+    height: 4.375rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.688rem;
 }
 
 .orange:focus-within {
-  border: solid 1px var(--alerts-orange);
+    border: solid 1px var(--alerts-orange);
 }
 
 .red {
-  border: solid 1px var(--alerts-red);
-  background-color: var(--neutral-30);
-  border-radius: 8px;
-  width: 18.3rem;
-  height: 4.375rem;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 0.688rem;
+    border: solid 1px var(--alerts-red);
+    background-color: var(--neutral-30);
+    border-radius: 8px;
+    width: 18.3rem;
+    height: 4.375rem;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.688rem;
 }
 
 /* .red:focus-within {
@@ -396,48 +395,48 @@ img.specCheckImg {
 /* done */
 
 .doneMsg {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 .container {
-  border: 1px solid rgba(0, 0, 0, 0);
-  width: 100%;
-  height: 43.875rem;
+    border: 1px solid rgba(0, 0, 0, 0);
+    width: 100%;
+    height: 43.875rem;
 }
 
 .doneNickname {
-  color: var(--primary-50);
+    color: var(--primary-50);
 }
 
 .msgContainer {
-  width: 20.5rem;
-  height: 43.875rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
+    width: 20.5rem;
+    height: 43.875rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
 }
 
 .joinDone {
-  font-size: 1rem;
-  color: var(--neutral-60);
+    font-size: 1rem;
+    color: var(--neutral-60);
 }
 
 .doneBtn {
-  width: 20.5rem;
-  height: 3.75rem;
-  border-radius: 8px;
-  background-color: var(--primary-50);
-  border: none;
-  font-weight: 600;
+    width: 20.5rem;
+    height: 3.75rem;
+    border-radius: 8px;
+    background-color: var(--primary-50);
+    border: none;
+    font-weight: 600;
 }
 
 .doneBtn:active {
-  background-color: var(--primary-20);
-  width: 20.5rem;
-  height: 3.75rem;
-  border-radius: 8px;
-  border: none;
-  font-weight: 600;
+    background-color: var(--primary-20);
+    width: 20.5rem;
+    height: 3.75rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
 }
