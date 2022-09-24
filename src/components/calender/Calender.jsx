@@ -15,8 +15,6 @@ const Calender = () => {
     day: new Date().getDay() //오늘 요일
   };
 
-  console.log(today.month, today.date);
-
   const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
   const [selectedMonth, setSelectedMonth] = useState(today.month); //현재 선택된 달
   const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜

@@ -25,7 +25,6 @@ const ProfileTodoList = () => {
   }
 
   const todos = useSelector(state => state?.toDo);
-  console.log(todos);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -72,7 +71,6 @@ const ProfileTodoList = () => {
 
         <ul className={styles.todoListWarp}>
           {todos.map(toDo => {
-            console.log(toDo);
             return (
               <li className={styles.todoWarp} key={toDo._id}>
                 <div className={styles.toDoValueWarp}>

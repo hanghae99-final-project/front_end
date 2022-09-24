@@ -1,13 +1,12 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const now = new Date();
-const year = now.getFullYear();
-const months = ("0" + (now.getMonth() + 1)).slice(-2);
-const days = ("0" + now.getDate()).slice(-2);
-console.log(year, months, days);
-
 export const getList = createAsyncThunk("GET_TODO", async () => {
+  const now = new Date();
+  const year = now.getFullYear();
+  const months = ("0" + (now.getMonth() + 1)).slice(-2);
+  const days = ("0" + now.getDate()).slice(-2);
+
   const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/todo/${year}-${months}-${days}`, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   });
@@ -16,15 +15,12 @@ export const getList = createAsyncThunk("GET_TODO", async () => {
 
 export const __getdailyTodo = createAsyncThunk("dailyTodo", async payload => {
   const selectedmonth = payload.month < 10 ? "0" + payload.month : payload.month;
-  console.log(payload);
-  console.log(payload.year);
   const response = await axios.get(
     process.env.REACT_APP_SERVER_URL + `/todo/${payload.year}-${selectedmonth}-${payload.date}`,
     {
       headers: { Authorization: `Bearer ${localStorage.token}` }
     }
   );
-  console.log(response.data.todoArr);
   return response.data;
 });
 
