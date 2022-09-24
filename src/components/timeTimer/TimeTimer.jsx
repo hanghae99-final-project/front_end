@@ -89,6 +89,10 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
                 ? setStatus("🎉 목표를 달성했어요 !")
                 : setStatus(`⏰ ${changeSecondToTime(remainSec)} 남았어요!`)
             : setStatus(`✏️ 어제 ${changeSecondToTime(Math.floor(yesterdayStudyTime / 1000))}공부했어요`);
+
+        if (Math.floor(targetTime / 1000) <= second && color === "green") {
+            setColor("red");
+        }
     }, [target, second, targetToSec]);
 
     /**
