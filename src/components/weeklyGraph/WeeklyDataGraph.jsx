@@ -32,7 +32,7 @@ const WeeklyDataGraph = () => {
             return v?.length !== 0 ? v : i + 1 === 7 ? { studyTime: 0, day: 0 } : { studyTime: 0, day: i + 1 };
         })
         .flat();
-
+    console.log(weeklyStudyData);
     /**
      * date를 적합한 형태로 바꿔주는 함수
      * @param {string} day
