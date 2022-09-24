@@ -19,6 +19,7 @@ export const dailyTodo = createAsyncThunk("dailyTodo", async ({ year, month, dat
     const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/mypage/dailyTodo/${year}-${month}-${date}`, {
         headers: { Authorization: `Bearer ${localStorage.token}` },
     });
+    console.log(response);
     return response.data.todoData;
 });
 

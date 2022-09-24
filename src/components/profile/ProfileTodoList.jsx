@@ -1,9 +1,9 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { dailyTodo } from '../../app/slice/toDoSlice';
-import styled from 'styled-components';
-import styles from './profileTodoList.module.css';
-import font from '../../common/css/common.module.css';
+import React, { useEffect, useState, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { dailyTodo } from "../../app/slice/toDoSlice";
+import styled from "styled-components";
+import styles from "./profileTodoList.module.css";
+import font from "../../common/css/common.module.css";
 
 const ProfileTodoList = () => {
     const today = {
@@ -29,6 +29,7 @@ const ProfileTodoList = () => {
     console.log(selectMonthData);
 
     const todos = useSelector((state) => state.toDo);
+    console.log(todos);
     const dispatch = useDispatch();
 
     useEffect(() => {
