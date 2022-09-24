@@ -1,11 +1,41 @@
 @import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
+
+.phone {
+    position: absolute;
+    z-index: 2;
+}
+
+.logoBox {
+    position: relative;
+    top: 44.5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    margin: 1rem;
+    font-family: "Pretendard";
+    font-style: normal;
+    font-size: 21px;
+    line-height: 150%;
+    color: white;
+}
+
+.name {
+    font-weight: 600;
+    color: var(--primary-50);
+}
 
 .columnBox {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
+    height: 100%;
 }
+
 .alert {
     width: 1.5rem;
     height: 1.5rem;

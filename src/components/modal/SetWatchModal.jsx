@@ -22,7 +22,7 @@ const SetWatchModal = ({
 }) => {
     console.log(mode, remainTime);
     return (
-        <div className={localStorage.targetTime > 0 ? styles.setModal : styles.modal}>
+        <div className={localStorage.targetTime > 0 || mode === "complete" ? styles.setModal : styles.modal}>
             <div className={`${styles.title} ${font.subtitle2_600_16}`}>
                 <div>{mode === "complete" ? "타이머 종료" : "타이머"}</div>
                 <Close

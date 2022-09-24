@@ -14,7 +14,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement);
 const WeeklyDataGraph = () => {
     const dispatch = useDispatch();
 
-    //db에 데이터가 저장된 날짜만 불러옴(9.17, 9, 20)
+    //db에 데이터가 저장된 날짜만 불러옴(9.17, 9.20)
     const weeklyData = useSelector((state) => state.my?.weeklyStudy);
 
     //불러오지 않는 날짜에 요일 채워넣기
@@ -32,7 +32,6 @@ const WeeklyDataGraph = () => {
             return v?.length !== 0 ? v : i + 1 === 7 ? { studyTime: 0, day: 0 } : { studyTime: 0, day: i + 1 };
         })
         .flat();
-    console.log(weeklyStudyData);
     /**
      * date를 적합한 형태로 바꿔주는 함수
      * @param {string} day

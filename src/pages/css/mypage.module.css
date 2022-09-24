@@ -49,7 +49,7 @@
     }
 }
 
-@media (min-height: 1100px) {
+@media (max-width: 600px) and (min-height: 1100px) {
     .aboveArea {
         height: 526px;
     }
