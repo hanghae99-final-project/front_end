@@ -6,9 +6,18 @@ import deleteBtn from "../../common/svg/delete_icon.svg";
 import { ReactComponent as Orange } from "../../common/svg/orange.svg";
 import { ReactComponent as Red } from "../../common/svg/red.svg";
 import { ReactComponent as Green } from "../../common/svg/green.svg";
+import font from "../../common/css/font.module.css";
 import axios from "axios";
 
-const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, userInfo, setUserInfo }) => {
+const Nickname = ({
+  setMode,
+  nickname,
+  checkMsg,
+  setCheckMsg,
+  initialState,
+  userInfo,
+  setUserInfo,
+}) => {
   const [borderColor, setBorderColor] = useState("");
   const check = /^[가-힣]{2,8}$/;
 
@@ -33,7 +42,9 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
   };
 
   const allCheck = () => {
-    borderColor === "green" && check.test(userInfo.nickname) ? setMode("Age") : void 0;
+    borderColor === "green" && check.test(userInfo.nickname)
+      ? setMode("Age")
+      : void 0;
   };
   const onChangeHandleInput = (e) => {
     const { name, value } = e.target;
@@ -47,7 +58,7 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
         <div className={styles.btnWrap}>
           <img className={styles.arrowbackIcon} src={arrowBtn} alt="arrow" />
         </div>
-        <p className={styles.infoText}>
+        <p className={`${styles.infoText} ${font.header3_600_24}`}>
           사용하실 닉네임을
           <br /> 입력해 주세요
         </p>
@@ -63,11 +74,13 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
           }
         >
           <form className={styles.InputGroup} onSubmit={checkNickname}>
-            <label className={styles.label}>닉네임</label>
+            <label className={`${styles.label} ${font.caption_300_12}`}>
+              닉네임
+            </label>
             <input
               type="text"
               name="nickname"
-              className={styles.inputNickname}
+              className={`${styles.inputNickname} ${font.body_300_16}`}
               onBlur={checkNickname}
               value={nickname}
               onChange={onChangeHandleInput}
@@ -90,27 +103,34 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
         <p
           className={
             borderColor === "orange"
-              ? styles.checkMsgOrange
+              ? `${styles.checkMsgOrange} ${font.caption2_300_10}`
               : borderColor === "green"
-              ? styles.checkMsgGreen
+              ? `${styles.checkMsgGreen} ${font.caption2_300_10}`
               : borderColor === "red"
-              ? styles.checkMsgRed
-              : styles.checkMsg
+              ? `${styles.checkMsgRed} ${font.caption2_300_10}`
+              : `${styles.checkMsg} ${font.caption2_300_10}`
           }
         >
-          {borderColor === "orange" && <Orange style={{ marginRight: "0.25rem" }} />}
+          {borderColor === "orange" && (
+            <Orange style={{ marginRight: "0.25rem" }} />
+          )}
           {borderColor === "red" && <Red style={{ marginRight: "0.25rem" }} />}
-          {borderColor === "green" && <Green style={{ marginRight: "0.25rem" }} />}
+          {borderColor === "green" && (
+            <Green style={{ marginRight: "0.25rem" }} />
+          )}
           {checkMsg}
         </p>
       </div>
       {!check.test(userInfo.nickname) && nickname.length < 2 ? (
-        <button className={styles.joinBtnNo} disabled>
+        <button
+          className={`${styles.joinBtnNo} ${font.subtitle2_600_16}`}
+          disabled
+        >
           다음
         </button>
       ) : (
         <button
-          className={styles.joinBtnYes}
+          className={`${styles.joinBtnYes} ${font.subtitle2_600_16}`}
           onClick={(e) => {
             checkNickname(e, true);
             allCheck();

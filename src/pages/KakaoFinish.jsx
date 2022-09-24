@@ -11,6 +11,7 @@ const KakaoFinish = () => {
     const dispatch = useDispatch();
     const use = useSelector((state) => state.main);
     const authCode = location.search.split("=")[1];
+
     useEffect(() => {
         dispatch(get_login(authCode));
     }, []);

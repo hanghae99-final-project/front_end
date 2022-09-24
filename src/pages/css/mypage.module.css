@@ -1,5 +1,25 @@
 @import url(../../common/css/common.css);
 
+.logoutBtn {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 0.9rem;
+    color: var(--neutral-100);
+}
+
+.logoutBtn:active {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 0.9rem;
+    color: var(--neutral-70);
+}
+
 .box {
     display: flex;
     align-items: center;

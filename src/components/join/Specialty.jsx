@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./join.module.css";
+import font from "../../common/css/font.module.css";
 import arrowBtn2 from "../../common/svg/arrowback_icon2.svg";
 import { ReactComponent as Check } from "../../common/svg/check_icon.svg";
 import { useDispatch } from "react-redux";
@@ -37,7 +38,7 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
           className={styles.arrowBack}
           onClick={() => setMode("Age")}
         ></button>
-        <p className={styles.infoText}>
+        <p className={`${styles.infoText} ${font.header3_600_24}`}>
           준비하고 있는 분야를 <br />
           선택해 주세요
         </p>
@@ -47,7 +48,7 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
               <div key={i}>
                 {userInfo.specialty === pick ? (
                   <button
-                    className={styles.specPick}
+                    className={`${styles.specPick} ${font.subtitle2_300_16}`}
                     onClick={() => {
                       setUserInfo({ ...userInfo, specialty: pick });
                     }}
@@ -57,7 +58,7 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
                   </button>
                 ) : (
                   <button
-                    className={styles.specAnother}
+                    className={`${styles.specAnother} ${font.subtitle2_300_16}`}
                     onClick={() => {
                       setUserInfo({ ...userInfo, specialty: pick });
                     }}
@@ -71,11 +72,17 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
         </div>
       </div>
       {userInfo.specialty === "" ? (
-        <button disabled className={styles.specBtnNo}>
+        <button
+          disabled
+          className={`${styles.specBtnNo} ${font.subtitle2_600_16}`}
+        >
           가입완료
         </button>
       ) : (
-        <button className={styles.specBtnYes} onClick={postJoinHandle}>
+        <button
+          className={`${styles.specBtnYes} ${font.subtitle2_600_16}`}
+          onClick={postJoinHandle}
+        >
           가입완료
         </button>
       )}
