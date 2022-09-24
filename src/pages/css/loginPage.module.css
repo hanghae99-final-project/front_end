@@ -5,23 +5,28 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 2;
 }
 
 .tootip {
     position: absolute;
     bottom: 2rem;
+    z-index: 2;
 }
 
 .logo {
     position: absolute;
     top: calc(50% - 80px);
     left: calc(50% - 44.5px);
+    z-index: 2;
 }
 
 .background {
-    background-image: url('../../common/svg/login_background.png');
+    background-image: url("../../common/svg/login_background.png");
     background-position: 50% 0;
     background-repeat: no-repeat;
     height: 100%;
     position: relative;
+    z-index: 1;
+    filter: blur(6px);
 }

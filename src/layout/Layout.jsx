@@ -118,15 +118,11 @@ const Background = styled.div`
         overflow: hidden;
         .phoneFrame {
             position: absolute;
-            /* border: 1px solid gray; */
             height: 800px;
             width: 360px;
-            /* background-color: white; */
-            z-index: 10;
             right: 37px;
             top: 181px;
-            border-radius: 50px;
-            /* opacity: 0.5; */
+            border-radius: 20px;
             overflow: hidden;
         }
         .logoBox {
@@ -145,14 +141,15 @@ const Background = styled.div`
             margin-left: 80px;
         }
         .introBox::-webkit-scrollbar {
-            display: none; /* Chrome, Safari, Opera*/
+            display: none;
         }
         .phone {
             display: block;
             position: absolute;
-            z-index: 5;
+            z-index: 15;
             right: 16px;
             top: 161px;
+            pointer-events: none;
         }
     }
 `;
