@@ -26,7 +26,10 @@ const MyPage = () => {
 
     return (
         <Layout>
-            <button className={`${styles.logoutBtn} ${styles.subtitle4_600_12}`} onClick={logout}>
+            <button
+                className={`${styles.logoutBtn} ${font.subtitle4_600_12}`}
+                onClick={logout}
+            >
                 로그아웃
             </button>
             <div className={styles.box}>
