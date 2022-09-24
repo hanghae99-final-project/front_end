@@ -1,150 +1,150 @@
 @import url(../../common/css/common.css);
 
 .container {
-    width: 100%;
-    height: 23rem;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  width: 100%;
+  height: 23rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .emptyTodo {
-    text-align: center;
-    height: 100%;
-    line-height: 25;
-    color: var(--neutral-40);
+  text-align: center;
+  height: 100%;
+  line-height: 25;
+  color: var(--neutral-40);
 }
 
 .innerContaiber {
-    position: absolute;
-    width: calc(100% - 1rem);
-    left: 1rem;
+  position: absolute;
+  width: calc(100% - 1rem);
+  left: 1rem;
 }
 
 .outWarp {
-    display: flex;
-    position: relative;
-    left: 0;
-    width: calc(100% + 20%);
-    margin-bottom: 0.5rem;
-    transition: All 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 0;
+  width: calc(100% + 7rem);
+  margin-bottom: 0.5rem;
+  transition: All 0.5s ease-in-out;
 }
 
 .innerWarp {
-    width: 100%;
-    list-style: none;
-    display: flex;
+  width: 100%;
+  list-style: none;
+  display: flex;
 }
 
 .modifyOn {
-    left: -19.6%;
-    transition: All 0.5s ease-in-out;
+  left: -7rem;
+  transition: All 0.5s ease-in-out;
 }
 
 .toDoContainer {
-    display: flex;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border-radius: 8px;
-    background-color: var(--neutral-40);
-    transition: All 0.5s ease-in-out;
+  display: flex;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  background-color: var(--neutral-40);
+  transition: All 0.5s ease-in-out;
 }
 
 .toDoWarp {
-    width: 100%;
-    align-self: stretch;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
+  width: 100%;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
 }
 
 .toDoValueWarp {
-    width: 100%;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .ToDoTrue {
-    width: 16rem;
-    font-family: Pretendard;
-    font-size: 0.875rem;
-    font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.43;
-    letter-spacing: normal;
-    text-align: left;
-    color: var(--neutral-60);
-    text-decoration: line-through;
+  width: 16rem;
+  font-family: Pretendard;
+  font-size: 0.875rem;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.43;
+  letter-spacing: normal;
+  text-align: left;
+  color: var(--neutral-60);
+  text-decoration: line-through;
 
-    transition: All 0.3s ease-in-out;
+  transition: All 0.3s ease-in-out;
 }
 
 .ToDoFalse {
-    width: 16rem;
-    color: var(--neutral-100);
+  width: 16rem;
+  color: var(--neutral-100);
 
-    transition: All 0.3s ease-in-out;
+  transition: All 0.3s ease-in-out;
 }
 
 .isDoneFalseBtn {
-    width: 1.188rem;
-    height: 1.188rem;
-    border: solid 1px #fff;
-    border-radius: 50%;
-    background-color: var(--neutral-40);
+  width: 1.188rem;
+  height: 1.188rem;
+  border: solid 1px #fff;
+  border-radius: 50%;
+  background-color: var(--neutral-40);
 
-    transition: All 0.3s ease-in-out;
+  transition: All 0.3s ease-in-out;
 }
 
 .isDoneTureBtn {
-    width: 1.188rem;
-    height: 1.188rem;
-    border: solid 1px var(--neutral-60);
-    border-radius: 50%;
+  width: 1.188rem;
+  height: 1.188rem;
+  border: solid 1px var(--neutral-60);
+  border-radius: 50%;
 
-    background: url(../../common/svg/check_small.svg), var(--neutral-60);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--neutral-60);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: All 0.3s ease-in-out;
 }
 
 .btnWarp {
-    width: 20%;
-    display: flex;
+  display: flex;
 }
 
 .modifyBtn,
 .delBtn {
-    width: 2.981rem;
-    border-radius: 8px;
-    border: none;
+  width: 2.981rem;
+  border-radius: 8px;
+  border: none;
 }
 
 .modifyOnBtn {
-    display: flex;
-    transition: All 0.5s ease-in-out;
+  display: flex;
+  transition: All 0.5s ease-in-out;
 }
 
 .modifyBtn {
-    background: url(../../common/svg/edit_icon.svg) var(--alerts-orange);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
-    margin: 0 0.5rem;
+  background: url(../../common/svg/edit_icon.svg) var(--alerts-orange);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: All 0.3s ease-in-out;
+  margin: 0 0.5rem;
 }
 
 .delBtn {
-    background: url(../../common/svg/todo_delete_icon.svg) var(--alerts-red);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
+  background: url(../../common/svg/todo_delete_icon.svg) var(--alerts-red);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: All 0.3s ease-in-out;
 }
