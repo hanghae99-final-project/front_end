@@ -95,7 +95,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
 
     useEffect(() => {
         remainSec !== 0
-            ? second > targetTime / 1000
+            ? second > targetTime / 1000 || remainSec < 0
                 ? setStatus("🎉 목표를 달성했어요 !")
                 : setStatus(`⏰ ${changeSecondToTime(remainSec)} 남았어요!`)
             : setStatus(`✏️ 어제 ${changeSecondToTime(Math.floor(yesterdayStudyTime / 1000))}공부했어요`);
