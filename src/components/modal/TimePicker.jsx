@@ -22,7 +22,7 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
                 mousewheel={true}
                 direction={"vertical"}
                 pagination={{ clickable: true }}
-                loop={true}
+                // loop={true}
                 // freeMode={true}
                 breakpoints={{
                     768: {

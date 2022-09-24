@@ -27,7 +27,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
 
     const [refresh, setRefresh] = useState(false);
     const [target, setTarget] = useState({ hour: 0, minute: 0 });
-    const [targetToSec, setTargetToSec] = useState(targetTime); // 설정시간을 초로 나타냄
+    const [targetToSec, setTargetToSec] = useState(0); // 설정시간을 초로 나타냄
     const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
     const [color, setColor] = useState("");
 
@@ -42,6 +42,12 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
     useEffect(() => {
         dispatch(get_studytime());
     }, [dispatch]);
+
+    useEffect(() => {
+        setTargetToSec(Math.floor(targetTime / 1000));
+    }, [targetTime]);
+
+    useEffect(() => {}, [yesterdayStudyTime]);
 
     useEffect(() => {
         if (studyStartPoint !== 0) {
@@ -83,9 +89,13 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
         setTargetToSec(target.hour * 3600 + target.minute * 60);
     }, [target]);
 
+    // useEffect(() => {
+    //     setTargetToSec(Math.floor(targetTime / 1000));
+    // }, [targetTime]);
+
     useEffect(() => {
         remainSec !== 0
-            ? second >= targetTime / 1000
+            ? second > targetTime / 1000
                 ? setStatus("🎉 목표를 달성했어요 !")
                 : setStatus(`⏰ ${changeSecondToTime(remainSec)} 남았어요!`)
             : setStatus(`✏️ 어제 ${changeSecondToTime(Math.floor(yesterdayStudyTime / 1000))}공부했어요`);
@@ -93,7 +103,7 @@ const TimeTimer = ({ timeMode, setTimeMode }) => {
         if (Math.floor(targetTime / 1000) <= second && color === "green") {
             setColor("red");
         }
-    }, [target, second, targetToSec]);
+    }, [target, second, targetToSec, yesterdayStudyTime]);
 
     /**
      *  공부 중일 때, 혹은 공부 중이 아닐 때 공부 시간 설정
