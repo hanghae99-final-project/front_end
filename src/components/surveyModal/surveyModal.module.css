@@ -1,0 +1,73 @@
+@import url(../../common/css/color.css);
+
+.modal {
+  width: 100%;
+  height: 600px;
+  border-radius: 18px 18px 0 0;
+  background-color: var(--neutral-30);
+  position: absolute;
+  z-index: 10;
+  bottom: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: 0.3s ease-in infoModal;
+}
+
+@keyframes infoModal {
+  from {
+    bottom: -600px;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+.imgBox {
+  width: 100%;
+}
+
+.surveyImg {
+  object-fit: cover;
+  width: 360px;
+  border-radius: 18px 18px 0 0;
+}
+
+.surveyText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--neutral-100);
+  margin-top: 20px;
+}
+
+.accent {
+  color: var(--secondary-50);
+}
+
+.chicken {
+  width: calc(100% - 32px);
+  height: 60px;
+  background-color: var(--primary-50);
+  border-radius: 8px;
+  margin-top: 30px;
+  color: var(--neutral-10);
+}
+
+.close {
+  width: calc(100% - 32px);
+  height: 60px;
+  border: none;
+  background-color: transparent;
+  margin-top: 8px;
+  color: var(--neutral-70);
+}
+
+@media (min-width: 360px) and (max-width: 599px) {
+  .surveyImg {
+    width: 100%;
+  }
+  .modal {
+    height: calc(100vw + 240px);
+  }
+}
