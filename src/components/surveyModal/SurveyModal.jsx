@@ -15,15 +15,18 @@ const SurveyModal = ({ setSurvey }) => {
           <div>지금 설문조사 참여하고 치킨받자🍗</div>
         </div>
       </div>
-      <button
-        className={`${styles.chicken} ${font.subtitle2_600_16}`}
-        onClick={() => {
-          // if (window.confirm("설문조사에 참여하시겠습니까?")) {
-          window.location.replace("https://forms.gle/nPxMeV8PRDZzahTd9");
-          // }
-        }}
-      >
-        치킨 받으러 가기
+      <button className={`${styles.chicken} ${font.subtitle2_600_16}`}>
+        <a
+          onClick={() => {
+            if (window.confirm("설문조사 페이지로 이동하시겠습니까?")) {
+              location.href = "https://forms.gle/nPxMeV8PRDZzahTd9";
+            } else {
+              return;
+            }
+          }}
+        >
+          치킨 받으러 가기
+        </a>
       </button>
       <button
         className={`${styles.close} ${font.subtitle2_600_16}`}
