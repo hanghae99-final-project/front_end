@@ -8,8 +8,6 @@ const TodoBtn = () => {
   const dispatch = useDispatch();
   const toDos = useSelector(state => state.toDo);
 
-  console.log(toDos);
-
   const totalTodo = toDos.length;
   const isDoneCount = toDos?.filter(data => data?.isDone === true).length;
 

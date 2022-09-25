@@ -32,13 +32,6 @@ const WeeklyDataGraph = () => {
       return v?.length !== 0 ? v : i + 1 === 7 ? { studyTime: 0, day: 0 } : { studyTime: 0, day: i + 1 };
     })
     .flat();
-  console.log(weeklyStudyData);
-
-  const date = new Date();
-  const currentDay = date.getDay();
-  const monday = date.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
-  const sunday = monday + 6;
-  console.log(date.getDate() - currentDay);
   /**
    * date를 적합한 형태로 바꿔주는 함수
    * @param {string} day
@@ -50,25 +43,27 @@ const WeeklyDataGraph = () => {
     return new Date(new Date(date.setDate(day)).getTime() + weekToTime * move).toISOString().substring(0, 10);
   };
 
-  //   console.log(changeDate(31, 0));
-  console.log(monday, sunday);
+  const date = new Date();
+  const currentDay = date.getDay();
+  const monday = date.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
+  const sunday = monday + 6;
+
   const [move, setMove] = useState(0);
   const [week, setWeek] = useState({
     startWeek: changeDate(monday, move), // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
     endWeek: changeDate(sunday, move) // 이번 주 일요일
   });
-  console.log(week);
 
   useEffect(() => {
     setWeek({
-      startWeek: changeDate(monday, move),
-      endWeek: changeDate(sunday, move)
+      startWeek: changeDate(monday - 1, move),
+      endWeek: changeDate(sunday - 1, move)
     });
   }, [move]);
 
   useEffect(() => {
-    dispatch(__getWeeklyData(week));
-  }, [week]);
+    dispatch(__getWeeklyData({ startWeek: "2022-09-26", endWeek: "2022-10-02" }));
+  }, []);
 
   const labels = ["월", "화", "수", "목", "금", "토", "일"];
   //ms -> hour 변환
@@ -153,7 +148,7 @@ const WeeklyDataGraph = () => {
             setMove(prev => prev - 1);
           }}
         />
-        <div className={`${styles.date} ${font.caption_600_12}`}>{`${week.startWeek} - ${week.endWeek}`}</div>
+        <div className={`${styles.date} ${font.caption_600_12}`}>{`2022-09-26 - 2022-10-02`}</div>
         <RightArrow
           className={styles.arrow}
           onClick={() => {

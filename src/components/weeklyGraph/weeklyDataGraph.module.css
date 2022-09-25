@@ -1,34 +1,39 @@
 @import url(../../common/css/common.css);
 
 .graph {
-    display: flex;
-    flex-direction: column;
-    width: calc(20rem + 10px);
-    height: 13.8rem;
-    align-items: center;
-    background-color: transparent;
-    bottom: 6rem;
-    background-color: var(--neutral-30);
-    border-radius: 16px;
-    margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: calc(20rem + 10px);
+  height: 13.8rem;
+  align-items: center;
+  background-color: transparent;
+  bottom: 6rem;
+  background-color: var(--neutral-30);
+  border-radius: 16px;
+  margin-bottom: 0.5rem;
 }
 
 .aboveBox {
-    display: flex;
-    padding: 0.8rem 0 0.2rem 0;
-    align-items: center;
-    justify-content: space-between;
-    width: 19.5rem;
+  display: flex;
+  padding: 0.8rem 0 0.2rem 0;
+  align-items: center;
+  justify-content: space-between;
+  width: 19.5rem;
 }
 
 .date {
-    color: var(--neutral-100);
-    padding: 0 2rem;
-    font-family: Pretendard;
-    font-size: 0.75rem;
-    font-weight: 600;
+  color: var(--neutral-100);
+  padding: 0 2rem;
+  font-family: Pretendard;
+  font-size: 0.75rem;
+  font-weight: 600;
 }
 
 .arrow:active {
-    opacity: 0.3;
+  opacity: 0.3;
+}
+
+.arrow {
+  opacity: 0.3;
+  pointer-events: none;
 }
