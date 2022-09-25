@@ -16,11 +16,7 @@ const SurveyModal = ({ setSurvey }) => {
         </div>
       </div>
       <button className={`${styles.chicken} ${font.subtitle2_600_16}`}>
-        <a
-          href="https://forms.gle/nPxMeV8PRDZzahTd9"
-        >
-          치킨 받으러 가기
-        </a>
+        <a href="https://forms.gle/nPxMeV8PRDZzahTd9">치킨 받으러 가기</a>
       </button>
       <button
         className={`${styles.close} ${font.subtitle2_600_16}`}

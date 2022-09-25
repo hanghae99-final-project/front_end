@@ -52,6 +52,11 @@
   border-radius: 8px;
   margin-top: 30px;
   color: var(--neutral-10);
+  border: none;
+}
+
+.chicken a {
+  color: var(--neutral-10);
 }
 
 .close {

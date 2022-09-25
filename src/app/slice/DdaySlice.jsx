@@ -3,6 +3,20 @@ import axios from "axios";
 
 const initialState = { myDday: [] };
 
+export const __getMainDday = createAsyncThunk("DdaySlice/getDday", async (payload, thunkAPI) => {
+  try {
+    const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/profile/ddayOne`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.token}`
+      }
+    });
+    console.log(data);
+    return thunkAPI.fulfillWithValue(data);
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error);
+  }
+});
+
 export const __getDday = createAsyncThunk("DdaySlice/getDday", async (payload, thunkAPI) => {
   try {
     const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + `/profile/dday`, {
@@ -70,6 +84,7 @@ const dDaySlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [__getMainDday.fulfilled]: (state, { payload }) => (state = payload),
     [__getDday.fulfilled]: (state, { payload }) => (state = payload),
     [__postDday.fulfilled]: (state, { payload }) => {
       state.myDday = [...state.myDday, payload];
