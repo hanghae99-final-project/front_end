@@ -10,7 +10,6 @@ import { ReactComponent as Close } from "../../common/svg/close.svg";
 import { useRef } from "react";
 
 const InfoModal = ({ setInfo }) => {
-  const modal = useRef();
   const information = [
     { img: timer, content: "특정 시간부터 시, 분을 설정해 카운트다운을 할 수 있어요.", title: "타이머" },
     { img: timeTimer, content: "경과한 시간과 남은 시간을 즉각적으로 인지할 수 있어요.", title: "타임타이머" },
@@ -19,7 +18,7 @@ const InfoModal = ({ setInfo }) => {
     { img: weeklyStudyLog, content: "스터디 로그를 주간 그래프로 더 한눈에 볼 수 있어요.", title: "주간 스터디 로그" }
   ];
   return (
-    <div className={styles.modal} ref={modal}>
+    <div className={styles.modal}>
       <div className={`${styles.title} ${font.subtitle2_600_16}`}>
         <div>랭플 사용방법</div>
         <Close
