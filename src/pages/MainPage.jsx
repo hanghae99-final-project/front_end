@@ -14,7 +14,9 @@ import ToDo from "./ToDo";
 import TodoBtn from "../components/todo/TodoBtn";
 import InfoModal from "../components/infoModal/InfoModal";
 import SurveyModal from "../components/surveyModal/SurveyModal";
-import chicken from "../common/svg/chicken.png";
+import chicken from "../common/svg/cta_button.svg";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const MainPage = () => {
   const backgroundColor = useSelector(state => state.color);
@@ -25,6 +27,12 @@ const MainPage = () => {
   const [color, setColor] = useState("#7E7C8C");
   const [info, setInfo] = useState(false);
   const [survey, setSurvey] = useState(false);
+
+  const navi = useNavigate();
+
+  useEffect(() => {
+    localStorage.getItem("token") === null && navi("/");
+  }, []);
 
   return (
     <Layout>

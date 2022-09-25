@@ -7,25 +7,28 @@ import styles from "./css/rankingPage.module.css";
 import dropdownBtn from "../common/svg/dropdown_icon.svg";
 import check from "../common/svg/check_icon.svg";
 import font from "../common/css/font.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Ranking = () => {
   const dispatch = useDispatch();
-  const getMyRanking = useSelector((state) => state.ranking.myRanking);
-  const getAllRanking = useSelector((state) => state.ranking.ranking);
+  const getMyRanking = useSelector(state => state.ranking.myRanking);
+  const getAllRanking = useSelector(state => state.ranking.ranking);
   const userTimeSet = Math.floor(getMyRanking.savedStudyTime / 1000);
   const myHour = parseInt(userTimeSet / 3600);
   const myMinutes = parseInt((userTimeSet % 3600) / 60);
   const [showSheet, setShowSheet] = useState(false);
   const [btsOn, setBtsOn] = useState(false);
+  const navi = useNavigate();
+
   const agePick = [
     { ko: "전체 랭킹", en: "all" },
     { ko: "20대 랭킹", en: "twenty" },
-    { ko: "30대 랭킹", en: "thirty" },
+    { ko: "30대 랭킹", en: "thirty" }
   ];
   const datePick = [
     { ko: "일간", en: "day" },
     { ko: "주간", en: "week" },
-    { ko: "월간", en: "month" },
+    { ko: "월간", en: "month" }
   ];
   const [mode, setMode] = useState("일간");
   const [ageMode, setAgeMode] = useState("전체 랭킹");
@@ -33,10 +36,14 @@ const Ranking = () => {
   const [type, setType] = useState({ period: "day", category: "all" });
 
   useEffect(() => {
+    localStorage.getItem("token") === null && navi("/");
+  }, []);
+
+  useEffect(() => {
     dispatch(__getRanking(type));
   }, [type]);
 
-  const modalOffHandler = (e) => {
+  const modalOffHandler = e => {
     setBtsOn(false);
   };
   return (
@@ -46,28 +53,21 @@ const Ranking = () => {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          height: "100%",
+          height: "100%"
         }}
       >
         <div>
-          <div
-            className={btsOn ? styles.blurIn : styles.blurOut}
-            onClick={modalOffHandler}
-          >
+          <div className={btsOn ? styles.blurIn : styles.blurOut} onClick={modalOffHandler}>
             <div className={`${styles.rankingType} ${font.subtitle2_600_16}`}>
               <div
                 className={styles.topBtn}
-                onClick={(e) => {
+                onClick={e => {
                   e.stopPropagation();
                   setBtsOn(!btsOn);
                 }}
               >
                 <p>{ageMode}</p>
-                <div
-                  className={styles.dropdownBtn}
-                  src={dropdownBtn}
-                  alt="arrowBtn2"
-                ></div>
+                <div className={styles.dropdownBtn} src={dropdownBtn} alt="arrowBtn2"></div>
               </div>
             </div>
             <div className={`${styles.dateRanking}`}>
@@ -79,7 +79,7 @@ const Ranking = () => {
                         className={`${styles.button} ${font.subtitle4_600_12}`}
                         style={{
                           backgroundColor: "var(--neutral-40)",
-                          color: "var(--neutral-100)",
+                          color: "var(--neutral-100)"
                         }}
                         onClick={() => {
                           setMode(day.ko);
@@ -93,7 +93,7 @@ const Ranking = () => {
                         className={`${styles.button} ${font.subtitle4_600_12}`}
                         style={{
                           backgroundColor: "var(--neutral-30)",
-                          color: "var(--neutral-70)",
+                          color: "var(--neutral-70)"
                         }}
                         onClick={() => {
                           setType({ ...type, period: day.en });
@@ -124,41 +124,23 @@ const Ranking = () => {
                       }
                     >
                       <div className={styles.nameBox}>
-                        <span
-                          className={i > 2 ? styles.padding : styles.userRank}
-                        >
+                        <span className={i > 2 ? styles.padding : styles.userRank}>
                           {i === 0 && "👑"}
                           {i === 1 && "🥈"}
                           {i === 2 && "🥉"}
                           {i + 1}
                         </span>
                         <div className={styles.userBox}>
-                          <p
-                            className={`${styles.userNickname} ${font.subtitle4_600_12}`}
-                          >
-                            {rankbox.nickname}
-                          </p>
-                          <p
-                            className={`${styles.userSpec} ${font.caption2_300_10} `}
-                          >
-                            {" "}
-                            {rankbox.specialty}
-                          </p>
+                          <p className={`${styles.userNickname} ${font.subtitle4_600_12}`}>{rankbox.nickname}</p>
+                          <p className={`${styles.userSpec} ${font.caption2_300_10} `}> {rankbox.specialty}</p>
                         </div>
                       </div>
                       <div className={styles.timeBox}>
-                        <span
-                          className={`${styles.userTime} ${font.subtitle4_600_12}`}
-                        >
-                          {hour < 10 ? "0" + hour : hour}시간{" "}
-                          {minutes < 10 ? "0" + minutes : minutes}분
+                        <span className={`${styles.userTime} ${font.subtitle4_600_12}`}>
+                          {hour < 10 ? "0" + hour : hour}시간 {minutes < 10 ? "0" + minutes : minutes}분
                         </span>
                         {rankbox.studying ? (
-                          <div
-                            className={
-                              i === 0 ? styles.rankerDot : styles.greendot
-                            }
-                          ></div>
+                          <div className={i === 0 ? styles.rankerDot : styles.greendot}></div>
                         ) : (
                           <div className={styles.emptyDot}></div>
                         )}
@@ -186,20 +168,13 @@ const Ranking = () => {
                 {getMyRanking.rank ? getMyRanking.rank : "--"}
               </span>
               <div className={styles.userBox}>
-                <p
-                  className={`${styles.userNickname} ${font.subtitle4_600_12}`}
-                >
-                  {getMyRanking.nickname}
-                </p>
-                <p className={`${styles.userSpec} ${font.caption2_300_10}`}>
-                  {getMyRanking.specialty}
-                </p>
+                <p className={`${styles.userNickname} ${font.subtitle4_600_12}`}>{getMyRanking.nickname}</p>
+                <p className={`${styles.userSpec} ${font.caption2_300_10}`}>{getMyRanking.specialty}</p>
               </div>
             </div>
             <div className={styles.timeBox}>
               <span className={`${styles.userTime} ${font.subtitle4_600_12}`}>
-                {myHour < 10 ? "0" + myHour : myHour}시간{" "}
-                {myMinutes < 10 ? "0" + myMinutes : myMinutes}분
+                {myHour < 10 ? "0" + myHour : myHour}시간 {myMinutes < 10 ? "0" + myMinutes : myMinutes}분
               </span>
               {getMyRanking.studying ? (
                 <div className={styles.greendot}></div>
