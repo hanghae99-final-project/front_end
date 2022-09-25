@@ -43,9 +43,9 @@ const MainPage = () => {
               <Studing />
               <Stopwatch mode={mode} setMode={setMode} color={color} setColor={setColor} />
             </div>
+            <MainDday />
           </div>
           <div>
-            <MainDday />
             <TimeTimer timeMode={timeMode} setTimeMode={setTimeMode} />
           </div>
           <div>
