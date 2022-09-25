@@ -62,8 +62,8 @@ const StyledLayout = styled.div`
 `;
 const Background = styled.div`
   width: 100vw;
-  height: 100vh;
   position: relative;
+  /* overflow: hidden; */
   @media (max-width: 360px) {
     background-color: transparent;
     .logoBox {
@@ -113,15 +113,18 @@ const Background = styled.div`
   }
   @media (min-width: 1024px) {
     width: 1024px;
+    height: 700px;
     position: relative;
     margin: auto;
-    overflow: hidden;
+    top: -3rem;
+    transform: scale(0.7);
+    /* overflow: hidden; */
     .phoneFrame {
       position: absolute;
       height: 800px;
       width: 360px;
       right: 37px;
-      top: 181px;
+      top: 50px;
       border-radius: 20px;
       overflow: hidden;
     }
@@ -135,7 +138,7 @@ const Background = styled.div`
       display: block;
       position: absolute;
       overflow: scroll;
-      top: 151px;
+      top: 20px;
       height: 900px;
       overflow-x: hidden;
       margin-left: 80px;
@@ -148,7 +151,7 @@ const Background = styled.div`
       position: absolute;
       z-index: 15;
       right: 16px;
-      top: 161px;
+      top: 30px;
       pointer-events: none;
     }
   }
