@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { dailyTodo } from "../../app/slice/toDoSlice";
+import { __getdailyTodo, getList } from "../../app/slice/toDoSlice";
 import styled from "styled-components";
 import styles from "./profileTodoList.module.css";
 import font from "../../common/css/common.module.css";
@@ -18,23 +18,18 @@ const ProfileTodoList = () => {
   const [selectedMonth, setSelectedMonth] = useState(today.month); //현재 선택된 달
   const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜
 
-  console.log(today.year, today.month, today.date);
-
   // 선택한 월 일 갯수
   const selectMonthData = [];
   for (let i = 0; i <= dateTotalCount; i++) {
     selectMonthData.push(i);
   }
 
-  console.log(selectMonthData);
-
-  const todos = useSelector(state => state.toDo);
-  console.log(todos);
+  const todos = useSelector(state => state?.toDo);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(
-      dailyTodo({
+      __getdailyTodo({
         year: selectedYear,
         month: selectedMonth,
         date: selectedDate
@@ -54,14 +49,14 @@ const ProfileTodoList = () => {
   };
 
   //다음 날 보기 버튼
-  const nextDate = useCallback(() => {
+  const nextDate = () => {
     if (selectedDate === selectMonthData[selectMonthData.length - 1]) {
       setSelectedMonth(selectedMonth + 1);
       setSelectedDate(1);
     } else {
       setSelectedDate(selectedDate + 1);
     }
-  }, [selectedDate]);
+  };
 
   return (
     <div className={styles.container}>
@@ -76,9 +71,8 @@ const ProfileTodoList = () => {
 
         <ul className={styles.todoListWarp}>
           {todos.map(toDo => {
-            console.log(toDo);
             return (
-              <li className={styles.todoWarp}>
+              <li className={styles.todoWarp} key={toDo._id}>
                 <div className={styles.toDoValueWarp}>
                   <PickColor bgColor={toDo.color}></PickColor>
                   <p className={`${styles.work} ${font.caption3_300_8}`}>{toDo.work}</p>
