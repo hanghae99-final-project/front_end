@@ -1,13 +1,12 @@
 import React from "react";
 import styles from "./infoModal.module.css";
-import timer from "../../common/svg/timer.png";
-import timeTimer from "../../common/svg/timeTimer.png";
-import todoList from "../../common/svg/todoList.png";
-import weeklyStudyLog from "../../common/svg/weeklyStudyLog.png";
-import studyLog from "../../common/svg/studyLog.png";
+import timer from "../../common/svg/timer_popup.svg";
+import timeTimer from "../../common/svg/time_timer_popup.svg";
+import todoList from "../../common/svg/todolist_sheet_popup.svg";
+import weeklyStudyLog from "../../common/svg/weeklylog_popup.svg";
+import studyLog from "../../common/svg/studylog_popup.svg";
 import font from "../../common/css/font.module.css";
 import { ReactComponent as Close } from "../../common/svg/close.svg";
-import { useRef } from "react";
 
 const InfoModal = ({ setInfo }) => {
   const information = [
@@ -30,7 +29,7 @@ const InfoModal = ({ setInfo }) => {
       </div>
       {information.map((element, i) => {
         return (
-          <div className={styles.elementBox}>
+          <div className={styles.elementBox} key={element.title}>
             <div className={`${styles.imgBox} ${i === 2 && styles.todo}`}>
               <img src={element.img} alt={element.title} />
             </div>

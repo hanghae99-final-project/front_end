@@ -13,23 +13,23 @@ import DdayPage from "../pages/DdayPage";
 import PostDday from "../components/dDay/PostDday";
 
 function Router() {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/home' element={<MainPage />} />
-                <Route path='/' element={<LoginPage />} />
-                <Route path='/todo' element={<ToDo />} />
-                <Route path='/users/kakao/callback' element={<KakaoFinish />} />
-                <Route path='/Calender' element={<Calender />} />
-                <Route path='/mypage' element={<MyPage />} />
-                <Route path='/join' element={<Join />} />
-                <Route path='/ranking' element={<Ranking />} />
-                <Route path='/mytodo' element={<ProfileTodoList />} />
-                <Route path='/modify' element={<ModifyProfile />} />
-                <Route path='/dday' element={<DdayPage />} />
-            </Routes>
-        </BrowserRouter>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/home" element={<MainPage />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/todo" element={<ToDo />} />
+        <Route path="/users/kakao/callback" element={<KakaoFinish />} />
+        <Route path="/Calender" element={<Calender />} />
+        <Route path="/mypage" element={<MyPage />} />
+        <Route path="/join" element={<Join />} />
+        <Route path="/ranking" element={<Ranking />} />
+        <Route path="/mytodo" element={<ProfileTodoList />} />
+        <Route path="/modify" element={<ModifyProfile />} />
+        <Route path="/dday" element={<DdayPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default Router;
