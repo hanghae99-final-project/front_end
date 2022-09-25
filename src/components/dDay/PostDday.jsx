@@ -18,6 +18,8 @@ const PostDday = () => {
     deadline: "",
     content: ""
   });
+
+  const [choiceDay, setChoiceDay] = useState("");
   const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
   const [selectedMonth, setSelectedMonth] = useState(today.month); //현재 선택된 달
   const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜
@@ -61,6 +63,7 @@ const PostDday = () => {
 
   const setDeadlineHandler = e => {
     setDday({ ...dday, deadline: e.target.id });
+    setChoiceDay(e.target.id);
   };
 
   const setcomentHandler = e => {
@@ -86,11 +89,16 @@ const PostDday = () => {
         let dayValue = new Date(selectedYear, selectedMonth - 1, calenderDay + 2).toISOString().split("T")[0];
 
         data.push(
-          <div className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}>
+          <div className={styles.dateWarp}>
             {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
               ? (calenderDay++,
                 (
-                  <span onClick={setDeadlineHandler} name="deadline" id={dayValue}>
+                  <span
+                    className={choiceDay === dayValue ? `${styles.choiceDay}` : ""}
+                    onClick={setDeadlineHandler}
+                    name="deadline"
+                    id={dayValue}
+                  >
                     {calenderDay}
                   </span>
                 ))
@@ -113,6 +121,12 @@ const PostDday = () => {
 
   return (
     <div className={styles.container}>
+      <div>
+        <div className={styles.touchBar}></div>
+        <div className={styles.DdayTitle}>
+          <h1 className={font.subtitle2_600_16}>디데이 추가</h1>
+        </div>
+      </div>
       <div className={styles.calenderContainer}>
         <div className={styles.innerWarp}>
           <div className={styles.dateBtnWarp}>
@@ -138,9 +152,18 @@ const PostDday = () => {
           </div>
         </div>
       </div>
-      <form onSubmit={onSubmitHandler}>
-        <input onChange={setcomentHandler} name="content" type="text" />
-        <button type="subnit">추가하기</button>
+      <form className={styles.inputContainer} onSubmit={onSubmitHandler}>
+        <h2 className={`${styles.inputTitle} ${font.subtitle2_600_16}`}>디데이 내용을 입력해주세요.</h2>
+        <input
+          placeholder="내용 입력"
+          className={`${styles.inputBox} ${styles.body_300_16}`}
+          onChange={setcomentHandler}
+          name="content"
+          type="text"
+        />
+        <button className={font.subtitle2_600_16} type="subnit">
+          추가하기
+        </button>
       </form>
     </div>
   );

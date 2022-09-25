@@ -9,7 +9,7 @@ const TodoBtn = () => {
   const toDos = useSelector(state => state.toDo);
 
   const totalTodo = toDos.length;
-  const isDoneCount = toDos?.filter(data => data.isDone === true).length;
+  const isDoneCount = toDos?.filter(data => data?.isDone === true).length;
 
   useEffect(() => {
     dispatch(getList());
