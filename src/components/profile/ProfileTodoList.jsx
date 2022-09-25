@@ -4,6 +4,7 @@ import { __getdailyTodo, getList } from "../../app/slice/toDoSlice";
 import styled from "styled-components";
 import styles from "./profileTodoList.module.css";
 import font from "../../common/css/common.module.css";
+import { useNavigate } from "react-router-dom";
 
 const ProfileTodoList = () => {
   const today = {
@@ -17,6 +18,12 @@ const ProfileTodoList = () => {
   const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
   const [selectedMonth, setSelectedMonth] = useState(today.month); //현재 선택된 달
   const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜
+
+  const navi = useNavigate();
+
+  useEffect(() => {
+    localStorage.getItem("token") === null && navi("/");
+  }, []);
 
   // 선택한 월 일 갯수
   const selectMonthData = [];

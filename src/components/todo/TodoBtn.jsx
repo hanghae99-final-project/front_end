@@ -7,7 +7,8 @@ import font from "../../common/css/common.module.css";
 const TodoBtn = () => {
   const dispatch = useDispatch();
   const toDos = useSelector(state => state.toDo);
-  const totalTodo = toDos?.length;
+
+  const totalTodo = toDos.length;
   const isDoneCount = toDos?.filter(data => data?.isDone === true).length;
 
   useEffect(() => {

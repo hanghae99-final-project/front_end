@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMonthList } from "../../app/slice/calenderSlice";
 import styles from "./calender.module.css";
 import font from "../../common/css/common.module.css";
+import { useNavigate } from "react-router-dom";
 
 const Calender = () => {
   const dispatch = useDispatch();
+  const navi = useNavigate();
   const studyData = useSelector(state => state.calender);
 
   const today = {
@@ -18,6 +20,10 @@ const Calender = () => {
   const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
   const [selectedMonth, setSelectedMonth] = useState(today.month); //현재 선택된 달
   const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜
+
+  useEffect(() => {
+    localStorage.getItem("token") === null && navi("/");
+  }, []);
 
   useEffect(() => {
     dispatch(getMonthList({ selectedYear, selectedMonth }));
