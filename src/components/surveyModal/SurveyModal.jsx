@@ -17,13 +17,7 @@ const SurveyModal = ({ setSurvey }) => {
       </div>
       <button className={`${styles.chicken} ${font.subtitle2_600_16}`}>
         <a
-          onClick={() => {
-            if (window.confirm("설문조사 페이지로 이동하시겠습니까?")) {
-              location.href = "https://forms.gle/nPxMeV8PRDZzahTd9";
-            } else {
-              return;
-            }
-          }}
+          href="https://forms.gle/nPxMeV8PRDZzahTd9"
         >
           치킨 받으러 가기
         </a>
