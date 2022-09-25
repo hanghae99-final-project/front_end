@@ -13,7 +13,7 @@ import { useState } from "react";
 import ToDo from "./ToDo";
 import TodoBtn from "../components/todo/TodoBtn";
 import InfoModal from "../components/infoModal/InfoModal";
-import SurveyModal from "../components/surveyModal.jsx/SurveyModal";
+import SurveyModal from "../components/surveyModal/SurveyModal";
 import chicken from "../common/svg/chicken.png";
 
 const MainPage = () => {

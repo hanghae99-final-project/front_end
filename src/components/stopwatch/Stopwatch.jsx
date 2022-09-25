@@ -44,9 +44,15 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
     setRunning(true);
     setStop(true);
   }
-  //멈추기 할 때 없어진다. 왜?
-  console.log(second, remainTime, targetTime);
-  if (targetTime > 0 && remainTime <= 0) {
+  // 멈추기 할 때 없어진다. 왜?
+  // 멈춘다 : true, 계속한다 : false
+  // remainTime이 마이너스가 됨
+  // 빨리하면 stop이 true인 채로 남아있게 되고,
+  // 1초가 지나기 전에 하면 state가 업데이트가 안 되니까
+  // -1664096074
+  // 일단 1초동안 못 누르게 처리
+  console.log(savedStudyTime); // 이게 왜 1664111161118 // 이게 왜 현재 시간이 나옴?
+  if (targetTime > 0 && remainTime <= 0 && !stop) {
     localStorage.removeItem("startTime");
     localStorage.removeItem("targetTime");
     localStorage.removeItem("savedStudyTime");

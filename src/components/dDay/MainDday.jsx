@@ -7,30 +7,31 @@ import font from "../../common/css/font.module.css";
 import { Link } from "react-router-dom";
 
 const MainDday = () => {
-    const dispatch = useDispatch();
-    const dDay = useSelector((state) => state.dDay?.myDday);
-    const today = new Date();
-    const targetDay = new Date(dDay.length > 0 && dDay[0].deadline);
-    const remainDay = Math.floor((targetDay - today) / 1000 / 3600 / 24);
+  const dispatch = useDispatch();
+  const dDay = useSelector(state => state.dDay?.myDday);
+  console.log(dDay);
+  const today = new Date();
+  const targetDay = new Date(dDay.length > 0 && dDay[0].deadline);
+  const remainDay = Math.floor((targetDay - today) / 1000 / 3600 / 24);
 
-    useEffect(() => {
-        dispatch(__getDday());
-    }, []);
+  useEffect(() => {
+    dispatch(__getDday());
+  }, []);
 
-    return (
-        <div className={styles.dayBox}>
-            {dDay.length === 0 ? (
-                <Link to='/dday'>
-                    <span className={`${styles.text} ${font.subtitle3_300_14}`}>디데이를 추가해 보세요</span>
-                </Link>
-            ) : (
-                <>
-                    <span className={`${styles.day} ${font.subtitle3_600_14}`}>D{remainDay}</span>
-                    <span className={`${styles.text} ${font.subtitle3_300_14}`}>{dDay.length > 0 && dDay[0].content}</span>
-                </>
-            )}
-        </div>
-    );
+  return (
+    <div className={styles.dayBox}>
+      {dDay.length === 0 ? (
+        <Link to="/dday">
+          <span className={`${styles.text} ${font.subtitle3_300_14}`}>디데이를 추가해 보세요</span>
+        </Link>
+      ) : (
+        <>
+          <span className={`${styles.day} ${font.subtitle3_600_14}`}>D{remainDay}</span>
+          <span className={`${styles.text} ${font.subtitle3_300_14}`}>{dDay.length > 0 && dDay[0].content}</span>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default MainDday;
