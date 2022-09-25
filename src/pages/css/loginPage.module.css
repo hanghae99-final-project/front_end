@@ -1,32 +1,62 @@
 .kakaoButton {
-    position: absolute;
-    bottom: 3rem;
-    left: calc(50% - 164px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 2;
+  position: absolute;
+  bottom: 3rem;
+  left: calc(50% - 164px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
 }
 
-.tootip {
-    position: absolute;
-    bottom: 2rem;
-    z-index: 2;
+.tooltipBox {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 2rem;
+  position: absolute;
+  bottom: 3.2rem;
+  z-index: 2;
+}
+
+.tooltip {
+  margin: 0 auto;
+  width: 7rem;
+  padding: 0 0.5rem;
+  height: 1.5rem;
+  background-color: var(--neutral-0);
+  border-radius: 1rem;
+  color: var(--neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tooltipVector {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 0;
+  height: 0;
+  border-top: 5px solid black;
+  border-left: 5px solid rgb(0, 0, 0, 0);
+  border-right: 5px solid rgb(0, 0, 0, 0);
+  border-bottom: 5px solid rgb(0, 0, 0, 0);
 }
 
 .logo {
-    position: absolute;
-    top: calc(50% - 80px);
-    left: calc(50% - 44.5px);
-    z-index: 2;
+  position: absolute;
+  top: calc(50% - 80px);
+  left: calc(50% - 44.5px);
+  z-index: 2;
 }
 
 .background {
-    background-image: url("../../common/svg/login_background.png");
-    background-position: 50% 0;
-    background-repeat: no-repeat;
-    height: 100%;
-    position: relative;
-    z-index: 1;
-    filter: blur(6px);
+  background-image: url("../../common/svg/login_background.png");
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  filter: blur(6px);
 }
