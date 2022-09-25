@@ -2,11 +2,11 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./postDday.module.css";
 import font from "../../common/css/font.module.css";
-import { __postDday } from "../../app/slice/DdaySlice";
+import { __postDday, __modifyDday } from "../../app/slice/DdaySlice";
 
-const PostDday = () => {
+const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
+  console.log(modifyOn);
   const dispatch = useDispatch();
-
   const today = {
     year: new Date().getFullYear(), //오늘 연도
     month: new Date().getMonth() + 1, //오늘 월
@@ -16,7 +16,8 @@ const PostDday = () => {
 
   const [dday, setDday] = useState({
     deadline: "",
-    content: ""
+    content: "",
+    dataId
   });
 
   const [choiceDay, setChoiceDay] = useState("");
@@ -72,8 +73,13 @@ const PostDday = () => {
   console.log(dday);
 
   const onSubmitHandler = e => {
-    e.preventDefault();
-    dispatch(__postDday(dday));
+    if (modifyOn) {
+      e.preventDefault();
+      dispatch(__modifyDday(dday));
+    } else {
+      e.preventDefault();
+      dispatch(__postDday(dday));
+    }
   };
 
   // 선택한 월에 맞는 요일 및 날짜 바인딩
@@ -124,7 +130,7 @@ const PostDday = () => {
       <div>
         <div className={styles.touchBar}></div>
         <div className={styles.DdayTitle}>
-          <h1 className={font.subtitle2_600_16}>디데이 추가</h1>
+          <h1 className={font.subtitle2_600_16}>{modifyOn ? "디데이 수정" : "디데이 추가"}</h1>
         </div>
       </div>
       <div className={styles.calenderContainer}>
