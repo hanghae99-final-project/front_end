@@ -70,9 +70,9 @@ const toDoSlice = createSlice({
     [__getdailyTodo.rejected]: (state, { payload }) => {
       console.log("실패");
     },
-
-    [addList.fulfilled]: (state, { payload }) => (state = payload),
-
+    [addList.fulfilled]: (state, { payload }) => {
+      return (state = [...state, payload]);
+    },
     [deleteList.fulfilled]: (state, { payload }) => state.filter(toDo => toDo._id !== payload),
 
     [updateList.fulfilled]: (state, { payload }) => {
