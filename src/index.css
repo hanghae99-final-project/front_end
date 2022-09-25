@@ -1,8 +1,8 @@
 @font-face {
-    font-family: "Pretendard-Regular";
-    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 
 html,
@@ -86,18 +86,18 @@ time,
 mark,
 audio,
 video {
-    ‌margin: 0;
-    ‌padding: 0;
-    ‌border: 0;
-    ‌font-size: 100%;
-    ‌font: inherit;
-    ‌vertical-align: baseline;
-    @font-face {
-        font-family: "Pretendard-Regular";
-        src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
-        font-weight: 300;
-        font-style: normal;
-    }
+  ‌margin: 0;
+  ‌padding: 0;
+  ‌border: 0;
+  ‌font-size: 100%;
+  ‌font: inherit;
+  ‌vertical-align: baseline;
+  @font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+  }
 }
 /* HTML5 display-role reset for older browsers */
 article,
@@ -111,43 +111,43 @@ hgroup,
 menu,
 nav,
 section {
-    ‌display: block;
+  ‌display: block;
 }
 body {
-    ‌line-height: 1;
+  ‌line-height: 1;
 }
 ol,
 ul {
-    ‌list-style: none;
+  ‌list-style: none;
 }
 blockquote,
 q {
-    ‌quotes: none;
+  ‌quotes: none;
 }
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    ‌content: "";
-    ‌content: none;
+  ‌content: "";
+  ‌content: none;
 }
 table {
-    ‌border-collapse: collapse;
-    ‌border-spacing: 0;
+  ‌border-collapse: collapse;
+  ‌border-spacing: 0;
 }
 
 @media (min-width: 600px) and (max-width: 1024px) {
-    body {
-        background: url(common/svg/tablet_background.png) #1a1b23;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+  body {
+    background: url(common/svg/tablet_background.png) #1a1b23;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }
 
 @media (min-width: 1025px) {
-    body {
-        background: url(common/svg/desktop_background.png) #1a1b23;
-        background-position: center;
-        background-repeat: no-repeat;
-    }
+  body {
+    background: url(common/svg/desktop_background.png) #1a1b23;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
 }

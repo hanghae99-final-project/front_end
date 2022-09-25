@@ -13,6 +13,8 @@ import { useState } from "react";
 import ToDo from "./ToDo";
 import TodoBtn from "../components/todo/TodoBtn";
 import InfoModal from "../components/infoModal/InfoModal";
+import SurveyModal from "../components/surveyModal.jsx/SurveyModal";
+import chicken from "../common/svg/chicken.png";
 
 const MainPage = () => {
   const backgroundColor = useSelector(state => state.color);
@@ -22,6 +24,7 @@ const MainPage = () => {
   const [timeMode, setTimeMode] = useState("normal");
   const [color, setColor] = useState("#7E7C8C");
   const [info, setInfo] = useState(false);
+  const [survey, setSurvey] = useState(false);
 
   return (
     <Layout>
@@ -61,6 +64,15 @@ const MainPage = () => {
           <ToDo />
         </div>
         {info && <InfoModal setInfo={setInfo} />}
+        {survey && <SurveyModal setSurvey={setSurvey} />}
+        <img
+          src={chicken}
+          alt="치킨"
+          className={styles.chicken}
+          onClick={() => {
+            setSurvey(true);
+          }}
+        />
       </Gradient>
       {(mode === "set" || mode === "complete") && (
         <div
@@ -84,6 +96,14 @@ const MainPage = () => {
           className={styles.blur}
           onClick={() => {
             setInfo(false);
+          }}
+        />
+      )}
+      {survey && (
+        <div
+          className={styles.blur}
+          onClick={() => {
+            setSurvey(false);
           }}
         />
       )}
