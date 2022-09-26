@@ -1,86 +1,86 @@
 @import url(../../common/css/common.css);
 
 .container {
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .container::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .innerWarp {
-    width: 27.7rem;
-    list-style: none;
-    display: flex;
+  width: 27.7rem;
+  list-style: none;
+  display: flex;
 }
 
 .DdayContainer {
-    display: flex;
-    width: 19.6rem;
-    margin-bottom: 0.5rem;
-    padding: 0.75rem 1rem;
-    height: 1.625rem;
-    border-radius: 8px;
-    background-color: var(--neutral-40);
-    transition: All 0.5s ease-in-out;
+  display: flex;
+  width: 19.6rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem 1rem;
+  height: 1.625rem;
+  border-radius: 8px;
+  background-color: var(--neutral-40);
+  transition: All 0.5s ease-in-out;
 
-    color: var(--neutral-100);
+  color: var(--neutral-100);
 }
 
 .DdayWarp {
-    width: 100%;
-    align-self: stretch;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0;
+  width: 100%;
+  align-self: stretch;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
 }
 
 .DdayValueWarp {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .date {
-    color: var(--neutral-60);
+  color: var(--neutral-60);
 }
 
 .DdayVlaue {
-    display: flex;
-    gap: 0.813rem;
+  display: flex;
+  gap: 0.813rem;
 }
 
 .btnWarp {
-    margin-left: 0.5rem;
-    display: flex;
-    gap: 0.5rem;
+  margin-left: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 .modifyBtn,
 .delBtn {
-    width: 3.125rem;
-    height: 3.125rem;
-    border-radius: 8px;
-    border: none;
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 8px;
+  border: none;
 }
 
 .modifyBtn {
-    background: url(../../common/svg/edit_icon.svg) var(--alerts-orange);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
+  background: url(../../common/svg/edit_icon.svg) var(--alerts-orange);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: All 0.3s ease-in-out;
 }
 
 .delBtn {
-    background: url(../../common/svg/todo_delete_icon.svg) var(--alerts-red);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
+  background: url(../../common/svg/todo_delete_icon.svg) var(--alerts-red);
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: All 0.3s ease-in-out;
 }
