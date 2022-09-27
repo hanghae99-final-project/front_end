@@ -165,7 +165,9 @@ p.infoText {
 }
 
 .joinBtnNo {
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   border: none;
@@ -174,7 +176,9 @@ p.infoText {
 }
 
 .joinBtnYes {
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   background-color: var(--primary-50);
@@ -184,7 +188,9 @@ p.infoText {
 
 .joinBtnYes:active {
   background-color: var(--primary-20);
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   border: none;
@@ -233,7 +239,9 @@ p.infoText {
 }
 
 .ageBtnNo {
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   border: none;
@@ -242,7 +250,9 @@ p.infoText {
 }
 
 .ageBtnYes {
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   background-color: var(--primary-50);
@@ -252,7 +262,9 @@ p.infoText {
 
 .ageBtnYes:active {
   background-color: var(--primary-20);
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   border: none;
@@ -290,7 +302,9 @@ img.specCheckImg {
 }
 
 .specBtnNo {
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   border: none;
@@ -299,7 +313,9 @@ img.specCheckImg {
 }
 
 .specBtnYes {
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   background-color: var(--primary-50);
@@ -309,7 +325,9 @@ img.specCheckImg {
 
 .specBtnYes:active {
   background-color: var(--primary-20);
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   border: none;
@@ -337,13 +355,17 @@ img.specCheckImg {
 }
 
 .specBase {
-  font-size: 1.2rem;
+  color: var(--neutral-100);
+  font-weight: 300;
+  display: flex;
+  align-items: center;
   height: 2rem;
   padding: 0.25rem 0.75rem;
-  border: 1px solid #ffffff;
+  font-size: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 16px;
   background-color: var(--neutral-30);
-  color: var(--neutral-100);
+  margin: 0 0.5rem 0.75rem 0;
 }
 
 .specAnother {
@@ -353,7 +375,7 @@ img.specCheckImg {
   height: 2rem;
   padding: 0.25rem 0.75rem;
   font-size: 1.2rem;
-  border: 1px solid #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0);
   border-radius: 16px;
   background-color: var(--neutral-30);
   color: var(--neutral-70);
@@ -422,6 +444,7 @@ img.specCheckImg {
   margin: 0 auto 1rem auto;
   color: #ffffff;
   text-align: center;
+
 }
 
 .container {
@@ -443,6 +466,7 @@ img.specCheckImg {
   justify-content: center;
   font-size: 1.5rem;
   position: relative;
+
 }
 
 .joinDone {
@@ -452,7 +476,9 @@ img.specCheckImg {
 }
 
 .doneBtn {
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   background-color: var(--primary-50);
@@ -462,7 +488,9 @@ img.specCheckImg {
 
 .doneBtn:active {
   background-color: var(--primary-20);
-  width: 100%;
+  position: absolute;
+  width: 91.7%;
+  bottom: 2.375rem;
   height: 3.75rem;
   border-radius: 8px;
   border: none;
