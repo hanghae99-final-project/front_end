@@ -16,6 +16,7 @@ const KakaoFinish = () => {
     dispatch(get_login(authCode));
   }, []);
   console.log(authCode);
+  console.log(use.token);
 
   useEffect(() => {
     localStorage.setItem("token", use.token);

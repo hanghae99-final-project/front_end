@@ -5,6 +5,23 @@
   height: 50rem;
   padding: 0 1rem;
   background-color: #2f3038;
+  position: relative;
+}
+
+.cube {
+  position: relative;
+  top: -4rem;
+  left: -0.3rem;
+  animation: motion 0.7s linear 0s infinite alternate;
+}
+
+@keyframes motion {
+  0% {
+    top: -2rem;
+  }
+  100% {
+    top: -2.5rem;
+  }
 }
 
 .btnWrap {
@@ -426,6 +443,8 @@ img.specCheckImg {
 .doneMsg {
   margin: 0 auto 1rem auto;
   color: #ffffff;
+  text-align: center;
+
 }
 
 .container {
@@ -446,6 +465,8 @@ img.specCheckImg {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;
+  position: relative;
+
 }
 
 .joinDone {

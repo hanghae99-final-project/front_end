@@ -10,6 +10,7 @@ const DdayList = () => {
   const dDay = useSelector(state => state.dDay.myDday);
   const [modifyId, setModifyId] = useState("");
   const [modifyMode, setModifyMode] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     dispatch(__getDday());
@@ -26,6 +27,7 @@ const DdayList = () => {
         const today = new Date().getTime();
         const deadline = new Date(data.deadline).getTime();
         const dDay = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+
         const modifyOn = () => {
           setModifyMode(false);
           setModifyId("");
@@ -37,8 +39,14 @@ const DdayList = () => {
         };
 
         return (
-          <div key={data._id}>
-            <li className={styles.innerWarp}>
+          <div
+            key={data._id}
+            onClick={() => {
+              setActive(prev => (prev === data._id ? "" : data._id));
+            }}
+          >
+            {}
+            <li className={`${data._id === active ? `${styles.innerWarp} ${styles.active}` : styles.innerWarp}`}>
               <div className={styles.DdayContainer}>
                 <div className={styles.DdayWarp}>
                   <div className={styles.DdayValueWarp}>
@@ -63,17 +71,13 @@ const DdayList = () => {
                 <button className={styles.delBtn} onClick={() => deleteDday(data._id)}></button>
               </div>
             </li>
-            <div>
-              {modifyId === data._id ? (
-                <PostDday
-                  dataId={data._id}
-                  setModifyModal={setModifyId}
-                  modifyOn={modifyMode}
-                  setModifyOn={setModifyMode}
-                />
-              ) : (
-                ""
-              )}
+            <div className={modifyId === data._id ? styles.dDayModalOpen : styles.dDayModalClose}>
+              <PostDday
+                dataId={data._id}
+                setModifyModal={setModifyId}
+                modifyOn={modifyMode}
+                setModifyOn={setModifyMode}
+              />
             </div>
           </div>
         );
