@@ -26,6 +26,7 @@ const DdayList = () => {
         const today = new Date().getTime();
         const deadline = new Date(data.deadline).getTime();
         const dDay = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+
         const modifyOn = () => {
           setModifyMode(false);
           setModifyId("");
@@ -63,17 +64,13 @@ const DdayList = () => {
                 <button className={styles.delBtn} onClick={() => deleteDday(data._id)}></button>
               </div>
             </li>
-            <div>
-              {modifyId === data._id ? (
-                <PostDday
-                  dataId={data._id}
-                  setModifyModal={setModifyId}
-                  modifyOn={modifyMode}
-                  setModifyOn={setModifyMode}
-                />
-              ) : (
-                ""
-              )}
+            <div className={modifyId === data._id ? styles.dDayModalOpen : styles.dDayModalClose}>
+              <PostDday
+                dataId={data._id}
+                setModifyModal={setModifyId}
+                modifyOn={modifyMode}
+                setModifyOn={setModifyMode}
+              />
             </div>
           </div>
         );

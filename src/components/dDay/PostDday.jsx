@@ -5,7 +5,6 @@ import font from "../../common/css/font.module.css";
 import { __postDday, __modifyDday } from "../../app/slice/DdaySlice";
 
 const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
-  console.log(modifyOn);
   const dispatch = useDispatch();
   const today = {
     year: new Date().getFullYear(), //오늘 연도
@@ -100,7 +99,7 @@ const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
               ? (calenderDay++,
                 (
                   <span
-                    className={choiceDay === dayValue ? `${styles.choiceDay}` : ""}
+                    className={choiceDay === dayValue ? styles.choiceDay : styles.daylist}
                     onClick={setDeadlineHandler}
                     name="deadline"
                     id={dayValue}
