@@ -11,6 +11,7 @@ import ProfileTodoList from "../components/profile/ProfileTodoList";
 import ModifyProfile from "../pages/ModifyProfile";
 import DdayPage from "../pages/DdayPage";
 import PostDday from "../components/dDay/PostDday";
+import NotFoundPage from "../pages/NotFoundPage";
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
         <Route path="/modify" element={<ModifyProfile />} />
         <Route path="/dday" element={<DdayPage />} />
         <Route path="/postdday" element={<PostDday />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </BrowserRouter>
   );
