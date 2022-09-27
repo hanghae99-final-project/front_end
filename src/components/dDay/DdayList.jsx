@@ -5,7 +5,7 @@ import font from "../../common/css/font.module.css";
 import styles from "./ddayList.module.css";
 import PostDday from "./PostDday";
 
-const DdayList = ({ modifyId, setModifyId, setBlurSwich }) => {
+const DdayList = ({ modifyId, setModifyId, setBlurSwich, blurHandler }) => {
   const dispatch = useDispatch();
   const dDay = useSelector(state => state.dDay.myDday);
   const [modifyMode, setModifyMode] = useState(true);
@@ -70,6 +70,7 @@ const DdayList = ({ modifyId, setModifyId, setBlurSwich }) => {
             </li>
             <div className={modifyId === data._id ? styles.dDayModalOpen : styles.dDayModalClose}>
               <PostDday
+                blurHandler={blurHandler}
                 dataId={data._id}
                 setModifyModal={setModifyId}
                 modifyMode={modifyMode}

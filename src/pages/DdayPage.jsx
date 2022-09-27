@@ -36,9 +36,9 @@ const DdayPage = () => {
           <h1>디데이 설정</h1>
           <button className={styles.addBtn} onClick={openPostHandler}></button>
         </div>
-        <DdayList modifyId={modifyId} setModifyId={setModifyId} setBlurSwich={setBlurSwich} />
+        <DdayList modifyId={modifyId} setModifyId={setModifyId} setBlurSwich={setBlurSwich} blurHandler={blurHandler} />
         <div className={openPost ? styles.dDayModalOpen : styles.dDayModalClose}>
-          <PostDday setOpenPost={setOpenPost} blurHandler={blurHandler} />
+          <PostDday setOpenPost={setOpenPost} openPostHandler={openPostHandler} />
         </div>
       </div>
     </Layout>

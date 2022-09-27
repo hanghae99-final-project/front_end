@@ -4,7 +4,16 @@ import styles from "./postDday.module.css";
 import font from "../../common/css/font.module.css";
 import { __postDday, __modifyDday } from "../../app/slice/DdaySlice";
 
-const PostDday = ({ blurHandler, setModifyModal, modifyMode, setModifyOn, dataId, setOpenPost, modifyOn }) => {
+const PostDday = ({
+  blurHandler,
+  setModifyModal,
+  modifyMode,
+  setModifyOn,
+  dataId,
+  setOpenPost,
+  modifyOn,
+  openPostHandler
+}) => {
   const dispatch = useDispatch();
   const today = {
     year: new Date().getFullYear(), //오늘 연도
@@ -82,7 +91,6 @@ const PostDday = ({ blurHandler, setModifyModal, modifyMode, setModifyOn, dataId
   }, [dday]);
 
   const modalOff = () => {
-    blurHandler();
     setOpenPost(false);
     setModifyModal("");
   };
@@ -188,14 +196,16 @@ const PostDday = ({ blurHandler, setModifyModal, modifyMode, setModifyOn, dataId
           type="text"
         />
         <button
-          onClick={modalOff}
+          onClick={() => {
+            modifyMode ? blurHandler() : openPostHandler();
+          }}
           className={
             disabled ? `${styles.postBtnOff} ${font.subtitle2_600_16}` : `${styles.postBtnOn} ${font.subtitle2_600_16}`
           }
           type="subnit"
           disabled={disabled}
         >
-          추가하기
+          {modifyMode ? "수정하기" : "추가하기"}
         </button>
       </form>
     </div>
