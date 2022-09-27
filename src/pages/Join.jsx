@@ -17,10 +17,10 @@ const Join = () => {
   const use = useSelector(state => state.main);
 
   useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-    if (use?.user?.nickname !== "" && localStorage.getItem("token") !== null) {
-      navi("/home");
-    }
+    // localStorage.getItem("token") === null && navi("/");
+    // if (use?.user?.nickname !== "" && localStorage.getItem("token") !== null) {
+    //   navi("/home");
+    // }
   }, []);
 
   return (
