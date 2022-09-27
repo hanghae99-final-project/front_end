@@ -21,9 +21,9 @@ const ProfileTodoList = () => {
 
   const navi = useNavigate();
 
-  useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-  }, []);
+  // useEffect(() => {
+  //   localStorage.getItem("token") === null && navi("/");
+  // }, []);
 
   // 선택한 월 일 갯수
   const selectMonthData = [];

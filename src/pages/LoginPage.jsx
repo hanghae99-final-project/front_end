@@ -15,7 +15,7 @@ const LoginPage = () => {
       <Logo className={`${styles.logo} animate__animated animate__fadeInDown`} />
       <div className={styles.kakaoButton}>
         <div className={`${styles.tooltipBox}  animate__animated animate__pulse animate__infinite animate__delay-1s`}>
-          <p className={`${styles.tooltip} ${font.caption3_600_8}`}>🎉3초만에 빠른 회원가입</p>
+          <p className={`${styles.tooltip} ${font.caption2_600_10}`}>🎉3초만에 빠른 회원가입</p>
           <div className={styles.tooltipVector}></div>
         </div>
         {/* <Tootip className={`${styles.tooltip} ${font.caption3_600_8} animate__animated animate__pulse animate__infinite animate__delay-1s`} /> */}

@@ -51,7 +51,7 @@ const SetWatchModal = ({
         </>
       ) : (
         <>
-          {changeTimeForm(remainTime, styles.remainTime)}
+          {changeTimeForm(remainTime, `${styles.remainTime} ${font.header_600_42}`)}
           <div className={styles.buttonBox}>
             {mode === "complete" ? (
               <button

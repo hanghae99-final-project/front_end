@@ -12,6 +12,7 @@ import { ReactComponent as Green } from "../common/svg/green.svg";
 import Layout from "../layout/Layout";
 import styles from "./css/profile.module.css";
 import jwtDecode from "jwt-decode";
+import font from "../common/css/font.module.css";
 import axios from "axios";
 
 const ModifyProfile = () => {
@@ -19,7 +20,7 @@ const ModifyProfile = () => {
   const email = jwtDecode(localStorage.getItem("token"));
   const pickAge = ["20대", "30대", "기타"];
   const [borderColor, setBorderColor] = useState("");
-  const [checkMsg, setCheckMsg] = useState("2~8자의 한글만 가능해요");
+  const [checkMsg, setCheckMsg] = useState("2~8자의 한글만 사용 가능해요");
   const major = [
     "경영사무",
     "마케팅·광고·홍보",
@@ -32,10 +33,10 @@ const ModifyProfile = () => {
     "교육",
     "서비스",
     "연구개발·설계",
-    "관광레저서비스",
+    "무역·유통",
     "건설·건축",
     "공무원",
-    "무역·유통"
+    "관광레저서비스"
   ];
   const dispatch = useDispatch();
   const navi = useNavigate();
@@ -64,7 +65,7 @@ const ModifyProfile = () => {
     e.preventDefault();
     if (!check.test(modifyInfo.nickname)) {
       setBorderColor("orange");
-      setCheckMsg("2글자 이상의 한글만 가능해요");
+      setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
     } else if (modifyInfo.nickname === userData.nickname) {
       setCheckMsg("현재 사용중인 닉네임과 같아요");
     } else {
@@ -91,7 +92,11 @@ const ModifyProfile = () => {
   };
 
   const onUpdate = () => {
-    if (borderColor === "green") {
+    if (
+      borderColor === "green" ||
+      modifyInfo.ageGroup !== userData.ageGroup ||
+      modifyInfo.specialty !== userData.specialty
+    ) {
       dispatch(__updateProfile(modifyInfo));
       navi("/mypage");
     }
@@ -109,32 +114,40 @@ const ModifyProfile = () => {
             src={arrowBtn2}
             alt={arrowBtn2}
           />
-          <span>프로필 수정</span>
+          <span className={font.subtitle2_600_16}>프로필 수정</span>
           {modifyInfo.nickname !== userData.nickname ||
           modifyInfo.ageGroup !== userData.ageGroup ||
           modifyInfo.specialty !== userData.specialty ? (
-            <button className={styles.doneBtn} onClick={() => onUpdate()}>
+            <button className={`${styles.doneBtn} ${font.subtitle2_300_16}`} onClick={() => onUpdate()}>
               저장
             </button>
           ) : (
-            <button style={{ color: "var(--neutral-50)" }}>저장</button>
+            <button className={font.subtitle2_300_16} style={{ color: "var(--neutral-50)" }}>
+              저장
+            </button>
           )}
         </div>
         <div className={styles.emailBox}>
-          <p>로그인 계정</p>
-          <input type="text" placeholder={email.userEmail} disabled={true}></input>
+          <p className={font.subtitle2_600_16}>로그인 계정</p>
+          <input
+            type="text"
+            className={font.body_300_16}
+            placeholder={email.userEmail}
+            spellCheck={false}
+            disabled={true}
+          ></input>
         </div>
         <form className={styles.nicknameBox} onSubmit={checkNickname}>
-          <p>닉네임</p>
+          <p className={font.subtitle2_600_16}>닉네임</p>
           <input
             className={
               modifyInfo.nickname !== "" && borderColor === "red"
-                ? `${styles.nicknameInputRed} animate__animated animate__headShake`
+                ? `${styles.nicknameInputRed} ${font.body_300_16} animate__animated animate__headShake`
                 : modifyInfo.nickname !== "" && borderColor === "green"
-                ? styles.nicknameInputGreen
+                ? `${styles.nicknameInputGreen} ${font.body_300_16}`
                 : modifyInfo.nickname !== "" && borderColor === "orange"
-                ? `${styles.nicknameInputOrange} animate__animated animate__headShake`
-                : styles.nicknameInputBase
+                ? `${styles.nicknameInputOrange} ${font.body_300_16} animate__animated animate__headShake`
+                : `${styles.nicknameInputBase} ${font.body_300_16}`
             }
             type="text"
             name="nickname"
@@ -144,10 +157,11 @@ const ModifyProfile = () => {
             placeholder={userData.nickname}
             autoComplete="off"
             autoFocus={true}
+            spellCheck={false}
             maxLength="8"
           ></input>
-          <p className={styles.checkMsg}>
-            {" "}
+          <p className={`${styles.checkMsg} ${font.caption2_300_10}`}>
+            {""}
             {borderColor === "orange" && <Orange style={{ marginRight: "0.25rem" }} />}
             {borderColor === "red" && <Red style={{ marginRight: "0.25rem" }} />}
             {borderColor === "green" && <Green style={{ marginRight: "0.25rem" }} />}
@@ -155,14 +169,14 @@ const ModifyProfile = () => {
           </p>
         </form>
         <div className={styles.ageBox}>
-          <p>연령대</p>
+          <p className={font.subtitle2_600_16}>연령대</p>
           <div className={styles.ageContainer}>
             {pickAge.map((pick, i) => {
               return (
                 <div className={styles.ageBtnBox} key={i}>
                   {modifyInfo.ageGroup === pick ? (
                     <button
-                      className={styles.agePick}
+                      className={`${styles.agePick} ${font.subtitle2_600_16}`}
                       onClick={() => {
                         setModifyInfo({ ...modifyInfo, ageGroup: pick });
                       }}
@@ -172,7 +186,7 @@ const ModifyProfile = () => {
                     </button>
                   ) : (
                     <button
-                      className={styles.ageAnother}
+                      className={`${styles.ageAnother} ${font.subtitle2_600_16}`}
                       onClick={() => {
                         setModifyInfo({ ...modifyInfo, ageGroup: pick });
                       }}
@@ -187,14 +201,14 @@ const ModifyProfile = () => {
         </div>
 
         <div className={styles.specBox}>
-          <p>준비하고 있는 분야</p>
+          <p className={font.subtitle2_600_16}>준비하고 있는 분야</p>
           <div className={styles.specContainer}>
             {major.map((pick, i) => {
               return (
                 <div className={styles.specBtnBox} key={i}>
                   {modifyInfo.specialty === pick ? (
                     <button
-                      className={styles.specPick}
+                      className={`${styles.specPick} ${font.subtitle2_300_16}`}
                       onClick={() => {
                         setModifyInfo({ ...modifyInfo, specialty: pick });
                       }}
@@ -204,7 +218,7 @@ const ModifyProfile = () => {
                     </button>
                   ) : (
                     <button
-                      className={styles.specAnother}
+                      className={`${styles.specAnother} ${font.subtitle2_300_16}`}
                       onClick={() => {
                         setModifyInfo({ ...modifyInfo, specialty: pick });
                       }}
