@@ -10,6 +10,7 @@ const DdayList = () => {
   const dDay = useSelector(state => state.dDay.myDday);
   const [modifyId, setModifyId] = useState("");
   const [modifyMode, setModifyMode] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     dispatch(__getDday());
@@ -38,8 +39,14 @@ const DdayList = () => {
         };
 
         return (
-          <div key={data._id}>
-            <li className={styles.innerWarp}>
+          <div
+            key={data._id}
+            onClick={() => {
+              setActive(prev => (prev === data._id ? "" : data._id));
+            }}
+          >
+            {}
+            <li className={`${data._id === active ? `${styles.innerWarp} ${styles.active}` : styles.innerWarp}`}>
               <div className={styles.DdayContainer}>
                 <div className={styles.DdayWarp}>
                   <div className={styles.DdayValueWarp}>
