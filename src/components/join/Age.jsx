@@ -11,12 +11,7 @@ const Age = ({ setMode, setUserInfo, userInfo }) => {
   return (
     <div className={styles.layout}>
       <div className={styles.container}>
-        <button
-          className={styles.arrowBack}
-          onClick={() => setMode("Nickname")}
-          src={arrowBtn2}
-          alt="arrowBtn2"
-        />
+        <button className={styles.arrowBack} onClick={() => setMode("Nickname")} src={arrowBtn2} alt="arrowBtn2" />
         <p className={`${styles.infoText} ${font.header3_600_24}`}>
           현재 연령대를
           <br />
@@ -56,17 +51,11 @@ const Age = ({ setMode, setUserInfo, userInfo }) => {
         </div>
       </div>
       {userInfo.ageGroup === "" ? (
-        <button
-          className={`${styles.ageBtnNo} ${font.subtitle2_600_16}`}
-          disabled
-        >
+        <button className={`${styles.ageBtnNo} ${font.subtitle2_600_16}`} disabled>
           확인
         </button>
       ) : (
-        <button
-          className={`${styles.ageBtnYes} ${font.subtitle2_600_16}`}
-          onClick={() => setMode("Specialty")}
-        >
+        <button className={`${styles.ageBtnYes} ${font.subtitle2_600_16}`} onClick={() => setMode("Specialty")}>
           확인
         </button>
       )}

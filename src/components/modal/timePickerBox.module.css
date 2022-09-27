@@ -5,6 +5,7 @@
   position: relative;
   justify-content: center;
   margin-top: 0.5rem;
+  top: -0.4rem;
 }
 
 .selectedBox {
