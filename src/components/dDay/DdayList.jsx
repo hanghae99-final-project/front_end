@@ -5,11 +5,10 @@ import font from "../../common/css/font.module.css";
 import styles from "./ddayList.module.css";
 import PostDday from "./PostDday";
 
-const DdayList = () => {
+const DdayList = ({ modifyId, setModifyId, setBlurSwich }) => {
   const dispatch = useDispatch();
   const dDay = useSelector(state => state.dDay.myDday);
-  const [modifyId, setModifyId] = useState("");
-  const [modifyMode, setModifyMode] = useState(false);
+  const [modifyMode, setModifyMode] = useState(true);
   const [active, setActive] = useState("");
 
   useEffect(() => {
@@ -28,14 +27,13 @@ const DdayList = () => {
         const deadline = new Date(data.deadline).getTime();
         const dDay = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
 
-        const modifyOn = () => {
-          setModifyMode(false);
+        const modifyOff = () => {
           setModifyId("");
         };
 
-        const modifyOff = () => {
-          setModifyMode(true);
+        const modifyOn = () => {
           setModifyId(data._id);
+          setBlurSwich(true);
         };
 
         return (
@@ -64,7 +62,7 @@ const DdayList = () => {
                 <button
                   className={styles.modifyBtn}
                   onClick={() => {
-                    modifyId === data._id ? modifyOn() : modifyOff();
+                    modifyId === data._id ? modifyOff() : modifyOn();
                   }}
                 ></button>
                 <button className={styles.delBtn} onClick={() => deleteDday(data._id)}></button>
@@ -74,8 +72,9 @@ const DdayList = () => {
               <PostDday
                 dataId={data._id}
                 setModifyModal={setModifyId}
-                modifyOn={modifyMode}
+                modifyMode={modifyMode}
                 setModifyOn={setModifyMode}
+                modifyOn={modifyOn}
               />
             </div>
           </div>

@@ -4,7 +4,7 @@ import styles from "./postDday.module.css";
 import font from "../../common/css/font.module.css";
 import { __postDday, __modifyDday } from "../../app/slice/DdaySlice";
 
-const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
+const PostDday = ({ blurHandler, setModifyModal, modifyMode, setModifyOn, dataId, setOpenPost, modifyOn }) => {
   const dispatch = useDispatch();
   const today = {
     year: new Date().getFullYear(), //오늘 연도
@@ -18,6 +18,8 @@ const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
     content: "",
     dataId
   });
+
+  const [disabled, setDisabled] = useState(true);
 
   const [choiceDay, setChoiceDay] = useState("");
   const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
@@ -71,8 +73,22 @@ const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
   };
   console.log(dday);
 
+  useEffect(() => {
+    if (dday.deadline === "" || dday.content === "") {
+      setDisabled(true);
+    } else {
+      setDisabled(false);
+    }
+  }, [dday]);
+
+  const modalOff = () => {
+    blurHandler();
+    setOpenPost(false);
+    setModifyModal("");
+  };
+
   const onSubmitHandler = e => {
-    if (modifyOn) {
+    if (modifyMode) {
       e.preventDefault();
       dispatch(__modifyDday(dday));
     } else {
@@ -98,14 +114,19 @@ const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
             {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
               ? (calenderDay++,
                 (
-                  <span
-                    className={choiceDay === dayValue ? styles.choiceDay : styles.daylist}
-                    onClick={setDeadlineHandler}
-                    name="deadline"
-                    id={dayValue}
+                  <div
+                    className={
+                      choiceDay === dayValue
+                        ? styles.choiceDay
+                        : styles.daylist || todayValue === dayValue
+                        ? `${styles.daylist} ${styles.selectedToday}`
+                        : styles.daylist
+                    }
                   >
-                    {calenderDay}
-                  </span>
+                    <span onClick={setDeadlineHandler} name="deadline" id={dayValue}>
+                      {calenderDay}
+                    </span>
+                  </div>
                 ))
               : ""}
           </div>
@@ -129,7 +150,7 @@ const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
       <div>
         <div className={styles.touchBar}></div>
         <div className={styles.DdayTitle}>
-          <h1 className={font.subtitle2_600_16}>{modifyOn ? "디데이 수정" : "디데이 추가"}</h1>
+          <h1 className={font.subtitle2_600_16}>{modifyMode ? "디데이 수정" : "디데이 추가"}</h1>
         </div>
       </div>
       <div className={styles.calenderContainer}>
@@ -166,7 +187,14 @@ const PostDday = ({ setModifyModal, modifyOn, setModifyOn, dataId }) => {
           name="content"
           type="text"
         />
-        <button className={font.subtitle2_600_16} type="subnit">
+        <button
+          onClick={modalOff}
+          className={
+            disabled ? `${styles.postBtnOff} ${font.subtitle2_600_16}` : `${styles.postBtnOn} ${font.subtitle2_600_16}`
+          }
+          type="subnit"
+          disabled={disabled}
+        >
           추가하기
         </button>
       </form>
