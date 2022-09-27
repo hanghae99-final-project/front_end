@@ -34,27 +34,11 @@ const WeeklyDataGraph = () => {
     })
     .flat();
 
-  /**
-   * date를 적합한 형태로 바꿔주는 함수
-   * @param {string} day
-   * @param {int} move default : 0, 한 주 앞으로 이동할 때 - 1, 한 주 뒤로 이동할 때 + 1
-   * @returns 2022-09-18
-   */
-  const changeDate = (day, move) => {
-    const weekToTime = 604800000;
-    return new Date(new Date(date.setDate(day)).getTime() + weekToTime * move).toISOString().substring(0, 10);
-  };
-
   const [move, setMove] = useState(0);
   let now = dayjs();
   let test_monday = "20" + now.startOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
   let test_sunday = "20" + now.endOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
   console.log(test_monday, test_sunday);
-
-  const date = new Date();
-  const currentDay = date.getDay();
-  const monday = date.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
-  const sunday = monday + 6;
 
   const [week, setWeek] = useState({
     startWeek: test_monday, // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고

@@ -1,113 +1,116 @@
 @import url(../../common/css/common.css);
 
 .modal {
-    width: calc(100% - 32px);
-    height: 349px;
-    background-color: var(--neutral-30);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    z-index: 999;
-    bottom: 1rem;
-    border-radius: 16px;
-    left: 16px;
-    animation: modal-show 0.3s;
+  width: calc(100% - 32px);
+  height: 349px;
+  background-color: var(--neutral-30);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 999;
+  bottom: 1rem;
+  border-radius: 16px;
+  left: 16px;
+  animation: modal-show 0.3s;
 }
 
 .setModal {
-    width: calc(100% - 32px);
-    height: 259px;
-    background-color: var(--neutral-30);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    z-index: 999;
-    bottom: 1rem;
-    border-radius: 16px;
-    left: 16px;
-    animation: modal-show 0.3s;
+  width: calc(100% - 32px);
+  height: 259px;
+  background-color: var(--neutral-30);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  z-index: 999;
+  bottom: 1rem;
+  border-radius: 16px;
+  left: 16px;
+  animation: modal-show 0.3s;
 }
 
 @keyframes modal-show {
-    from {
-        opacity: 0;
-        bottom: 0;
-    }
-    to {
-        opacity: 1;
-        bottom: 1rem;
-    }
+  from {
+    opacity: 0;
+    bottom: 0;
+  }
+  to {
+    opacity: 1;
+    bottom: 1rem;
+  }
 }
 
 .modal input {
-    height: 50px;
-    width: 100%;
+  height: 50px;
+  width: 100%;
 }
 
 .time {
-    display: flex;
-    position: relative;
+  display: flex;
+  position: relative;
 }
 
 .startBtn {
-    height: 60px;
-    border-radius: 8px;
-    background-color: var(--primary-50);
-    border: none;
-    width: 17rem;
+  height: 60px;
+  border-radius: 8px;
+  background-color: var(--primary-50);
+  border: none;
+  width: 17rem;
+  color: var(--neutral-10);
 }
 
 .title {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-    color: var(--neutral-100);
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  color: var(--neutral-100);
 }
 
 .close {
-    position: absolute;
-    right: 16px;
-    top: 1.2rem;
+  position: absolute;
+  right: 16px;
+  top: 1.2rem;
 }
 
 .endButton {
-    width: 50%;
-    height: 60px;
-    border: none;
-    background-color: var(--primary-50);
-    border-radius: 8px;
-    font-weight: 600;
+  width: 50%;
+  height: 60px;
+  border: none;
+  background-color: var(--primary-50);
+  border-radius: 8px;
+  color: var(--neutral-10);
+  font-weight: 600;
 }
 .stopButton {
-    width: 50%;
-    height: 60px;
-    border: none;
-    background-color: var(--neutral-10);
-    border-radius: 8px;
-    font-weight: 600;
-    color: var(--neutral-100);
+  width: 50%;
+  height: 60px;
+  border: none;
+  background-color: var(--neutral-10);
+  border-radius: 8px;
+  font-weight: 600;
+  color: var(--neutral-100);
 }
 
 .buttonBox {
-    display: flex;
-    gap: 10px;
-    width: calc(100% - 32px);
+  display: flex;
+  gap: 10px;
+  width: calc(100% - 32px);
 }
 
 .remainTime {
-    font-size: 42px;
-    color: var(--neutral-100);
-    font-weight: 600;
-    padding: 42px 0;
+  font-size: 42px;
+  color: var(--neutral-100);
+  font-weight: 600;
+  padding: 42px 0;
 }
 
 .completeButton {
-    width: 100%;
-    height: 60px;
-    border: none;
-    background-color: var(--primary-50);
-    border-radius: 8px;
-    font-weight: 600;
+  width: 100%;
+  height: 60px;
+  border: none;
+  background-color: var(--primary-50);
+  border-radius: 8px;
+  color: var(--neutral-10);
+  font-weight: 600;
 }
