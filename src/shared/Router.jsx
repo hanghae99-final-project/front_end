@@ -21,7 +21,6 @@ function Router() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/todo" element={<ToDo />} />
         <Route path="/users/kakao/callback" element={<KakaoFinish />} />
-        <Route path="/Calender" element={<Calender />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/join" element={<Join />} />
         <Route path="/ranking" element={<Ranking />} />
