@@ -6,6 +6,7 @@ import Specialty from "../components/join/Specialty";
 import Done from "../components/join/Done";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Join = () => {
   const [mode, setMode] = useState("Nickname");
@@ -13,9 +14,13 @@ const Join = () => {
   const initialState = { nickname: "", ageGroup: "", specialty: "" };
   const [userInfo, setUserInfo] = useState(initialState);
   const navi = useNavigate();
+  const use = useSelector(state => state.main);
 
   useEffect(() => {
     localStorage.getItem("token") === null && navi("/");
+    if (use?.user?.nickname !== "" && localStorage.getItem("token") !== null) {
+      navi("/home");
+    }
   }, []);
 
   return (

@@ -20,7 +20,7 @@ const ModifyProfile = () => {
   const email = jwtDecode(localStorage.getItem("token"));
   const pickAge = ["20대", "30대", "기타"];
   const [borderColor, setBorderColor] = useState("");
-  const [checkMsg, setCheckMsg] = useState("2~8자의 한글만 가능해요");
+  const [checkMsg, setCheckMsg] = useState("2~8자의 한글만 사용 가능해요");
   const major = [
     "경영사무",
     "마케팅·광고·홍보",
@@ -65,7 +65,7 @@ const ModifyProfile = () => {
     e.preventDefault();
     if (!check.test(modifyInfo.nickname)) {
       setBorderColor("orange");
-      setCheckMsg("2글자 이상의 한글만 가능해요");
+      setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
     } else if (modifyInfo.nickname === userData.nickname) {
       setCheckMsg("현재 사용중인 닉네임과 같아요");
     } else {
@@ -92,7 +92,11 @@ const ModifyProfile = () => {
   };
 
   const onUpdate = () => {
-    if (borderColor === "green") {
+    if (
+      borderColor === "green" ||
+      modifyInfo.ageGroup !== userData.ageGroup ||
+      modifyInfo.specialty !== userData.specialty
+    ) {
       dispatch(__updateProfile(modifyInfo));
       navi("/mypage");
     }
