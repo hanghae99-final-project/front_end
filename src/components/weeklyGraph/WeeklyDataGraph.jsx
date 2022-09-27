@@ -8,6 +8,7 @@ import { useState } from "react";
 import { ReactComponent as LeftArrow } from "../../common/svg/left_arrow.svg";
 import { ReactComponent as RightArrow } from "../../common/svg/right_arrow.svg";
 import font from "../../common/css/font.module.css";
+import dayjs from "dayjs";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -32,13 +33,7 @@ const WeeklyDataGraph = () => {
       return v?.length !== 0 ? v : i + 1 === 7 ? { studyTime: 0, day: 0 } : { studyTime: 0, day: i + 1 };
     })
     .flat();
-  console.log(weeklyStudyData);
 
-  const date = new Date();
-  const currentDay = date.getDay();
-  const monday = date.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
-  const sunday = monday + 6;
-  console.log(date.getDate() - currentDay);
   /**
    * date를 적합한 형태로 바꿔주는 함수
    * @param {string} day
@@ -50,25 +45,34 @@ const WeeklyDataGraph = () => {
     return new Date(new Date(date.setDate(day)).getTime() + weekToTime * move).toISOString().substring(0, 10);
   };
 
-  //   console.log(changeDate(31, 0));
-  console.log(monday, sunday);
   const [move, setMove] = useState(0);
+  let now = dayjs();
+  let test_monday = "20" + now.startOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+  let test_sunday = "20" + now.endOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+  console.log(test_monday, test_sunday);
+
+  const date = new Date();
+  const currentDay = date.getDay();
+  const monday = date.getDate() - currentDay + (currentDay === 0 ? -6 : 1);
+  const sunday = monday + 6;
+
   const [week, setWeek] = useState({
-    startWeek: changeDate(monday, move), // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
-    endWeek: changeDate(sunday, move) // 이번 주 일요일
+    startWeek: test_monday, // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
+    endWeek: test_sunday // 이번 주 일요일
   });
+
   console.log(week);
 
   useEffect(() => {
     setWeek({
-      startWeek: changeDate(monday, move),
-      endWeek: changeDate(sunday, move)
+      startWeek: test_monday,
+      endWeek: test_sunday
     });
   }, [move]);
 
   useEffect(() => {
-    dispatch(__getWeeklyData(week));
-  }, [week]);
+    dispatch(__getWeeklyData({ startWeek: test_monday, endWeek: test_sunday }));
+  }, []);
 
   const labels = ["월", "화", "수", "목", "금", "토", "일"];
   //ms -> hour 변환

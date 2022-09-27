@@ -12,7 +12,9 @@
     "axios": "^0.27.2",
     "babel-eslint": "^10.1.0",
     "chart.js": "^3.9.1",
+    "dayjs": "^1.11.5",
     "jwt-decode": "^3.1.2",
+    "npm-run-all": "^4.1.5",
     "react": "^18.2.0",
     "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
@@ -27,8 +29,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "aws s3 sync ./build s3://rankple99 --profile=rankple123"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

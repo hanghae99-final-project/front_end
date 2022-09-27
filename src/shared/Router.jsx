@@ -27,6 +27,7 @@ function Router() {
         <Route path="/mytodo" element={<ProfileTodoList />} />
         <Route path="/modify" element={<ModifyProfile />} />
         <Route path="/dday" element={<DdayPage />} />
+        <Route path="/postdday" element={<PostDday />}></Route>
       </Routes>
     </BrowserRouter>
   );

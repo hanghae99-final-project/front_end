@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { __getDday } from "../../app/slice/DdaySlice";
+import { __getMainDday } from "../../app/slice/DdaySlice";
 import styles from "./mainDday.module.css";
 import font from "../../common/css/font.module.css";
 import { Link } from "react-router-dom";
@@ -15,7 +15,7 @@ const MainDday = () => {
   const remainDay = Math.floor((targetDay - today) / 1000 / 3600 / 24);
 
   useEffect(() => {
-    dispatch(__getDday());
+    dispatch(__getMainDday());
   }, []);
 
   return (

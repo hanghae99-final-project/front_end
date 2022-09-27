@@ -23,7 +23,7 @@ const DdayPage = () => {
     <Layout>
       <div className={styles.container}>
         <div className={styles.DdayTitle}>
-          <button className={styles.prevBtn}></button>
+          <button className={styles.prevBtn} onClick={() => navi("/mypage")}></button>
           <h1>디데이 설정</h1>
           <button className={styles.addBtn} onClick={openPostHandler}></button>
         </div>
