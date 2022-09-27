@@ -2,7 +2,7 @@
 
 .layout {
   width: auto;
-  height: 50rem;
+  height: 100%;
   padding: 0 1rem;
   background-color: #2f3038;
   position: relative;
@@ -444,7 +444,6 @@ img.specCheckImg {
   margin: 0 auto 1rem auto;
   color: #ffffff;
   text-align: center;
-
 }
 
 .container {
@@ -466,7 +465,6 @@ img.specCheckImg {
   justify-content: center;
   font-size: 1.5rem;
   position: relative;
-
 }
 
 .joinDone {
