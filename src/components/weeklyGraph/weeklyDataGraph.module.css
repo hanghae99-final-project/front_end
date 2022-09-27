@@ -32,8 +32,3 @@
 .arrow:active {
   opacity: 0.3;
 }
-
-.arrow {
-  opacity: 0.3;
-  pointer-events: none;
-}

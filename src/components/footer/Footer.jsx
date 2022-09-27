@@ -8,35 +8,36 @@ import "../../common/css/color.css";
 import { Link, useLocation } from "react-router-dom";
 
 const Footer = () => {
-    const location = useLocation();
-    return (
-        <FooterBar>
-            <Link to='/ranking'>
-                <div className={styles.selected}>
-                    <Rank fillOpacity={location.pathname === "/ranking" ? 1 : 0.3} />
-                </div>
-            </Link>
-            <Link to='/home'>
-                <div className={styles.selected}>
-                    <Home fillOpacity={location.pathname === "/home" ? 1 : 0.3} />
-                </div>
-            </Link>
-            <Link to='/mypage'>
-                <div className={styles.selected}>
-                    <Stats fillOpacity={location.pathname === "/mypage" ? 1 : 0.3} />
-                </div>
-            </Link>
-        </FooterBar>
-    );
+  const location = useLocation();
+  return (
+    <FooterBar>
+      <Link to="/ranking">
+        <div className={styles.selected}>
+          <Rank fillOpacity={location.pathname === "/ranking" ? 1 : 0.3} />
+        </div>
+      </Link>
+      <Link to="/home">
+        <div className={styles.selected}>
+          <Home fillOpacity={location.pathname === "/home" ? 1 : 0.3} />
+        </div>
+      </Link>
+      <Link to="/mypage">
+        <div className={styles.selected}>
+          <Stats fillOpacity={location.pathname === "/mypage" ? 1 : 0.3} />
+        </div>
+      </Link>
+    </FooterBar>
+  );
 };
 
 export default Footer;
 
 const FooterBar = styled.nav`
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    background-color: #24262e;
-    justify-content: space-around;
-    width: 100%;
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  background-color: #24262e;
+  justify-content: space-around;
+  width: 100%;
+  border-top: 1px solid #24262e;
 `;
