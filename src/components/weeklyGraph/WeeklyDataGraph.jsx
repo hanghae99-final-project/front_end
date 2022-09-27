@@ -8,6 +8,7 @@ import { useState } from "react";
 import { ReactComponent as LeftArrow } from "../../common/svg/left_arrow.svg";
 import { ReactComponent as RightArrow } from "../../common/svg/right_arrow.svg";
 import font from "../../common/css/font.module.css";
+import dayjs from "dayjs";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -16,6 +17,8 @@ const WeeklyDataGraph = () => {
 
   //db에 데이터가 저장된 날짜만 불러옴(9.17, 9.20)
   const weeklyData = useSelector(state => state.my?.weeklyStudy);
+  let now = dayjs();
+  console.log(now);
 
   //불러오지 않는 날짜에 요일 채워넣기
   const addDayArray = weeklyData?.map(data => {

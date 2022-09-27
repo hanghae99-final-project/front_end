@@ -111,7 +111,7 @@ const Background = styled.div`
     font-weight: 600;
     color: var(--primary-50);
   }
-  @media (min-width: 1024px) {
+  @media (min-width: 1025px) {
     width: 1024px;
     height: 700px;
     position: relative;
@@ -123,8 +123,8 @@ const Background = styled.div`
       position: absolute;
       height: 800px;
       width: 360px;
-      right: 37px;
-      top: 50px;
+      right: 38px;
+      top: 51px;
       border-radius: 20px;
       overflow: hidden;
     }
