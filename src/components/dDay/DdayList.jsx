@@ -39,15 +39,14 @@ const DdayList = () => {
         };
 
         return (
-          <div
-            key={data._id}
-            onClick={() => {
-              setActive(prev => (prev === data._id ? "" : data._id));
-            }}
-          >
-            {}
-            <li className={`${data._id === active ? `${styles.innerWarp} ${styles.active}` : styles.innerWarp}`}>
-              <div className={styles.DdayContainer}>
+          <div key={data._id}>
+            <li className={`${data._id === active ? styles.active : styles.innerWarp}`}>
+              <div
+                className={styles.DdayContainer}
+                onClick={() => {
+                  setActive(prev => (prev === data._id ? "" : data._id));
+                }}
+              >
                 <div className={styles.DdayWarp}>
                   <div className={styles.DdayValueWarp}>
                     <div className={styles.DdayVlaue}>
