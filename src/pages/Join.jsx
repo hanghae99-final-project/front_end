@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 
 const Join = () => {
   const [mode, setMode] = useState("Nickname");
-  const [checkMsg, setCheckMsg] = useState("8자리의 한글만 사용 가능해요");
+  const [checkMsg, setCheckMsg] = useState("2~8자의 한글만 사용 가능해요");
   const initialState = { nickname: "", ageGroup: "", specialty: "" };
   const [userInfo, setUserInfo] = useState(initialState);
   const navi = useNavigate();

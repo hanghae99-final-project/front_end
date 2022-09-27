@@ -39,6 +39,7 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
   const onChangeHandleInput = e => {
     const { name, value } = e.target;
     setBorderColor("");
+    setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
     setUserInfo({ ...userInfo, [name]: value });
   };
 
@@ -76,6 +77,7 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
               autoComplete="off"
               autoFocus={true}
               maxLength="8"
+              spellCheck={false}
             ></input>
           </form>
           <div className={styles.buttonBox}>
@@ -105,7 +107,7 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
           {checkMsg}
         </p>
       </div>
-      {!check.test(userInfo.nickname) && nickname.length < 2 ? (
+      {borderColor !== "green" ? (
         <button className={`${styles.joinBtnNo} ${font.subtitle2_600_16}`} disabled>
           다음
         </button>
