@@ -14,7 +14,6 @@ const KakaoFinish = () => {
 
   useEffect(() => {
     dispatch(get_login(authCode));
-    localStorage.getItem("token") === null && navigate("/");
   }, []);
   console.log(authCode);
 
