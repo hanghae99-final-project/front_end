@@ -9,15 +9,7 @@ import { ReactComponent as Green } from "../../common/svg/green.svg";
 import font from "../../common/css/font.module.css";
 import axios from "axios";
 
-const Nickname = ({
-  setMode,
-  nickname,
-  checkMsg,
-  setCheckMsg,
-  initialState,
-  userInfo,
-  setUserInfo,
-}) => {
+const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, userInfo, setUserInfo }) => {
   const [borderColor, setBorderColor] = useState("");
   const check = /^[가-힣]{2,8}$/;
 
@@ -25,15 +17,15 @@ const Nickname = ({
     test || e.preventDefault();
     if (!check.test(userInfo.nickname) && userInfo.nickname) {
       setBorderColor("orange");
-      setCheckMsg("숫자,이모티콘,공백은 사용 불가능해요");
+      setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
     } else {
       axios
         .get(process.env.REACT_APP_SERVER_URL + `/profile/nick/${nickname}`, {
           headers: {
-            Authorization: `Bearer ${localStorage.token}`,
-          },
+            Authorization: `Bearer ${localStorage.token}`
+          }
         })
-        .then((res) =>
+        .then(res =>
           res.data.ok === true
             ? (setBorderColor("green"), setCheckMsg("사용 가능한 닉네임이에요"))
             : (setBorderColor("red"), setCheckMsg("이미 존재하는 닉네임이에요"))
@@ -42,11 +34,9 @@ const Nickname = ({
   };
 
   const allCheck = () => {
-    borderColor === "green" && check.test(userInfo.nickname)
-      ? setMode("Age")
-      : void 0;
+    borderColor === "green" && check.test(userInfo.nickname) ? setMode("Age") : void 0;
   };
-  const onChangeHandleInput = (e) => {
+  const onChangeHandleInput = e => {
     const { name, value } = e.target;
     setBorderColor("");
     setUserInfo({ ...userInfo, [name]: value });
@@ -74,9 +64,7 @@ const Nickname = ({
           }
         >
           <form className={styles.InputGroup} onSubmit={checkNickname}>
-            <label className={`${styles.label} ${font.caption_300_12}`}>
-              닉네임
-            </label>
+            <label className={`${styles.label} ${font.caption_300_12}`}>닉네임</label>
             <input
               type="text"
               name="nickname"
@@ -111,27 +99,20 @@ const Nickname = ({
               : `${styles.checkMsg} ${font.caption2_300_10}`
           }
         >
-          {borderColor === "orange" && (
-            <Orange style={{ marginRight: "0.25rem" }} />
-          )}
+          {borderColor === "orange" && <Orange style={{ marginRight: "0.25rem" }} />}
           {borderColor === "red" && <Red style={{ marginRight: "0.25rem" }} />}
-          {borderColor === "green" && (
-            <Green style={{ marginRight: "0.25rem" }} />
-          )}
+          {borderColor === "green" && <Green style={{ marginRight: "0.25rem" }} />}
           {checkMsg}
         </p>
       </div>
       {!check.test(userInfo.nickname) && nickname.length < 2 ? (
-        <button
-          className={`${styles.joinBtnNo} ${font.subtitle2_600_16}`}
-          disabled
-        >
+        <button className={`${styles.joinBtnNo} ${font.subtitle2_600_16}`} disabled>
           다음
         </button>
       ) : (
         <button
           className={`${styles.joinBtnYes} ${font.subtitle2_600_16}`}
-          onClick={(e) => {
+          onClick={e => {
             checkNickname(e, true);
             allCheck();
           }}
