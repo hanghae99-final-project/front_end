@@ -11,6 +11,7 @@ import ProfileTodoList from "../components/profile/ProfileTodoList";
 import ModifyProfile from "../pages/ModifyProfile";
 import DdayPage from "../pages/DdayPage";
 import PostDday from "../components/dDay/PostDday";
+import NotFoundPage from "../pages/NotFoundPage";
 
 function Router() {
   return (
@@ -20,7 +21,6 @@ function Router() {
         <Route path="/" element={<LoginPage />} />
         <Route path="/todo" element={<ToDo />} />
         <Route path="/users/kakao/callback" element={<KakaoFinish />} />
-        <Route path="/Calender" element={<Calender />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/join" element={<Join />} />
         <Route path="/ranking" element={<Ranking />} />
@@ -28,6 +28,7 @@ function Router() {
         <Route path="/modify" element={<ModifyProfile />} />
         <Route path="/dday" element={<DdayPage />} />
         <Route path="/postdday" element={<PostDday />}></Route>
+        <Route path="*" element={<NotFoundPage />}></Route>
       </Routes>
     </BrowserRouter>
   );

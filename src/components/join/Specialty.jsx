@@ -23,7 +23,7 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
     "관광레저서비스",
     "건설·건축",
     "공무원",
-    "무역·유통",
+    "무역·유통"
   ];
   const postJoinHandle = () => {
     dispatch(__joinUser(userInfo));
@@ -34,10 +34,7 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
   return (
     <div className={styles.layout}>
       <div className={styles.container}>
-        <button
-          className={styles.arrowBack}
-          onClick={() => setMode("Age")}
-        ></button>
+        <button className={styles.arrowBack} onClick={() => setMode("Age")}></button>
         <p className={`${styles.infoText} ${font.header3_600_24}`}>
           준비하고 있는 분야를 <br />
           선택해 주세요
@@ -58,7 +55,11 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
                   </button>
                 ) : (
                   <button
-                    className={`${styles.specAnother} ${font.subtitle2_300_16}`}
+                    className={
+                      userInfo.specialty === ""
+                        ? `${styles.specBase} ${font.subtitle2_300_16}`
+                        : `${styles.specAnother} ${font.subtitle2_300_16}`
+                    }
                     onClick={() => {
                       setUserInfo({ ...userInfo, specialty: pick });
                     }}
@@ -72,17 +73,11 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
         </div>
       </div>
       {userInfo.specialty === "" ? (
-        <button
-          disabled
-          className={`${styles.specBtnNo} ${font.subtitle2_600_16}`}
-        >
+        <button disabled className={`${styles.specBtnNo} ${font.subtitle2_600_16}`}>
           가입완료
         </button>
       ) : (
-        <button
-          className={`${styles.specBtnYes} ${font.subtitle2_600_16}`}
-          onClick={postJoinHandle}
-        >
+        <button className={`${styles.specBtnYes} ${font.subtitle2_600_16}`} onClick={postJoinHandle}>
           가입완료
         </button>
       )}

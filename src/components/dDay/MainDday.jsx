@@ -12,7 +12,7 @@ const MainDday = () => {
   console.log(dDay);
   const today = new Date();
   const targetDay = new Date(dDay.length > 0 && dDay[0].deadline);
-  const remainDay = Math.floor((targetDay - today) / 1000 / 3600 / 24);
+  const remainDay = Math.ceil((targetDay - today) / 1000 / 3600 / 24);
 
   useEffect(() => {
     dispatch(__getMainDday());
@@ -26,7 +26,7 @@ const MainDday = () => {
         </Link>
       ) : (
         <>
-          <span className={`${styles.day} ${font.subtitle3_600_14}`}>D{remainDay}</span>
+          <span className={`${styles.day} ${font.subtitle3_600_14}`}>D-{remainDay === 0 ? "day" : remainDay}</span>
           <span className={`${styles.text} ${font.subtitle3_300_14}`}>{dDay.length > 0 && dDay[0].content}</span>
         </>
       )}
