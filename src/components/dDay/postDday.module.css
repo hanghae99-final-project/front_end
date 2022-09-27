@@ -1,6 +1,7 @@
 @import url(../../common/css/common.css);
 
 .container {
+  border-radius: 18px 18px 0 0;
   background-color: var(--neutral-30);
   padding: 0.5rem 1rem 2rem;
 }
@@ -111,7 +112,7 @@
   background-color: var(--neutral-40);
   border: none;
   margin-bottom: 3.75rem;
-  color: var(--neutral-60);
+  color: var(--neutral-100);
 }
 
 .inputBox::placeholder {
@@ -144,4 +145,8 @@
 
 .choiceDay {
   color: var(--primary-50);
+}
+
+.daylist {
+  cursor: pointer;
 }

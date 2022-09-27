@@ -28,7 +28,9 @@ const DdayPage = () => {
           <button className={styles.addBtn} onClick={openPostHandler}></button>
         </div>
         <DdayList />
-        {openPost ? <PostDday className={styles.openTodo} /> : ""}
+        <div className={openPost ? styles.dDayModalOpen : styles.dDayModalClose}>
+          <PostDday />{" "}
+        </div>
       </div>
     </Layout>
   );

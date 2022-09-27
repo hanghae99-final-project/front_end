@@ -1,58 +1,67 @@
 @import url(../../common/css/common.css);
 
 .container {
-    height: 100%;
-    padding: 0.5rem 1rem 2rem;
-    border-radius: 18px 18px 0 0;
+  height: 100%;
+  padding: 0.5rem 1rem 2rem;
+  border-radius: 18px 18px 0 0;
 }
 
 .DdayTitle {
-    display: flex;
-    text-align: center;
-    margin-bottom: 1.063rem;
-    margin-top: 0.5rem;
+  display: flex;
+  text-align: center;
+  margin-bottom: 1.063rem;
+  margin-top: 0.5rem;
 }
 
 .DdayTitle h1 {
-    width: 100%;
-    font-family: Pretendard;
-    font-size: 1rem;
-    font-weight: 600;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: center;
-    color: var(--neutral-100);
+  width: 100%;
+  font-family: Pretendard;
+  font-size: 1rem;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--neutral-100);
 }
 
 .prevBtn {
-    width: 1.5rem;
-    height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 
-    background: url(../../common/svg/arrowback_icon2.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+  background: url(../../common/svg/arrowback_icon2.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 
-    border: none;
+  border: none;
+  cursor: pointer;
 }
 
 .addBtn {
-    width: 1.5rem;
-    height: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 
-    background: url(../../common/svg/open_post_todo_icon.svg);
-    background-repeat: no-repeat;
-    background-position: center;
+  background: url(../../common/svg/open_post_todo_icon.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 
-    border: none;
+  border: none;
+  cursor: pointer;
 }
 
-.openTodo {
-    transition: all 0.6s ease-in-out;
+.dDayModalOpen {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 1s ease-in-out;
 }
 
-.closeTodo {
-    display: none;
-    transition: all 0.6s ease-in-out;
+.dDayModalClose {
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  transition: all 1s ease-in-out;
 }
