@@ -46,6 +46,7 @@ const ToDoPost = () => {
         <div className={styles.inputContainer}>
           <input
             className={styles.valueInput}
+            maxLength={20}
             onChange={onChangeToDoHandler}
             type="text"
             name="work"
