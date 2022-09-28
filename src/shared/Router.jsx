@@ -4,7 +4,6 @@ import LoginPage from "../pages/LoginPage";
 import ToDo from "../pages/ToDo";
 import KakaoFinish from "../pages/KakaoFinish";
 import MyPage from "../pages/MyPage";
-import Calender from "../components/calender/Calender";
 import Ranking from "../pages/Ranking";
 import Join from "../pages/Join";
 import ProfileTodoList from "../components/profile/ProfileTodoList";

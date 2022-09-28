@@ -189,6 +189,7 @@ const PostDday = ({
       <form className={styles.inputContainer} onSubmit={onSubmitHandler}>
         <h2 className={`${styles.inputTitle} ${font.subtitle2_600_16}`}>디데이 내용을 입력해주세요.</h2>
         <input
+          maxLength={15}
           placeholder="내용 입력"
           className={`${styles.inputBox} ${styles.body_300_16}`}
           onChange={setcomentHandler}
