@@ -92,6 +92,10 @@
   margin: 0.375rem 0;
 }
 
+.daylist {
+  cursor: pointer;
+}
+
 .dateContainer {
   width: 100%;
   display: flex;

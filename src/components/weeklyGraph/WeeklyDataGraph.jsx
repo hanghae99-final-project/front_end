@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getWeeklyData } from "../../app/slice/mySlice";
 import styles from "./weeklyDataGraph.module.css";
@@ -9,6 +9,7 @@ import { ReactComponent as LeftArrow } from "../../common/svg/left_arrow.svg";
 import { ReactComponent as RightArrow } from "../../common/svg/right_arrow.svg";
 import font from "../../common/css/font.module.css";
 import dayjs from "dayjs";
+import { useCallback } from "react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -36,8 +37,12 @@ const WeeklyDataGraph = () => {
 
   const [move, setMove] = useState(0);
   let now = dayjs();
-  let test_monday = "20" + now.startOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
-  let test_sunday = "20" + now.endOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+  const test_monday = useMemo(() => {
+    return "20" + now.startOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+  }, [move]);
+  const test_sunday = useMemo(() => {
+    return "20" + now.endOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+  }, [move]);
   console.log(test_monday, test_sunday);
 
   const [week, setWeek] = useState({
@@ -56,7 +61,7 @@ const WeeklyDataGraph = () => {
 
   useEffect(() => {
     dispatch(__getWeeklyData({ startWeek: test_monday, endWeek: test_sunday }));
-  }, []);
+  }, [week]);
 
   const labels = ["월", "화", "수", "목", "금", "토", "일"];
   //ms -> hour 변환
