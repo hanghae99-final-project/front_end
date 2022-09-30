@@ -25,7 +25,7 @@ const MainPage = () => {
   const [btsOn, setBtsOn] = useState(false);
   const [timeMode, setTimeMode] = useState("normal");
   const [color, setColor] = useState("#7E7C8C");
-  const [info, setInfo] = useState(false);
+  const [info, setInfo] = useState(localStorage.info ? true : false);
   const [survey, setSurvey] = useState(false);
 
   const navi = useNavigate();
@@ -99,10 +99,11 @@ const MainPage = () => {
           }}
         />
       )}
-      {info && (
+      {(info || localStorage.info) && (
         <div
           className={styles.blur}
           onClick={() => {
+            localStorage.removeItem("info");
             setInfo(false);
           }}
         />

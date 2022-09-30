@@ -23,6 +23,7 @@ const InfoModal = ({ setInfo }) => {
         <Close
           className={styles.close}
           onClick={() => {
+            localStorage.removeItem("info");
             setInfo(false);
           }}
         />

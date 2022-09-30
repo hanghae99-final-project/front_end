@@ -50,6 +50,7 @@ const ModifyProfile = () => {
   }, [dispatch]);
   const userData = useSelector(data => data.profile);
   const initialState = {};
+  const [modifyInfo, setModifyInfo] = useState(initialState);
 
   useEffect(() => {
     if (userData.nickname !== undefined) {
@@ -61,8 +62,13 @@ const ModifyProfile = () => {
     }
   }, [userData]);
 
+  // useEffect(() => {
+  //   setTimeout(checkNickname, 2000);
+  // }, []);
+
   const checkNickname = e => {
-    e.preventDefault();
+    // e.preventDefault();
+
     if (!check.test(modifyInfo.nickname)) {
       setBorderColor("orange");
       setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
@@ -83,13 +89,25 @@ const ModifyProfile = () => {
     }
   };
 
-  const [modifyInfo, setModifyInfo] = useState(initialState);
-
   const onChangeHandleInput = e => {
     const { name, value } = e.target;
-    setBorderColor("");
+    // setBorderColor("");
     setModifyInfo({ ...modifyInfo, [name]: value });
   };
+
+  useEffect(() => {
+    setBorderColor("");
+    const timer = setTimeout(() => {
+      checkNickname();
+    }, 500);
+    if (modifyInfo.nickname === "") {
+      clearTimeout(timer);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [modifyInfo]);
 
   const onUpdate = () => {
     if (
@@ -152,8 +170,9 @@ const ModifyProfile = () => {
             type="text"
             name="nickname"
             value={modifyInfo.nickname}
-            onChange={onChangeHandleInput}
-            onBlur={checkNickname}
+            onChange={e => {
+              setModifyInfo({ ...modifyInfo, nickname: e.target.value });
+            }}
             placeholder={userData.nickname}
             autoComplete="off"
             autoFocus={true}
