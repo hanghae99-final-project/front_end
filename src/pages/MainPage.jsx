@@ -22,7 +22,7 @@ const MainPage = () => {
   const navi = useNavigate();
 
   useEffect(() => {
-    // localStorage.getItem("token") === null && navi("/");
+    localStorage.getItem("token") === null && navi("/");
   }, []);
 
   return (

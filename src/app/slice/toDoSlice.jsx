@@ -76,14 +76,11 @@ const toDoSlice = createSlice({
     [deleteList.fulfilled]: (state, { payload }) => state.filter(toDo => toDo._id !== payload),
 
     [updateList.fulfilled]: (state, { payload }) => {
-      console.log(payload);
-      console.log(current(state));
       return current(state).map(todo => (todo._id === payload._id ? { ...todo, ...payload } : todo));
     },
 
     [updateToDoDone.fulfilled]: (state, { payload }) => {
       return state.map(toDo => {
-        console.log(toDo);
         if (toDo._id === payload._id) {
           return { ...toDo, isDone: payload.isDone };
         } else {
