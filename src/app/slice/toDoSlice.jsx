@@ -15,8 +15,9 @@ export const getList = createAsyncThunk("GET_TODO", async () => {
 
 export const __getdailyTodo = createAsyncThunk("dailyTodo", async payload => {
   const selectedmonth = payload.month < 10 ? "0" + payload.month : payload.month;
+  const selectedDate = payload.date < 10 ? "0" + payload.date : payload.date;
   const response = await axios.get(
-    process.env.REACT_APP_SERVER_URL + `/todo/${payload.year}-${selectedmonth}-${payload.date}`,
+    process.env.REACT_APP_SERVER_URL + `/todo/${payload.year}-${selectedmonth}-${selectedDate}`,
     {
       headers: { Authorization: `Bearer ${localStorage.token}` }
     }
@@ -35,7 +36,6 @@ export const deleteList = createAsyncThunk("DELETE_TODO", async toDoId => {
   const response = await axios.delete(process.env.REACT_APP_SERVER_URL + `/todo/${toDoId}`, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   });
-  console.log(response);
   return toDoId;
 });
 
