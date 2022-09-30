@@ -6,7 +6,7 @@ import todoList from "../../common/svg/todolist_sheet_popup.svg";
 import weeklyStudyLog from "../../common/svg/weeklylog_popup.svg";
 import studyLog from "../../common/svg/studylog_popup.svg";
 import font from "../../common/css/font.module.css";
-import { ReactComponent as Close } from "../../common/svg/close.svg";
+import ModalTitle from "../modal/ModalTitle";
 
 const InfoModal = ({ setInfo }) => {
   const information = [
@@ -18,25 +18,22 @@ const InfoModal = ({ setInfo }) => {
   ];
   return (
     <div className={styles.modal}>
-      <div className={`${styles.title} ${font.subtitle2_600_16}`}>
-        <div>랭플 사용방법</div>
-        <Close
-          className={styles.close}
-          onClick={() => {
-            setInfo(false);
-            localStorage.removeItem("info");
-          }}
-        />
-      </div>
+      <ModalTitle
+        title="랭플 사용방법"
+        func={() => {
+          setInfo(false);
+          localStorage.removeItem("info");
+        }}
+      />
       {information.map((element, i) => {
         return (
           <div className={styles.elementBox} key={element.title}>
             <div className={`${styles.imgBox} ${i === 2 && styles.todo}`}>
               <img src={element.img} alt={element.title} />
             </div>
-            <div className={styles.contentBox}>
-              <div className={`${styles.contentTitle} ${font.subtitle3_600_14}`}>{element.title}</div>
-              <p className={`${styles.elementContent} ${font.subtitle3_300_14}`}>{element.content}</p>
+            <div className={`${styles.contentBox} ${font.subtitle3_600_14}`}>
+              <div className={styles.contentTitle}>{element.title}</div>
+              <p className={styles.elementContent}>{element.content}</p>
             </div>
           </div>
         );

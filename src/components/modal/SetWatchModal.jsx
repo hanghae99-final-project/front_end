@@ -6,6 +6,7 @@ import font from "../../common/css/font.module.css";
 import { useState } from "react";
 import Button from "./Button";
 import { useEffect } from "react";
+import ModalTitle from "./ModalTitle";
 
 const SetWatchModal = ({
   startTime,
@@ -26,6 +27,7 @@ const SetWatchModal = ({
 }) => {
   const [able, setAble] = useState(false);
 
+  /** running일 때 누르면 종료 후 초기화, running이 아닐 때 누르면 시간 설정 후 실행 */
   const onRunningHandler = () => {
     setMode("normal");
     setRunning(!running);
@@ -34,6 +36,7 @@ const SetWatchModal = ({
       : localStorage.setItem("targetTime", (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
   };
 
+  /** 타이머가 running일 때 누르면 시간을 저장하고, stop일 때 누르면 휴식을 종료시키는 함수  */
   const onStopHandler = () => {
     setStop(!stop);
     setAble(true);
@@ -50,22 +53,19 @@ const SetWatchModal = ({
 
   return (
     <div className={localStorage.targetTime > 0 || mode === "complete" ? styles.setModal : styles.modal}>
-      <div className={`${styles.title} ${font.subtitle2_600_16}`}>
-        <div>{mode === "complete" ? "타이머 종료" : "타이머"}</div>
-        <Close
-          className={styles.close}
-          onClick={() => {
-            setMode("normal");
-            setColor("#7E7C8C");
-            mode === "complete" && setRunning(false);
-          }}
-        />
-      </div>
+      <ModalTitle
+        title={mode === "complete" ? "타이머 종료" : "타이머"}
+        func={() => {
+          setMode("normal");
+          setColor("#7E7C8C");
+          mode === "complete" && setRunning(false);
+        }}
+      />
       {!running ? (
         <>
           <SetTimePicker setTime={setTime} time={time} />
           <div className={styles.buttonBox}>
-            <Button onClickHandler={onRunningHandler} type="long">
+            <Button type="long" onClickHandler={onRunningHandler}>
               시작하기
             </Button>
           </div>
@@ -75,7 +75,7 @@ const SetWatchModal = ({
           {changeTimeForm(remainTime, `${styles.remainTime} ${font.header_600_42}`)}
           <div className={styles.buttonBox}>
             {mode === "complete" ? (
-              <Button onClickHandler={onRunningHandler} type="long">
+              <Button type="long" onClickHandler={onRunningHandler}>
                 확인
               </Button>
             ) : !stop ? (
