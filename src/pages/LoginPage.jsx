@@ -20,7 +20,6 @@ const LoginPage = () => {
         <KakaoLoginButton
           onClick={() => {
             window.location.href = authURI;
-            localStorage.setItem("info", true);
           }}
         />
       </div>
