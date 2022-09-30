@@ -4,6 +4,8 @@ import SetTimePicker from "./SetTimePicker";
 import { ReactComponent as Close } from "../../common/svg/close.svg";
 import font from "../../common/css/font.module.css";
 import { useState } from "react";
+import Button from "./Button";
+import { useEffect } from "react";
 
 const SetWatchModal = ({
   startTime,
@@ -19,10 +21,33 @@ const SetWatchModal = ({
   time,
   setTime,
   setColor,
-  mode
+  mode,
+  initializeTime
 }) => {
-  console.log(mode, remainTime);
   const [able, setAble] = useState(false);
+
+  const onRunningHandler = () => {
+    setMode("normal");
+    setRunning(!running);
+    running
+      ? initializeTime()
+      : localStorage.setItem("targetTime", (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
+  };
+
+  const onStopHandler = () => {
+    setStop(!stop);
+    setAble(true);
+    setTimeout(() => {
+      setAble(false);
+    }, 1050);
+    if (stop) {
+      localStorage.removeItem("restStart");
+    } else {
+      localStorage.setItem("savedStudyTime", savedStudyTime + currentDate - startTime);
+      localStorage.setItem("restStart", true);
+    }
+  };
+
   return (
     <div className={localStorage.targetTime > 0 || mode === "complete" ? styles.setModal : styles.modal}>
       <div className={`${styles.title} ${font.subtitle2_600_16}`}>
@@ -39,98 +64,33 @@ const SetWatchModal = ({
       {!running ? (
         <>
           <SetTimePicker setTime={setTime} time={time} />
-          <button
-            className={`${styles.startBtn} ${font.subtitle2_600_16}`}
-            onClick={() => {
-              localStorage.setItem("targetTime", (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
-              setMode("normal");
-              setRunning(true);
-            }}
-          >
-            시작하기
-          </button>
+          <div className={styles.buttonBox}>
+            <Button onClickHandler={onRunningHandler} type="long">
+              시작하기
+            </Button>
+          </div>
         </>
       ) : (
         <>
           {changeTimeForm(remainTime, `${styles.remainTime} ${font.header_600_42}`)}
           <div className={styles.buttonBox}>
             {mode === "complete" ? (
-              <button
-                className={`${styles.completeButton} ${font.subtitle2_600_16}`}
-                onClick={() => {
-                  setMode("normal");
-                  setRunning(false);
-                }}
-              >
+              <Button onClickHandler={onRunningHandler} type="long">
                 확인
-              </button>
+              </Button>
             ) : !stop ? (
-              <>
-                <button
-                  disabled={able}
-                  className={`${styles.stopButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setStop(true);
-                    localStorage.setItem("savedStudyTime", savedStudyTime + currentDate - startTime);
-                    localStorage.setItem("restStart", true);
-                    setAble(true);
-                    setTimeout(() => {
-                      setAble(false);
-                    }, 1050);
-                  }}
-                >
-                  멈추기
-                </button>
-                <button
-                  className={`${styles.endButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setRunning(false);
-                    setStop(false);
-                    setTime({ hour: 0, minute: 0, second: 0 });
-                    localStorage.removeItem("startTime");
-                    localStorage.removeItem("targetTime");
-                    localStorage.removeItem("savedStudyTime");
-                    localStorage.removeItem("restStart");
-                    setMode("normal");
-                    setColor("#7E7C8C");
-                  }}
-                >
-                  종료하기
-                </button>
-              </>
+              <Button type="short" able={able} onClickHandler={onStopHandler}>
+                멈추기
+              </Button>
             ) : (
-              <>
-                <button
-                  disabled={able}
-                  className={`${styles.stopButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setStop(false);
-                    localStorage.removeItem("restStart");
-                    setAble(true);
-                    setTimeout(() => {
-                      setAble(false);
-                    }, 1050);
-                  }}
-                >
-                  계속하기
-                </button>
-                <button
-                  className={`${styles.endButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setRunning(false);
-                    setStop(false);
-                    setTime({ hour: 0, minute: 0, second: 0 });
-                    localStorage.removeItem("startTime");
-                    localStorage.removeItem("targetTime");
-                    localStorage.removeItem("savedStudyTime");
-                    localStorage.removeItem("restStart");
-                    setMode("normal");
-                    setColor("#7E7C8C");
-                  }}
-                >
-                  종료하기
-                </button>
-              </>
+              <Button type="short" able={able} onClickHandler={onStopHandler}>
+                계속하기
+              </Button>
+            )}
+            {mode !== "complete" && (
+              <Button type="end" onClickHandler={onRunningHandler}>
+                종료하기
+              </Button>
             )}
           </div>
         </>

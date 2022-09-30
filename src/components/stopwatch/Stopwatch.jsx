@@ -46,18 +46,22 @@ const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
     }
   }, []);
 
+  const initializeTime = () => {
+    localStorage.removeItem("startTime");
+    localStorage.removeItem("targetTime");
+    localStorage.removeItem("savedStudyTime");
+    localStorage.removeItem("restStart");
+    setStop(false);
+    setTime({ hour: 0, minute: 0, second: 0 });
+    setColor("#7E7C8C");
+    console.log("hi");
+  };
+
   useEffect(() => {
     /** 시간 도달 시 초기화 */
     if (targetTime > 0 && remainTime <= 0 && !stop) {
-      localStorage.removeItem("startTime");
-      localStorage.removeItem("targetTime");
-      localStorage.removeItem("savedStudyTime");
-      localStorage.removeItem("restStart");
-      setStop(false);
-      // setRunning(false);
-      setTime({ hour: 0, minute: 0, second: 0 });
+      initializeTime();
       setMode("complete");
-      setColor("#7E7C8C");
     }
   }, [second]);
 
@@ -112,6 +116,7 @@ const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
           startTime={startTime}
           savedStudyTime={savedStudyTime}
           setColor={setColor}
+          initializeTime={initializeTime}
         />
       )}
     </div>
