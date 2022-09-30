@@ -194,6 +194,7 @@ const PostDday = ({
           onChange={setcomentHandler}
           name="content"
           type="text"
+          maxLength="20"
         />
         <button
           onClick={() => {

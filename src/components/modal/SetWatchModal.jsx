@@ -32,6 +32,7 @@ const SetWatchModal = ({
           onClick={() => {
             setMode("normal");
             setColor("#7E7C8C");
+            mode === "complete" && setRunning(false);
           }}
         />
       </div>

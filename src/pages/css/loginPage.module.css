@@ -59,3 +59,18 @@
   z-index: 1;
   filter: blur(6px);
 }
+
+.modal {
+  width: 328px;
+  text-align: center;
+  background-color: #3b3b44;
+  color: white;
+  position: absolute;
+  height: 214px;
+  z-index: 10;
+  border-radius: 18px;
+}
+
+.modal p {
+  margin-top: 48px;
+}
