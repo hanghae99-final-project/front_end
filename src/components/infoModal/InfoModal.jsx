@@ -24,6 +24,7 @@ const InfoModal = ({ setInfo }) => {
           className={styles.close}
           onClick={() => {
             setInfo(false);
+            localStorage.removeItem("info");
           }}
         />
       </div>
