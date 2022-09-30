@@ -28,13 +28,15 @@ const MainDday = () => {
         centeredSlides={true}
         direction={"vertical"}
         loop={true}
-        autoplay={{ delay: 5000 }}
+        autoplay={dDay.length > 1 ? { delay: 5000 } : false}
         speed={1500}
       >
         {dDay.length === 0 ? (
-          <Link to="/dday">
-            <span className={`${styles.text} ${font.subtitle3_300_14}`}>디데이를 추가해 보세요</span>
-          </Link>
+          <SwiperSlide>
+            <Link to="/dday">
+              <span className={`${styles.text} ${font.subtitle3_300_14}`}>디데이를 추가해 보세요</span>
+            </Link>
+          </SwiperSlide>
         ) : (
           <>
             {dDay.map(target => {
@@ -45,7 +47,7 @@ const MainDday = () => {
                 <SwiperSlide key={target._id}>
                   <div className={styles.daySlide}>
                     <span className={`${styles.day} ${font.subtitle3_600_14}`}>
-                      D{remainDay === 0 ? "day" : remainDay > 0 ? "-" + remainDay : "+" + remainDay * -1}
+                      D{remainDay === 0 ? "-day" : remainDay > 0 ? "-" + remainDay : "+" + remainDay * -1}
                     </span>
                     <span className={`${styles.text} ${font.subtitle3_300_14}`}>{target.content}</span>
                   </div>
