@@ -25,6 +25,7 @@ const InfoModal = ({ setInfo }) => {
           onClick={() => {
             localStorage.removeItem("info");
             setInfo(false);
+            localStorage.removeItem("info");
           }}
         />
       </div>

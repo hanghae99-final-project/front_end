@@ -14,11 +14,18 @@ export const getList = createAsyncThunk("GET_TODO", async () => {
 });
 
 export const __getdailyTodo = createAsyncThunk("dailyTodo", async payload => {
+<<<<<<< HEAD
   const selectedMonth = payload.month < 10 ? "0" + payload.month : payload.month;
   const selectedDate = payload.date < 10 ? "0" + payload.date : payload.date;
   
   const response = await axios.get(
     process.env.REACT_APP_SERVER_URL + `/todo/${payload.year}-${selectedMonth}-${selectedDate}`,
+=======
+  const selectedmonth = payload.month < 10 ? "0" + payload.month : payload.month;
+  const selectedDate = payload.date < 10 ? "0" + payload.date : payload.date;
+  const response = await axios.get(
+    process.env.REACT_APP_SERVER_URL + `/todo/${payload.year}-${selectedmonth}-${selectedDate}`,
+>>>>>>> 7fa61d8eeddd67d90536cbaca2225cf181b2f815
     {
       headers: { Authorization: `Bearer ${localStorage.token}` }
     }
@@ -37,7 +44,6 @@ export const deleteList = createAsyncThunk("DELETE_TODO", async toDoId => {
   const response = await axios.delete(process.env.REACT_APP_SERVER_URL + `/todo/${toDoId}`, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   });
-  console.log(response);
   return toDoId;
 });
 
@@ -78,14 +84,11 @@ const toDoSlice = createSlice({
     [deleteList.fulfilled]: (state, { payload }) => state.filter(toDo => toDo._id !== payload),
 
     [updateList.fulfilled]: (state, { payload }) => {
-      console.log(payload);
-      console.log(current(state));
       return current(state).map(todo => (todo._id === payload._id ? { ...todo, ...payload } : todo));
     },
 
     [updateToDoDone.fulfilled]: (state, { payload }) => {
       return state.map(toDo => {
-        console.log(toDo);
         if (toDo._id === payload._id) {
           return { ...toDo, isDone: payload.isDone };
         } else {

@@ -65,7 +65,7 @@ const WeeklyDataGraph = () => {
 
   const labels = ["월", "화", "수", "목", "금", "토", "일"];
   //ms -> hour 변환
-  const data = weeklyStudyData.map(element => Math.ceil(element?.studyTime / 3600000));
+  const data = weeklyStudyData.map(element => Math.floor(element?.studyTime / 3600000));
   // 16진수로 표현하여 opacity 조절
   const dataColor = data.map(element => {
     if (element >= 1 && element < 3) {
