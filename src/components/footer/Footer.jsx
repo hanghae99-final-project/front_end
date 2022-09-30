@@ -13,17 +13,17 @@ const Footer = () => {
     <FooterBar>
       <Link to="/ranking">
         <div className={styles.selected}>
-          <Rank fillOpacity={location.pathname === "/ranking" ? 1 : 0.3} />
+          <Rank fillOpacity={location.pathname === "/ranking" ? 1 : 0.5} />
         </div>
       </Link>
       <Link to="/home">
         <div className={styles.selected}>
-          <Home fillOpacity={location.pathname === "/home" ? 1 : 0.3} />
+          <Home fillOpacity={location.pathname === "/home" ? 1 : 0.5} />
         </div>
       </Link>
       <Link to="/mypage">
         <div className={styles.selected}>
-          <Stats fillOpacity={location.pathname === "/mypage" ? 1 : 0.3} />
+          <Stats fillOpacity={location.pathname === "/mypage" ? 1 : 0.5} />
         </div>
       </Link>
     </FooterBar>
@@ -39,5 +39,5 @@ const FooterBar = styled.nav`
   background-color: #24262e;
   justify-content: space-around;
   width: 100%;
-  border-top: 1px solid #24262e;
+  border: none;
 `;
