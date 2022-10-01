@@ -7,14 +7,13 @@ import dropdownBtn from "../../common/svg/dropdown_icon.svg";
 import font from "../../common/css/font.module.css";
 import { useNavigate } from "react-router-dom";
 
-const RankingBox = () => {
+const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
   const dispatch = useDispatch();
   const getMyRanking = useSelector(state => state.ranking.myRanking);
   const getAllRanking = useSelector(state => state.ranking.ranking);
   const userTimeSet = Math.floor(getMyRanking.savedStudyTime / 1000);
   const myHour = parseInt(userTimeSet / 3600);
   const myMinutes = parseInt((userTimeSet % 3600) / 60);
-  const [btsOn, setBtsOn] = useState(false);
   const navi = useNavigate();
 
   const agePick = [
@@ -28,7 +27,6 @@ const RankingBox = () => {
     { ko: "월간", en: "month" }
   ];
   const [mode, setMode] = useState("일간");
-  const [ageMode, setAgeMode] = useState("전체 랭킹");
 
   const [type, setType] = useState({ period: "day", category: "all" });
 
@@ -143,14 +141,16 @@ const RankingBox = () => {
                       </div>
                       <div className={styles.timeBox}>
                         <span className={`${styles.userTime} ${font.subtitle4_600_12}`}>
-                          <div className={styles.hour}>{hour < 10 ? "0" + hour : hour}시간 </div>
+                          <div className={styles.hour}>{hour < 10 ? "0" + hour : hour}시간</div>
                           <div className={styles.minutes}> {minutes < 10 ? "0" + minutes : minutes}분</div>
                         </span>
-                        {rankbox.studying ? (
-                          <div className={i === 0 ? styles.rankerDot : styles.greendot}></div>
-                        ) : (
-                          <div className={styles.emptyDot}></div>
-                        )}
+                        <div className={styles.dotBox}>
+                          {rankbox.studying ? (
+                            <div className={i === 0 ? styles.rankerDot : styles.greendot}></div>
+                          ) : (
+                            <div className={styles.emptyDot}></div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -181,13 +181,16 @@ const RankingBox = () => {
             </div>
             <div className={styles.timeBox}>
               <span className={`${styles.userTime} ${font.subtitle4_600_12}`}>
-                {myHour < 10 ? "0" + myHour : myHour}시간 {myMinutes < 10 ? "0" + myMinutes : myMinutes}분
+                <div className={styles.hour}>{myHour < 10 ? "0" + myHour : myHour}시간</div>
+                <div className={styles.minutes}> {myMinutes < 10 ? "0" + myMinutes : myMinutes}분</div>
               </span>
-              {getMyRanking.studying ? (
-                <div className={styles.greendot}></div>
-              ) : (
-                <div className={styles.emptyDot}></div>
-              )}
+              <div className={styles.dotBox}>
+                {getMyRanking.studying ? (
+                  <div className={styles.greendot}></div>
+                ) : (
+                  <div className={styles.emptyDot}></div>
+                )}
+              </div>
             </div>
           </div>
           <Footer />

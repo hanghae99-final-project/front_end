@@ -17,14 +17,7 @@ import Timer from "./mainPage/Timer";
 const MainPage = () => {
   const [todoMode, setTodoMode] = useState("normal");
   const [btsOn, setBtsOn] = useState(false);
-<<<<<<< HEAD
-  const [timeMode, setTimeMode] = useState("normal");
-  const [color, setColor] = useState("#7E7C8C");
-  const [info, setInfo] = useState(localStorage.info ? true : false);
-=======
->>>>>>> 7fa61d8eeddd67d90536cbaca2225cf181b2f815
   const [survey, setSurvey] = useState(false);
-
   const navi = useNavigate();
 
   useEffect(() => {
@@ -59,52 +52,12 @@ const MainPage = () => {
           </div>
           <Footer />
         </div>
-<<<<<<< HEAD
-        {info && <InfoModal setInfo={setInfo} />}
-        {survey && <SurveyModal setSurvey={setSurvey} />}
-        <img
-          src={chicken}
-          alt="치킨"
-          className={styles.chicken}
-          onClick={() => {
-            setSurvey(true);
-          }}
-        />
-      </Gradient>
-      {(mode === "set" || mode === "complete") && (
-        <div
-          className={styles.blur}
-          onClick={() => {
-            setColor("#7E7C8C");
-            setMode("normal");
-          }}
-        />
-      )}
-      {timeMode === "set" && (
-        <div
-          className={styles.blur}
-          onClick={() => {
-            setTimeMode("normal");
-          }}
-        />
-      )}
-      {(info || localStorage.info) && (
-        <div
-          className={styles.blur}
-          onClick={() => {
-            localStorage.removeItem("info");
-            setInfo(false);
-          }}
-        />
-      )}
-=======
       </div>
       <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
         <ToDo />
       </div>
       {survey && <SurveyModal setSurvey={setSurvey} />}
       <Gradient />
->>>>>>> 7fa61d8eeddd67d90536cbaca2225cf181b2f815
       {survey && (
         <div
           className={styles.blur}

@@ -134,14 +134,45 @@
 }
 
 .checkMsg {
+  height: 1rem;
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
   font-size: 0.625rem;
 }
 
+.checkMsgOrange {
+  border: 1px solid white;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.625rem;
+  color: var(--alerts-orange) !important;
+}
+
+.checkMsgRed {
+  border: 1px solid white;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.625rem;
+  color: var(--alerts-red) !important;
+}
+
+.checkMsgGreen {
+  border: 1px solid white;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.625rem;
+  color: var(--alerts-green) !important;
+}
+
 .ageBox {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   gap: 1rem;
 }
 
