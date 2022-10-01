@@ -23,6 +23,7 @@ const Done = ({ nickname }) => {
       <button
         className={`${styles.doneBtn} ${font.subtitle2_600_16}`}
         onClick={() => {
+          localStorage.setItem("info", true);
           navigate("/home");
         }}
       >

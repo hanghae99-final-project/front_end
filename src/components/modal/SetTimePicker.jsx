@@ -13,9 +13,9 @@ const SetTimePicker = ({ setTime, time }) => {
     <div className={styles.timePickerBox}>
       <TimePicker mode={hour} time={time} setTime={setTime} unit="hour" />
       <TimePicker mode={minute} time={time} setTime={setTime} unit="minute" />
-      <div className={styles.selectedBox}>
-        <div className={`${styles.hour} ${font.subtitle2_600_16}`}>시간</div>
-        <div className={`${styles.minute} ${font.subtitle2_600_16}`}>분</div>
+      <div className={`${styles.selectedBox} ${font.subtitle2_600_16}`}>
+        <div className={styles.hour}>시간</div>
+        <div className={styles.minute}>분</div>
       </div>
     </div>
   );

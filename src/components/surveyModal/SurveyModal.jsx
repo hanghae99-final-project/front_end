@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./surveyModal.module.css";
 import font from "../../common/css/font.module.css";
 import survey from "../../common/svg/surveyImg.png";
+import { Blur } from "../../pages/mainPage/Styled";
 
 const SurveyModal = ({ setSurvey }) => {
   return (
@@ -33,6 +34,11 @@ const SurveyModal = ({ setSurvey }) => {
           닫기
         </button>
       </div>
+      <Blur
+        onClick={() => {
+          setSurvey(false);
+        }}
+      />
     </>
   );
 };

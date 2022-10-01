@@ -101,6 +101,19 @@ const ModifyProfile = () => {
     };
   }, [modifyInfo]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      checkNickname();
+    }, 500);
+    if (modifyInfo.nickname === "") {
+      clearTimeout(timer);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [modifyInfo]);
+
   const onUpdate = () => {
     if (
       borderColor === "green" ||
