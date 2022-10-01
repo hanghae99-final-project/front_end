@@ -16,11 +16,11 @@ import font from "../common/css/font.module.css";
 import axios from "axios";
 
 const ModifyProfile = () => {
-  const check = /^[가-힣]{2,8}$/;
+  const check = /^[가-힣a-zA-Z0-9]{2,12}$/;
   const email = jwtDecode(localStorage.getItem("token"));
   const pickAge = ["20대", "30대", "기타"];
   const [borderColor, setBorderColor] = useState("");
-  const [checkMsg, setCheckMsg] = useState("2~8자의 한글만 사용 가능해요");
+  const [checkMsg, setCheckMsg] = useState("2~12자의 닉네임을 설정해주세요");
   const major = [
     "경영사무",
     "마케팅·광고·홍보",
@@ -50,6 +50,7 @@ const ModifyProfile = () => {
   }, [dispatch]);
   const userData = useSelector(data => data.profile);
   const initialState = {};
+  const [modifyInfo, setModifyInfo] = useState(initialState);
 
   useEffect(() => {
     if (userData.nickname !== undefined) {
@@ -61,11 +62,14 @@ const ModifyProfile = () => {
     }
   }, [userData]);
 
+  // useEffect(() => {
+  //   setTimeout(checkNickname, 2000);
+  // }, []);
+
   const checkNickname = e => {
-    e.preventDefault();
     if (!check.test(modifyInfo.nickname)) {
       setBorderColor("orange");
-      setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
+      setCheckMsg("이모티콘,공백은 사용 불가능해요");
     } else if (modifyInfo.nickname === userData.nickname) {
       setCheckMsg("현재 사용중인 닉네임과 같아요");
     } else {
@@ -83,13 +87,19 @@ const ModifyProfile = () => {
     }
   };
 
-  const [modifyInfo, setModifyInfo] = useState(initialState);
-
-  const onChangeHandleInput = e => {
-    const { name, value } = e.target;
+  useEffect(() => {
     setBorderColor("");
-    setModifyInfo({ ...modifyInfo, [name]: value });
-  };
+    const timer = setTimeout(() => {
+      checkNickname();
+    }, 500);
+    if (modifyInfo.nickname === "") {
+      clearTimeout(timer);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [modifyInfo]);
 
   const onUpdate = () => {
     if (
@@ -112,7 +122,6 @@ const ModifyProfile = () => {
               navi("/mypage");
             }}
             src={arrowBtn2}
-            alt={arrowBtn2}
           />
           <span className={font.subtitle2_600_16}>프로필 수정</span>
           {modifyInfo.nickname !== userData.nickname ||
@@ -139,28 +148,42 @@ const ModifyProfile = () => {
         </div>
         <form className={styles.nicknameBox} onSubmit={checkNickname}>
           <p className={font.subtitle2_600_16}>닉네임</p>
-          <input
+          <label>
+            <input
+              className={
+                modifyInfo.nickname !== "" && borderColor === "red"
+                  ? `${styles.nicknameInputRed} ${font.body_300_16} animate__animated animate__headShake`
+                  : modifyInfo.nickname !== "" && borderColor === "green"
+                  ? `${styles.nicknameInputGreen} ${font.body_300_16}`
+                  : modifyInfo.nickname !== "" && borderColor === "orange"
+                  ? `${styles.nicknameInputOrange} ${font.body_300_16} animate__animated animate__headShake`
+                  : `${styles.nicknameInputBase} ${font.body_300_16}`
+              }
+              type="text"
+              name="nickname"
+              value={modifyInfo.nickname}
+              onChange={e => {
+                setModifyInfo({ ...modifyInfo, nickname: e.target.value });
+              }}
+              placeholder={userData.nickname}
+              autoComplete="off"
+              autoFocus={true}
+              spellCheck={false}
+              maxLength="12"
+            ></input>
+          </label>
+
+          <p
             className={
-              modifyInfo.nickname !== "" && borderColor === "red"
-                ? `${styles.nicknameInputRed} ${font.body_300_16} animate__animated animate__headShake`
-                : modifyInfo.nickname !== "" && borderColor === "green"
-                ? `${styles.nicknameInputGreen} ${font.body_300_16}`
-                : modifyInfo.nickname !== "" && borderColor === "orange"
-                ? `${styles.nicknameInputOrange} ${font.body_300_16} animate__animated animate__headShake`
-                : `${styles.nicknameInputBase} ${font.body_300_16}`
+              borderColor === "orange"
+                ? `${styles.checkMsgOrange} ${font.caption2_300_10}`
+                : borderColor === "red"
+                ? `${styles.checkMsgRed} ${font.caption2_300_10}`
+                : borderColor === "green"
+                ? `${styles.checkMsgGreen} ${font.caption2_300_10}`
+                : `${styles.checkMsg} ${font.caption2_300_10}`
             }
-            type="text"
-            name="nickname"
-            value={modifyInfo.nickname}
-            onChange={onChangeHandleInput}
-            onBlur={checkNickname}
-            placeholder={userData.nickname}
-            autoComplete="off"
-            autoFocus={true}
-            spellCheck={false}
-            maxLength="8"
-          ></input>
-          <p className={`${styles.checkMsg} ${font.caption2_300_10}`}>
+          >
             {""}
             {borderColor === "orange" && <Orange style={{ marginRight: "0.25rem" }} />}
             {borderColor === "red" && <Red style={{ marginRight: "0.25rem" }} />}

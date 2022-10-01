@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "animate.css";
 import styles from "./join.module.css";
 import arrowBtn from "../../common/svg/arrowback_icon.svg";
-import deleteBtn from "../../common/svg/delete_icon.svg";
 import { ReactComponent as Orange } from "../../common/svg/orange.svg";
 import { ReactComponent as Red } from "../../common/svg/red.svg";
 import { ReactComponent as Green } from "../../common/svg/green.svg";
@@ -11,13 +10,12 @@ import axios from "axios";
 
 const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, userInfo, setUserInfo }) => {
   const [borderColor, setBorderColor] = useState("");
-  const check = /^[가-힣]{2,8}$/;
+  const check = /^[ㄱ-ㅎ가-힣a-zA-Z0-9]{2,12}$/;
 
-  const checkNickname = (e, test) => {
-    test || e.preventDefault();
-    if (!check.test(userInfo.nickname) && userInfo.nickname) {
+  const checkNickname = e => {
+    if (!check.test(userInfo.nickname)) {
       setBorderColor("orange");
-      setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
+      setCheckMsg("이모티콘,공백은 사용 불가능해요");
     } else {
       axios
         .get(process.env.REACT_APP_SERVER_URL + `/profile/nick/${nickname}`, {
@@ -36,12 +34,21 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
   const allCheck = () => {
     borderColor === "green" && check.test(userInfo.nickname) ? setMode("Age") : void 0;
   };
-  const onChangeHandleInput = e => {
-    const { name, value } = e.target;
+
+  useEffect(() => {
     setBorderColor("");
-    setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
-    setUserInfo({ ...userInfo, [name]: value });
-  };
+    setCheckMsg("2~12자의 닉네임을 설정해주세요");
+    const timer = setTimeout(() => {
+      checkNickname();
+    }, 500);
+    if (userInfo.nickname === "") {
+      clearTimeout(timer);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [userInfo]);
 
   return (
     <div className={styles.layout}>
@@ -70,17 +77,19 @@ const Nickname = ({ setMode, nickname, checkMsg, setCheckMsg, initialState, user
               type="text"
               name="nickname"
               className={`${styles.inputNickname} ${font.body_300_16}`}
-              onBlur={checkNickname}
               value={nickname}
-              onChange={onChangeHandleInput}
+              onChange={e => {
+                setUserInfo({ ...userInfo, nickname: e.target.value });
+              }}
               placeholder="8자 이내 한글"
               autoComplete="off"
               autoFocus={true}
-              maxLength="8"
+              maxLength="12"
               spellCheck={false}
             ></input>
           </form>
           <div className={styles.buttonBox}>
+            <span className={`${styles.nicknameLength} ${font.caption_300_12}`}>{nickname.length}/12</span>
             <button
               className={styles.deleteIcon}
               onClick={() => {

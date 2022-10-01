@@ -18,7 +18,6 @@ const MainPage = () => {
   const [todoMode, setTodoMode] = useState("normal");
   const [btsOn, setBtsOn] = useState(false);
   const [survey, setSurvey] = useState(false);
-
   const navi = useNavigate();
 
   useEffect(() => {
