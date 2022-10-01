@@ -1,11 +1,12 @@
 @import url(../../common/css/common.css);
 
 .dayBox {
-  font-size: 0.875rem;
-  font-weight: 300;
   width: 100%;
   text-align: center;
-  padding: 1rem 0;
+  background-color: var(--opacity-w-10);
+  height: 40px;
+  display: flex;
+  line-height: 40px;
 }
 
 .day {
@@ -27,5 +28,8 @@
   font-weight: 300;
   text-align: left;
   color: var(--neutral-80);
-  margin-left: 0.5rem;
+  margin-left: 4px;
+}
+
+.daySlide {
 }

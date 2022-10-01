@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
   color: var(--neutral-100);
-  margin-top: 3rem;
+  margin-top: 1rem;
 }
 
 .topBox > button {
@@ -52,7 +52,7 @@
 
 .emailBox > input {
   color: var(--neutral-50);
-  width: 94%;
+  width: calc(100% - 2rem);
   font-size: 1rem;
   border: none;
   margin-top: 0.75rem;
@@ -71,7 +71,7 @@
 
 .nicknameInputBase {
   color: var(--neutral-100);
-  width: 94%;
+  width: calc(100% - 2rem);
   font-size: 1rem;
   border: 1px solid rgb(0, 0, 0, 0);
   margin-top: 0.75rem;
@@ -88,7 +88,7 @@
 .nicknameInputOrange {
   border: solid 1px var(--alerts-orange);
   color: var(--neutral-100);
-  width: 94%;
+  width: calc(100% - 2rem);
   font-size: 1rem;
   margin-top: 0.75rem;
   padding: 0.75rem 1rem;
@@ -104,7 +104,7 @@
 .nicknameInputRed {
   border: solid 1px var(--alerts-red);
   color: var(--neutral-100);
-  width: 94%;
+  width: calc(100% - 2rem);
   font-size: 1rem;
   margin-top: 0.75rem;
   padding: 0.75rem 1rem;
@@ -120,7 +120,7 @@
 .nicknameInputGreen {
   border: solid 1px var(--alerts-green);
   color: var(--neutral-100);
-  width: 94%;
+  width: calc(100% - 2rem);
   font-size: 1rem;
   margin-top: 0.75rem;
   padding: 0.75rem 1rem;
@@ -134,14 +134,45 @@
 }
 
 .checkMsg {
+  height: 1rem;
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
   font-size: 0.625rem;
 }
 
+.checkMsgOrange {
+  border: 1px solid white;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.625rem;
+  color: var(--alerts-orange) !important;
+}
+
+.checkMsgRed {
+  border: 1px solid white;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.625rem;
+  color: var(--alerts-red) !important;
+}
+
+.checkMsgGreen {
+  border: 1px solid white;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.625rem;
+  color: var(--alerts-green) !important;
+}
+
 .ageBox {
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   gap: 1rem;
 }
 

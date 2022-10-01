@@ -19,7 +19,7 @@ const Layout = props => {
       </div>
       <img src={phone} alt="" className="phone" />
       <div className="phoneFrame">
-        <StyledLayout>{props.children}</StyledLayout>
+        <StyledLayout path={window.location.pathname}>{props.children}</StyledLayout>
       </div>
     </Background>
   );
@@ -27,7 +27,7 @@ const Layout = props => {
 
 const StyledLayout = styled.div`
   margin: 0 auto;
-  min-height: 800px;
+  min-height: ${props => props.path !== "/" && "800px"};
   justify-content: center;
   align-items: center;
   background-color: var(--neutral-20);
@@ -63,7 +63,6 @@ const StyledLayout = styled.div`
 const Background = styled.div`
   width: 100vw;
   position: relative;
-  /* overflow: hidden; */
   @media (max-width: 360px) {
     background-color: transparent;
     .logoBox {
@@ -93,7 +92,6 @@ const Background = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* display: inline-block; */
   }
 
   .title {
@@ -118,7 +116,6 @@ const Background = styled.div`
     margin: auto;
     top: -3rem;
     transform: scale(0.7);
-    /* overflow: hidden; */
     .phoneFrame {
       position: absolute;
       height: 800px;

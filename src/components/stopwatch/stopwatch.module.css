@@ -1,28 +1,31 @@
 @import url(../../common/css/common.css);
 
 .stopwatch {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    background-color: var();
-    height: 1.5rem;
-    width: 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  background-color: var();
+  height: 1.5rem;
+  right: 16px;
+  top: 96px;
+  width: 100%;
+  position: absolute;
 }
 
 .clock {
-    margin-top: 0;
-    width: 1.5rem;
-    height: 1.5rem;
+  margin-top: 0;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .remainTime {
-    background-color: var(--neutral-30);
-    width: 5rem;
-    text-align: center;
-    height: 1.6rem;
-    line-height: 2.2;
-    font-size: 0.75rem;
-    color: var(--neutral-100);
-    border-radius: 1.6rem;
-    margin-right: 4px;
+  background-color: var(--neutral-30);
+  width: 5rem;
+  text-align: center;
+  height: 1.6rem;
+  line-height: 2.2;
+  font-size: 0.75rem;
+  color: var(--neutral-100);
+  border-radius: 1.6rem;
+  margin-right: 4px;
 }

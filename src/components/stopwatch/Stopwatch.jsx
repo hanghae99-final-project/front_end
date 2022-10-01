@@ -7,7 +7,7 @@ import changeTimeForm from "../../utils/changeTimeForm";
 import useInterval from "../../hooks/useInterval";
 import font from "../../common/css/font.module.css";
 
-const Stopwatch = ({ mode, setMode, color, setColor }) => {
+const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
   /** 현재시간 및 시작 시간 */
   const currentDate = new Date().getTime();
 
@@ -17,7 +17,6 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
   const savedStudyTime = Number(localStorage.getItem("savedStudyTime"));
 
   const [time, setTime] = useState({ hour: 0, minute: 0, second: 0 });
-  const [running, setRunning] = useState(false);
   const [stop, setStop] = useState(false);
 
   /**
@@ -34,35 +33,33 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
       ? Math.floor((targetTime - savedStudyTime) / 1000)
       : Math.floor((targetTime - savedStudyTime - (startTime === 0 ? 1 : currentDate - startTime)) / 1000);
 
-  /** reload 시 time이 저장되어 있고, 휴식 중이 아니라면 자동 시작 */
-  if (!running && startTime > 0 && !stop && !localStorage.restStart) {
-    setRunning(true);
-  }
+  /** reload 시 time이 저장되어 있고, 휴식 중이 아니라면 자동 시작, 휴식 중이라면 일시 정지 */
+  useEffect(() => {
+    if (!running && startTime > 0 && !stop && !localStorage.restStart) {
+      setRunning(true);
+    } else if (!running && savedStudyTime > 0 && !stop && localStorage.restStart) {
+      setRunning(true);
+      setStop(true);
+    }
+  }, []);
 
-  /** reload 공부시간이 저장되어 있고, 휴식 중이라면 일시 정지 */
-  if (!running && savedStudyTime > 0 && !stop && localStorage.restStart) {
-    setRunning(true);
-    setStop(true);
-  }
-  // 멈추기 할 때 없어진다. 왜?
-  // 멈춘다 : true, 계속한다 : false
-  // remainTime이 마이너스가 됨
-  // 빨리하면 stop이 true인 채로 남아있게 되고,
-  // 1초가 지나기 전에 하면 state가 업데이트가 안 되니까
-  // -1664096074
-  // 일단 1초동안 못 누르게 처리
-  console.log(savedStudyTime); // 이게 왜 1664111161118 // 이게 왜 현재 시간이 나옴?
-  if (targetTime > 0 && remainTime <= 0 && !stop) {
+  const initializeTime = () => {
     localStorage.removeItem("startTime");
     localStorage.removeItem("targetTime");
     localStorage.removeItem("savedStudyTime");
     localStorage.removeItem("restStart");
-    // setRunning(false);
     setStop(false);
     setTime({ hour: 0, minute: 0, second: 0 });
-    setMode("complete");
     setColor("#7E7C8C");
-  }
+  };
+
+  /** 시간 도달 시 초기화 */
+  useEffect(() => {
+    if (targetTime > 0 && remainTime <= 0 && !stop) {
+      initializeTime();
+      setMode("complete");
+    }
+  }, [second]);
 
   /** 스톱워치 시간 증가 로직 */
   useInterval(running, stop, setSecond);
@@ -115,6 +112,7 @@ const Stopwatch = ({ mode, setMode, color, setColor }) => {
           startTime={startTime}
           savedStudyTime={savedStudyTime}
           setColor={setColor}
+          initializeTime={initializeTime}
         />
       )}
     </div>
