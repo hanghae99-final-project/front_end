@@ -38,12 +38,25 @@ const WeeklyDataGraph = () => {
   const [move, setMove] = useState(0);
   let now = dayjs();
   const monday = useMemo(() => {
-    return "20" + now.startOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+    return (
+      "20" +
+      now
+        .startOf("week")
+        .add(1, "day")
+        .add(now.get("day") === 0 ? move - 1 : move, "week")
+        .format("YY-MM-DD")
+    );
   }, [move]);
   const sunday = useMemo(() => {
-    return "20" + now.endOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+    return (
+      "20" +
+      now
+        .endOf("week")
+        .add(1, "day")
+        .add(now.get("day") === 0 ? move - 1 : move, "week")
+        .format("YY-MM-DD")
+    );
   }, [move]);
-  console.log(monday, sunday);
 
   const [week, setWeek] = useState({
     startWeek: monday, // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
