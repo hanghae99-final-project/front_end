@@ -33,14 +33,11 @@ const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
       ? Math.floor((targetTime - savedStudyTime) / 1000)
       : Math.floor((targetTime - savedStudyTime - (startTime === 0 ? 1 : currentDate - startTime)) / 1000);
 
+  /** reload 시 time이 저장되어 있고, 휴식 중이 아니라면 자동 시작, 휴식 중이라면 일시 정지 */
   useEffect(() => {
-    /** reload 시 time이 저장되어 있고, 휴식 중이 아니라면 자동 시작 */
     if (!running && startTime > 0 && !stop && !localStorage.restStart) {
       setRunning(true);
-    }
-
-    /** reload 공부시간이 저장되어 있고, 휴식 중이라면 일시 정지 */
-    if (!running && savedStudyTime > 0 && !stop && localStorage.restStart) {
+    } else if (!running && savedStudyTime > 0 && !stop && localStorage.restStart) {
       setRunning(true);
       setStop(true);
     }
@@ -54,11 +51,10 @@ const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
     setStop(false);
     setTime({ hour: 0, minute: 0, second: 0 });
     setColor("#7E7C8C");
-    console.log("hi");
   };
 
+  /** 시간 도달 시 초기화 */
   useEffect(() => {
-    /** 시간 도달 시 초기화 */
     if (targetTime > 0 && remainTime <= 0 && !stop) {
       initializeTime();
       setMode("complete");

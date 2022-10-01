@@ -61,8 +61,13 @@ const ModifyProfile = () => {
     }
   }, [userData]);
 
+  useEffect(() => {
+    setTimeout(checkNickname, 2000);
+  }, []);
+
   const checkNickname = e => {
-    e.preventDefault();
+    console.log(modifyInfo.nickname);
+    // e.preventDefault();
     if (!check.test(modifyInfo.nickname)) {
       setBorderColor("orange");
       setCheckMsg("숫자,이모티콘,공백,영문은 사용 불가능해요");
@@ -87,9 +92,22 @@ const ModifyProfile = () => {
 
   const onChangeHandleInput = e => {
     const { name, value } = e.target;
-    setBorderColor("");
+    // setBorderColor("");
     setModifyInfo({ ...modifyInfo, [name]: value });
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      checkNickname();
+    }, 500);
+    if (modifyInfo.nickname === "") {
+      clearTimeout(timer);
+    }
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [modifyInfo]);
 
   const onUpdate = () => {
     if (
@@ -152,7 +170,9 @@ const ModifyProfile = () => {
             type="text"
             name="nickname"
             value={modifyInfo.nickname}
-            onChange={onChangeHandleInput}
+            onChange={e => {
+              setModifyInfo({ ...modifyInfo, nickname: e.target.value });
+            }}
             onBlur={checkNickname}
             placeholder={userData.nickname}
             autoComplete="off"

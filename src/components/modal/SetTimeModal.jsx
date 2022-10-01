@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { __postTargetTime } from "../../app/slice/timeTimerSlice";
 import styles from "./setTimeModal.module.css";
 import SetTimePicker from "./SetTimePicker";
-import Button from "./Button";
+import ModalButton from "./ModalButton";
 import ModalTitle from "./ModalTitle";
 
 const SetTimeModal = ({ time, setTime, setMode, targetToSec }) => {
@@ -18,9 +18,7 @@ const SetTimeModal = ({ time, setTime, setMode, targetToSec }) => {
       <ModalTitle title="목표 설정시간" func={() => setMode("normal")} />
       <SetTimePicker setTime={setTime} time={time} />
       <div className={styles.buttonBox}>
-        <Button type="long" onClickHandler={setTargetTime}>
-          설정하기
-        </Button>
+        <ModalButton title="설정하기" type="long" onClickHandler={setTargetTime} />
       </div>
     </div>
   );

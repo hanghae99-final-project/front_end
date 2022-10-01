@@ -1,11 +1,9 @@
 import React from "react";
 import styles from "./setTimeModal.module.css";
 import SetTimePicker from "./SetTimePicker";
-import { ReactComponent as Close } from "../../common/svg/close.svg";
 import font from "../../common/css/font.module.css";
 import { useState } from "react";
-import Button from "./Button";
-import { useEffect } from "react";
+import ModalButton from "./ModalButton";
 import ModalTitle from "./ModalTitle";
 
 const SetWatchModal = ({
@@ -65,9 +63,7 @@ const SetWatchModal = ({
         <>
           <SetTimePicker setTime={setTime} time={time} />
           <div className={styles.buttonBox}>
-            <Button type="long" onClickHandler={onRunningHandler}>
-              시작하기
-            </Button>
+            <ModalButton title="시작하기" type="long" onClickHandler={onRunningHandler} />
           </div>
         </>
       ) : (
@@ -75,23 +71,13 @@ const SetWatchModal = ({
           {changeTimeForm(remainTime, `${styles.remainTime} ${font.header_600_42}`)}
           <div className={styles.buttonBox}>
             {mode === "complete" ? (
-              <Button type="long" onClickHandler={onRunningHandler}>
-                확인
-              </Button>
+              <ModalButton title="확인" type="long" onClickHandler={onRunningHandler} />
             ) : !stop ? (
-              <Button type="short" able={able} onClickHandler={onStopHandler}>
-                멈추기
-              </Button>
+              <ModalButton title="멈추기" type="short" able={able} onClickHandler={onStopHandler} />
             ) : (
-              <Button type="short" able={able} onClickHandler={onStopHandler}>
-                계속하기
-              </Button>
+              <ModalButton title="계속하기" type="short" able={able} onClickHandler={onStopHandler} />
             )}
-            {mode !== "complete" && (
-              <Button type="end" onClickHandler={onRunningHandler}>
-                종료하기
-              </Button>
-            )}
+            {mode !== "complete" && <ModalButton title="종료하기" type="end" onClickHandler={onRunningHandler} />}
           </div>
         </>
       )}

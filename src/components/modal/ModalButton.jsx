@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./setTimeModal.module.css";
 import font from "../../common/css/font.module.css";
 
-const Button = ({ children, onClickHandler, type, able }) => {
+const ModalButton = ({ title, onClickHandler, type, able }) => {
   return (
     <button
       disabled={able}
@@ -11,9 +11,9 @@ const Button = ({ children, onClickHandler, type, able }) => {
         type === "long" ? `${styles.completeButton}` : type === "short" ? `${styles.stopButton}` : `${styles.endButton}`
       } ${font.subtitle2_600_16}`}
     >
-      {children}
+      {title}
     </button>
   );
 };
 
-export default Button;
+export default ModalButton;

@@ -27,16 +27,16 @@ const MainPage = () => {
 
   return (
     <Layout>
-      <img
-        src={chicken}
-        alt="치킨"
-        className={styles.chicken}
-        onClick={() => {
-          setSurvey(true);
-        }}
-      />
       <div className={styles.columnBox}>
         <div>
+          <img
+            src={chicken}
+            alt="치킨"
+            className={styles.chicken}
+            onClick={() => {
+              setSurvey(true);
+            }}
+          />
           <Studying />
           <MainDday />
           <Timer />
@@ -59,14 +59,6 @@ const MainPage = () => {
       </div>
       {survey && <SurveyModal setSurvey={setSurvey} />}
       <Gradient />
-      {survey && (
-        <div
-          className={styles.blur}
-          onClick={() => {
-            setSurvey(false);
-          }}
-        />
-      )}
       {todoMode === "set" && (
         <div
           className={styles.blur}

@@ -10,10 +10,10 @@ import useInterval from "../../hooks/useInterval";
 import CircleTimer from "../../pages/mainPage/CircleTimer";
 import ButtonBox from "../../pages/mainPage/ButtonBox";
 import { Blur } from "../../pages/mainPage/Styled";
+import useCalculate from "../../hooks/useCalculate";
 
 const TimeTimer = () => {
   const date = new Date().getTime();
-  const [timeMode, setTimeMode] = useState("normal");
   const dispatch = useDispatch();
 
   const studyStartPoint = useSelector(state => state.timer?.studyStartPoint);
@@ -24,6 +24,7 @@ const TimeTimer = () => {
   const yesterdayStudyTime = useSelector(state => state.timer?.yesterdayStudyTime);
 
   const [refresh, setRefresh] = useState(false);
+  const [timeMode, setTimeMode] = useState("normal");
   const [target, setTarget] = useState({ hour: 0, minute: 0 });
   const [targetToSec, setTargetToSec] = useState(0); // 설정시간을 초로 나타냄
   const [status, setStatus] = useState(yesterdayStudyTime || 0); // 어제 얼마나 공부했는지/ 현재 남은시간은 몇시간인지 상태를 나타냄
@@ -33,7 +34,6 @@ const TimeTimer = () => {
   const [second, setSecond] = useState(0); // just '초'
   const [restSecond, setRestSecond] = useState(0);
 
-  const sec = second * (283 / targetToSec); // 타임타이머 동작을 위한 초 설정
   const remainSec = targetToSec - parseInt(second); // setStatus 작동을 위한 두번째 시간과 분
 
   useEffect(() => {
@@ -53,16 +53,7 @@ const TimeTimer = () => {
     } else if (studyStartPoint === 0 && restStartPoint === 0) {
       dispatch(changeColor(""));
     }
-  }, [restStartPoint, studyStartPoint]);
-
-  useEffect(() => {
-    if (studyStartPoint !== 0 && second % 60 === 0) {
-      dispatch(changeColor(second >= targetTime / 1000 ? "red" : "green"));
-    }
-  }, [second]);
-
-  /** 공부 시작 버튼 클릭 시 1초에 한 번씩 second를 업데이트 하도록 설정 */
-  useInterval(run, rest, setSecond);
+  }, [restStartPoint, studyStartPoint, second]);
 
   const changeSecondToTime = second => {
     const hour = parseInt(second / 3600);
@@ -70,18 +61,17 @@ const TimeTimer = () => {
     return `${hour}시간 ${minutes}분`;
   };
 
-  /** 휴식 시작 버튼 클릭 시 1초에 한 번씩 restSecond를 업데이트 하도록 설정 */
-  useEffect(() => {
-    let interval;
-    if (rest) {
-      interval = setInterval(() => {
-        setRestSecond(prev => prev + 1);
-      }, 1000);
-    } else if (!rest || !run) {
-      clearInterval(interval);
-    }
-    return () => clearInterval(interval);
-  }, [run, rest]);
+  /**
+   * 버튼 클릭 시 1초에 한 번씩 second를 업데이트 하도록 설정
+   * 스톱워치는 휴식시간을 체크하지 않지만
+   * timeTimer는 휴식시간도 체크하기 때문에 두 개의 useInterval 사용
+   */
+  useInterval(run, rest, setSecond);
+  useInterval(rest, run, setRestSecond, "rest");
+
+  /** 공부 중, 휴식 중일 때 각각에 맞는 시간을 설정하는 함수 */
+  useCalculate(savedStudyTime, studyStartPoint, setSecond, setRun);
+  useCalculate(savedRestTime, restStartPoint, setRestSecond);
 
   useEffect(() => {
     setTargetToSec(target.hour * 3600 + target.minute * 60);
@@ -95,28 +85,9 @@ const TimeTimer = () => {
       : setStatus(`✏️ 어제 ${changeSecondToTime(Math.floor(yesterdayStudyTime / 1000))}공부했어요`);
   }, [second, targetToSec, yesterdayStudyTime]);
 
-  /**
-   *  공부 중일 때, 혹은 공부 중이 아닐 때 공부 시간 설정
-   *  저장된 시간(0 또는 공부한 시간) + ( 현재 시간 - (다시) 시작한 시간 )
-   * */
   useEffect(() => {
-    if (studyStartPoint === 0) {
-      setSecond(Math.floor(savedStudyTime / 1000));
-    } else {
-      setSecond(Math.floor((savedStudyTime + date - studyStartPoint) / 1000));
-      setRun(true);
-    }
     setTargetToSec(targetTime / 1000);
-  }, [savedStudyTime, studyStartPoint]);
-
-  /** 휴식 중일 때, 혹은 휴식 중이 아닐 때 휴식 시간 설정 */
-  useEffect(() => {
-    if (restStartPoint !== 0) {
-      setRestSecond(Math.floor((savedRestTime + date - restStartPoint) / 1000));
-    } else {
-      setRestSecond(Math.floor(savedRestTime / 1000));
-    }
-  }, [savedRestTime, restStartPoint, date]);
+  }, [targetTime]);
 
   /** 휴식 중일 때 새로고침 시 자동으로 휴식이 진행되게 설정 */
   useEffect(() => {
@@ -140,7 +111,6 @@ const TimeTimer = () => {
   return (
     <div className={styles.layout}>
       <CircleTimer
-        sec={sec}
         second={second}
         targetTime={targetTime}
         run={run}
