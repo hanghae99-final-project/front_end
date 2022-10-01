@@ -162,7 +162,7 @@
 }
 
 .checkMsgGreen {
-  border: 1px solid white;
+  border: none;
   height: 1rem;
   display: flex;
   align-items: center;
