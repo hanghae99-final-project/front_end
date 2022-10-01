@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_studing } from "../../app/slice/mainSlice";
+import { __getStuding } from "../../app/slice/mainSlice";
 import styles from "./studing.module.css";
 import alert from "../../common/svg/alert_icon.svg";
 import "../../common/css/color.css";
@@ -8,14 +8,13 @@ import font from "../../common/css/font.module.css";
 import { useState } from "react";
 import InfoModal from "../infoModal/InfoModal";
 import { Blur } from "../../pages/mainPage/Styled";
-import styled from "styled-components";
 
 const Studying = () => {
   const dispatch = useDispatch();
   const [info, setInfo] = useState(localStorage.info ? true : false);
   const studying = useSelector(state => state.main?.studing);
   useEffect(() => {
-    dispatch(get_studing());
+    dispatch(__getStuding());
   }, [dispatch]);
   return (
     <>

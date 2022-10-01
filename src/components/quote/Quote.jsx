@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_quote } from "../../app/slice/mainSlice";
+import { __getQuote } from "../../app/slice/mainSlice";
 import styles from "./quote.module.css";
 import font from "../../common/css/font.module.css";
 import { memo } from "react";
@@ -9,7 +9,7 @@ const Quote = () => {
   const dispatch = useDispatch();
   const quote = useSelector(state => state.main.quote);
   useEffect(() => {
-    dispatch(get_quote());
+    dispatch(__getQuote());
   }, []);
 
   return (
