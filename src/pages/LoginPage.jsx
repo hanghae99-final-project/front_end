@@ -23,7 +23,11 @@ const LoginPage = () => {
     if (!deferredPrompt.current) {
       setVisible(false);
     }
-    setVisible(true);
+    if (window.matchMedia("(display-mode: standalone)").matches) {
+      console.log("display-mode is standalone");
+    } else {
+      setVisible(true);
+    }
   }, []);
 
   const installApp = () => {
