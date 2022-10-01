@@ -97,6 +97,11 @@ p.infoText {
   color: var(--neutral-70);
 }
 
+.nicknameLength {
+  color: var(--neutral-70);
+  margin-right: 0.5rem;
+}
+
 .buttonBox {
   display: flex;
   justify-content: center;
