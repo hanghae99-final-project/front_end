@@ -54,7 +54,7 @@ const MainPage = () => {
         </div>
       </div>
       <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
-        <ToDo />
+        <TodoModal />
       </div>
       {survey && <SurveyModal setSurvey={setSurvey} />}
       <Gradient />

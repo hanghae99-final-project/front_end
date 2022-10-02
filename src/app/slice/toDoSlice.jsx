@@ -75,7 +75,7 @@ const todoSlice = createSlice({
     [__addTodo.fulfilled]: (state, { payload }) => {
       return (state = [...state, payload]);
     },
-    [deleteList.fulfilled]: (state, { payload }) => state.filter(toDo => toDo._id !== payload),
+    [__deleteTodo.fulfilled]: (state, { payload }) => state.filter(toDo => toDo._id !== payload),
 
     [__updateTodo.fulfilled]: (state, { payload }) => {
       return current(state).map(todo => (todo._id === payload._id ? { ...todo, ...payload } : todo));

@@ -14,7 +14,6 @@ import useCalculate from "../../hooks/useCalculate";
 
 const TimeTimer = () => {
   const date = new Date().getTime();
-  const [timeMode, setTimeMode] = useState("normal");
   const dispatch = useDispatch();
 
   const studyStartPoint = useSelector(state => state.timer?.studyStartPoint);
