@@ -63,8 +63,6 @@ const WeeklyDataGraph = () => {
     endWeek: sunday // 이번 주 일요일
   });
 
-  console.log(week);
-
   useEffect(() => {
     setWeek({
       startWeek: monday,
