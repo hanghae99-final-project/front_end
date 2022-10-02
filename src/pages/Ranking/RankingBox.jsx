@@ -6,6 +6,7 @@ import styles from "./../css/rankingPage.module.css";
 import dropdownBtn from "../../common/svg/dropdown_icon.svg";
 import font from "../../common/css/font.module.css";
 import { useNavigate } from "react-router-dom";
+import { current } from "@reduxjs/toolkit";
 
 const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
   const dispatch = useDispatch();
@@ -41,6 +42,9 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
   const modalOffHandler = e => {
     setBtsOn(false);
   };
+
+  console.log(type);
+
   return (
     <>
       <div
@@ -78,7 +82,6 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
                         }}
                         onClick={() => {
                           setMode(day.ko);
-                          setAgeMode(ageMode);
                           setType({ ...type, period: day.en });
                         }}
                       >
@@ -93,7 +96,7 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
                         }}
                         onClick={() => {
                           setType({ ...type, period: day.en });
-                          setAgeMode(ageMode);
+
                           setMode(day.ko);
                         }}
                       >
