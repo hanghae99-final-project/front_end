@@ -16,12 +16,12 @@ const Join = () => {
   const navi = useNavigate();
   const use = useSelector(state => state.main);
 
-  useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-    if (use?.user?.nickname !== "" && localStorage.getItem("token") !== null) {
-      navi("/home");
-    }
-  }, []);
+  // useEffect(() => {
+  //   localStorage.getItem("token") === null && navi("/");
+  //   if (use?.user?.nickname !== "" && localStorage.getItem("token") !== null) {
+  //     navi("/home");
+  //   }
+  // }, []);
 
   return (
     <Layout>

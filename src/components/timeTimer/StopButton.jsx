@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { __postStudyEnd } from "../../app/slice/timeTimerSlice";
 import "../../common/css/color.css";
@@ -7,21 +7,11 @@ import { ReactComponent as Stop } from "../../common/svg/stop_icon.svg";
 import font from "../../common/css/font.module.css";
 import { changeColor } from "../../app/slice/layoutColorSlice";
 
-const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest }) => {
-  const dispatch = useDispatch();
+const StopButton = ({ onClickHandler }) => {
   const color = useSelector(state => state.color);
 
   return (
-    <StopBtn
-      color={color}
-      onClick={() => {
-        setRefresh(false);
-        setRun(false);
-        setRest(false);
-        dispatch(changeColor(""));
-        dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
-      }}
-    >
+    <StopBtn color={color} onClick={onClickHandler}>
       <Stop fill={color === "green" ? "var(--neutral-10)" : "var(--neutral-100)"} />
       <div className={font.subtitle2_600_16}>그만하기</div>
     </StopBtn>
@@ -31,14 +21,14 @@ const StopButton = ({ restStartPoint, date, setRefresh, setRun, setRest }) => {
 export default StopButton;
 
 const StopBtn = styled.button`
-  width: 45%;
+  width: 50%;
   height: 3.75rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  padding: 0.75rem 1rem 0.75rem 0.5rem;
+  padding: 0.75rem 1rem;
   border: none;
   border-radius: 8px;
   &:active {

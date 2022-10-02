@@ -9,7 +9,6 @@ import { ReactComponent as LeftArrow } from "../../common/svg/left_arrow.svg";
 import { ReactComponent as RightArrow } from "../../common/svg/right_arrow.svg";
 import font from "../../common/css/font.module.css";
 import dayjs from "dayjs";
-import { useCallback } from "react";
 
 ChartJS.register(CategoryScale, LinearScale, BarElement);
 
@@ -31,33 +30,48 @@ const WeeklyDataGraph = () => {
       return addDayArray?.filter(item => item.day === v);
     })
     .map((v, i) => {
+      console.log("hi");
       return v?.length !== 0 ? v : i + 1 === 7 ? { studyTime: 0, day: 0 } : { studyTime: 0, day: i + 1 };
     })
     .flat();
 
   const [move, setMove] = useState(0);
   let now = dayjs();
-  const test_monday = useMemo(() => {
-    return "20" + now.startOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+  const monday = useMemo(() => {
+    return (
+      "20" +
+      now
+        .startOf("week")
+        .add(1, "day")
+        .add(now.get("day") === 0 ? move - 1 : move, "week")
+        .format("YY-MM-DD")
+    );
   }, [move]);
-  const test_sunday = useMemo(() => {
-    return "20" + now.endOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
+  const sunday = useMemo(() => {
+    return (
+      "20" +
+      now
+        .endOf("week")
+        .add(1, "day")
+        .add(now.get("day") === 0 ? move - 1 : move, "week")
+        .format("YY-MM-DD")
+    );
   }, [move]);
 
   const [week, setWeek] = useState({
-    startWeek: test_monday, // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
-    endWeek: test_sunday // 이번 주 일요일
+    startWeek: monday, // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
+    endWeek: sunday // 이번 주 일요일
   });
 
   useEffect(() => {
     setWeek({
-      startWeek: test_monday,
-      endWeek: test_sunday
+      startWeek: monday,
+      endWeek: sunday
     });
   }, [move]);
 
   useEffect(() => {
-    dispatch(__getWeeklyData({ startWeek: test_monday, endWeek: test_sunday }));
+    dispatch(__getWeeklyData({ startWeek: monday, endWeek: sunday }));
   }, [week]);
 
   const labels = ["월", "화", "수", "목", "금", "토", "일"];

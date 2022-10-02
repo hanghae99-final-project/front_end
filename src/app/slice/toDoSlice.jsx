@@ -19,6 +19,7 @@ export const __getDailyTodo = createAsyncThunk("todoSlice/__getDailyTodo", async
 
   const response = await axios.get(
     process.env.REACT_APP_SERVER_URL + `/todo/${payload.year}-${selectedMonth}-${selectedDate}`,
+
     {
       headers: { Authorization: `Bearer ${localStorage.token}` }
     }
@@ -74,7 +75,7 @@ const todoSlice = createSlice({
     [__addTodo.fulfilled]: (state, { payload }) => {
       return (state = [...state, payload]);
     },
-    [__deleteTodo.fulfilled]: (state, { payload }) => state.filter(todo => todo._id !== payload),
+    [deleteList.fulfilled]: (state, { payload }) => state.filter(toDo => toDo._id !== payload),
 
     [__updateTodo.fulfilled]: (state, { payload }) => {
       return current(state).map(todo => (todo._id === payload._id ? { ...todo, ...payload } : todo));

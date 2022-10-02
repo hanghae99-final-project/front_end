@@ -18,7 +18,6 @@ const MainPage = () => {
   const [todoMode, setTodoMode] = useState("normal");
   const [btsOn, setBtsOn] = useState(false);
   const [survey, setSurvey] = useState(false);
-
   const navi = useNavigate();
 
   useEffect(() => {
@@ -27,16 +26,16 @@ const MainPage = () => {
 
   return (
     <Layout>
-      <img
-        src={chicken}
-        alt="치킨"
-        className={styles.chicken}
-        onClick={() => {
-          setSurvey(true);
-        }}
-      />
       <div className={styles.columnBox}>
         <div>
+          <img
+            src={chicken}
+            alt="치킨"
+            className={styles.chicken}
+            onClick={() => {
+              setSurvey(true);
+            }}
+          />
           <Studying />
           <MainDday />
           <Timer />
@@ -55,18 +54,10 @@ const MainPage = () => {
         </div>
       </div>
       <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
-        <TodoModal />
+        <ToDo />
       </div>
       {survey && <SurveyModal setSurvey={setSurvey} />}
       <Gradient />
-      {survey && (
-        <div
-          className={styles.blur}
-          onClick={() => {
-            setSurvey(false);
-          }}
-        />
-      )}
       {todoMode === "set" && (
         <div
           className={styles.blur}

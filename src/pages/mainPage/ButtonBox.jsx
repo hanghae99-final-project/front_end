@@ -1,9 +1,9 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "../../components/timeTimer/timeTimer.module.css";
 import font from "../../common/css/font.module.css";
 import { useDispatch } from "react-redux";
 import { changeColor } from "../../app/slice/layoutColorSlice";
-import { __postRestStart, __postRestEnd } from "../../app/slice/timeTimerSlice";
+import { __postRestStart, __postRestEnd, __postStudyEnd } from "../../app/slice/timeTimerSlice";
 import changeTimeForm from "../../utils/changeTimeForm";
 import setting from "../../common/svg/setting_icon.svg";
 import pause from "../../common/svg/pause_icon.svg";
@@ -24,6 +24,28 @@ const ButtonBox = ({
   date
 }) => {
   const dispatch = useDispatch();
+  __postRestStart({
+    restStartPoint: date,
+    studyEndPoint: date
+  });
+  const endTimer = () => {
+    setRefresh(false);
+    setRun(false);
+    setRest(false);
+    dispatch(changeColor(""));
+    dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
+  };
+
+  const restHandler = func => {
+    setRest(!rest);
+    if (rest) {
+      setRun(true);
+    } else {
+      dispatch(changeColor("blue"));
+      setRefresh(false);
+    }
+    dispatch(func);
+  };
 
   return (
     <div className={styles.buttonBox}>
@@ -65,54 +87,30 @@ const ButtonBox = ({
       ) : (
         <div className={styles.studingButtonBox}>
           {!rest ? (
-            <>
-              <button
-                className={styles.restStartBtn}
-                onClick={() => {
-                  setRest(true);
-                  setRefresh(false);
-                  dispatch(changeColor("blue"));
-                  dispatch(
-                    __postRestStart({
-                      restStartPoint: date,
-                      studyEndPoint: date
-                    })
-                  );
-                }}
-              >
-                <img src={pause} alt="휴식하기" />
-                <div className={styles.restTextBox}>
-                  <div className={`${styles.restText} ${font.subtitle2_600_16}`}>휴식하기</div>
-                  {changeTimeForm(restSecond, `${styles.restTime} ${font.caption_300_12}`)}
-                </div>
-              </button>
-            </>
+            <button
+              className={styles.restStartBtn}
+              onClick={() => restHandler(__postRestStart({ restStartPoint: date, studyEndPoint: date }))}
+            >
+              <img src={pause} alt="휴식하기" />
+              <div className={styles.restTextBox}>
+                <div className={`${styles.restText} ${font.subtitle2_600_16}`}>휴식하기</div>
+                {changeTimeForm(restSecond, `${styles.restTime} ${font.caption_300_12}`)}
+              </div>
+            </button>
           ) : (
-            <>
-              <button
-                className={styles.restEndBtn}
-                onClick={() => {
-                  setRest(false);
-                  setRun(true);
-                  dispatch(__postRestEnd({ restEndPoint: date, studyStartPoint: date }));
-                }}
-              >
-                <Play className={styles.setting} fill={"var(--neutral-10)"} />
-                <div>{changeTimeForm(restSecond, `${styles.savedRestTime} ${font.subtitle2_600_16}`)}</div>
-              </button>
-            </>
+            <button
+              className={styles.restEndBtn}
+              onClick={() => restHandler(__postRestEnd({ restEndPoint: date, studyStartPoint: date }))}
+            >
+              <Play className={styles.setting} fill={"var(--neutral-10)"} />
+              <div>{changeTimeForm(restSecond, `${styles.savedRestTime} ${font.subtitle2_600_16}`)}</div>
+            </button>
           )}
-          <StopButton
-            restStartPoint={restStartPoint}
-            date={date}
-            setRefresh={setRefresh}
-            setRun={setRun}
-            setRest={setRest}
-          />
+          <StopButton onClickHandler={endTimer} />
         </div>
       )}
     </div>
   );
 };
 
-export default ButtonBox;
+export default memo(ButtonBox);
