@@ -6,7 +6,7 @@ import TodoModify from "./TodoModify";
 import styles from "./todoList.module.css";
 import font from "../././../common/css/font.module.css";
 
-const todoList = ({ setOpenPost, modifyOn, setModifyOn, modifyModal, setModifyModal, closeTodo }) => {
+const TodoList = ({ setOpenPost, modifyOn, setModifyOn, modifyModal, setModifyModal, closeTodo }) => {
   const dispatch = useDispatch();
   const todoList = useSelector(state => state.todo);
 
@@ -111,4 +111,4 @@ const PickColor = styled.div`
   background-color: ${props => props.bgColor};
 `;
 
-export default todoList;
+export default TodoList;
