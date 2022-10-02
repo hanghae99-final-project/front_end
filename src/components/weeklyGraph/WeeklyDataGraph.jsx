@@ -43,14 +43,11 @@ const WeeklyDataGraph = () => {
   const test_sunday = useMemo(() => {
     return "20" + now.endOf("week").add(1, "day").add(move, "week").format("YY-MM-DD");
   }, [move]);
-  console.log(test_monday, test_sunday);
 
   const [week, setWeek] = useState({
     startWeek: test_monday, // 이번 주 월요일 : 2022-09-19 -> ms로 바꾸고 -> 7일 ms 빼고 -> 다시 바꿔서 보내고
     endWeek: test_sunday // 이번 주 일요일
   });
-
-  console.log(week);
 
   useEffect(() => {
     setWeek({
@@ -65,7 +62,7 @@ const WeeklyDataGraph = () => {
 
   const labels = ["월", "화", "수", "목", "금", "토", "일"];
   //ms -> hour 변환
-  const data = weeklyStudyData.map(element => Math.ceil(element?.studyTime / 3600000));
+  const data = weeklyStudyData.map(element => Math.floor(element?.studyTime / 3600000));
   // 16진수로 표현하여 opacity 조절
   const dataColor = data.map(element => {
     if (element >= 1 && element < 3) {

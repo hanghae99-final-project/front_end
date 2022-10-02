@@ -7,7 +7,6 @@ export const getMonthList = createAsyncThunk("GET_MONTH", async ({ selectedYear,
   const response = await axios.get(process.env.REACT_APP_SERVER_URL + `/mypage/monthlyStudy/${selectedYear}-${month}`, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   });
-  console.log(response);
   return response.data;
 });
 

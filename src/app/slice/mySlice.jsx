@@ -14,7 +14,6 @@ export const __getWeeklyData = createAsyncThunk("/weekly", async (payload, thunk
         }
       }
     );
-    console.log(data);
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
