@@ -1,109 +1,95 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { deleteList, getList, updateToDoDone } from "../../app/slice/toDoSlice";
-import ToDoModify from "./ToDoModify";
-import styles from "./toDoList.module.css";
+import { __deleteTodo, __getTodoList, __updateTodoDone } from "../../app/slice/todoSlice";
+import TodoModify from "./TodoModify";
+import styles from "./todoList.module.css";
 import font from "../././../common/css/font.module.css";
 
-const ToDoList = () => {
-  const [upDateValue, setUpDateValue] = useState("");
-  const [upDateColor, setUpDateColor] = useState("#FFFFFF");
-  const [btnOn, setBtnOn] = useState(true);
-  const [modifyOn, setModifyOn] = useState("");
-  const [modifyModal, setModifyModal] = useState("");
-
+const TodoList = ({ setOpenPost, modifyOn, setModifyOn, modifyModal, setModifyModal, closeTodo }) => {
   const dispatch = useDispatch();
-  const toDos = useSelector(state => state.toDo);
-  console.log(toDos);
-
+  const todoList = useSelector(state => state.todo);
+  console.log("hi");
   useEffect(() => {
-    dispatch(getList());
+    dispatch(__getTodoList());
   }, []);
 
-  const onDeleteToDoHandler = toDoId => {
-    dispatch(deleteList(toDoId));
+  const onDeleteToDoHandler = todoId => {
+    dispatch(__deleteTodo(todoId));
   };
 
-  const onClickModifyOnOff = e => {
-    console.dir(e.target);
-  };
-
-  const onChnageTodoValueUpDateHandler = e => {
-    setUpDateValue(e.target.value);
-  };
-
-  // const onUpdateToDoHandler = (toDoId) => {
-  //   if (upDateValue !== '') {
-  //     dispatch(updateList({ id: toDoId, work: upDateValue, color: upDateColor }));
-  //   } else {
-  //     alert('수정할 내용을 입력해 주세요.');
-  //   }
-  //   setUpDateValue('');
-  // };
-
-  const onClickToDoDone = (isDone, toDoId) => {
-    dispatch(updateToDoDone({ isDone: !isDone, id: toDoId }));
+  const onClickToDoDone = (isDone, todoId) => {
+    dispatch(__updateTodoDone({ isDone: !isDone, id: todoId }));
   };
 
   return (
     <div className={styles.container}>
-      {toDos.length === 0 ? (
+      {todoList.length === 0 ? (
         <div className={`${styles.emptyTodo} ${font.subtitle2_600_16}`}>할 일을 추가해 보세요</div>
       ) : (
         <div className={styles.innerContainer}>
-          {toDos
-            ?.map(toDo => {
+          {todoList
+            ?.map(todo => {
               return (
                 <div
-                  className={modifyOn === toDo._id ? `${styles.outWarp} ${styles.modifyOn}` : `${styles.outWarp}`}
-                  key={toDo._id}
+                  className={modifyOn === todo._id ? `${styles.outWarp} ${styles.modifyOn}` : `${styles.outWarp}`}
+                  key={todo._id}
                 >
                   <div style={{ display: "flex" }}>
-                    <div className={styles.innerWarp}>
+                    <div className={modifyModal === todo._id ? styles.closeTodo : styles.innerWarp}>
                       <div className={styles.toDoContainer}>
                         <div className={styles.toDoWarp}>
                           <div
                             onClick={() => {
-                              modifyOn === toDo._id ? setModifyOn("") : setModifyOn(toDo._id);
+                              modifyOn === todo._id ? setModifyOn("") : setModifyOn(todo._id);
                               setModifyModal("");
                             }}
                             className={styles.toDoValueWarp}
                           >
-                            <PickColor bgColor={toDo.color}></PickColor>
+                            <PickColor bgColor={todo.color}></PickColor>
                             <p
                               className={
-                                toDo.isDone
+                                todo.isDone
                                   ? `${styles.ToDoTrue} ${font.strikethrough_30014}`
                                   : `${styles.ToDoFalse} ${font.body2_300_14}`
                               }
                             >
-                              {toDo.work}
+                              {todo.work}
                             </p>
                           </div>
                           <button
-                            className={toDo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn}
-                            onClick={() => onClickToDoDone(toDo.isDone, toDo._id)}
+                            className={todo.isDone ? styles.isDoneTureBtn : styles.isDoneFalseBtn}
+                            onClick={() => onClickToDoDone(todo.isDone, todo._id)}
                           ></button>
                         </div>
                       </div>
                     </div>
+
                     <div className={styles.btnWarp}>
                       <button
                         className={styles.modifyBtn}
                         onClick={() => {
-                          modifyModal === toDo._id ? setModifyModal("") : setModifyModal(toDo._id);
+                          modifyModal === todo._id
+                            ? setModifyModal("")
+                            : `${setModifyModal(todo._id)} ${setOpenPost(false)}`;
                         }}
                       ></button>
                       <button
                         className={styles.delBtn}
-                        onClick={() => onDeleteToDoHandler(toDo._id)}
+                        onClick={() => onDeleteToDoHandler(todo._id)}
                         type="button"
                       ></button>
                     </div>
                   </div>
-                  {modifyModal === toDo._id ? (
-                    <ToDoModify toDoId={toDo._id} setModifyModal={setModifyModal} setModifyOn={setModifyOn} />
+
+                  {modifyModal === todo._id ? (
+                    <TodoModify
+                      todoColor={todo.color}
+                      todoWork={todo.work}
+                      todoId={todo._id}
+                      setModifyModal={setModifyModal}
+                      setModifyOn={setModifyOn}
+                    />
                   ) : (
                     ""
                   )}
@@ -125,4 +111,4 @@ const PickColor = styled.div`
   background-color: ${props => props.bgColor};
 `;
 
-export default ToDoList;
+export default TodoList;

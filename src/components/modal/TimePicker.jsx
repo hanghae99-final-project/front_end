@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./timePicker.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Mousewheel } from "swiper";
+import SwiperCore, { Mousewheel, Navigation } from "swiper";
 import font from "../../common/css/font.module.css";
 import "swiper/css";
 
-SwiperCore.use([Mousewheel]);
+SwiperCore.use([Mousewheel, Navigation]);
 
 const TimePicker = ({ time, setTime, mode, unit }) => {
   return (

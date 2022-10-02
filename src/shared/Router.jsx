@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import LoginPage from "../pages/LoginPage";
-import ToDo from "../pages/ToDo";
+import TodoModal from "../components/todo/TodoModal";
 import KakaoFinish from "../pages/KakaoFinish";
 import MyPage from "../pages/MyPage";
 import Ranking from "../pages/Ranking";
@@ -18,7 +18,6 @@ function Router() {
       <Routes>
         <Route path="/home" element={<MainPage />} />
         <Route path="/" element={<LoginPage />} />
-        <Route path="/todo" element={<ToDo />} />
         <Route path="/users/kakao/callback" element={<KakaoFinish />} />
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/join" element={<Join />} />

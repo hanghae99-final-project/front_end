@@ -126,9 +126,9 @@ const PostDday = ({
                     className={
                       choiceDay === dayValue
                         ? styles.choiceDay
-                        : styles.daylist || todayValue === dayValue
-                        ? `${styles.daylist} ${styles.selectedToday}`
-                        : styles.daylist
+                        : todayValue === dayValue
+                        ? styles.selectedToday
+                        : styles.dayList
                     }
                   >
                     <span onClick={setDeadlineHandler} name="deadline" id={dayValue}>
