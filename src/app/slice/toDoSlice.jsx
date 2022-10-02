@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getList = createAsyncThunk("GET_TODO", async () => {
+export const __getTodoList = createAsyncThunk("todoSlice/__getTodoList", async () => {
   const now = new Date();
   const year = now.getFullYear();
   const months = ("0" + (now.getMonth() + 1)).slice(-2);
@@ -13,7 +13,7 @@ export const getList = createAsyncThunk("GET_TODO", async () => {
   return response.data;
 });
 
-export const __getdailyTodo = createAsyncThunk("dailyTodo", async payload => {
+export const __getDailyTodo = createAsyncThunk("todoSlice/__getDailyTodo", async payload => {
   const selectedMonth = payload.month < 10 ? "0" + payload.month : payload.month;
   const selectedDate = payload.date < 10 ? "0" + payload.date : payload.date;
 
@@ -26,29 +26,28 @@ export const __getdailyTodo = createAsyncThunk("dailyTodo", async payload => {
   return response.data;
 });
 
-export const addList = createAsyncThunk("ADD_TODO", async toDo => {
-  const response = await axios.post(process.env.REACT_APP_SERVER_URL + `/todo`, toDo, {
+export const __addTodo = createAsyncThunk("todoSlice/__addTodo", async todo => {
+  const response = await axios.post(process.env.REACT_APP_SERVER_URL + `/todo`, todo, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   });
   return response.data;
 });
 
-export const deleteList = createAsyncThunk("DELETE_TODO", async toDoId => {
-  const response = await axios.delete(process.env.REACT_APP_SERVER_URL + `/todo/${toDoId}`, {
+export const __deleteTodo = createAsyncThunk("todoSlice/__deleteTodo", async todoId => {
+  await axios.delete(process.env.REACT_APP_SERVER_URL + `/todo/${todoId}`, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   });
-  console.log(response);
-  return toDoId;
+  return todoId;
 });
 
-export const updateList = createAsyncThunk("UPDATE_LIST", async payload => {
-  const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${payload.toDoId}`, payload.upDateToDo, {
+export const __updateTodo = createAsyncThunk("todoSlice/__updateTodo", async payload => {
+  const response = await axios.put(process.env.REACT_APP_SERVER_URL + `/todo/${payload.todoId}`, payload.upDateTodo, {
     headers: { Authorization: `Bearer ${localStorage.token}` }
   });
   return response.data;
 });
 
-export const updateToDoDone = createAsyncThunk("UPDATE_ToDoDone", async ({ id, isDone }) => {
+export const __updateTodoDone = createAsyncThunk("todoSlice/__updateTodoDone", async ({ id, isDone }) => {
   const response = await axios.put(
     process.env.REACT_APP_SERVER_URL + `/todo/${id}`,
     {
@@ -59,41 +58,38 @@ export const updateToDoDone = createAsyncThunk("UPDATE_ToDoDone", async ({ id, i
   return response.data;
 });
 
-const toDoSlice = createSlice({
-  name: "toDoList",
+const todoSlice = createSlice({
+  name: "todoList",
   initialState: [],
   reducers: {},
   extraReducers: {
-    [getList.fulfilled]: (state, { payload }) => {
+    [__getTodoList.fulfilled]: (state, { payload }) => {
       return (state = payload.todoArr);
     },
 
-    [__getdailyTodo.fulfilled]: (state, { payload }) => (state = payload.todoArr),
-    [__getdailyTodo.rejected]: (state, { payload }) => {
+    [__getDailyTodo.fulfilled]: (state, { payload }) => (state = payload.todoArr),
+    [__getDailyTodo.rejected]: (state, { payload }) => {
       console.log("실패");
     },
-    [addList.fulfilled]: (state, { payload }) => {
+    [__addTodo.fulfilled]: (state, { payload }) => {
       return (state = [...state, payload]);
     },
-    [deleteList.fulfilled]: (state, { payload }) => state.filter(toDo => toDo._id !== payload),
+    [__deleteTodo.fulfilled]: (state, { payload }) => state.filter(todo => todo._id !== payload),
 
-    [updateList.fulfilled]: (state, { payload }) => {
-      console.log(payload);
-      console.log(current(state));
+    [__updateTodo.fulfilled]: (state, { payload }) => {
       return current(state).map(todo => (todo._id === payload._id ? { ...todo, ...payload } : todo));
     },
 
-    [updateToDoDone.fulfilled]: (state, { payload }) => {
-      return state.map(toDo => {
-        console.log(toDo);
-        if (toDo._id === payload._id) {
-          return { ...toDo, isDone: payload.isDone };
+    [__updateTodoDone.fulfilled]: (state, { payload }) => {
+      return state.map(todo => {
+        if (todo._id === payload._id) {
+          return { ...todo, isDone: payload.isDone };
         } else {
-          return toDo;
+          return todo;
         }
       });
     }
   }
 });
 
-export default toDoSlice;
+export default todoSlice;
