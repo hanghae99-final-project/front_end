@@ -9,7 +9,7 @@ import font from "../././../common/css/font.module.css";
 const TodoList = ({ setOpenPost, modifyOn, setModifyOn, modifyModal, setModifyModal, closeTodo }) => {
   const dispatch = useDispatch();
   const todoList = useSelector(state => state.todo);
-  console.log("hi");
+
   useEffect(() => {
     dispatch(__getTodoList());
   }, []);
