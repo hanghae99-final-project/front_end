@@ -78,6 +78,7 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
                         }}
                         onClick={() => {
                           setMode(day.ko);
+                          setAgeMode(ageMode);
                           setType({ ...type, period: day.en });
                         }}
                       >
@@ -92,6 +93,7 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
                         }}
                         onClick={() => {
                           setType({ ...type, period: day.en });
+                          setAgeMode(ageMode);
                           setMode(day.ko);
                         }}
                       >

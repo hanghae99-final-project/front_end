@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styles from "../../components/timeTimer/timeTimer.module.css";
 import font from "../../common/css/font.module.css";
 import changeTimeForm from "../../utils/changeTimeForm";
@@ -7,14 +7,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { changeColor } from "../../app/slice/layoutColorSlice";
 
-const CircleTimer = ({ sec, second, targetTime, run, setTimeMode, targetToSec, status }) => {
+const CircleTimer = ({ second, targetTime, run, setTimeMode, targetToSec, status }) => {
   const color = useSelector(state => state.color);
   const dispatch = useDispatch();
+  const sec = second * (283 / targetToSec); // 타임타이머 동작을 위한 초 설정
+
   useEffect(() => {
     if (Math.floor(targetTime / 1000) <= second && color === "green") {
       dispatch(changeColor("red"));
     }
   }, [second]);
+
   return (
     <div className={styles.baseTimer}>
       <div className={styles.a}>
@@ -68,4 +71,4 @@ const CircleTimer = ({ sec, second, targetTime, run, setTimeMode, targetToSec, s
   );
 };
 
-export default CircleTimer;
+export default memo(CircleTimer);

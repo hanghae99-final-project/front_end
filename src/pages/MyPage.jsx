@@ -12,7 +12,6 @@ import { Link, useNavigate } from "react-router-dom";
 import font from "../common/css/font.module.css";
 
 const MyPage = () => {
-  console.log(localStorage.getItem("token"));
   const navi = useNavigate();
 
   useEffect(() => {

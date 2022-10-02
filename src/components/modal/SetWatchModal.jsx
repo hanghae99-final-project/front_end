@@ -1,9 +1,10 @@
 import React from "react";
 import styles from "./setTimeModal.module.css";
 import SetTimePicker from "./SetTimePicker";
-import { ReactComponent as Close } from "../../common/svg/close.svg";
 import font from "../../common/css/font.module.css";
 import { useState } from "react";
+import ModalButton from "./ModalButton";
+import ModalTitle from "./ModalTitle";
 
 const SetWatchModal = ({
   startTime,
@@ -19,119 +20,64 @@ const SetWatchModal = ({
   time,
   setTime,
   setColor,
-  mode
+  mode,
+  initializeTime
 }) => {
-  console.log(mode, remainTime);
   const [able, setAble] = useState(false);
+
+  /** running일 때 누르면 종료 후 초기화, running이 아닐 때 누르면 시간 설정 후 실행 */
+  const onRunningHandler = () => {
+    setMode("normal");
+    setRunning(!running);
+    running
+      ? initializeTime()
+      : localStorage.setItem("targetTime", (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
+  };
+
+  /** 타이머가 running일 때 누르면 시간을 저장하고, stop일 때 누르면 휴식을 종료시키는 함수  */
+  const onStopHandler = () => {
+    setStop(!stop);
+    setAble(true);
+    setTimeout(() => {
+      setAble(false);
+    }, 1050);
+    if (stop) {
+      localStorage.removeItem("restStart");
+    } else {
+      localStorage.setItem("savedStudyTime", savedStudyTime + currentDate - startTime);
+      localStorage.setItem("restStart", true);
+    }
+  };
+
   return (
     <div className={localStorage.targetTime > 0 || mode === "complete" ? styles.setModal : styles.modal}>
-      <div className={`${styles.title} ${font.subtitle2_600_16}`}>
-        <div>{mode === "complete" ? "타이머 종료" : "타이머"}</div>
-        <Close
-          className={styles.close}
-          onClick={() => {
-            setMode("normal");
-            setColor("#7E7C8C");
-            mode === "complete" && setRunning(false);
-          }}
-        />
-      </div>
+      <ModalTitle
+        title={mode === "complete" ? "타이머 종료" : "타이머"}
+        func={() => {
+          setMode("normal");
+          setColor("#7E7C8C");
+          mode === "complete" && setRunning(false);
+        }}
+      />
       {!running ? (
         <>
           <SetTimePicker setTime={setTime} time={time} />
-          <button
-            className={`${styles.startBtn} ${font.subtitle2_600_16}`}
-            onClick={() => {
-              localStorage.setItem("targetTime", (Number(time.hour) * 3600 + Number(time.minute) * 60) * 1000);
-              setMode("normal");
-              setRunning(true);
-            }}
-          >
-            시작하기
-          </button>
+          <div className={styles.buttonBox}>
+            <ModalButton title="시작하기" type="long" onClickHandler={onRunningHandler} />
+          </div>
         </>
       ) : (
         <>
           {changeTimeForm(remainTime, `${styles.remainTime} ${font.header_600_42}`)}
           <div className={styles.buttonBox}>
             {mode === "complete" ? (
-              <button
-                className={`${styles.completeButton} ${font.subtitle2_600_16}`}
-                onClick={() => {
-                  setMode("normal");
-                  setRunning(false);
-                }}
-              >
-                확인
-              </button>
+              <ModalButton title="확인" type="long" onClickHandler={onRunningHandler} />
             ) : !stop ? (
-              <>
-                <button
-                  disabled={able}
-                  className={`${styles.stopButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setStop(true);
-                    localStorage.setItem("savedStudyTime", savedStudyTime + currentDate - startTime);
-                    localStorage.setItem("restStart", true);
-                    setAble(true);
-                    setTimeout(() => {
-                      setAble(false);
-                    }, 1050);
-                  }}
-                >
-                  멈추기
-                </button>
-                <button
-                  className={`${styles.endButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setRunning(false);
-                    setStop(false);
-                    setTime({ hour: 0, minute: 0, second: 0 });
-                    localStorage.removeItem("startTime");
-                    localStorage.removeItem("targetTime");
-                    localStorage.removeItem("savedStudyTime");
-                    localStorage.removeItem("restStart");
-                    setMode("normal");
-                    setColor("#7E7C8C");
-                  }}
-                >
-                  종료하기
-                </button>
-              </>
+              <ModalButton title="멈추기" type="short" able={able} onClickHandler={onStopHandler} />
             ) : (
-              <>
-                <button
-                  disabled={able}
-                  className={`${styles.stopButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setStop(false);
-                    localStorage.removeItem("restStart");
-                    setAble(true);
-                    setTimeout(() => {
-                      setAble(false);
-                    }, 1050);
-                  }}
-                >
-                  계속하기
-                </button>
-                <button
-                  className={`${styles.endButton} ${font.subtitle2_600_16}`}
-                  onClick={() => {
-                    setRunning(false);
-                    setStop(false);
-                    setTime({ hour: 0, minute: 0, second: 0 });
-                    localStorage.removeItem("startTime");
-                    localStorage.removeItem("targetTime");
-                    localStorage.removeItem("savedStudyTime");
-                    localStorage.removeItem("restStart");
-                    setMode("normal");
-                    setColor("#7E7C8C");
-                  }}
-                >
-                  종료하기
-                </button>
-              </>
+              <ModalButton title="계속하기" type="short" able={able} onClickHandler={onStopHandler} />
             )}
+            {mode !== "complete" && <ModalButton title="종료하기" type="end" onClickHandler={onRunningHandler} />}
           </div>
         </>
       )}

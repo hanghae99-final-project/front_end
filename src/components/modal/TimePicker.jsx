@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "./timePicker.module.css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Mousewheel, Navigation } from "swiper";
+import SwiperCore, { Mousewheel } from "swiper";
 import font from "../../common/css/font.module.css";
 import "swiper/css";
 
-SwiperCore.use([Mousewheel, Navigation]);
+SwiperCore.use([Mousewheel]);
 
 const TimePicker = ({ time, setTime, mode, unit }) => {
   return (
@@ -18,18 +18,9 @@ const TimePicker = ({ time, setTime, mode, unit }) => {
         spaceBetween={10}
         slidesPerView={5}
         scrollbar={{ draggable: true }}
-        navigation={true}
         centeredSlides={true}
         mousewheel={true}
         direction={"vertical"}
-        pagination={{ clickable: true }}
-        // loop={true}
-        // freeMode={true}
-        breakpoints={{
-          768: {
-            slidesPerView: 5
-          }
-        }}
       >
         {mode.map(t => {
           return (
