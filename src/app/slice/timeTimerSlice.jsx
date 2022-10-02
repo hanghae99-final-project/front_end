@@ -8,7 +8,6 @@ export const get_studytime = createAsyncThunk("get_studytime", async (payload, t
         Authorization: `Bearer ${localStorage.token}`
       }
     });
-    console.log(data);
     return thunkAPI.fulfillWithValue(data);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);

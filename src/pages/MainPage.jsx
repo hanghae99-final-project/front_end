@@ -5,7 +5,7 @@ import TimeTimer from "../components/timeTimer/TimeTimer";
 import MainDday from "../components/dDay/MainDday";
 import styles from "./css/mainPage.module.css";
 import Footer from "../components/footer/Footer";
-import ToDo from "./ToDo";
+import TodoModal from "../components/todo/TodoModal";
 import TodoBtn from "../components/todo/TodoBtn";
 import SurveyModal from "../components/surveyModal/SurveyModal";
 import chicken from "../common/svg/cta_button.svg";
@@ -54,7 +54,7 @@ const MainPage = () => {
         </div>
       </div>
       <div className={btsOn ? styles.todoBtsOn : styles.todoBtsOff}>
-        <ToDo />
+        <TodoModal />
       </div>
       {survey && <SurveyModal setSurvey={setSurvey} />}
       <Gradient />

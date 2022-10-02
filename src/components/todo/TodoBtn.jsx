@@ -1,20 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getList } from "../../app/slice/toDoSlice";
+import { __getTodoList } from "../../app/slice/todoSlice";
 import styles from "./todoBtn.module.css";
 import font from "../../common/css/common.module.css";
 
 const TodoBtn = () => {
   const dispatch = useDispatch();
-  const toDos = useSelector(state => state.toDo);
+  const todoList = useSelector(state => state.todo);
 
-  console.log(toDos);
-
-  const totalTodo = toDos.length;
-  const isDoneCount = toDos?.filter(data => data?.isDone === true).length;
+  const totalTodo = todoList.length;
+  const isDoneCount = todoList?.filter(data => data?.isDone === true).length;
 
   useEffect(() => {
-    dispatch(getList());
+    dispatch(__getTodoList());
   }, []);
 
   return (

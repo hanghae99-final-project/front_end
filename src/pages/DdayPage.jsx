@@ -32,7 +32,7 @@ const DdayPage = () => {
         {blurSwich && <div onClick={blurHandler} className={styles.blurOn}></div>}
         {openPost && <div onClick={openPostHandler} className={styles.blurOn}></div>}
         <div className={styles.DdayTitle}>
-          <button className={styles.prevBtn} onClick={() => navi("/mypage")}></button>
+          <button className={styles.prevBtn} onClick={() => navi(-1)}></button>
           <h1>디데이 설정</h1>
           <button className={styles.addBtn} onClick={openPostHandler}></button>
         </div>

@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { addList } from "../../app/slice/toDoSlice";
-import styles from "./toDoPost.module.css";
+import { __addTodo } from "../../app/slice/todoSlice";
+import styled from "styled-components";
+import "../../common/css/color.css";
+import styles from "./todoPost.module.css";
 
-const ToDoPost = () => {
+const TodoPost = ({ setOpenPost }) => {
+  const dispatch = useDispatch();
   const [btnOn, setBtnOn] = useState(true);
   const [toDo, setToDo] = useState({
     work: "",
     isDone: false,
     color: "#ffffff"
   });
+  const colorValue = ["#ff5757", "#ff8058", "#92cd6e", "#66ffa6", "#75c5ff", "#ffffff"];
 
+  // default color checked
   const [check, setCheck] = useState("#ffffff");
-
-  const dispatch = useDispatch();
 
   const onChangeToDoHandler = e => {
     if (e.target.name === "color") {
@@ -24,8 +27,7 @@ const ToDoPost = () => {
     setToDo({ ...toDo, [name]: value });
   };
 
-  console.log(toDo);
-  // 버튼 활성화 로직
+  // 버튼 활성화
   useEffect(() => {
     if (toDo.work === "" || toDo.color === "") {
       setBtnOn(true);
@@ -36,8 +38,9 @@ const ToDoPost = () => {
 
   const onSubmitToDoHandler = e => {
     e.preventDefault();
-    dispatch(addList(toDo));
+    dispatch(__addTodo(toDo));
     setToDo({ ...toDo, work: "" });
+    setOpenPost(false);
   };
 
   return (
@@ -55,65 +58,21 @@ const ToDoPost = () => {
             value={toDo.work}
           />
           <div className={styles.colorInput}>
-            <input
-              checked={check === "#ff5757"}
-              className={styles.color1}
-              id="color1"
-              onChange={onChangeToDoHandler}
-              type="radio"
-              name="color"
-              value="#ff5757"
-            />
-
-            <input
-              checked={check === "#ff8058"}
-              className={styles.color2}
-              id="color2"
-              onChange={onChangeToDoHandler}
-              type="radio"
-              name="color"
-              value="#ff8058"
-            />
-
-            <input
-              checked={check === "#92cd6e"}
-              className={styles.color3}
-              id="color3"
-              onChange={onChangeToDoHandler}
-              type="radio"
-              name="color"
-              value="#92cd6e"
-            />
-
-            <input
-              checked={check === "#66ffa6"}
-              className={styles.color4}
-              id="color4"
-              onChange={onChangeToDoHandler}
-              type="radio"
-              name="color"
-              value="#66ffa6"
-            />
-
-            <input
-              checked={check === "#75c5ff"}
-              className={styles.color5}
-              id="color5"
-              onChange={onChangeToDoHandler}
-              type="radio"
-              name="color"
-              value="#75c5ff"
-            />
-
-            <input
-              checked={check === "#ffffff"}
-              className={styles.color6}
-              id="color6"
-              onChange={onChangeToDoHandler}
-              type="radio"
-              name="color"
-              value="#ffffff"
-            />
+            {colorValue.map((data, idx) => {
+              console.log(data);
+              return (
+                <input
+                  key={data}
+                  checked={check === data}
+                  id={data}
+                  name="color"
+                  value={data}
+                  onChange={onChangeToDoHandler}
+                  className={styles["color" + (idx + 1)]}
+                  type="radio"
+                />
+              );
+            })}
           </div>
         </div>
       </div>
@@ -126,19 +85,4 @@ const ToDoPost = () => {
   );
 };
 
-// const ColorPicker = styled.input.attrs({ type: 'radio' })`
-//   width: 1rem;
-//   height: 1rem;
-//   border-radius: 50%;
-//   border: 1px solid #999;
-//   appearance: none;
-//   cursor: pointer;
-//   transition: background 0.2s;
-
-//   &:checked {
-//     background-color: black;
-//     border: none;
-//   }
-// `;
-
-export default ToDoPost;
+export default TodoPost;
