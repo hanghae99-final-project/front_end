@@ -130,6 +130,7 @@
 	- 추가 시 D-day를 자동으로 계산해주며, 메인 화면에 슬라이드로 확인 가능
 
 - **월간 스터디 로그**
+	- <img width="100px" src="https://user-images.githubusercontent.com/95389265/193542942-b14bc36f-ebd3-43bc-905a-33e9ad8066fc.png">
 	- 공부한 시간 날짜 별로 공부한 시간에 따라서 색 변경
 
 - **날짜 별 투두 리스트**
