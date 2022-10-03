@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from "../pages/MainPage";
 import LoginPage from "../pages/LoginPage";
-import TodoModal from "../components/todo/TodoModal";
 import KakaoFinish from "../pages/KakaoFinish";
-import MyPage from "../pages/MyPage";
+import MyPage from "../pages/myPage/MyPage";
 import Ranking from "../pages/Ranking";
 import Join from "../pages/Join";
 import ProfileTodoList from "../components/profile/ProfileTodoList";

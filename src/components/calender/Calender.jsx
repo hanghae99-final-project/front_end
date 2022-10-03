@@ -6,30 +6,22 @@ import dayjs from "dayjs";
 import styles from "./calender.module.css";
 import font from "../../common/css/common.module.css";
 
-const Calender = () => {
+const Calender = ({
+  selectedYear,
+  setSelectedYear,
+  selectedMonth,
+  setSelectedMonth,
+  selectedDate,
+  setselectedDate
+}) => {
   const dispatch = useDispatch();
   const navi = useNavigate();
   const studyData = useSelector(state => state.calender);
-
-  // 날짜 정보 가져오기
-  const date = dayjs(); // 현재 날짜(로컬 기준) 가져오기
-
-  const today = {
-    year: date.get("year"), //오늘 연도
-    month: date.get("month"), //오늘 월
-    date: date.get("date"), //오늘 날짜
-    day: date.get("day") //오늘 요일
-  };
-
-  const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
-  const [selectedMonth, setSelectedMonth] = useState(today.month + 1); //현재 선택된 달
 
   // 이전 달의 마지막 날 날짜와 요일 구하기
   const startDay = dayjs(`${selectedYear}-${selectedMonth}-${0}`);
   const prevDate = startDay.get("date");
   const prevDay = startDay.get("day");
-  console.log(startDay.format("YY - MM - DD"), selectedMonth, today.month);
-  console.log(prevDate, prevDay);
 
   // 이번 달의 마지막날 날짜와 요일 구하기
   const endDay = dayjs(`${selectedYear}-${selectedMonth + 1}-${0}`);
@@ -46,7 +38,7 @@ const Calender = () => {
   }, [selectedMonth]);
 
   //일주일
-  const week = ["월", "화", "수", "목", "금", "토", "일"];
+  const week = ["일", "월", "화", "수", "목", "금", "토"];
 
   //이전 달 보기 버튼
   const prevMonth = useCallback(() => {
@@ -71,11 +63,11 @@ const Calender = () => {
   // 선택한 월에 맞는 요일 및 날짜 바인딩
   function calenderDate() {
     const data = [];
-    let todayValue = dayjs().format("YYYY-MM-DD");
+    let todayValue = dayjs(`${selectedYear}-${selectedMonth}-${selectedDate}`).format("YYYY-MM-DD");
     console.log(todayValue); /* new Date(today.year, today.month - 1, today.date + 1).toISOString().split("T")[0]; */
 
     // 이전달
-    for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+    for (var i = prevDate - prevDay; i <= prevDate; i++) {
       data.push(
         <div className={styles.dateWarp} style={{ backgroundColor: "#3b3b44" }}>
           <span>{i}</span>
