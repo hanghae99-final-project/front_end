@@ -1,29 +1,9 @@
->## 🖥️사용 기술 스택
-<br/>
-<div>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
-<img src="https://img.shields.io/badge/CSS Modules-000000?style=flat-square&logo=CSS Modules&logoColor=white"/>
-<img src="https://img.shields.io/badge/styled components -DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
-<img src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=white"/>
-<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black&"/>
-<img src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
-<img src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/>
-<img src="https://img.shields.io/badge/PWA-5A0FC8?style=flat-square&logo=PWA&logoColor=white"/>
-</div>
 
-<br/>
-
->###### 서비스 링크 👉: https://ranking-planner.com
->###### 팀 노션 👉: https://c11.kr/161cx
-
-<br/>
-
-
->## 👑취준생을 위한 시간 관리 플랫폼, 랭플👑
+># 👑취준생을 위한 시간 관리 플랫폼, 랭플👑
 
 랭플은 열심히 미래를 준비하고 있음에도 불구하고, **항상 불안해하는 취준생**들을 대상으로
 
-**불안감을 해소시키고, 동기를 부여해줄 목적**으로 만들어진 서비스입니다. 
+**불안감을 해소시키고, 동기 부여를 해줄 목적**으로 만들어진 서비스입니다. 
 
 이러한 문제들을 아래의 solution으로 해결하고자 했습니다.
 
@@ -33,7 +13,14 @@
 
 <br/>
 
->## 기능
+>서비스 링크 👉: https://ranking-planner.com
+>
+>팀 노션 👉: https://c11.kr/161cx
+
+<br/>
+
+
+>## 🖥️기능
 
 - **메인 페이지**
     - 타임 타이머 
@@ -46,7 +33,7 @@
     - 프로필 수정
     - 디데이 설정
     - 스터디로그 그래프 (월별, 주별)
-    - 날짜별 todo list
+    - 날짜별 todo 리스트
 - **랭킹 페이지**
     - 전체, 20대, 30대 랭킹
     - 일간, 주간, 월간 랭킹
@@ -54,7 +41,19 @@
 
 <br/>
 
->#### 반응형 웹사이트
+>### PWA
+
+<div align="center">
+<img width="71%" src="https://user-images.githubusercontent.com/95389265/193484343-7949dba6-3304-4d3f-9276-8102f1bfa603.png">
+</div>
+<div align="center">
+모바일 및 데스크탑에서 쉽게 접근할 수 있도록 PWA를 이용한 웹앱 구현
+</div>
+
+<br/>
+
+
+>### 반응형 웹사이트
 <div align="center">
 <img src="https://user-images.githubusercontent.com/95389265/193482461-93c7f758-bbf6-4bfa-ab61-e134be56e372.gif">
 </div>
@@ -74,7 +73,7 @@
 <img width="18%" src= "https://user-images.githubusercontent.com/95389265/193459626-239bcf78-4a8f-4532-976f-4f9f89956339.png" title="Info"/>
 </div>
 
--  **타임 타이머[or Circle Timer]**  
+-  **타임 타이머( or Circle Timer )**  
     - 공부를 시작했을 때 <span style="color:green">**Green** </span>
     - 휴식 중일 때 <span style="color:blue">**Blue**</span>
     - 목표를 달성했을 때 <span style="color:red">**Red**</span>
@@ -142,4 +141,78 @@
 	- 월간 스터디 로그와 같은 색상으로 표현
 
 <br/>
+
+>## 🛠️사용 기술 스택
+
+<br/>
+
+<div align="center">
+<img height="40px" src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>
+<img height="40px" src="https://img.shields.io/badge/CSS Modules-000000?style=flat-square&logo=CSS Modules&logoColor=white"/>
+<img height="40px" src="https://img.shields.io/badge/styled components -DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
+
+</div>
+<div align="center">
+<img height="40px" src="https://img.shields.io/badge/Javascript-F7DF1E?style=flat-square&logo=Javascript&logoColor=white"/>
+<img height="40px" src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black&"/>
+<img height="40px" src="https://img.shields.io/badge/Redux-764ABC?style=flat-square&logo=Redux&logoColor=white"/>
+<img height="40px" src="https://img.shields.io/badge/Axios-5A29E4?style=flat-square&logo=Axios&logoColor=white"/>
+<img height="40px" src="https://img.shields.io/badge/PWA-5A0FC8?style=flat-square&logo=PWA&logoColor=white"/>
+	
+</div>
+
+<br/>
+
+>## 🛍️파일 구조
+
+```
+ranking-planner-pwa
+├─ .eslintrc
+├─ .prettierrc
+├─ public
+└─ src
+   ├─ app
+   │  ├─ slice //슬라이스 관리
+   │  └─ store.jsx
+   |
+   ├─ common //공통 파일 관리
+   │  ├─ css //공통 css module 관리
+   │  ├─ font
+   │  └─ svg
+   |
+   ├─ components //조각기능 별 컴포넌트 폴더로 관리
+   |
+   ├─ hooks //커스텀 훅 관리
+   |
+   ├─ layout //레이아웃 컴포넌트 관리
+   |
+   ├─ pages //page 관리
+   |
+   ├─ shared //router 관리
+   │  └─ Router.jsx
+   |
+   └─ utils //공통 함수 관리
+
+```
+
+<br/>
+
+>## 🦾팀원
+
+|이름|담당|
+|--|--|
+|박종현| 타임 타이머(서버 통신), 스톱워치, 메인페이지,Layout, 주간 스터디 로그, 타임피커, pwa, github actions, FCM|
+|김수환| D-day CRUD, D-day 캘린더 , todo list CRUD, 월간 스터디 로그, 마이페이지 날짜별 todo list|
+|한효승| 타임 타이머(svg로 구현 및 기본 틀 완성),로그인, 회원가입/프로필 수정 및 디바운싱, 랭킹페이지, s3 + cloudFront
+
+<br/>
+
+>## 📝기술적 의사 결정
+
+
+
+
+
+
+
 
