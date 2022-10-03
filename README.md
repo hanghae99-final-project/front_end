@@ -215,9 +215,11 @@ ranking-planner-pwa
 
 </div>
 
->## 📝기술적 의사 결정
+>## 📝기술적 의사 결정 & 트러블 슈팅
 
+<br/>
 
+> 👉[기술적 의사 결정 보러가기](https://www.notion.so/Troubleshooting_FE-c931ee67e61a4e8a9df18d038e82fd64)
 
 
 
