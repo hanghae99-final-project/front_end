@@ -40,7 +40,14 @@ const Ranking = () => {
   };
   return (
     <Layout>
-      <RankingBox btsOn={btsOn} setBtsOn={setBtsOn} ageMode={ageMode} setAgeMode={setAgeMode} />
+      <RankingBox
+        btsOn={btsOn}
+        setBtsOn={setBtsOn}
+        ageMode={ageMode}
+        setAgeMode={setAgeMode}
+        type={type}
+        setType={setType}
+      />
       <div className={btsOn ? styles.btsOn : styles.btsOff}>
         {agePick.map((age, i) => {
           return (

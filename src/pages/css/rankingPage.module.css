@@ -33,6 +33,7 @@
 .topBtn {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .topBtn:active {
@@ -83,13 +84,14 @@
   border-radius: 1rem;
   margin: 0.33rem 0.1rem;
   font-weight: 500;
+  cursor: pointer;
 }
 
 .rankingContainer {
   margin: 0 auto;
   width: 100%;
   padding: 0 16px 16px 16px;
-  height: calc(75% - 25px);
+  height: calc(100% - 13rem);
   overflow: scroll;
 }
 .rankingContainer::-webkit-scrollbar {
@@ -174,8 +176,6 @@
   flex-direction: row;
   align-items: center;
   padding-left: 1rem;
-
-  justify-content: space-between;
 }
 
 .topRanker {
@@ -189,7 +189,6 @@
   flex-direction: row;
   align-items: center;
   padding-left: 1rem;
-  justify-content: space-between;
 }
 
 .otherRanker {
@@ -203,7 +202,6 @@
   flex-direction: row;
   align-items: center;
   padding-left: 1rem;
-  justify-content: space-between;
 }
 
 .timeBox {
@@ -216,7 +214,7 @@
 .dotBox {
   display: flex;
   justify-content: right;
-  width: 0.7rem;
+  width: 1.3rem;
 }
 
 .rankerDot {
@@ -254,8 +252,7 @@
   flex-direction: row;
   align-items: center;
   padding-left: 1rem;
-  z-index: 500;
-  justify-content: space-between;
+  z-index: 10;
 }
 
 .nameBox {
@@ -271,7 +268,7 @@
   top: 26rem;
   background-color: #3b3b44;
   transition: all 0.6s ease-in-out;
-  z-index: 999;
+  z-index: 14;
   border-radius: 1rem 1rem 0 0;
   padding: 1rem 1.5rem 0 1.5rem;
   overflow: hidden;
@@ -285,7 +282,7 @@
   top: -13rem;
   background-color: #3b3b44;
   transition: all 0.6s ease-in-out;
-  z-index: 999;
+  z-index: 14;
   border-radius: 1rem 1rem 0 0;
   padding: 0 1.5rem;
   padding: 1rem 1.5rem 0 1.5rem;
