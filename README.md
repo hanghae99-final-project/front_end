@@ -207,6 +207,14 @@ ranking-planner-pwa
 
 <br/>
 
+>## 📝아키텍처
+
+<div align="center">
+
+![image](https://user-images.githubusercontent.com/95389265/193523843-42e565b0-e544-4cb5-b164-036b386b714a.png)
+
+</div>
+
 >## 📝기술적 의사 결정
 
 
