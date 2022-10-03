@@ -12,7 +12,7 @@ const Calender = ({
   selectedMonth,
   setSelectedMonth,
   selectedDate,
-  setselectedDate
+  setSelectedDate
 }) => {
   const dispatch = useDispatch();
   const navi = useNavigate();
@@ -47,6 +47,7 @@ const Calender = ({
       setSelectedYear(selectedYear - 1);
     } else {
       setSelectedMonth(selectedMonth - 1);
+      setSelectedDate(1);
     }
   }, [selectedMonth]);
 
@@ -57,6 +58,7 @@ const Calender = ({
       setSelectedYear(selectedYear + 1);
     } else {
       setSelectedMonth(selectedMonth + 1);
+      setSelectedDate(1);
     }
   }, [selectedMonth]);
 
