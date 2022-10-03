@@ -18,12 +18,12 @@ const LoginPage = () => {
     window.addEventListener("beforeinstallprompt", e => {
       e.preventDefault();
       deferredPrompt.current = e;
+      setVisible(true);
+      // if (window.matchMedia("(display-mode: standalone)").matches) {
+      //   console.log("display-mode is standalone");
+      // } else {
+      // }
     });
-
-    if (!deferredPrompt.current) {
-      setVisible(false);
-    }
-    setVisible(true);
   }, []);
 
   const installApp = () => {

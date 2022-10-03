@@ -1,25 +1,41 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getMonthList } from "../../app/slice/calenderSlice";
+import { useNavigate } from "react-router-dom";
+import dayjs from "dayjs";
 import styles from "./calender.module.css";
 import font from "../../common/css/common.module.css";
-import { useNavigate } from "react-router-dom";
 
 const Calender = () => {
   const dispatch = useDispatch();
   const navi = useNavigate();
   const studyData = useSelector(state => state.calender);
 
+  // 날짜 정보 가져오기
+  const date = dayjs(); // 현재 날짜(로컬 기준) 가져오기
+
   const today = {
-    year: new Date().getFullYear(), //오늘 연도
-    month: new Date().getMonth() + 1, //오늘 월
-    date: new Date().getDate(), //오늘 날짜
-    day: new Date().getDay() //오늘 요일
+    year: date.get("year"), //오늘 연도
+    month: date.get("month"), //오늘 월
+    date: date.get("date"), //오늘 날짜
+    day: date.get("day") //오늘 요일
   };
 
   const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
-  const [selectedMonth, setSelectedMonth] = useState(today.month); //현재 선택된 달
-  const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜
+  const [selectedMonth, setSelectedMonth] = useState(today.month + 1); //현재 선택된 달
+
+  // 이전 달의 마지막 날 날짜와 요일 구하기
+  const startDay = dayjs(`${selectedYear}-${selectedMonth}-${0}`);
+  const prevDate = startDay.get("date");
+  const prevDay = startDay.get("day");
+  console.log(startDay.format("YY - MM - DD"), selectedMonth, today.month);
+  console.log(prevDate, prevDay);
+
+  // 이번 달의 마지막날 날짜와 요일 구하기
+  const endDay = dayjs(`${selectedYear}-${selectedMonth + 1}-${0}`);
+  const nextDate = endDay.get("date");
+  const nextDay = endDay.get("day");
+  console.log(endDay.format("YY - MM - DD"), nextDate, nextDay);
 
   useEffect(() => {
     localStorage.getItem("token") === null && navi("/");
@@ -29,15 +45,8 @@ const Calender = () => {
     dispatch(getMonthList({ selectedYear, selectedMonth }));
   }, [selectedMonth]);
 
-  //달력 월의 시작 요일
-  const startMonth = new Date(selectedYear, selectedMonth - 1, 1);
-  const calendarStartMonthData = startMonth.getDay();
-
-  //한달 주 수
-  const weekCount = Math.ceil((dateTotalCount + calendarStartMonthData) / 7);
-
   //일주일
-  const week = ["일", "월", "화", "수", "목", "금", "토"];
+  const week = ["월", "화", "수", "목", "금", "토", "일"];
 
   //이전 달 보기 버튼
   const prevMonth = useCallback(() => {
@@ -59,98 +68,58 @@ const Calender = () => {
     }
   }, [selectedMonth]);
 
-  // 선택한 월 일 갯수
-  const selectMonthData = [];
-  for (let i = 0; i <= dateTotalCount; i++) {
-    selectMonthData.push(i);
-  }
-
   // 선택한 월에 맞는 요일 및 날짜 바인딩
-
   function calenderDate() {
     const data = [];
-    let calenderPos = 0;
-    let calenderDay = 0;
-    let todayValue = new Date(today.year, today.month - 1, today.date + 1).toISOString().split("T")[0];
+    let todayValue = dayjs().format("YYYY-MM-DD");
+    console.log(todayValue); /* new Date(today.year, today.month - 1, today.date + 1).toISOString().split("T")[0]; */
 
-    for (let i = 0; i < weekCount; i++) {
-      for (let i2 = 0; i2 < 7; i2++) {
-        let dayValue = new Date(selectedYear, selectedMonth - 1, calenderDay + 2).toISOString().split("T")[0];
+    // 이전달
+    for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+      data.push(
+        <div className={styles.dateWarp} style={{ backgroundColor: "#3b3b44" }}>
+          <span>{i}</span>
+        </div>
+      );
+    }
 
-        let ifValue =
-          studyData.map(data => data.studyDate).includes(dayValue) &&
-          studyData.filter(data => data.studyDate === dayValue)[0].studyTime;
-        let hours = 3600000;
+    // 이번달
+    for (var j = 1; j <= nextDate; j++) {
+      const dayValue = dayjs(`${selectedYear}-${selectedMonth}-${j}`).format("YYYY-MM-DD");
+      const ifValue =
+        studyData.map(data => data.studyDate).includes(dayValue) &&
+        studyData.filter(data => data.studyDate === dayValue)[0].studyTime;
+      const hours = 3600000;
 
-        if (studyData.map(data => data.studyDate).includes(dayValue) === false) {
-          data.push(
-            <div
-              className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
-              style={{ backgroundColor: "#4b4a56" }}
-            >
-              {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
-                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
-                : ""}
-            </div>
-          );
-        } else if (ifValue < hours * 3) {
-          data.push(
-            <div
-              className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
-              style={{ backgroundColor: "#3a4940" }}
-            >
-              {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
-                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
-                : ""}
-            </div>
-          );
-        } else if (ifValue >= hours * 3 && ifValue < hours * 6) {
-          data.push(
-            <div
-              className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
-              style={{ backgroundColor: "#447257" }}
-            >
-              {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
-                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
-                : ""}
-            </div>
-          );
-        } else if (ifValue >= hours * 6 && ifValue < hours * 9) {
-          data.push(
-            <div
-              className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
-              style={{ backgroundColor: "#4e9a6e" }}
-            >
-              {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
-                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
-                : ""}
-            </div>
-          );
-        } else if (ifValue >= hours * 9 && ifValue < hours * 12) {
-          data.push(
-            <div
-              className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
-              style={{ backgroundColor: "#66ffa6" }}
-            >
-              {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
-                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
-                : ""}
-            </div>
-          );
-        } else {
-          data.push(
-            <div
-              className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
-              style={{ backgroundColor: "#ff8058" }}
-            >
-              {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
-                ? (calenderDay++, (<span value={dayValue}>{calenderDay}</span>))
-                : ""}
-            </div>
-          );
-        }
-        calenderPos++;
-      }
+      data.push(
+        <div
+          className={todayValue === dayValue ? `${styles.dateWarp} ${styles.selectedToday}` : styles.dateWarp}
+          style={
+            studyData.map(data => data.studyDate).includes(dayValue) === false
+              ? { backgroundColor: "#4b4a56" }
+              : ifValue < hours * 3
+              ? { backgroundColor: "#3a4940" }
+              : ifValue >= hours * 3 && ifValue < hours * 6
+              ? { backgroundColor: "#4e9a6e" }
+              : ifValue >= hours * 6 && ifValue < hours * 9
+              ? { backgroundColor: "#4e9a6e" }
+              : ifValue >= hours * 9 && ifValue < hours * 12
+              ? { backgroundColor: "#66ffa6" }
+              : { backgroundColor: "#ff8058" }
+          }
+        >
+          <span value={dayValue}>{j}</span>
+        </div>
+      );
+    }
+
+    // 다음달
+    for (var k = 1; k <= (7 - nextDay == 7 ? 0 : 7 - nextDay); k++) {
+      data.push(
+        <div className={styles.dateWarp} style={{ backgroundColor: "#3b3b44" }}>
+          <span>{k}</span>
+        </div>
+      );
     }
     return data;
   }

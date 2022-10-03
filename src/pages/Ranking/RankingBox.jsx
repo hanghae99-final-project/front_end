@@ -6,9 +6,8 @@ import styles from "./../css/rankingPage.module.css";
 import dropdownBtn from "../../common/svg/dropdown_icon.svg";
 import font from "../../common/css/font.module.css";
 import { useNavigate } from "react-router-dom";
-import { current } from "@reduxjs/toolkit";
 
-const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
+const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode, type, setType }) => {
   const dispatch = useDispatch();
   const getMyRanking = useSelector(state => state.ranking.myRanking);
   const getAllRanking = useSelector(state => state.ranking.ranking);
@@ -28,8 +27,6 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
     { ko: "월간", en: "month" }
   ];
   const [mode, setMode] = useState("일간");
-
-  const [type, setType] = useState({ period: "day", category: "all" });
 
   useEffect(() => {
     localStorage.getItem("token") === null && navi("/");

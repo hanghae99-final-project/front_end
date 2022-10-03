@@ -159,9 +159,11 @@
 }
 
 .selectedToday {
+  cursor: pointer;
   color: var(--primary-50);
 }
 .choiceDay {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -171,4 +173,8 @@
   border: 0.2rem solid var(--primary-50);
   border-radius: 50%;
   background-color: var(--primary-50);
+}
+
+.dayList {
+  cursor: pointer;
 }
