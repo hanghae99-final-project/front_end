@@ -64,7 +64,7 @@
 
 <br/>
 
->#### 메인페이지
+>### 메인페이지
 
 <div align="center">
 <img width="18%" src= "https://user-images.githubusercontent.com/95389265/193459516-9644d202-3cbb-4292-b51c-8e7727eac006.png" title="Green"/>
@@ -97,7 +97,7 @@
 
 <br/>
 
->#### 랭킹페이지
+>### 랭킹페이지
 
 <div align="center">
 <img width="18%" src= "https://user-images.githubusercontent.com/95389265/193480912-39f60e18-22bf-498f-bc87-0425edd14415.png" title="ranking"/>
@@ -112,7 +112,7 @@
 
 <br/>
 
->#### 마이페이지
+>### 마이페이지
 	 
 <div align="center">
 <img width="18%" src= "https://user-images.githubusercontent.com/95389265/193481340-bd2aada6-9e0d-4159-9a73-b9a6b8b23390.png" title="Green"/>
