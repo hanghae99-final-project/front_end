@@ -62,10 +62,6 @@ const ModifyProfile = () => {
     }
   }, [userData]);
 
-  // useEffect(() => {
-  //   setTimeout(checkNickname, 2000);
-  // }, []);
-
   const checkNickname = e => {
     if (!check.test(modifyInfo.nickname)) {
       setBorderColor("orange");

@@ -28,14 +28,14 @@ const MainPage = () => {
     <Layout>
       <div className={styles.columnBox}>
         <div>
-          <img
+          {/* <img
             src={chicken}
             alt="치킨"
             className={styles.chicken}
             onClick={() => {
               setSurvey(true);
             }}
-          />
+          /> */}
           <Studying />
           <MainDday />
           <Timer />

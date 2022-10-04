@@ -142,7 +142,6 @@
 }
 
 .checkMsgOrange {
-  border: 1px solid white;
   height: 1rem;
   display: flex;
   align-items: center;
@@ -152,7 +151,6 @@
 }
 
 .checkMsgRed {
-  border: 1px solid white;
   height: 1rem;
   display: flex;
   align-items: center;
@@ -162,7 +160,6 @@
 }
 
 .checkMsgGreen {
-  border: 1px solid white;
   height: 1rem;
   display: flex;
   align-items: center;

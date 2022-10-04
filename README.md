@@ -1,5 +1,6 @@
-
 ># 👑취준생을 위한 시간 관리 플랫폼, 랭플👑
+
+<img width="100%" src="https://user-images.githubusercontent.com/95389265/193836979-d0885d4e-1f0d-4796-972c-181fee784fb8.png" >
 
 랭플은 열심히 미래를 준비하고 있음에도 불구하고, **항상 불안해하는 취준생**들을 대상으로
 
@@ -221,9 +222,3 @@ ranking-planner-pwa
 <br/>
 
 > 👉[기술적 의사 결정 보러가기](https://www.notion.so/Troubleshooting_FE-c931ee67e61a4e8a9df18d038e82fd64)
-
-
-
-
-
-

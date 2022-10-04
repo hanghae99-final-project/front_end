@@ -15,13 +15,18 @@ export const get_studytime = createAsyncThunk("get_studytime", async (payload, t
 });
 
 export const __postStudyStart = createAsyncThunk("/studyStart", async (payload, thunkAPI) => {
+  console.log("fcm test");
   try {
-    await axios.post(process.env.REACT_APP_SERVER_URL + "/time/studyStart", payload, {
-      headers: {
-        Authorization: `Bearer ${localStorage.token}`
+    await axios.post(
+      process.env.REACT_APP_SERVER_URL + "/time/studyStart",
+      { studyStartPoint: payload.studyStartPoint, notificationToken: payload.notificationToken },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`
+        }
       }
-    });
-    return thunkAPI.fulfillWithValue(payload);
+    );
+    return thunkAPI.fulfillWithValue({ studyStartPoint: payload.studyStartPoint });
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
   }
