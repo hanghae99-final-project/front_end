@@ -1,4 +1,4 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .container {
   height: 37.5rem;
@@ -37,7 +37,6 @@
 }
 
 .addBtn {
-  cursor: pointer;
   width: 1.5rem;
   height: 1.5rem;
   background: url(../../common/svg/open_post_todo_icon.svg);

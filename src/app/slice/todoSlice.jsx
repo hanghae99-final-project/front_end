@@ -69,9 +69,7 @@ const todoSlice = createSlice({
     },
 
     [__getDailyTodo.fulfilled]: (state, { payload }) => (state = payload.todoArr),
-    [__getDailyTodo.rejected]: (state, { payload }) => {
-      console.log("실패");
-    },
+    [__getDailyTodo.rejected]: (state, { payload }) => {},
     [__addTodo.fulfilled]: (state, { payload }) => {
       return (state = [...state, payload]);
     },

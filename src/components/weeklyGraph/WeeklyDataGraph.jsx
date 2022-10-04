@@ -30,7 +30,6 @@ const WeeklyDataGraph = () => {
       return addDayArray?.filter(item => item.day === v);
     })
     .map((v, i) => {
-      console.log("hi");
       return v?.length !== 0 ? v : i + 1 === 7 ? { studyTime: 0, day: 0 } : { studyTime: 0, day: i + 1 };
     })
     .flat();

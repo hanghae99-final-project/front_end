@@ -36,6 +36,7 @@ const TodoModal = () => {
       </div>
       {openPost ? <TodoPost className={styles.openTodo} setOpenPost={setOpenPost} /> : ""}
       <TodoList
+        openPost={openPost}
         modifyOn={modifyOn}
         setModifyOn={setModifyOn}
         modifyModal={modifyModal}

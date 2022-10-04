@@ -6,7 +6,7 @@ import TodoModify from "./TodoModify";
 import styles from "./todoList.module.css";
 import font from "../././../common/css/font.module.css";
 
-const TodoList = ({ setOpenPost, modifyOn, setModifyOn, modifyModal, setModifyModal, closeTodo }) => {
+const TodoList = ({ setOpenPost, modifyOn, setModifyOn, modifyModal, setModifyModal, openPost }) => {
   const dispatch = useDispatch();
   const todoList = useSelector(state => state.todo);
 
@@ -24,7 +24,7 @@ const TodoList = ({ setOpenPost, modifyOn, setModifyOn, modifyModal, setModifyMo
 
   return (
     <div className={styles.container}>
-      {todoList.length === 0 ? (
+      {todoList.length === 0 && openPost === false ? (
         <div className={`${styles.emptyTodo} ${font.subtitle2_600_16}`}>할 일을 추가해 보세요</div>
       ) : (
         <div className={styles.innerContainer}>

@@ -100,6 +100,7 @@ const PostDday = ({
     } else {
       e.preventDefault();
       dispatch(__postDday(dday));
+      setDday({ content: "", deadline: "" });
     }
   };
 
@@ -192,6 +193,7 @@ const PostDday = ({
           onChange={setcomentHandler}
           name="content"
           type="text"
+          value={dday.content}
         />
         <button
           onClick={() => {

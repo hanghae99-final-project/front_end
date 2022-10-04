@@ -1,6 +1,7 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .container {
+  cursor: pointer;
   height: 1.5rem;
   display: flex;
   padding: 1.25rem 2rem;
