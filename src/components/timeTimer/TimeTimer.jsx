@@ -104,7 +104,8 @@ const TimeTimer = () => {
    */
   useEffect(() => {
     if (refresh) {
-      dispatch(__postStudyStart({ studyStartPoint: date }));
+      console.log(localStorage.getItem("fcmToken"));
+      dispatch(__postStudyStart({ studyStartPoint: date, notificationToken: localStorage.getItem("fcmToken") }));
     }
   }, [refresh]);
 

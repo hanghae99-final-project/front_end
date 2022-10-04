@@ -19,10 +19,6 @@ const LoginPage = () => {
       e.preventDefault();
       deferredPrompt.current = e;
       setVisible(true);
-      // if (window.matchMedia("(display-mode: standalone)").matches) {
-      //   console.log("display-mode is standalone");
-      // } else {
-      // }
     });
   }, []);
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import styled from "styled-components";
 import styles from "./footer.module.css";
 import { ReactComponent as Home } from "../../common/svg/home_icon.svg";
@@ -30,7 +30,7 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default memo(Footer);
 
 const FooterBar = styled.nav`
   height: 5rem;
