@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { __addTodo } from "../../app/slice/todoSlice";
-import styled from "styled-components";
 import "../../common/css/color.css";
 import styles from "./todoPost.module.css";
 
@@ -53,13 +52,12 @@ const TodoPost = ({ setOpenPost }) => {
             onChange={onChangeToDoHandler}
             type="text"
             name="work"
-            placeholder="오늘 할일"
+            placeholder="오늘 할 일을 입력해 주세요."
             spellCheck="false"
             value={toDo.work}
           />
           <div className={styles.colorInput}>
             {colorValue.map((data, idx) => {
-              console.log(data);
               return (
                 <input
                   key={data}

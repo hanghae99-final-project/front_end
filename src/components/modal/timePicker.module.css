@@ -1,30 +1,30 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .picker {
-    width: 100%;
-    display: flex;
-    position: relative;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
 }
 
 .hourBox {
-    position: relative;
-    margin: 0 auto;
-    width: 7rem;
-    height: 14rem;
-    display: flex;
-    justify-content: center;
+  position: relative;
+  margin: 0 auto;
+  width: 7rem;
+  height: 14rem;
+  display: flex;
+  justify-content: center;
 }
 
 .hour {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 12px;
-    width: 500px;
-    color: var(--neutral-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12px;
+  width: 500px;
+  color: var(--neutral-100);
 }
 
 .hour .selected {
-    background-color: white;
+  background-color: white;
 }

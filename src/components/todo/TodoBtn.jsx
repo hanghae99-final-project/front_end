@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getTodoList } from "../../app/slice/todoSlice";
 import styles from "./todoBtn.module.css";
-import font from "../../common/css/common.module.css";
+import font from "../../common/css/font.module.css";
 
 const TodoBtn = () => {
   const dispatch = useDispatch();

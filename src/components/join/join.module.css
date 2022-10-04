@@ -45,12 +45,6 @@
   background-position: center;
 }
 
-.arrowBack:hover {
-  cursor: pointer;
-}
-.arrowBack:active {
-}
-
 img.arrowbackIcon {
   object-fit: contain;
   background-color: none;
