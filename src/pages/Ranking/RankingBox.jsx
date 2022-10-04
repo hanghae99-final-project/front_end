@@ -8,7 +8,11 @@ import font from "../../common/css/font.module.css";
 import { useNavigate } from "react-router-dom";
 import RankingCtn from "./RankingCtn";
 
+<<<<<<< HEAD
 const RankingBox = ({ btsOn, setBtsOn, ageMode, type, setType }) => {
+=======
+const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode, type, setType }) => {
+>>>>>>> 9b859214b3db9aeed0345fdcd93235971d29eec7
   const dispatch = useDispatch();
   const getMyRanking = useSelector(state => state.ranking.myRanking);
   const getAllRanking = useSelector(state => state.ranking.ranking);
@@ -33,6 +37,11 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, type, setType }) => {
     setBtsOn(false);
   };
 
+<<<<<<< HEAD
+=======
+  console.log(type);
+
+>>>>>>> 9b859214b3db9aeed0345fdcd93235971d29eec7
   return (
     <>
       <div className={styles.container}>
@@ -54,6 +63,7 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, type, setType }) => {
               {datePick.map((day, i) => {
                 return (
                   <div key={i}>
+<<<<<<< HEAD
                     <button
                       className={`${styles.button} ${font.subtitle4_600_12}`}
                       style={
@@ -74,6 +84,38 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, type, setType }) => {
                     >
                       {day.ko}
                     </button>
+=======
+                    {mode === day.ko ? (
+                      <button
+                        className={`${styles.button} ${font.subtitle4_600_12}`}
+                        style={{
+                          backgroundColor: "var(--neutral-40)",
+                          color: "var(--neutral-100)"
+                        }}
+                        onClick={() => {
+                          setMode(day.ko);
+                          setType({ ...type, period: day.en });
+                        }}
+                      >
+                        {day.ko}
+                      </button>
+                    ) : (
+                      <button
+                        className={`${styles.button} ${font.subtitle4_600_12}`}
+                        style={{
+                          backgroundColor: "var(--neutral-30)",
+                          color: "var(--neutral-70)"
+                        }}
+                        onClick={() => {
+                          setType({ ...type, period: day.en });
+
+                          setMode(day.ko);
+                        }}
+                      >
+                        {day.ko}
+                      </button>
+                    )}
+>>>>>>> 9b859214b3db9aeed0345fdcd93235971d29eec7
                   </div>
                 );
               })}

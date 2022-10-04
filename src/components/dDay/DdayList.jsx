@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getDday, __delDday } from "../../app/slice/DdaySlice";
+import dayjs from "dayjs";
 import font from "../../common/css/font.module.css";
 import styles from "./ddayList.module.css";
 import PostDday from "./PostDday";
@@ -22,10 +23,9 @@ const DdayList = ({ modifyId, setModifyId, setBlurSwich, blurHandler }) => {
   return (
     <ul className={styles.container}>
       {dDay?.map(data => {
-        console.log(data);
-        const today = new Date().getTime();
-        const deadline = new Date(data.deadline).getTime();
-        const dDay = Math.ceil((deadline - today) / (1000 * 60 * 60 * 24));
+        const today = dayjs();
+        const deadline = dayjs(data.deadline);
+        const dDayCount = Math.ceil(deadline.diff(today, "day", true));
 
         const modifyOff = () => {
           setModifyId("");
@@ -49,7 +49,7 @@ const DdayList = ({ modifyId, setModifyId, setBlurSwich, blurHandler }) => {
                   <div className={styles.DdayValueWarp}>
                     <div className={styles.DdayVlaue}>
                       <p className={font.caption_600_12}>
-                        {dDay === 0 ? "D-day" : dDay < 0 ? `D+${dDay * -1}` : `D-${dDay}`}
+                        {dDayCount === 0 ? "D-day" : dDayCount < 0 ? `D+${dDayCount * -1}` : `D-${dDayCount}`}
                       </p>
                       <p className={font.body2_300_14}>{data.content}</p>
                     </div>
