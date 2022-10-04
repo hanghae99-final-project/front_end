@@ -17,11 +17,6 @@ const Ranking = () => {
     { ko: "20대 랭킹", en: "twenty" },
     { ko: "30대 랭킹", en: "thirty" }
   ];
-  const datePick = [
-    { ko: "일간", en: "day" },
-    { ko: "주간", en: "week" },
-    { ko: "월간", en: "month" }
-  ];
   const [mode, setMode] = useState("일간");
   const [ageMode, setAgeMode] = useState("전체 랭킹");
 

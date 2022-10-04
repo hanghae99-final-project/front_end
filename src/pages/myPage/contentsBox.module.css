@@ -1,0 +1,5 @@
+.contentsBox {
+  display: flex;
+  gap: 8px;
+  padding: 0.7rem;
+}
