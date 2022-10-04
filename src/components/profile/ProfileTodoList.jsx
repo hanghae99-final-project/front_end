@@ -7,22 +7,15 @@ import font from "../../common/css/common.module.css";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 
-const ProfileTodoList = () => {
+const ProfileTodoList = ({
+  selectedYear,
+  setSelectedYear,
+  selectedMonth,
+  setSelectedMonth,
+  selectedDate,
+  setSelectedDate
+}) => {
   const navi = useNavigate();
-
-  // 날짜 정보 가져오기
-  const date = dayjs(); // 현재 날짜(로컬 기준) 가져오기
-
-  const today = {
-    year: date.get("year"), //오늘 연도
-    month: date.get("month"), //오늘 월
-    date: date.get("date"), //오늘 날짜
-    day: date.get("day") //오늘 요일
-  };
-
-  const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
-  const [selectedMonth, setSelectedMonth] = useState(today.month + 1); //현재 선택된 달
-  const [selectedDate, setSelectedDate] = useState(today.date); //현재 선택된 날짜
 
   // useEffect(() => {
   //   localStorage.getItem("token") === null && navi("/");
@@ -32,14 +25,11 @@ const ProfileTodoList = () => {
   const startDay = dayjs(`${selectedYear}-${selectedMonth}-${0}`);
   const prevDate = startDay.get("date");
   const prevDay = startDay.get("day");
-  console.log(startDay.format("YY - MM - DD"), selectedMonth, today.month);
-  console.log(prevDate, prevDay);
 
   // 이번 달의 마지막날 날짜와 요일 구하기
   const endDay = dayjs(`${selectedYear}-${selectedMonth + 1}-${0}`);
   const nextDate = endDay.get("date");
   const nextDay = endDay.get("day");
-  console.log(endDay.format("YY - MM - DD"), nextDate, nextDay);
 
   const todoList = useSelector(state => state?.todo);
   const dispatch = useDispatch();
@@ -63,7 +53,6 @@ const ProfileTodoList = () => {
     } else if (selectedDate === 1) {
       setSelectedMonth(selectedMonth - 1);
       setSelectedDate(prevDate);
-      console.log(selectedMonth);
     } else {
       setSelectedDate(selectedDate - 1);
     }

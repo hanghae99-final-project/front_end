@@ -70,7 +70,6 @@ const PostDday = ({
   for (let i = 0; i <= dateTotalCount; i++) {
     selectMonthData.push(i);
   }
-  console.log(selectMonthData);
 
   const setDeadlineHandler = e => {
     setDday({ ...dday, deadline: e.target.id });
@@ -80,7 +79,6 @@ const PostDday = ({
   const setcomentHandler = e => {
     setDday({ ...dday, content: e.target.value });
   };
-  console.log(dday);
 
   useEffect(() => {
     if (dday.deadline === "" || dday.content === "") {
@@ -174,7 +172,6 @@ const PostDday = ({
           <div className={styles.calenderWrap}>
             <div className={`${styles.dayWarp} ${font.caption2_600_10}`}>
               {week.map((data, idx) => {
-                console.log(data);
                 return (
                   <div className={styles.day} key={idx}>
                     <span>{data}</span>
@@ -195,7 +192,6 @@ const PostDday = ({
           onChange={setcomentHandler}
           name="content"
           type="text"
-          maxLength="20"
         />
         <button
           onClick={() => {

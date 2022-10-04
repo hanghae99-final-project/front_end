@@ -7,7 +7,7 @@ import dropdownBtn from "../../common/svg/dropdown_icon.svg";
 import font from "../../common/css/font.module.css";
 import { useNavigate } from "react-router-dom";
 
-const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
+const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode, type, setType }) => {
   const dispatch = useDispatch();
   const getMyRanking = useSelector(state => state.ranking.myRanking);
   const getAllRanking = useSelector(state => state.ranking.ranking);
@@ -28,8 +28,6 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
   ];
   const [mode, setMode] = useState("일간");
 
-  const [type, setType] = useState({ period: "day", category: "all" });
-
   useEffect(() => {
     localStorage.getItem("token") === null && navi("/");
   }, []);
@@ -41,6 +39,9 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
   const modalOffHandler = e => {
     setBtsOn(false);
   };
+
+  console.log(type);
+
   return (
     <>
       <div
@@ -92,6 +93,7 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode }) => {
                         }}
                         onClick={() => {
                           setType({ ...type, period: day.en });
+
                           setMode(day.ko);
                         }}
                       >
