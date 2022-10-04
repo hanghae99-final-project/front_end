@@ -135,6 +135,9 @@ table {
   ‌border-collapse: collapse;
   ‌border-spacing: 0;
 }
+button {
+  cursor: pointer;
+}
 
 @media (min-width: 600px) and (max-width: 1024px) {
   body {

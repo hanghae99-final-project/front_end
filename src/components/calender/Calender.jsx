@@ -4,7 +4,7 @@ import { getMonthList } from "../../app/slice/calenderSlice";
 import { useNavigate } from "react-router-dom";
 import dayjs from "dayjs";
 import styles from "./calender.module.css";
-import font from "../../common/css/common.module.css";
+import font from "../../common/css/font.module.css";
 
 const Calender = ({
   selectedYear,
@@ -27,7 +27,6 @@ const Calender = ({
   const endDay = dayjs(`${selectedYear}-${selectedMonth + 1}-${0}`);
   const nextDate = endDay.get("date");
   const nextDay = endDay.get("day");
-  console.log(endDay.format("YY - MM - DD"), nextDate, nextDay);
 
   useEffect(() => {
     localStorage.getItem("token") === null && navi("/");
@@ -66,7 +65,6 @@ const Calender = ({
   function calenderDate() {
     const data = [];
     let todayValue = dayjs(`${selectedYear}-${selectedMonth}-${selectedDate}`).format("YYYY-MM-DD");
-    console.log(todayValue); /* new Date(today.year, today.month - 1, today.date + 1).toISOString().split("T")[0]; */
 
     // 이전달
     for (var i = prevDate - prevDay; i <= prevDate; i++) {

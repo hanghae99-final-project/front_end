@@ -30,7 +30,6 @@ export const __checkNickname = createAsyncThunk("__checkNickname", async (payloa
 });
 
 export const __updateProfile = createAsyncThunk("__updateProfile", async (payload, thunkAPI) => {
-  console.log(payload);
   try {
     await axios.put(process.env.REACT_APP_SERVER_URL + "/profile", payload, {
       headers: {
@@ -40,7 +39,6 @@ export const __updateProfile = createAsyncThunk("__updateProfile", async (payloa
 
     return thunkAPI.fulfillWithValue(payload);
   } catch (error) {
-    console.log(error);
     return thunkAPI.rejectWithValue(payload);
   }
 });
@@ -57,7 +55,6 @@ const profileSlice = createSlice({
       state.ok = data.payload;
     },
     [__updateProfile.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       return payload;
     }
   }

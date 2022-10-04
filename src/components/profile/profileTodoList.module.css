@@ -1,90 +1,100 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .container {
-    width: 8rem;
-    height: 8.75rem;
-    background-color: var(--neutral-30);
-    padding: 1rem;
-    border-radius: 12px;
+  width: 8rem;
+  height: 8.75rem;
+  background-color: var(--neutral-30);
+  padding: 1rem;
+  border-radius: 12px;
 }
 
 .innerWrap {
-    height: 8.75rem;
+  height: 8.75rem;
 }
 
 .dateBtnWarp {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 1.5rem;
-    margin-bottom: 0.438rem;
-}
-
-.dateBtnWarp button {
-    border: none;
-    width: 1.5rem;
-    height: 1.5rem;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.leftBtn {
-    background: url(../../common/svg/left_arrow.svg);
-}
-
-.rightBtn {
-    background: url(../../common/svg/right_arrow.svg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 1.5rem;
+  margin-bottom: 0.438rem;
 }
 
 .dateBtnWarp h2 {
-    color: var(--neutral-100);
+  text-align: center;
+  width: 100%;
+}
+
+.dateBtnWarp button {
+  border: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.dateBtnWarp button:active {
+  opacity: 0.3;
+}
+
+.leftBtn {
+  background: url(../../common/svg/left_arrow.svg);
+}
+
+.rightBtn {
+  background: url(../../common/svg/right_arrow.svg);
+}
+
+.dateBtnWarp h2 {
+  color: var(--neutral-100);
 }
 
 .todoListWarp {
-    width: 100%;
-    overflow: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    height: 6.5rem;
+  width: 100%;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 6.5rem;
 }
 
 .todoListWarp::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .todoWarp {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .toDoValueWarp {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .work {
-    color: var(--neutral-100);
+  color: var(--neutral-100);
 }
 
 .isDoneFalseBtn {
-    width: 0.643rem;
-    height: 0.643rem;
-    border: solid 1px #fff;
-    border-radius: 50%;
-    background-color: var(--neutral-40);
+  width: 0.643rem;
+  height: 0.643rem;
+  border: solid 1px #fff;
+  border-radius: 50%;
+  background-color: var(--neutral-40);
 
-    transition: All 0.3s ease-in-out;
+  transition: All 0.3s ease-in-out;
 }
 
 .isDoneTureBtn {
-    width: 0.643rem;
-    height: 0.643rem;
-    border: solid 1px var(--neutral-60);
-    border-radius: 50%;
+  width: 0.643rem;
+  height: 0.643rem;
+  border: solid 1px var(--neutral-60);
+  border-radius: 50%;
 
-    background: url(../../common/svg/check_small.svg), var(--neutral-60);
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: All 0.3s ease-in-out;
+  background: url(../../common/svg/check_small.svg), var(--neutral-60);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 7px;
+  transition: All 0.3s ease-in-out;
 }

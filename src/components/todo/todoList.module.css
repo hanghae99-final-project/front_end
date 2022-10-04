@@ -1,4 +1,4 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .container {
   width: 100%;
@@ -28,7 +28,7 @@
 .emptyTodo {
   text-align: center;
   height: 100%;
-  line-height: 25;
+  margin-top: 50%;
   color: var(--neutral-40);
 }
 
@@ -60,6 +60,7 @@
 }
 
 .toDoContainer {
+  cursor: pointer;
   display: flex;
   width: 100%;
   padding: 0.75rem 1rem;
@@ -154,11 +155,19 @@
   margin: 0 0.5rem;
 }
 
+.modifyBtn:active {
+  background-color: #d3732d;
+}
+
 .delBtn {
   background: url(../../common/svg/todo_delete_icon.svg) var(--alerts-red);
   background-repeat: no-repeat;
   background-position: center;
   transition: All 0.3s ease-in-out;
+}
+
+.delBtn:active {
+  background-color: #cf3434;
 }
 
 .closeTodo {

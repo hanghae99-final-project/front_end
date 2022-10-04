@@ -47,12 +47,11 @@ const TodoModify = ({ todoId, setModifyModal, setModifyOn, todoWork, todoColor }
             value={upDateTodo.work}
             type="text"
             name="work"
-            placeholder="할일 수정"
+            placeholder="오늘 할 일을 수정해 주세요"
             spellCheck="false"
           />
           <div className={styles.colorInput}>
             {colorValue.map((data, idx) => {
-              console.log(data);
               return (
                 <input
                   key={data}
