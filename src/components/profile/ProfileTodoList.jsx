@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { __getDailyTodo, __getTodoList } from "../../app/slice/todoSlice";
 import styled from "styled-components";
 import styles from "./profileTodoList.module.css";
-import font from "../../common/css/common.module.css";
+import font from "../../common/css/font.module.css";
 import dayjs from "dayjs";
 import { useNavigate } from "react-router-dom";
 

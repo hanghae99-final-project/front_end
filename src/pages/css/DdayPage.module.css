@@ -1,4 +1,4 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .container {
   height: 100%;
@@ -45,7 +45,10 @@
   background-position: center;
 
   border: none;
-  cursor: pointer;
+}
+
+.prevBtn:active {
+  opacity: 0.3;
 }
 
 .addBtn {
@@ -57,7 +60,10 @@
   background-position: center;
 
   border: none;
-  cursor: pointer;
+}
+
+.addBtn:active {
+  opacity: 0.3;
 }
 
 .dDayModalOpen {

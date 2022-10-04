@@ -40,8 +40,6 @@ const RankingBox = ({ btsOn, setBtsOn, ageMode, setAgeMode, type, setType }) => 
     setBtsOn(false);
   };
 
-  console.log(type);
-
   return (
     <>
       <div

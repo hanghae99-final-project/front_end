@@ -29,7 +29,6 @@ export const __postStudyStart = createAsyncThunk("/studyStart", async (payload, 
 
 export const __postStudyEnd = createAsyncThunk("/studyEnd", async (payload, thunkAPI) => {
   try {
-    console.log(payload);
     await axios.post(process.env.REACT_APP_SERVER_URL + "/time/studyEnd", payload, {
       headers: {
         Authorization: `Bearer ${localStorage.token}`
@@ -97,14 +96,12 @@ const timeTimerSlice = createSlice({
   extraReducers: {
     [get_studytime.fulfilled]: (state, { payload }) => (state = payload),
     [__postStudyStart.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       return (state = {
         ...state,
         ...payload
       });
     },
     [__postStudyEnd.fulfilled]: (state, { payload }) => {
-      console.log(payload.studyEndPoint);
       if (payload.studyEndPoint !== undefined) {
         return (state = {
           ...state,
