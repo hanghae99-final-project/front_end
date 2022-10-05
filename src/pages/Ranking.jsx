@@ -10,7 +10,6 @@ import RankingBox from "./Ranking/RankingBox";
 const Ranking = () => {
   const dispatch = useDispatch();
   const [btsOn, setBtsOn] = useState(false);
-  const navi = useNavigate();
 
   const agePick = [
     { ko: "전체 랭킹", en: "all" },
@@ -21,10 +20,6 @@ const Ranking = () => {
   const [ageMode, setAgeMode] = useState("전체 랭킹");
 
   const [type, setType] = useState({ period: "day", category: "all" });
-
-  useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-  }, []);
 
   useEffect(() => {
     dispatch(__getRanking(type));

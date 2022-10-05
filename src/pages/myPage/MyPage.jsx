@@ -13,10 +13,6 @@ import font from "../../common/css/font.module.css";
 const MyPage = () => {
   const navi = useNavigate();
 
-  useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-  }, []);
-
   const logout = () => {
     localStorage.removeItem("token");
     navi("/");

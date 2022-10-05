@@ -42,10 +42,6 @@ const ModifyProfile = () => {
   const navi = useNavigate();
 
   useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-  }, []);
-
-  useEffect(() => {
     dispatch(__getProfile());
   }, [dispatch]);
   const userData = useSelector(data => data.profile);
