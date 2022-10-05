@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { get_studytime, __postStudyStart, __postRestStart, __postRestEnd } from "../../app/slice/timeTimerSlice";
+import { __getStudyTime, __postStudyStart, __postRestStart, __postRestEnd } from "../../app/slice/timeTimerSlice";
 import SetTimeModal from "../modal/SetTimeModal";
 import styles from "./timeTimer.module.css";
 import "../../common/css/color.css";
@@ -11,17 +11,13 @@ import CircleTimer from "../../pages/mainPage/CircleTimer";
 import ButtonBox from "../../pages/mainPage/ButtonBox";
 import { Blur } from "../../pages/mainPage/Styled";
 import useCalculate from "../../hooks/useCalculate";
+import { changeSecondToTime } from "../../utils/changeSecondToTime";
 
 const TimeTimer = () => {
   const date = new Date().getTime();
   const dispatch = useDispatch();
-
-  const studyStartPoint = useSelector(state => state.timer?.studyStartPoint);
-  const savedStudyTime = useSelector(state => state.timer?.savedStudyTime);
-  const restStartPoint = useSelector(state => state.timer?.restStartPoint);
-  const savedRestTime = useSelector(state => state.timer?.savedRestTime);
-  const targetTime = useSelector(state => state.timer?.targetTime);
-  const yesterdayStudyTime = useSelector(state => state.timer?.yesterdayStudyTime);
+  const { studyStartPoint, savedStudyTime, restStartPoint, savedRestTime, targetTime, yesterdayStudyTime } =
+    useSelector(state => state.timer);
 
   const [refresh, setRefresh] = useState(false);
   const [timeMode, setTimeMode] = useState("normal");
@@ -37,12 +33,8 @@ const TimeTimer = () => {
   const remainSec = targetToSec - parseInt(second); // setStatus 작동을 위한 두번째 시간과 분
 
   useEffect(() => {
-    dispatch(get_studytime());
+    dispatch(__getStudyTime());
   }, [dispatch]);
-
-  useEffect(() => {
-    setTargetToSec(Math.floor(targetTime / 1000));
-  }, [targetTime]);
 
   /** 일 초마다 색을 판별하는 함수 */
   useEffect(() => {
@@ -55,12 +47,6 @@ const TimeTimer = () => {
     }
   }, [restStartPoint, studyStartPoint, second]);
 
-  const changeSecondToTime = second => {
-    const hour = parseInt(second / 3600);
-    const minutes = parseInt((second % 3600) / 60);
-    return `${hour}시간 ${minutes}분`;
-  };
-
   /**
    * 버튼 클릭 시 1초에 한 번씩 second를 업데이트 하도록 설정
    * 스톱워치는 휴식시간을 체크하지 않지만
@@ -69,8 +55,10 @@ const TimeTimer = () => {
   useInterval(run, rest, setSecond);
   useInterval(rest, run, setRestSecond, "rest");
 
-  /** 공부 중, 휴식 중일 때 각각에 맞는 시간을 설정하는 함수 */
+  /** 공부 중일 때 각각에 맞는 시간을 설정하는 함수 */
   useCalculate(savedStudyTime, studyStartPoint, setSecond, setRun);
+
+  /** 휴식 중일 때 각각에 맞는 시간을 설정하는 함수 */
   useCalculate(savedRestTime, restStartPoint, setRestSecond);
 
   useEffect(() => {
@@ -104,11 +92,9 @@ const TimeTimer = () => {
    */
   useEffect(() => {
     if (refresh) {
-      console.log(localStorage.getItem("fcmToken"));
       dispatch(__postStudyStart({ studyStartPoint: date, notificationToken: localStorage.getItem("fcmToken") }));
     }
   }, [refresh]);
-
   return (
     <div className={styles.layout}>
       <CircleTimer
