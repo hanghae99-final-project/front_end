@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import WeeklyDataGraph from "../../components/weeklyGraph/WeeklyDataGraph";
 import Layout from "../../layout/Layout";
 import Footer from "../../components/footer/Footer";

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import SetWatchModal from "../modal/SetWatchModal";
 import styles from "./stopwatch.module.css";
 import { ReactComponent as Timer } from "../../common/svg/timer.svg";
@@ -43,7 +43,7 @@ const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
     }
   }, []);
 
-  const initializeTime = () => {
+  const initializeTime = useCallback(() => {
     localStorage.removeItem("startTime");
     localStorage.removeItem("targetTime");
     localStorage.removeItem("savedStudyTime");
@@ -51,7 +51,7 @@ const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
     setStop(false);
     setTime({ hour: 0, minute: 0, second: 0 });
     setColor("#7E7C8C");
-  };
+  }, []);
 
   /** 시간 도달 시 초기화 */
   useEffect(() => {
@@ -66,14 +66,14 @@ const Stopwatch = ({ mode, setMode, color, setColor, running, setRunning }) => {
 
   /** running이 바뀌었을 때, startTime을 local에 저장 */
   useEffect(() => {
-    if (running && !stop && !localStorage.startTime) {
+    if (running && !stop && !startTime) {
       localStorage.setItem("startTime", currentDate);
     }
   }, [running, stop]);
 
   /** stop했을 때,  startTime을 제거 */
   useEffect(() => {
-    if (running && stop && localStorage.startTime) {
+    if (running && stop && startTime) {
       localStorage.removeItem("startTime");
     }
   }, [stop]);
