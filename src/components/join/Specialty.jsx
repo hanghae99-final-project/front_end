@@ -27,7 +27,6 @@ const Specialty = ({ setMode, setUserInfo, userInfo }) => {
   ];
   const postJoinHandle = () => {
     dispatch(__joinUser(userInfo));
-    console.log(userInfo);
     setMode("Done");
   };
 

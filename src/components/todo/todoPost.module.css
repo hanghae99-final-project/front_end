@@ -1,4 +1,4 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .toDoContainer {
   display: flex;
@@ -28,7 +28,7 @@
 }
 
 .updateWarp {
-  width: calc(100% - 12.6rem);
+  width: calc(100% - 13rem);
   padding: 0.75rem 1rem;
   border-radius: 8px;
   border: solid 1px var(--neutral-100);
@@ -103,8 +103,6 @@
 }
 
 .btnOn {
-  cursor: pointer;
-
   background: url(../../common/svg/add_todo_active.svg) var(--primary-50);
   background-repeat: no-repeat;
   background-position: center;

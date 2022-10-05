@@ -1,4 +1,4 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .container {
   width: 100%;
@@ -46,6 +46,7 @@
 }
 
 .DdayContainer {
+  cursor: pointer;
   display: flex;
   width: calc(100% + 8rem);
   margin-bottom: 0.5rem;

@@ -1,4 +1,4 @@
-@import url(../../common/css/common.css);
+@import url(../../common/css/color.css);
 
 .graph {
   display: flex;
@@ -14,6 +14,7 @@
 }
 
 .aboveBox {
+  cursor: pointer;
   display: flex;
   padding: 0.8rem 0 0.2rem 0;
   align-items: center;

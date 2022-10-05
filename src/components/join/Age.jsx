@@ -7,7 +7,6 @@ import font from "../../common/css/font.module.css";
 const Age = ({ setMode, setUserInfo, userInfo }) => {
   const pickAge = ["20대", "30대", "기타"];
 
-  console.log(userInfo.ageGroup);
   return (
     <div className={styles.layout}>
       <div className={styles.container}>
