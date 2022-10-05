@@ -16,11 +16,11 @@ const firebaseConfig = {
 const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const isIPhone = device => {
-  const arr = [/iPhone/i, /iPad/i, /iPod/i, "macintosh"];
+  const arr = [/iPhone/i, /iPad/i, /iPod/i, "Macintosh", "Safari"];
   return arr.filter(iPhone => device.indexOf(iPhone) !== -1).length !== 0;
 };
 
-const myDevice = navigator.userAgent.toLowerCase();
+const myDevice = navigator.userAgent;
 
 if (!isIPhone(myDevice)) {
   const firebaseMessaging = firebaseApp.messaging();
