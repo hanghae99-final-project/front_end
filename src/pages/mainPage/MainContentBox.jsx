@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { __getStudyTime, __postStudyStart, __postRestStart, __postRestEnd } from "../../app/slice/timeTimerSlice";
-import SetTimeModal from "../modal/SetTimeModal";
-import styles from "./timeTimer.module.css";
+import SetTimeModal from "../../components/modal/SetTimeModal";
+import styles from "../../components/timeTimer/timeTimer.module.css";
 import "../../common/css/color.css";
 import { changeColor } from "../../app/slice/layoutColorSlice";
-import Quote from "../quote/Quote";
+import Quote from "../../components/quote/Quote";
 import useInterval from "../../hooks/useInterval";
-import CircleTimer from "../../pages/mainPage/CircleTimer";
-import ButtonBox from "../../pages/mainPage/ButtonBox";
-import { Blur } from "../../pages/mainPage/Styled";
+import CircleTimer from "../../components/timeTimer/CircleTimer";
+import ButtonBox from "../../components/timeTimer/ButtonBox";
+import { Blur } from "./Styled";
 import useCalculate from "../../hooks/useCalculate";
 import { changeSecondToTime } from "../../utils/changeSecondToTime";
 
-const TimeTimer = () => {
+const MainContentBox = () => {
   const date = new Date().getTime();
   const dispatch = useDispatch();
   const { studyStartPoint, savedStudyTime, restStartPoint, savedRestTime, targetTime, yesterdayStudyTime } =
@@ -139,4 +139,4 @@ const TimeTimer = () => {
   );
 };
 
-export default TimeTimer;
+export default MainContentBox;
