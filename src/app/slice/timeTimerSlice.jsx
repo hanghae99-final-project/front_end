@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const get_studytime = createAsyncThunk("get_studytime", async (payload, thunkAPI) => {
+export const __getStudyTime = createAsyncThunk("/studytime", async (payload, thunkAPI) => {
   try {
     const { data } = await axios.get(process.env.REACT_APP_SERVER_URL + "/time", {
       headers: {
@@ -15,7 +15,6 @@ export const get_studytime = createAsyncThunk("get_studytime", async (payload, t
 });
 
 export const __postStudyStart = createAsyncThunk("/studyStart", async (payload, thunkAPI) => {
-  console.log("fcm test");
   try {
     await axios.post(
       process.env.REACT_APP_SERVER_URL + "/time/studyStart",
@@ -99,7 +98,7 @@ const timeTimerSlice = createSlice({
   reducers: {},
 
   extraReducers: {
-    [get_studytime.fulfilled]: (state, { payload }) => (state = payload),
+    [__getStudyTime.fulfilled]: (state, { payload }) => (state = payload),
     [__postStudyStart.fulfilled]: (state, { payload }) => {
       return (state = {
         ...state,

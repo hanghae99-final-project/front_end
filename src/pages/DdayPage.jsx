@@ -22,10 +22,6 @@ const DdayPage = () => {
 
   const navi = useNavigate();
 
-  useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-  }, []);
-
   return (
     <Layout>
       <div className={styles.container}>

@@ -5,7 +5,6 @@ import { __postStudyEnd } from "../../app/slice/timeTimerSlice";
 import "../../common/css/color.css";
 import { ReactComponent as Stop } from "../../common/svg/stop_icon.svg";
 import font from "../../common/css/font.module.css";
-import { changeColor } from "../../app/slice/layoutColorSlice";
 
 const StopButton = ({ onClickHandler }) => {
   const color = useSelector(state => state.color);

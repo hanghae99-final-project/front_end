@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import WeeklyDataGraph from "../../components/weeklyGraph/WeeklyDataGraph";
 import Layout from "../../layout/Layout";
 import Footer from "../../components/footer/Footer";
@@ -12,10 +12,6 @@ import font from "../../common/css/font.module.css";
 
 const MyPage = () => {
   const navi = useNavigate();
-
-  useEffect(() => {
-    localStorage.getItem("token") === null && navi("/");
-  }, []);
 
   const logout = () => {
     localStorage.removeItem("token");
