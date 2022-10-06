@@ -111,8 +111,7 @@ const PostDday = ({ blurHandler, setModifyModal, modifyMode, dataId, setOpenPost
     }
 
     for (let j = 1; j <= nextDate; j++) {
-      let dayValue = dayjs(`${selectedYear}-${selectedMonth}-${j}`).format("YYYY-MM-DD");
-      console.log(todayValue, dayValue);
+      const dayValue = dayjs(`${selectedYear}-${selectedMonth}-${j}`).format("YYYY-MM-DD");
 
       data.push(
         <div className={styles.dateWarp}>
