@@ -1,5 +1,5 @@
 import React, { memo } from "react";
-import styles from "../../components/timeTimer/timeTimer.module.css";
+import styles from "./timeTimer.module.css";
 import font from "../../common/css/font.module.css";
 import changeTimeForm from "../../utils/changeTimeForm";
 import setting from "../../common/svg/setting_icon.svg";

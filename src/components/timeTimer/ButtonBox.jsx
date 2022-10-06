@@ -1,5 +1,5 @@
-import React, { memo } from "react";
-import styles from "../../components/timeTimer/timeTimer.module.css";
+import React from "react";
+import styles from "./timeTimer.module.css";
 import font from "../../common/css/font.module.css";
 import { useDispatch } from "react-redux";
 import { changeColor } from "../../app/slice/layoutColorSlice";
@@ -8,7 +8,7 @@ import changeTimeForm from "../../utils/changeTimeForm";
 import setting from "../../common/svg/setting_icon.svg";
 import pause from "../../common/svg/pause_icon.svg";
 import { ReactComponent as Play } from "../../common/svg/play_icon.svg";
-import StopButton from "../../components/timeTimer/StopButton";
+import StopButton from "./StopButton";
 
 const ButtonBox = ({
   run,
@@ -24,10 +24,7 @@ const ButtonBox = ({
   date
 }) => {
   const dispatch = useDispatch();
-  __postRestStart({
-    restStartPoint: date,
-    studyEndPoint: date
-  });
+
   const endTimer = () => {
     setRefresh(false);
     setRun(false);
@@ -36,6 +33,12 @@ const ButtonBox = ({
     dispatch(__postStudyEnd(restStartPoint !== 0 ? { restEndPoint: date } : { studyEndPoint: date }));
   };
 
+  /**
+   * 휴식 버튼을 관리하는 함수
+   * 휴식을 취하고 있을 때 클릭 시 작동하게 하고,
+   * 작동하고 있을 때 색을 변경하며 휴식
+   * @param {*} func dispatch할 함수
+   */
   const restHandler = func => {
     setRest(!rest);
     if (rest) {
@@ -46,6 +49,8 @@ const ButtonBox = ({
     }
     dispatch(func);
   };
+
+  const currentStatus = second >= targetTime / 1000 ? true : false;
 
   return (
     <div className={styles.buttonBox}>
@@ -64,22 +69,17 @@ const ButtonBox = ({
           </button>
         ) : (
           <button
-            className={second >= targetTime / 1000 ? styles.redBtn : styles.playBtn}
+            className={currentStatus ? styles.redBtn : styles.playBtn}
             onClick={() => {
               setRefresh(true);
               setRun(true);
-              dispatch(changeColor(second >= targetTime / 1000 ? "red" : "green"));
+              dispatch(changeColor(currentStatus ? "red" : "green"));
             }}
           >
             <div className={styles.playBox}>
-              <Play
-                className={styles.setting}
-                fill={second >= targetTime / 1000 ? "var(--neutral-100)" : "var(--neutral-10)"}
-              />
+              <Play className={styles.setting} fill={currentStatus ? "var(--neutral-100)" : "var(--neutral-10)"} />
             </div>
-            <div
-              className={`${second >= targetTime / 1000 ? styles.redText : styles.playText} ${font.subtitle2_600_16}`}
-            >
+            <div className={`${currentStatus ? styles.redText : styles.playText} ${font.subtitle2_600_16}`}>
               시작하기
             </div>
           </button>
@@ -113,4 +113,4 @@ const ButtonBox = ({
   );
 };
 
-export default memo(ButtonBox);
+export default ButtonBox;

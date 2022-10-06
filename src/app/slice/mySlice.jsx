@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = [];
+const initialState = { weeklyStudy: [] };
 
 export const __getWeeklyData = createAsyncThunk("/weekly", async (payload, thunkAPI) => {
   try {

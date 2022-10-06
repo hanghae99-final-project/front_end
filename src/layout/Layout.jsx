@@ -4,8 +4,19 @@ import "../common/css/color.css";
 import { ReactComponent as Logo } from "../common/svg/logo.svg";
 import intro from "../common/svg/left_box.png";
 import phone from "../common/svg/phone.png";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Layout = props => {
+  const navigate = useNavigate();
+  const preventAccess = ["/home", "/mypage", "/ranking", "/mytodo", "/modify", "dday", "/postdday"];
+
+  useEffect(() => {
+    if (preventAccess.includes(location.pathname)) {
+      localStorage.getItem("token") === null && navigate("/");
+    }
+  }, []);
+
   return (
     <Background>
       <div className="logoBox">
