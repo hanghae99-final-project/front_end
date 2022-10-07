@@ -64,10 +64,10 @@ const Calender = ({
   // 선택한 월에 맞는 요일 및 날짜 바인딩
   function calenderDate() {
     const data = [];
-    let todayValue = dayjs(`${selectedYear}-${selectedMonth}-${selectedDate}`).format("YYYY-MM-DD");
+    const todayValue = dayjs(`${selectedYear}-${selectedMonth}-${selectedDate}`).format("YYYY-MM-DD");
 
     // 이전달
-    for (var i = prevDate - prevDay; i <= prevDate; i++) {
+    for (let i = prevDate - prevDay; i <= prevDate; i++) {
       data.push(
         <div className={styles.dateWarp} style={{ backgroundColor: "#3b3b44" }}>
           <span>{i}</span>
@@ -76,7 +76,7 @@ const Calender = ({
     }
 
     // 이번달
-    for (var j = 1; j <= nextDate; j++) {
+    for (let j = 1; j <= nextDate; j++) {
       const dayValue = dayjs(`${selectedYear}-${selectedMonth}-${j}`).format("YYYY-MM-DD");
       const ifValue =
         studyData.map(data => data.studyDate).includes(dayValue) &&
@@ -106,7 +106,7 @@ const Calender = ({
     }
 
     // 다음달
-    for (var k = 1; k <= (7 - nextDay == 7 ? 0 : 7 - nextDay); k++) {
+    for (let k = 1; k <= (7 - nextDay == 7 ? 0 : 7 - nextDay); k++) {
       data.push(
         <div className={styles.dateWarp} style={{ backgroundColor: "#3b3b44" }}>
           <span>{k}</span>
