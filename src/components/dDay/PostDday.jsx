@@ -1,25 +1,19 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { __postDday, __modifyDday } from "../../app/slice/DdaySlice";
+import dayjs from "dayjs";
 import styles from "./postDday.module.css";
 import font from "../../common/css/font.module.css";
-import { __postDday, __modifyDday } from "../../app/slice/DdaySlice";
 
-const PostDday = ({
-  blurHandler,
-  setModifyModal,
-  modifyMode,
-  setModifyOn,
-  dataId,
-  setOpenPost,
-  modifyOn,
-  openPostHandler
-}) => {
+const PostDday = ({ blurHandler, setModifyModal, modifyMode, dataId, setOpenPost, openPostHandler }) => {
   const dispatch = useDispatch();
+  const date = dayjs(); // 현재 날짜(로컬 기준) 가져오기
+
   const today = {
-    year: new Date().getFullYear(), //오늘 연도
-    month: new Date().getMonth() + 1, //오늘 월
-    date: new Date().getDate(), //오늘 날짜
-    day: new Date().getDay() //오늘 요일
+    year: date.get("year"), //오늘 연도
+    month: date.get("month"), //오늘 월
+    date: date.get("date"), //오늘 날짜
+    day: date.get("day") //오늘 요일
   };
 
   const [dday, setDday] = useState({
@@ -32,15 +26,18 @@ const PostDday = ({
 
   const [choiceDay, setChoiceDay] = useState("");
   const [selectedYear, setSelectedYear] = useState(today.year); //현재 선택된 연도
-  const [selectedMonth, setSelectedMonth] = useState(today.month); //현재 선택된 달
-  const dateTotalCount = new Date(selectedYear, selectedMonth, 0).getDate(); //선택된 연도, 달의 마지막 날짜
+  const [selectedMonth, setSelectedMonth] = useState(today.month + 1); //현재 선택된 달
+  const [selectedDate, setSelectedDate] = useState(today.date);
 
-  //달력 월의 시작 요일
-  const startMonth = new Date(selectedYear, selectedMonth - 1, 1);
-  const calendarStartMonthData = startMonth.getDay();
+  // 이전 달의 마지막 날 날짜와 요일 구하기
+  const startDay = dayjs(`${selectedYear}-${selectedMonth}-${0}`);
+  const prevDate = startDay.get("date");
+  const prevDay = startDay.get("day");
 
-  //한달 주 수
-  const weekCount = Math.ceil((dateTotalCount + calendarStartMonthData) / 7);
+  // 이번 달의 마지막날 날짜와 요일 구하기
+  const endDay = dayjs(`${selectedYear}-${selectedMonth + 1}-${0}`);
+  const nextDate = endDay.get("date");
+  const nextDay = endDay.get("day");
 
   //일주일
   const week = ["일", "월", "화", "수", "목", "금", "토"];
@@ -64,12 +61,6 @@ const PostDday = ({
       setSelectedMonth(selectedMonth + 1);
     }
   }, [selectedMonth]);
-
-  // 선택한 월 일 갯수
-  const selectMonthData = [];
-  for (let i = 0; i <= dateTotalCount; i++) {
-    selectMonthData.push(i);
-  }
 
   const setDeadlineHandler = e => {
     setDday({ ...dday, deadline: e.target.id });
@@ -108,40 +99,48 @@ const PostDday = ({
 
   function calenderDate() {
     const data = [];
-    let calenderPos = 0;
-    let calenderDay = 0;
-    let todayValue = new Date(today.year, today.month - 1, today.date + 1).toISOString().split("T")[0];
+    const todayValue = dayjs(`${today.year}-${today.month + 1}-${today.date}`).format("YYYY-MM-DD");
 
-    for (let i = 0; i < weekCount; i++) {
-      for (let i2 = 0; i2 < 7; i2++) {
-        let dayValue = new Date(selectedYear, selectedMonth - 1, calenderDay + 2).toISOString().split("T")[0];
-
-        data.push(
-          <div className={styles.dateWarp}>
-            {calendarStartMonthData <= calenderPos && calenderDay < dateTotalCount
-              ? (calenderDay++,
-                (
-                  <div
-                    className={
-                      choiceDay === dayValue
-                        ? styles.choiceDay
-                        : todayValue === dayValue
-                        ? styles.selectedToday
-                        : styles.dayList
-                    }
-                  >
-                    <span onClick={setDeadlineHandler} name="deadline" id={dayValue}>
-                      {calenderDay}
-                    </span>
-                  </div>
-                ))
-              : ""}
-          </div>
-        );
-
-        calenderPos++;
-      }
+    // 이전달
+    for (let i = prevDate - prevDay; i <= prevDate; i++) {
+      data.push(
+        <div className={styles.dateWarp} style={{ color: "#4b4a56" }}>
+          <span></span>
+        </div>
+      );
     }
+
+    for (let j = 1; j <= nextDate; j++) {
+      const dayValue = dayjs(`${selectedYear}-${selectedMonth}-${j}`).format("YYYY-MM-DD");
+
+      data.push(
+        <div className={styles.dateWarp}>
+          <div
+            className={
+              choiceDay === dayValue
+                ? styles.choiceDay
+                : todayValue === dayValue
+                ? styles.selectedToday
+                : styles.dayList
+            }
+          >
+            <span onClick={setDeadlineHandler} name="deadline" id={dayValue}>
+              {j}
+            </span>
+          </div>
+        </div>
+      );
+    }
+
+    // 다음달
+    for (let k = 1; k <= (7 - nextDay == 7 ? 0 : 7 - nextDay - 1); k++) {
+      data.push(
+        <div className={styles.dateWarp} style={{ color: "#4b4a56" }}>
+          <span></span>
+        </div>
+      );
+    }
+
     return data;
   }
 
