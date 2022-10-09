@@ -2,6 +2,9 @@
 
 <img width="100%" src="https://user-images.githubusercontent.com/95389265/193836979-d0885d4e-1f0d-4796-972c-181fee784fb8.png" >
 
+2020년 잡코리아에서 724명의 구직자를 대상으로 취업불안감 조사를 한 결과 
+약 92퍼센트가 불안감을 느낀다고 답변했습니다.
+
 랭플은 열심히 미래를 준비하고 있음에도 불구하고, **항상 불안해하는 취준생**들을 대상으로
 
 **불안감을 해소시키고, 동기 부여를 해줄 목적**으로 만들어진 서비스입니다.
@@ -215,12 +218,116 @@ ranking-planner-pwa
 
 <div align="center">
 
-![image](https://user-images.githubusercontent.com/95389265/193523843-42e565b0-e544-4cb5-b164-036b386b714a.png)
+<br/>
+
+
+<img width="50%" src="https://user-images.githubusercontent.com/95389265/194757107-f818ea24-f088-4641-bdad-e0b419547cea.png">
+
+<br/>
+<br/>
 
 </div>
 
-> ## 📝기술적 의사 결정 & 트러블 슈팅
+<details>
+<summary>vercel -> s3 + cloudFront</summary>
+<div markdown="1">
+
+### vercel -> s3 + cloudFront
+
+- vercel 선정
+	- 첫 프로젝트로 시간이 빠듯할 것으로 판단
+	- 별도의 CI/CD 구축 없이 자동 배포
+	- cdn 서버도 우리나라에 특화되어 있음
+- 배포 후 테스트
+	- 배포 후 테스트 해본 결과 vercel의 평균 속도는 472ms로 로컬과 큰 차이가 나는 것을 확인 local환경보다 굉장히 느린 속도로 데이터가 넘어오는 것을 확인
+- 추론
+	- 백엔드에서 보내주는 데이터도 아니고, 백엔드 서버의 문제였다면 로컬에서 또한 느린 속도로 넘어와야한다고 판단
+	- 웹에 문제가 없다면 속도에 큰 영향을 미치는 것은 배포 서버일 것이라고 추츨
+- 결론
+	- s3 + cloudFront로 다시 배포한 결과 평규 472ms -> 9.79ms(98%)로 속도 단축
+
+</div>
+</details>
+
+
+
+<details>
+<summary>date 관련 라이브러리</summary>
+<div markdown="1">
+
+### date 관련 라이브러리
+
+|과정&nbsp;&nbsp;|설명|
+|---|---|
+|배경|윤년, 31일을 따로 처리해야 하는 등의 이유로 개발 편의성 개선을 위해 date 라이브러리 도입|
+|속도| moment > luxon > date-fns > dayjs|
+|사이즈|date-fns > moment > luxon > dayjs|
+|결론|프론트의 번들 사이즈는 속도와 직결되고, date 라이브러리를 사용하는 부분이 많지는 않아 속도는 가장 느리지만 번들 사이즈가 작은 dayjs 선정|
+
+<div>
+<img height="170px" src = "https://user-images.githubusercontent.com/95389265/194753347-707ef979-ed09-484c-9c7c-9856b09bd666.png">
+<img height="170px" src = "https://user-images.githubusercontent.com/95389265/194753349-fc4c84f8-f22a-4cd6-b86b-0b941bc15740.png">
+<img height="170px" src = "https://user-images.githubusercontent.com/95389265/194753351-510c64ca-5887-4cb2-9680-1acdc85fc0cc.png">
+</div>
+</div>
+</details>
+
+<details>
+<summary>전역 상태 관리</summary>
+<div markdown="1">
+
+### 전역 상태 관리
+
+- 선택지: recoil, **redux**
+- 선정 이유: 
+1. recoil
+	- react를 만든 meta에서 만들어 굉장히 react와 호환성이 좋고, 충분히 가볍고, 러닝커브가 작다고는 하지만 아직 recoil의 커뮤니티는 충분히 단단하지 못하다고 판단
+	- 빠듯한 시간 속에 첫 프로젝트를 하는 입장에서 예상치 못한 오류를 접했을 때  해결하는 데에 많은 시간이 소모될 것으로 예상
+**2. redux Toolkit**👈
+	- 커뮤니티가 충분히 단단하고, 주간 다운로드 수도 recoil 보다 20배 이상 높은 리덕스를 선택
+	- 방대한 양의 보일러 플레이트를 줄이기 위해 리덕스 툴킷을 사용
+</div>
+</details>
+
+> 👉[기술적 의사 결정 보러가기](https://www.notion.so/Troubleshooting_FE-c931ee67e61a4e8a9df18d038e82fd64)
+
+> ## 🪄유저 피드백 후 개선 사항
+
+<center>
+
+<div align="center">
+<img src = "https://user-images.githubusercontent.com/95389265/194755679-8bff7547-01d0-4584-837f-69e93046ea52.gif">
+</div>
 
 <br/>
 
-> 👉[기술적 의사 결정 보러가기](https://www.notion.so/Troubleshooting_FE-c931ee67e61a4e8a9df18d038e82fd64)
+- 기존에 회원가입이나 수정할 때 유저는 닉네임을 입력 후 엔터를 누를 것이라고 추측해 유효성 검사를 submit이나 blur 되었을 때 처리
+- **불편하다는 피드백이 62개의 응답 중 6건**
+- 해결 방안
+	- 입력할 때마다 유효성 검사
+	- **디바운싱 적용** 👈
+- 선정 이유
+	- 입력할 때마다 유효성 검사 시 한 번 입력할 때마다 빨간색 -> 초록색 -> 빨간색 으로 변해 유저가 당황할 것으로 판단
+	- 입력할 때마다 get 요청을 보내는 것은 불필요한 리소스를 소모하는 것이라고 판단
+	- 유저가 당황하지 않고, 불필요한 리소스를 소모하지 않게 검사를 입력이 끝났을 때만 보내는 디바운싱 채택⭐
+	
+<br/>
+
+<div align="center">
+<img width="18%" src="https://user-images.githubusercontent.com/95389265/194755687-753c0b5c-c79a-49bd-b146-ed7a5719e70a.gif">
+<img width="18%" src="https://user-images.githubusercontent.com/95389265/194755689-2ad68f81-5a27-404a-ba22-42780f62c696.gif">
+</div>
+
+- 기존에 투두리스트와 월간 스터디 로그는 별개의 컨텐츠로 마이페이지에서 한 눈에 확인할 수 있게 배치
+- **미완성 된 것 같다는 피드백 62개의 응답 중 3건**
+- 이유: 월간 스터디 로그가 캘린더 모양을 하고있고, 오늘 날짜에 흰색 테두리가 되어 있어 해당 날짜를 표현하는 것으로 오해
+- 해결 방안
+	- 월간 스터디 로그의 흰색 테두리 수정
+	- **투두리스트와 월간 스터디 로그 연동** 👈
+- 투두리스트와 월간 스터디 로그를 연동시켜 해당 투두리스트를 달력으로도 한 눈에 보기 쉽게 수정
+
+
+</center>
+
+
+
