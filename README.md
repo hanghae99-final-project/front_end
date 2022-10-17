@@ -206,11 +206,11 @@ ranking-planner-pwa
 
 > ## 🦾팀원
 
-| 이름   | 담당                                                                                                          |
+| 이름   | GitHub                                                                                                          |
 | ------ | ------------------------------------------------------------------------------------------------------------- |
-| 박종현 | 타임 타이머(서버 통신), 스톱워치, 메인페이지,Layout, 주간 스터디 로그, 타임피커, pwa, github actions, FCM     |
-| 김수환 | D-day CRUD, D-day 캘린더 , todo list CRUD, 월간 스터디 로그, 마이페이지 날짜별 todo list                      |
-| 한효승 | 타임 타이머(svg로 구현 및 기본 틀 완성),로그인, 회원가입/프로필 수정 및 디바운싱, 랭킹페이지, s3 + cloudFront |
+| 박종현 | https://github.com/Jong1co |
+| 김수환 | https://github.com/shkiimaa |
+| 한효승 | https://github.com/H4nHS |
 
 <br/>
 
