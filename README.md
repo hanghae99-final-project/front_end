@@ -209,7 +209,7 @@ ranking-planner-pwa
 | 이름   | GitHub                                                                                                          |
 | ------ | ------------------------------------------------------------------------------------------------------------- |
 | 박종현 | https://github.com/Jong1co |
-| 김수환 | https://github.com/shkiimaa |
+| 김수환 | https://github.com/DevSuhwan |
 | 한효승 | https://github.com/H4nHS |
 
 <br/>
